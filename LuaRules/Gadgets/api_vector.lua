@@ -35,7 +35,6 @@ end
 local function Elevate(x,y,z, ux,uy,uz, angle)
 	local cosAngle = cos(angle)
 	local sinAngle = sin(angle)
-	--return x*cosAngle, y*cosAngle + uy*sinAngle, z*cosAngle
 	return x*cosAngle + ux*sinAngle, y*cosAngle + uy*sinAngle, z*cosAngle + uz*sinAngle
 end
 
@@ -219,6 +218,19 @@ local function SectorVectorsFromUnitPiece(unitID, pieceID, xLen, zLen)
 	return v1x, v1z, v2x, v2z
 end
 
+local function MultMatrix3(m, x,y,z)
+	return 	m[1]*x+m[5]*y+m[9]*z,--+m[13]*1, 
+			m[2]*x+m[6]*y+m[10]*z,--+m[14]*1, 
+			m[3]*x+m[7]*y+m[11]*z,--+m[15]*1, 
+			m[4]*x+m[8]*y+m[12]*z--+m[16]*1
+end
+
+local function PrintMatrix(matrix)
+	for i = 1, 4 do
+		Spring.Echo(string.format("%.2f", matrix[i]), string.format("%.2f", matrix[i+4]), string.format("%.2f", matrix[i+8]), string.format("%.2f", matrix[i+12]))
+	end
+end
+
 local Vector = {
 	Magnitude = Magnitude,
 	Normalized = Normalized,
@@ -242,6 +254,8 @@ local Vector = {
 	SectorVectorsFromAngle = SectorVectorsFromAngle,
 	SectorVectorsFromUnit = SectorVectorsFromUnit,
 	SectorVectorsFromUnitPiece = SectorVectorsFromUnitPiece,
+	MultMatrix3 = MultMatrix3,
+	PrintMatrix = PrintMatrix,
 }
 
 if GG then

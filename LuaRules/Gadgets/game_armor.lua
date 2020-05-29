@@ -47,8 +47,8 @@ end
 --along with cost, controls how hard counters are; higher = harder counters
 --recommend somewhere around 4-8?
 local ARMOR_POWER = 8.75 --3.7
-local OVERMATCH = 0.1--.5 -- how much armour needs to be exceeded by to always pen
-local BOUNCE_MIN_ANGLE = math.cos(math.rad(6)) -- 60 degrees or more
+local OVERMATCH = 1.5 -- how much armour needs to be exceeded by to always pen
+local BOUNCE_MIN_ANGLE = math.cos(math.rad(60)) -- 60 degrees or more
 local BOUNCE_MULT = 0.2 -- how much velocity to keep after a richochet
 local BOUNCE_TTL = 45 -- 1.5 seconds
 
@@ -190,6 +190,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam)
 	-- TODO: remove the check for .armour once everything uses the table
 	if unitInfos[unitDefID] and unitInfos[unitDefID].armour and not unitInfos[unitDefID].lwRatios["base"] then
 		local pieceMap = Spring.GetUnitPieceMap(unitID)
+		unitInfos[unitDefID]["pieceMap"] = pieceMap
 		for piece in pairs(PIECES) do
 			local pieceNum = pieceMap[piece]
 			if pieceNum then -- Only 1 of turret or super should exist
@@ -219,14 +220,6 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	--binocs and tracers do zero damage already, so we don't need to be doing a string search...
 	if damage <= 1 then return 0 end
 	
-	--- count how many turret and base hits we get
-	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
-	if pieceHit then
-		if not hits[unitDefID] then hits[unitDefID] = {} end
-		hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
-		hitCounts[pieceHit] = (hitCounts[pieceHit] or 0) + 1
-	end
-
 	local unitInfo = unitInfos[unitDefID]
 	local weaponInfo = weaponInfos[weaponDefID]
 	local weaponDef = WeaponDefs[weaponDefID]
@@ -248,12 +241,28 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	local armor_hit_side = weaponInfo[3]
 	
 	local frontDir, upDir, rightDir = GetUnitVectors(unitID)
-	local rearDir = {-frontDir[1], frontDir[2], -frontDir[3]}
-	local leftDir = {-rightDir[1], rightDir[2], -rightDir[3]}
+	
+	-- count how many turret and base hits we get
+	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID)
+	if pieceHit then
+		if not hits[unitDefID] then hits[unitDefID] = {} end
+		hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
+		hitCounts[pieceHit] = (hitCounts[pieceHit] or 0) + 1
+		if pieceHit == "turret" then
+			local pieceNum = unitInfos[unitDefID]["pieceMap"]["turret"]
+			local matrix = {Spring.GetUnitPieceMatrix(unitID, pieceNum)}
+			--GG.Vector.PrintMatrix(matrix)
+			--Spring.Echo("Old vector", unpack(frontDir))
+			frontDir = {GG.Vector.MultMatrix3(matrix, unpack(frontDir))}
+			--Spring.Echo("New vector", unpack(frontDir))
+			rightDir = {GG.Vector.MultMatrix3(matrix, unpack(rightDir))}
+		end
+	end
+	local rearDir = {-frontDir[1], -frontDir[2], -frontDir[3]}
+	local leftDir = {-rightDir[1], -rightDir[2], -rightDir[3]}
 	
 	local d --distance
-	local hitVector, rotateFunc
-	local rotateDir = 1
+	local hitVector
 	local dotFront, dotUp
 	local dx, dy, dz = Spring.GetProjectileDirection(projectileID)
 	-- for some reason we need to flip the direction of all these for stuff to work :/
@@ -280,11 +289,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		d = 500
 	end
 	
-	--local todo = (pieceHit == "base" and 10) or 12
 	local cosLW = unitInfo.lwRatios[pieceHit]
 	--discrete arcs
 	--splash hits don't use armor_hit_side
-	Spring.Echo("Piece was", pieceHit, ux, uy, uz, "dotFront", dotFront, cosLW, "threshold", cosLW, math.deg(math.acos(cosLW)))
 	if not armor_hit_side then
 			--and (weaponInfo[1] ~= "explosive" or damage / weaponDef.damages[unitInfo[6]] > DIRECT_HIT_THRESHOLD) then
 		if dotUp > SQRT_HALF or dotUp < -SQRT_HALF then
@@ -302,31 +309,18 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	armor = unitInfo.armour[pieceHit][armor_hit_side].thickness
 	slope = unitInfo.armour[pieceHit][armor_hit_side].slope or 0
 	if armor_hit_side == "top" then 
-		--armor = unitInfo[4] -- top
-		--slope = 0
 		hitVector = upDir
 	elseif armor_hit_side == "rear" then
-		--armor = unitInfo[3]
-		--slope = unitInfo[9]
 		hitVector = rearDir
-		rotateFunc = GG.Vector.RotateX
 	elseif armor_hit_side == "side" then
-		--armor = unitInfo[2]
-		--slope = unitInfo[8]
-		rotateFunc = GG.Vector.RotateZ
 		local dotRight = vDotProduct(dx,dy,dz, rightDir[1], rightDir[2], rightDir[3])
 		if dotRight > 0 then
 			hitVector = rightDir
-			rotateDir = -1
 		else
 			hitVector = leftDir
 		end
 	else -- front
-		--armor = unitInfo[1]
-		--slope = unitInfo[7]
 		hitVector = frontDir
-		rotateFunc = GG.Vector.RotateX
-		rotateDir = -1
 	end
 
 	local penetration
@@ -338,19 +332,15 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	
 	if (not modOptions) or (modOptions and modOptions.sloped_armour == "1") then
 		local fx,fy,fz = unpack(hitVector)
-		if rotateFunc then
-			Spring.Echo("Original vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
-			--fx,fy,fz = rotateFunc(hitVector[1], hitVector[2], hitVector[3], rotateDir * math.rad(slope))
-			fx,fy,fz = GG.Vector.Elevate(hitVector[1],hitVector[2],hitVector[3], upDir[1],upDir[2],upDir[3], math.rad(slope))
-			Spring.Echo("Rotated vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
-			--fy = (slope > 0) and math.abs(fy) or -math.abs(fy)
-		end
+		--Spring.Echo("Original vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
+		fx,fy,fz = GG.Vector.Elevate(hitVector[1],hitVector[2],hitVector[3], upDir[1],upDir[2],upDir[3], math.rad(slope))
+		--Spring.Echo("Rotated vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
 
 		local armorPre = armor -- just for debug echo
 		armor = GG.Vector.EffectiveThickness(armor, dx,dy,dz, fx,fy,fz)
 		local dotActual = vDotProduct(dx,dy,dz, fx,fy,fz)
 		if (not modOptions) or (modOptions and modOptions.sloped_armour_debug == "1") then
-			Spring.Echo(armor_hit_side .. " actual armour is " .. armorPre .. " @ " .. math.deg(slope) .. ". Effective armour is " .. armor .. " @ " .. math.deg(math.acos(dotActual)) .. " (Pen: " .. penetration .."mm)")
+			Spring.Echo(pieceHit .. " (" .. armor_hit_side .. ") actual armour is " .. armorPre .. " @ " .. slope .. ". Effective armour is " .. armor .. " @ " .. math.deg(math.acos(dotActual)) .. " (Pen: " .. penetration .."mm)")
 		end
 		
 		if OVERMATCH * penetration < armor then -- might bounce, check angle
@@ -360,6 +350,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 				local v = BOUNCE_MULT * GG.Vector.Magnitude(vx, vy, vz)
 				local params = {pos = {px,py,pz}, 
 								speed = {v*(-dx+2*dotActual*fx), v*(-dy+2*dotActual*fy), v*(-dz+2*dotActual*fz)}, 
+								--speed = {fx, fy, fz}, -- for testing vectors
 								ttl = BOUNCE_TTL,
 								gravity = -0.25,
 								owner = unitID}
@@ -370,7 +361,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	-- apply damage
 	armor = forwardArmorTranslation(armor)
 	penetration = forwardArmorTranslation(penetration)
-	local mult = penetration / (penetration + armor)
+	local mult = 0--penetration / (penetration + armor)
 	
 	return damage * mult
 end

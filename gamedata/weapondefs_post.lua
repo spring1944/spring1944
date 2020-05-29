@@ -370,9 +370,6 @@ for name, ud in pairs(UnitDefs) do
 			ud.description = ud.description.." ("..newDescrLine..")"
 
 		end
-		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 then
-			ud.usepiececollisionvolumes = true
-		end
 	end
 end
 
