@@ -29,12 +29,41 @@ local ShermanBase = MediumTank:New{
 	},
 	
 	customParams = {
-		armor_front			= 64,
-		armor_rear			= 38,
-		armor_side			= 38,
-		armor_top			= 20,
-		slope_front			= 47,
-		slope_rear			= 11,
+		armour = {
+			base = {
+				front = {
+					thickness		= 64,
+					slope			= 48,
+				},
+				rear = {
+					thickness		= 38,
+					slope			= 21,
+				},
+				side = {
+					thickness 		= 38,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 76,
+					slope			= 33,
+				},
+				rear = {
+					thickness		= 51,
+					slope			= 2,
+				},
+				side = {
+					thickness 		= 51,
+					slope			= 3,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+		},
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
 
@@ -69,8 +98,37 @@ local USM4Jumbo = USM4A4Sherman:New(HeavyTank):New{
 	maxDamage			= 4267,
 	
 	customParams = {
-		armor_front			= 102,--38+64
-		armor_side			= 76,
+		armour = {
+			base = {
+				front = {
+					thickness		= 102,
+					slope			= 49,
+				},
+				rear = {
+					slope			= 10,
+				},
+				side = {
+					thickness 		= 76,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 152, -- not mantlet
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 152,
+					slope			= 0,
+				},
+				side = {
+					thickness 		= 152,
+					slope			= 10,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+		},
 		maxvelocitykmh		= 35,
 		normaltex			= "unittextures/USM4Jumbo_normals.dds",
 	},
@@ -94,6 +152,25 @@ local USM4A376Sherman = ShermanBase:New{
 	},
 	
 	customParams = {
+		armour = {
+			turret = {
+				front = {
+					thickness		= 64, -- not mantlet
+					slope			= 13,
+				},
+				rear = {
+					thickness		= 64,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 64,
+					slope			= 11,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+		},
 		maxammo				= 14,
 		normaltex			= "unittextures/USM4ShermanA_normals.dds",
 	},
