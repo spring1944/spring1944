@@ -5,13 +5,25 @@ local StrvM42Base = {
 
 
 	customParams = {
-		armor_front			= 55,
-		armor_rear			= 20,
-		armor_side			= 25,
-		armor_top			= 9,
-		slope_front			= 28,
-		slope_rear			= -29,
-		slope_side			= 30,
+		armour = {
+			base = {
+				front = {
+					thickness		= 55,
+					slope			= 28,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= -29,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 9,
+				},
+			},
+		},
 	},
 }
 
@@ -47,6 +59,25 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 		},
 	},
 	customParams = {
+		armour = {
+			turret = {
+				front = {
+					thickness		= 55,
+					slope			= 43,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 7,
+				},
+				side = {
+					thickness 		= 30,
+					slope			= 5,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
 	},
