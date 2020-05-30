@@ -29,12 +29,41 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 		},
 	},
 	customParams = {
-		armor_front			= 12,
-		armor_rear			= 10,
-		armor_side			= 10,
-		armor_top			= 6,
-		slope_front			= 29,
-		slope_rear			= 13,
+		armour = {
+			base = {
+				front = {
+					thickness		= 12,
+					slope			= 29,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 13,
+				},
+				side = {
+					thickness 		= 10,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 12, -- not mantlet
+					slope			= 7,
+				},
+				rear = {
+					thickness		= 12,
+					slope			= 14,
+				},
+				side = {
+					thickness 		= 12,
+					slope			= 10,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		},
 		maxammo				= 15,
 		maxvelocitykmh		= 37,
 		exhaust_fx_name			= "diesel_exhaust",

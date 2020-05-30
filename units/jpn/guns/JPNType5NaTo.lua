@@ -16,18 +16,55 @@ local JPNType5NaTo = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 12,
-		armor_rear			= 4,
-		armor_side			= 12,
-		armor_top			= 0,
-		slope_front			= 25,
-		slope_rear			= 1,
+		armour = {
+			base = {
+				front = {
+					thickness		= 12,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 4,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 12,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 12,
+					slope			= 21,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 12,
+					slope			= 26,
+				},
+				top = {
+					thickness		= 12,
+				},
+			},
+		},
 		
 		maxammo				= 6,
 		maxvelocitykmh		= 40,
 		exhaust_fx_name		= "diesel_exhaust",
 		customanims			= "type5nato",
-
+		piecehitvols		= {
+			base = {
+				scale = {1, 0.6, 1},
+				offset = {0, -2.5, 0},
+			},
+			turret = {
+				scale = {1, 0.41, 0.6},
+				offset = {0, 4, 2},
+			},
+		}
 	},
 }
 

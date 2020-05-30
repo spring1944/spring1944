@@ -6,11 +6,23 @@ local JPNKaTsu = HalfTrack:New(Amphibian):New{
 	trackWidth				= 20,
 	
 	customParams = {
-		armor_front				= 12,
-		armor_rear				= 10,
-		armor_side				= 10,
-		armor_top				= 10,		
-		slope_front			= 21,
+		armour = {
+			base = {
+				front = {
+					thickness		= 12,
+					slope			= 21,
+				},
+				rear = {
+					thickness		= 10,
+				},
+				side = {
+					thickness 		= 10,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 
 		transportsquad			= "jpn_platoon_amph",
 		maxvelocitykmh			= 20,
