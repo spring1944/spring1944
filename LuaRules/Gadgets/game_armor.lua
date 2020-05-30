@@ -306,7 +306,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 			end
 		end
 	end
-	armor = unitInfo.armour[pieceHit][armor_hit_side].thickness
+	armor = unitInfo.armour[pieceHit][armor_hit_side].thickness or 0
 	slope = unitInfo.armour[pieceHit][armor_hit_side].slope or 0
 	if armor_hit_side == "top" then 
 		hitVector = upDir

@@ -21,10 +21,48 @@ local HUN40MNimrod = ArmouredCarAA:New{
 	customParams = {
 		hasturnbutton		= true,
 		damageGroup		= "lightTanks",
-		armor_front			= 13,
-		armor_rear			= 6,
-		armor_side			= 10,
-		armor_top			= 0,
+		armour = {
+			base = {
+				front = {
+					thickness		= 12,
+					slope			= 60,
+				},
+				rear = {
+					thickness		= 12,
+					slope			= -33,
+				},
+				side = {
+					thickness 		= 13,
+					slope			= -15,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 10,
+					slope			= 24,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 24,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 24,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
+		piecehitvols		= {
+			turret = {
+				scale = {1, 0.35, 1}, -- radio mast
+				offset = {0, -1.5, 0},
+			},
+		},
 		maxammo				= 19,
 		maxvelocitykmh		= 50,
 		weapontoggle		= "priorityAPHE",

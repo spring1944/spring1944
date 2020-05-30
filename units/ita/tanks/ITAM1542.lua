@@ -37,18 +37,52 @@ local ITAM1542 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 50,
-		armor_rear			= 25,
-		armor_side			= 25,
-		armor_top			= 25,
-		slope_front			= 11,
-		slope_rear			= -15,
-		slope_side			= 8,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -15,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 7,
+				},
+				top = {
+					thickness		= 25, -- all but engine deck
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 45,
+					slope			= 13,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 21,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 20,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
 		maxammo				= 25,
 		maxvelocitykmh		= 40,
 		turretturnspeed		= 18,
 		weapontoggle		= "priorityAPHEATHE",
-
+		piecehitvols		= {
+			base = {
+				scale = {1, 0.27, 1},
+				offset = {0, -12, 0},
+			},
+		},
 	},
 }
 

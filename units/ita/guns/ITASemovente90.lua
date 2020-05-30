@@ -16,15 +16,52 @@ local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 30, -- really the turret/superstructure
-		armor_rear			= 0,
-		armor_side			= 25,
-		armor_top			= 15,
-		slope_front			= 29,
+		armour = {
+			base = {
+				front = {
+					thickness		= 25,
+					slope			= 80,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -16,
+				},
+				side = {
+					thickness 		= 25,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 30,
+					slope			= 29,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 8,
+				},
+			},
+		},
 		maxammo				= 6,
 		maxvelocitykmh		= 25,
 		exhaust_fx_name			= "diesel_exhaust",
-
+		piecehitvols		= {
+			base = {
+				scale = {1, 0.8, 1},
+				offset = {0, 0, 0},
+			},
+			turret = {
+				scale = {1, 0.35, 1},
+				offset = {0, -4, 0},
+			},
+		},
 	},
 }
 
