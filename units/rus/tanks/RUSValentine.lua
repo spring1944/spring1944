@@ -24,12 +24,39 @@ local RUSValentine = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 17,
-		armor_side			= 60,
-		armor_top			= 17, -- engine deck
-		slope_front			= 66,
-		slope_rear			= 59,
+		armour = {
+			base = {
+				front = {
+					thickness		= 60,
+				},
+				rear = {
+					thickness		= 17,
+					slope			= 59,
+				},
+				side = {
+					thickness 		= 60,
+				},
+				top = {
+					thickness		= 17, -- engine deck
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 65,
+					slope			= 5,
+				},
+				rear = {
+					thickness		= 65,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 60,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
 		maxammo				= 18,
 		turretturnspeed		= 36, -- 10s for 360
 		maxvelocitykmh		= 24,

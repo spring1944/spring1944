@@ -24,12 +24,42 @@ local RUST70 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 35,
-		armor_rear			= 25,
-		armor_side			= 15,
-		armor_top			= 10,
-		slope_front			= 62,
-		slope_rear			= -42,
+		armour = {
+			base = {
+				front = {
+					thickness		= 35,
+					slope			= 62,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -42,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 35, -- not mantlet
+					slope			= 27,
+				},
+				rear = {
+					thickness		= 35,
+					slope			= 29,
+				},
+				side = {
+					thickness 		= 35,
+					slope			= 22,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
+
 		maxammo				= 18,
 		maxvelocitykmh		= 45,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",

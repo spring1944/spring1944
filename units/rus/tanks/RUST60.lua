@@ -24,12 +24,41 @@ local RUST60 = Tankette:New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
-		armor_rear			= 25,
-		armor_side			= 15,
-		armor_top			= 13,
-		slope_front			= 72,
-		slope_rear			= -27,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 72,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -27,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 25,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 24,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 		maxammo				= 36,
 		maxvelocitykmh		= 44,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",

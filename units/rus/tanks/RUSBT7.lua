@@ -24,12 +24,42 @@ local RUSBT7 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 20,
-		armor_rear			= 103,
-		armor_side			= 15,
-		armor_top			= 10,
-		slope_front			= 18,
-		slope_rear			= -16,
+		armour = {
+			base = {
+				front = {
+					thickness		= 20,
+					slope			= 18,
+				},
+				rear = {
+					thickness		= 13,
+					slope			= -16,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 15,
+					slope			= 13,
+				},
+				rear = {
+					thickness		= 13,
+					slope			= 15,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 13,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 		maxammo				= 18,
 		maxvelocitykmh		= 52,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
