@@ -25,7 +25,7 @@ local RUSBT7 = LightTank:New{
 	},
 	customParams = {
 		armor_front			= 20,
-		armor_rear			= 103,
+		armor_rear			= 13,
 		armor_side			= 15,
 		armor_top			= 10,
 		slope_front			= 18,
