@@ -79,10 +79,42 @@ local HUN43MLehel = HalfTrack:New{
 	trackWidth				= 15,
 	
 	customParams = {
-		armor_front				= 13,
-		armor_rear				= 8,
-		armor_side				= 13,
-		armor_top				= 0,
+		armour = {
+			base = {
+				front = {
+					thickness		= 12,
+					slope			= 60,
+				},
+				rear = {
+					thickness		= 12,
+					slope			= -33,
+				},
+				side = {
+					thickness 		= 13,
+					slope			= -15,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 10,
+					slope			= 27,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 23,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxvelocitykmh			= 50,
 
 	},
