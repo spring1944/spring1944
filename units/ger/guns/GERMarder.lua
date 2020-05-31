@@ -16,12 +16,39 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 19, -- superstructure + gunshield
-		armor_rear			= 15,
-		armor_side			= 11,
-		armor_top			= 12,
-		slope_front			= 31,
-		slope_side			= 8,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 65,
+				},
+				rear = {
+					thickness		= 15,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 15,
+					slope			= 24,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 19,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 6,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 42,

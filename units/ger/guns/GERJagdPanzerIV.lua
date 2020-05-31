@@ -16,13 +16,41 @@ local GERJagdPanzerIV = MediumTank:New(TankDestroyer):New{
 		},
 	},
 	customParams = {
-		armor_front			= 80,
-		armor_rear			= 22,
-		armor_side			= 40,
-		armor_top			= 20,
-		slope_front			= 50,
-		slope_rear			= -5,
-		slope_side			= 29,
+		armour = {
+			base = {
+				front = {
+					thickness		= 80,
+					slope			= 47,
+				},
+				rear = {
+					thickness		= 22,
+					slope			= 5,
+				},
+				side = {
+					thickness 		= 30,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 80,
+					slope			= 50,
+				},
+				rear = {
+					thickness		= 30,
+					slope			= 31,
+				},
+				side = {
+					thickness 		= 40,
+					slope			= 29,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+		},
 		maxammo				= 15,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 35,

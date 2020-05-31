@@ -18,13 +18,40 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
-		armor_rear			= 15,
-		armor_side			= 15,
-		armor_top			= 4,
-		slope_front			= 25,
-		slope_rear			= -7,
-		slope_side			= 15,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 73,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= -14,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 10,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 29,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 6,
 		maxvelocitykmh		= 40,
 
