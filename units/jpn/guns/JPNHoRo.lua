@@ -20,12 +20,40 @@ local JPNHoRo = LightTank:New(AssaultGun):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 25,
-		armor_rear			= 20,
-		armor_side			= 25,
-		armor_top			= 0,
-		slope_front			= 23,
-		slope_rear			= 25,
+		armour = {
+			base = {
+				front = {
+					thickness		= 25,
+					slope			= -37,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= 25,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 0,
+				},
+				top = {
+					thickness		= 12,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 25,
+					slope			= 15,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 20,
+				},
+				top = {
+					thickness		= 12,
+				},
+			},
+		},
 		
 		maxammo				= 4,
 		weapontoggle		= "smoke",

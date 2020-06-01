@@ -18,12 +18,38 @@ local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 38,
-		armor_rear			= 38,
-		armor_side			= 19,
-		armor_top			= 13,
-		slope_front			= 55,
-		slope_rear			= -15,
+		armour = {
+			base = {
+				front = {
+					thickness		= 51,
+					slope			= 55,
+				},
+				rear = {
+					thickness		= 38,
+				},
+				side = {
+					thickness 		= 38,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 13,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 13,
+				},
+				side = {
+					thickness 		= 13,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 13,
 		maxvelocitykmh		= 39,
 
