@@ -19,11 +19,39 @@ local RUSSU76 = LightTank:New(AssaultGun):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 25,
-		armor_rear			= 15,
-		armor_side			= 15,
-		armor_top			= 7,
-		slope_front			= 60,
+		armour = {
+			base = {
+				front = {
+					thickness		= 25,
+					slope			= 60,
+				},
+				rear = {
+					thickness		= 15,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 7,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 25,
+					slope			= 27,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 21,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 
 		maxammo				= 11,
 		maxvelocitykmh		= 45,
