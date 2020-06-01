@@ -99,7 +99,7 @@ local HUN43MLehel = HalfTrack:New{
 			},
 			super = {
 				front = {
-					thickness		= 10,
+					thickness		= 20,
 					slope			= 27,
 				},
 				rear = {

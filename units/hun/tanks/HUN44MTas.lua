@@ -45,15 +45,15 @@ local HUN44MTas = HeavyTank:New{
 			},
 			turret = {
 				front = {
-					thickness		= 100, -- guess at bit less than Panther
+					thickness		= 100,
 					slope			= 12,
 				},
 				rear = {
-					thickness		= 50,
+					thickness		= 100,
 					slope			= 20,
 				},
 				side = {
-					thickness 		= 50,
+					thickness 		= 100,
 					slope			= 20,
 				},
 				top = {
