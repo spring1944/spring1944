@@ -342,10 +342,10 @@ end
 
 local function DrawValuesWrapper(unitInfo, mouseTarget, textTable, suffix, prefix, part, name, dist)
 	local textTable = {
-		unitInfo.armour[part].front[name] or 0,
-		unitInfo.armour[part].side[name] or 0,
-		unitInfo.armour[part].rear[name] or 0,
-		unitInfo.armour[part].top[name] or 0,
+		unitInfo.armour[part].front and unitInfo.armour[part].front[name] or 0,
+		unitInfo.armour[part].side and unitInfo.armour[part].side[name] or 0,
+		unitInfo.armour[part].rear and unitInfo.armour[part].rear[name] or 0,
+		unitInfo.armour[part].top and unitInfo.armour[part].top[name] or 0,
 	}
 	DrawValuesOnUnit(mouseTarget, textTable, GetArmorColor, GetString, suffix, prefix, part, dist)
 end
