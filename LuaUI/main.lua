@@ -47,7 +47,7 @@ end
 --
 -- Load
 --
-
+VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 VFS.Include("LuaHandler/Utilities/utils.lua", nil, VFS.DEF_MODE)
 
 --// the addon handler
