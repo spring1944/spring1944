@@ -36,7 +36,7 @@ local GERTiger = HeavyTank:New{
 					slope			= 10,
 				},
 				rear = {
-					thickness		= 482,
+					thickness		= 82,
 					slope			= -9,
 				},
 				side = {
