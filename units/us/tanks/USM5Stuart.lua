@@ -24,12 +24,6 @@ local StuartBase = LightTank:New{
 				},
 			},
 		},
-		armor_front			= 29,
-		armor_rear			= 25,
-		armor_side			= 29,
-		armor_top			= 13,
-		slope_front			= 50,
-		slope_rear			= -2,
 
 		maxvelocitykmh		= 58,
 

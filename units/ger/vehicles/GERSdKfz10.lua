@@ -43,10 +43,6 @@ local GERSdKfz10 = ArmouredCarAA:New{
 				},
 			},
 		},
-		armor_front			= 11,
-		armor_rear			= 0,
-		armor_side			= 0,
-		armor_top			= 0,
 		maxammo				= 25,
 		maxvelocitykmh		= 75,
 

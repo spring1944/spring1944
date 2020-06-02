@@ -1,11 +1,56 @@
-local HUNHetzer = MediumTank:New(TankDestroyer):New{
+local HetzerBase = Tank:New{
+	maxDamage			= 1575,
+	trackOffset			= 5,
+	trackWidth			= 20,
+	
+	customParams = {
+		armour = {
+			base = {
+				front = {
+					thickness		= 60,
+					slope			= -40,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= 13,
+				},
+				side = {
+					thickness 		= 20,
+					slope			= -15,
+				},
+				top = {
+					thickness		= 8,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 60,
+					slope			= 60,
+				},
+				rear = {
+					thickness		= 8,
+					slope			= 68,
+				},
+				side = {
+					thickness 		= 20,
+					slope			= 40,
+				},
+				top = {
+					thickness		= 8,
+				},
+			},
+		},
+		soundcategory		= "HUN/Tank",
+		maxvelocitykmh		= 40,
+	},
+}
+
+local HUNHetzer = HetzerBase:New(MediumTank):New(TankDestroyer):New{
 	name				= "Sd.Kfz. 138/2 JagdPanzer 38 Hetzer",
 	description			= "Turretless Tank Destroyer",
 	corpse				= "HUNHetzer_Abandoned",
 	buildCostMetal		= 2800,
-	maxDamage			= 1575,
-	trackOffset			= 5,
-	trackWidth			= 20,
+
 
 	weapons = {
 		[1] = {
@@ -20,40 +65,19 @@ local HUNHetzer = MediumTank:New(TankDestroyer):New{
 		},
 	},
 	customParams = {
-		armor_front			= 60,
-		armor_rear			= 20,
-		armor_side			= 20,
-		armor_top			= 8,
-		slope_front			= 60,
-		slope_rear			= 13,
-		slope_side			= 40,
 		maxammo				= 15,
-		soundcategory		= "HUN/Tank",
-		maxvelocitykmh		= 40,
-
 	},
 }
 
-local HUNBergeHetzer = EngineerVehicle:New{
+local HUNBergeHetzer = HetzerBase:New(EngineerVehicle):New{
 	name				= "Berge Hetzer",
 	description			= "Armored recovery vehicle",
 	corpse				= "HUNBergeHetzer_Abandoned",
-	category			= "HARDVEH",
-	maxDamage			= 1575,
-	trackOffset			= 5,
-	trackWidth			= 20,
-	customParams = {
-		armor_front			= 60,
-		armor_rear			= 20,
-		armor_side			= 20,
-		armor_top			= 0,
-		slope_front			= 60,
-		slope_rear			= 13,
-		slope_side			= 40,
-		maxvelocitykmh		= 40,
-		soundcategory		= "HUN/Tank",
-		customanims			= "bergehetzer",
+	category			= "HARDVEH", -- we don't want minetrigger, so it can clear mines
 
+	customParams = {
+		customanims			= "bergehetzer",
+		weapontoggle		= false, -- can't override with nil
 	},
 }
 

@@ -14,10 +14,22 @@ local GBR_LCA = InfantryLandingCraft:New{
 		},
 	},
 	customparams = {
-		armor_front				= 28.5, -- 3/8in for doors, + 3/4in? ramp
-		armor_rear				= 19,
-		armor_side				= 19, -- wiki says 3/4in sides
-		armor_top				= 6, -- 1/4in deck
+		armour = {
+			base = {
+				front = {
+					thickness		= 29,-- 3/8in for doors, + 3/4in? ramp
+				},
+				rear = {
+					thickness		= 19,
+				},
+				side = {
+					thickness 		= 19,
+				},
+				top = {
+					thickness		= 0, -- troop wells are 6mm armour but centreline is open
+				},
+			},
+		}
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

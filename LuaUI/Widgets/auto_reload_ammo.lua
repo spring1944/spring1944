@@ -23,7 +23,8 @@ end
 --         Added some simple error checking
 
 --17.09.11 Improved unit AI in UNIT_SOPS and UNIT_RELOADING, now handles a supply that moves off as we're reloading
---         Made some minor efficiency improvements - added customParams.armor_front so artillery isn't processed
+--         Made some minor efficiency improvements - added customParams.armour so artillery isn't processed
+--         Made some minor efficiency improvements - added customParams.armour so artillery isn't processed
 --         Added FindClosestSupply() to UNIT_RETURNING_TO_SUPPLY in case the supply unit moves off as we're travelling to it 
 
 --12.09.11 Replaced timer and delay test in UNIT_BRAND_NEW
@@ -276,7 +277,7 @@ function Incoming(uID)
     local ud = UnitDefs[udid]
     if (lastAttacker == nil) then
         return 
-    elseif (tonumber(ud.customParams.armor_front)) then
+    elseif (ud.customParams.armour) then
         --Echo("in else CMD_TURN", uID)
         local ex, _, ez  = GetUnitPosition(lastAttacker)
         if ((ex ~= nil) and (ez ~= nil)) then
@@ -364,7 +365,7 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam)
 	    local ud = UnitDefs[unitDefID] 
         --define some extra attributes for each armoured unit created and let mortars auto reload too
         if (((ud ~= nil) and (tonumber(ud.customParams.weaponswithammo)) and (unitTeam == teamID)
-            and (tonumber(ud.customParams.armor_front))) or ((ud ~= nil) and (ud.iconType == "mortar"))) then
+            and (ud.customParams.armour)) or ((ud ~= nil) and (ud.iconType == "mortar"))) then
             --Echo("Unit created", unitID)
 	        ammoUsingUnit[unitID] = {
 	            uID                         = unitID,	

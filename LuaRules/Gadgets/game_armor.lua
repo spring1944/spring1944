@@ -16,12 +16,7 @@ DOCUMENTATION
 Units:
 
 customParams:
-	armor_front: front armor of the unit (in mm)
-	armor_side: side armor
-	armor_rear: rear armor
-	armor_top: top armor
-
-Each of these defaults to the previous if not explicitly given.
+	armour[piece][side] = {thickness = valueInMm, slope = valueInDegrees}
 
 Weapon customParams:
 armor_penetration: penetration of the weapon at point-blank (in mm)
@@ -71,7 +66,6 @@ end
 --locals
 ----------------------------------------------------------------
 
---format: unitDefID = { armor_front, armor_side, armor_rear, armor_top, armorTypeString, armorTypeNumber }
 --armor values pre-exponentiated
 local unitInfos = {}
 
@@ -114,29 +108,6 @@ function gadget:Initialize()
 
 	for unitDefID,  unitDef in pairs(UnitDefs) do
 		local customParams = unitDef.customParams
-		if customParams.armor_front then
-			local armor_front = customParams.armor_front
-			local armor_side = customParams.armor_side or armor_front
-			local armor_rear = customParams.armor_rear or armor_side
-			local armor_top = customParams.armor_top or armor_rear
-			local slope_front = math.rad(customParams.slope_front or 0)
-			local slope_side = math.rad(customParams.slope_side or 0)
-			local slope_rear = math.rad(customParams.slope_rear or 0)
-			local lwRatio --= math.cos(math.rad(45))
-			
-			unitInfos[unitDefID] = {
-				armor_front, --forwardArmorTranslation(armor_front),
-				armor_side, --forwardArmorTranslation(armor_side),
-				armor_rear, --forwardArmorTranslation(armor_rear),
-				armor_top, --forwardArmorTranslation(armor_top),
-				armorTypes[unitDef.armorType],
-				unitDef.armorType,
-				slope_front,
-				slope_side,
-				slope_rear,
-				lwRatio,
-			}
-		end
 		if customParams.armour then
 			unitInfos[unitDefID] = {
 				["armour"] = table.unserialize(customParams.armour),
@@ -178,6 +149,8 @@ function gadget:Initialize()
 			Script.SetWatchWeapon(i, true)
 		end
 	end
+	GG.lusHelper.unitInfos = unitInfos
+	GG.lusHelper.weaponInfos = weaponInfos
 	-- Fake UnitCreated events for existing units. (for '/luarules reload')
 	local allUnits = Spring.GetAllUnits()
 	for i=1,#allUnits do

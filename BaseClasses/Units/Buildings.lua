@@ -345,10 +345,17 @@ local Storage = Building:New{
 	reclaimable				= true,
 	yardmap					= [[oooo oooo oooo oooo oooo oooo]],
 	customparams = {
-		armor_front				= 0,
-		armor_rear				= 0,
-		armor_side				= 15,
-		armor_top				= 30,
+		armour = {
+			base = {
+				side = {
+					thickness	= 15,
+					slope		= 30,
+				},
+				top = {
+					thickness	= 30,
+				},
+			},
+		},
 		dontcount				= 1,
 		wiki_parser             = "storage",  -- storage.md template
 		wiki_comments           = "",         -- To be override by each unit

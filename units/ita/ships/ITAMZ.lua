@@ -25,10 +25,23 @@ local ITA_MZ = TankLandingCraftComposite:New{
 		},
 		supplyRange				= 350, -- override, smaller radius as armed
 		-- other LCT don't have armour values currently - not sure what impact this will have on their resilience?
-		armor_front				= 6,
-    	armor_rear				= 16,
-    	armor_side				= 16,
-    	armor_top				= 6,
+		armour = {
+			base = {
+				front = {
+					thickness		= 6,
+				},
+				rear = {
+					thickness		= 16,
+				},
+				side = {
+					thickness 		= 16,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		}
+
 		deathanim = {
 			["x"] = {angle = 10, speed = 5},
 		},
