@@ -360,38 +360,39 @@ function widget:DrawWorld()
 		local unitDef = UnitDefs[udid]
 		local customParams = unitDef.customParams
 		local unitInfo = unitInfos[udid]
-		if unitInfo and (not IsUnitAllied(mouseTarget) or 
-						 spec and not AreTeamsAllied(GetLocalTeamID(), GetUnitTeam(mouseTarget))) then
-			local sorted = GetSelectedUnitsSorted()
-			local maxDamagePerUnit = {}
-			local drawDamage = false
-			local ux, uy, uz = GetUnitPosition(mouseTarget)
-			local unitDistances = {}
-			for selectedUnitDefID, selectedUnits in pairs(sorted) do
-				local unitDef = UnitDefs[selectedUnitDefID]
-				if unitDef then
-					local weapons = unitDef.weapons
-					for _, weapon in pairs(weapons) do
-						local weaponID = weapon.weaponDef
-						local weaponInfo = weaponInfos[weaponID]
-						if weaponInfos[weaponID] then
-							drawDamage = true
-							for _, selectedUnitID in pairs(selectedUnits) do
-								local distance
-								if not unitDistances[selectedUnitID] then
-									local wx, wy, wz = GetUnitPosition(selectedUnitID)
-									unitDistances[selectedUnitID] = vMagnitude(ux - wx, uy - wy, uz - wz)
-								end
-								distance = unitDistances[selectedUnitID]
-								local _, health = Spring.GetUnitHealth(mouseTarget)
-								for piece, _ in pairs(unitInfo.armour) do
-									local damage = CalculateDamage(weaponInfo, unitInfo, distance, health, piece)
-									if not maxDamagePerUnit[piece] then
-										maxDamagePerUnit[piece] = {-1, -1, -1, -1}
+		if unitInfo then
+			if (not IsUnitAllied(mouseTarget) or spec and not AreTeamsAllied(GetLocalTeamID(), GetUnitTeam(mouseTarget))) then
+				local sorted = GetSelectedUnitsSorted()
+				local maxDamagePerUnit = {}
+				local drawDamage = false
+				local ux, uy, uz = GetUnitPosition(mouseTarget)
+				local unitDistances = {}
+				for selectedUnitDefID, selectedUnits in pairs(sorted) do
+					local unitDef = UnitDefs[selectedUnitDefID]
+					if unitDef then
+						local weapons = unitDef.weapons
+						for _, weapon in pairs(weapons) do
+							local weaponID = weapon.weaponDef
+							local weaponInfo = weaponInfos[weaponID]
+							if weaponInfos[weaponID] then
+								drawDamage = true
+								for _, selectedUnitID in pairs(selectedUnits) do
+									local distance
+									if not unitDistances[selectedUnitID] then
+										local wx, wy, wz = GetUnitPosition(selectedUnitID)
+										unitDistances[selectedUnitID] = vMagnitude(ux - wx, uy - wy, uz - wz)
 									end
-									for i = 1,4 do -- 4 sides
-										if damage[i] and damage[i] > maxDamagePerUnit[piece][i] then
-											maxDamagePerUnit[piece][i] = damage[i]
+									distance = unitDistances[selectedUnitID]
+									local _, health = Spring.GetUnitHealth(mouseTarget)
+									for piece, _ in pairs(unitInfo.armour) do
+										local damage = CalculateDamage(weaponInfo, unitInfo, distance, health, piece)
+										if not maxDamagePerUnit[piece] then
+											maxDamagePerUnit[piece] = {-1, -1, -1, -1}
+										end
+										for i = 1,4 do -- 4 sides
+											if damage[i] and damage[i] > maxDamagePerUnit[piece][i] then
+												maxDamagePerUnit[piece][i] = damage[i]
+											end
 										end
 									end
 								end
@@ -409,16 +410,15 @@ function widget:DrawWorld()
 				end
 				return
 			end
-		end
-		
-		DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "base", "thickness", MAX_DIST)
-		DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "base", "slope", MAX_DIST)
-		if unitInfo.armour.super then
-			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "super", "thickness", MAX_DIST/2)
-			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "super", "slope", MAX_DIST/2)
-		elseif unitInfo.armour.turret then
-			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "turret", "thickness", MAX_DIST/2)
-			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "turret", "slope", MAX_DIST/2)
+			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "base", "thickness", MAX_DIST)
+			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "base", "slope", MAX_DIST)
+			if unitInfo.armour.super then
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "super", "thickness", MAX_DIST/2)
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "super", "slope", MAX_DIST/2)
+			elseif unitInfo.armour.turret then
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "turret", "thickness", MAX_DIST/2)
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "turret", "slope", MAX_DIST/2)
+			end
 		end
 	end
 end
