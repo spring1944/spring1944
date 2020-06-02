@@ -400,15 +400,15 @@ function widget:DrawWorld()
 						end
 					end
 				end
-			end
-			if drawDamage then
-				DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["base"], GetDamageColor, GetString, "%", nil, "base", MAX_DIST)
-				if unitInfo.armour.super then
-					DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["super"], GetDamageColor, GetString, "%", nil, "super", MAX_DIST/2)	
-				elseif unitInfo.armour.turret then
-					DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["turret"], GetDamageColor, GetString, "%", nil, "turret", MAX_DIST/2)
+				if drawDamage then
+					DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["base"], GetDamageColor, GetString, "%", nil, "base", MAX_DIST)
+					if unitInfo.armour.super then
+						DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["super"], GetDamageColor, GetString, "%", nil, "super", MAX_DIST/2)	
+					elseif unitInfo.armour.turret then
+						DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["turret"], GetDamageColor, GetString, "%", nil, "turret", MAX_DIST/2)
+					end
+					return
 				end
-				return
 			end
 			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "base", "thickness", MAX_DIST)
 			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "base", "slope", MAX_DIST)
