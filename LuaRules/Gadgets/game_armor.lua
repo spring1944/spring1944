@@ -344,7 +344,8 @@ end
 function gadget:ProjectileCreated(projID, ownerID, weaponID)
 	if weaponInfos[weaponID] and ownerID then
 		local pieceMap = Spring.GetUnitPieceMap(ownerID)
-		ownerPos[ownerID] = {Spring.GetUnitPiecePosDir(ownerID, pieceMap["flare_1"])}--GetUnitPosition(ownerID)}
+		local piece = pieceMap["flare_1"] or pieceMap["flare"] or pieceMap["base"]
+		ownerPos[ownerID] = {Spring.GetUnitPiecePosDir(ownerID, piece)}
 	end
 end
 
