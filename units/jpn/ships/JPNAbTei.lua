@@ -35,7 +35,7 @@ local JPN_AbTei = ArmedBoat:New{
 					thickness		= 6,
 				},
 			},
-		}
+		},
 		children = {
 			"JPNAbTei_turret_57mm_front",
 			"JPNAbTei_turret_MG",

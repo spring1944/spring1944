@@ -40,7 +40,7 @@ local ITA_MZ = TankLandingCraftComposite:New{
 					thickness		= 6,
 				},
 			},
-		}
+		},
 
 		deathanim = {
 			["x"] = {angle = 10, speed = 5},

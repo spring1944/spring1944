@@ -62,7 +62,7 @@ local RUSD2Base = MediumTank:New{
 					thickness		= 10,
 				},
 			},
-		}
+		},
 
 		customanims			= 'd2',
 		

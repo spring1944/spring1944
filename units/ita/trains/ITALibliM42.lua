@@ -72,7 +72,7 @@ local ITALibliM42Base = MediumTank:New{
 					thickness		= 13,
 				},
 			},
-		}
+		},
 
 		customanims			= 'libli',
 		
