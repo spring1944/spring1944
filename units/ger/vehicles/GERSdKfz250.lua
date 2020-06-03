@@ -35,7 +35,7 @@ local GERSdKfz250 = ArmouredCar:New{
 			base = {
 				front = {
 					thickness		= 15,
-					slope			= 20,
+					slope			= 30,
 				},
 				rear = {
 					thickness		= 10,
