@@ -20,13 +20,13 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 			base = {
 				front = {
 					thickness		= 15,
-					slope			= 65,
+					slope			= 67,
 				},
 				rear = {
-					thickness		= 15,
+					thickness		= 10,
 				},
 				side = {
-					thickness 		= 15,
+					thickness 		= 15, -- upper
 				},
 				top = {
 					thickness		= 10,
@@ -34,15 +34,15 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 			},
 			super = {
 				front = {
-					thickness		= 15,
-					slope			= 24,
+					thickness		= 10,
+					slope			= 35,
 				},
 				rear = {
 					thickness		= 0,
 				},
 				side = {
-					thickness 		= 15,
-					slope			= 19,
+					thickness 		= 10,
+					slope			= 15,
 				},
 				top = {
 					thickness		= 0,
