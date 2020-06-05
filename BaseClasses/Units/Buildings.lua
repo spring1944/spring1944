@@ -37,7 +37,7 @@ local Yard = Building:New{
 	showNanoSpray				= false,
 	workerTime					= 30,
 	yardmap						= [[ooooooo 
-								    ooooooo 
+								    occccco 
 									occccco 
 									oocccco 
 									oocccco 

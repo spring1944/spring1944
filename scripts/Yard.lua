@@ -169,20 +169,26 @@ if UnitDef.isBuilder then -- yard
 				Turn(door, y_axis, 0, math.rad(50))
 			end
 		end
+		--Spring.Echo("OpenCloseAnim", GetUnitValue(COB.YARD_OPEN))
+		while not (GetUnitValue(COB.YARD_OPEN) == open) do
+			SetUnitValue(COB.BUGGER_OFF, 1)
+			Sleep(1500)
+			SetUnitValue(COB.YARD_OPEN, open)
+		end
+		SetUnitValue(COB.BUGGER_OFF, not open)
 		SetUnitValue(COB.INBUILDSTANCE, open)
-		SetUnitValue(COB.BUGGER_OFF, open)
 	end
 
 	-- Called when factory yard opens
 	function script.Activate()
 		-- OpenCloseAnim must be threaded to call Sleep() or WaitFor functions
-		StartThread(OpenCloseAnim, true)
+		StartThread(OpenCloseAnim, 1)
 	end
 
 	-- Called when factory yard closes
 	function script.Deactivate()
 		-- OpenCloseAnim must be threaded to call Sleep() or WaitFor functions
-		StartThread(OpenCloseAnim, false)
+		StartThread(OpenCloseAnim, 0)
 	end
 
 	function script.StartBuilding()
@@ -190,6 +196,7 @@ if UnitDef.isBuilder then -- yard
 			customAnims.startBuildingAnim()
 		end	
 		-- TODO: You can run any animation that continues throughout the build process here e.g. spin pad
+		Sleep(5000)
 	end
 
 	function script.StopBuilding()
@@ -197,6 +204,7 @@ if UnitDef.isBuilder then -- yard
 			customAnims.stopBuildingAnim()
 		end		
 		-- TODO: You can run any animation that signifies the end of the build process here
+		Sleep(5000)
 	end
 
 end -- yard
