@@ -347,6 +347,12 @@ local Storage = Building:New{
 	customparams = {
 		armour = {
 			base = {
+				front = {
+					thickness = 0,
+				},
+				rear = {
+					thickness = 0,
+				},
 				side = {
 					thickness	= 15,
 					slope		= 30,

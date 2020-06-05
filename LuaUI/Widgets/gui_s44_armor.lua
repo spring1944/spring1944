@@ -20,7 +20,7 @@ local fontSizeWorld = 10--12
 local fontSizeScreen = 24
 local lineWidth = 1
 local maxArmor = 120
-local maxSlope = 65
+local maxSlope = 55
 local smooth = false
 
 ------------------------------------------------
@@ -130,9 +130,13 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction
 	local matrix
 	if piece ~= "base" then 
 		local pieceMap = Spring.GetUnitPieceMap(unitID) -- TODO: cache this
-		matrix = {Spring.GetUnitPieceMatrix(unitID, pieceMap[piece])}
-		if piece == "super" then -- more ick, superstructure origin is in same place as base
-			ty = ty + 20
+		if not pieceMap[piece] then
+			Spring.Echo("gui_s44_armor piece error 1:", piece, UnitDefs[Spring.GetUnitDefID(unitID)].name)
+		else
+			matrix = {Spring.GetUnitPieceMatrix(unitID, pieceMap[piece])}
+			if piece == "super" then -- more ick, superstructure origin is in same place as base
+				ty = ty + 20
+			end
 		end
 	end
 	local frontdir, updir, rightdir = GetUnitVectors(unitID)
@@ -224,6 +228,10 @@ end
 local function CalculateDamage(weaponInfo, unitInfo, distance, health, piece)
 	local armorType = unitInfo.armorType
 	local armour = unitInfo.armour
+	if (not armour) or (not armour[piece]) then 
+		Spring.Echo("gui_s44_armor error 2:", piece) 
+		return {false, false, false, false}
+	end
 	-- TODO: cache this
 	local front = forwardArmorTranslation(armour[piece].front.thickness / math.cos(math.rad(armour[piece].front.slope or 0)))
 	local side = forwardArmorTranslation(armour[piece].side.thickness / math.cos(math.rad(armour[piece].side.slope or 0)))

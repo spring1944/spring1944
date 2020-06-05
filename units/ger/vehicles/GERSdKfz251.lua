@@ -36,7 +36,7 @@ local GERSdKfz251 = HalfTrack:New{
 					thickness		= 0,
 				},
 			},
-			turret = {
+			--[[turret = {
 				front = {
 					thickness		= 7,
 					slope			= 27,
@@ -50,7 +50,7 @@ local GERSdKfz251 = HalfTrack:New{
 				top = {
 					thickness		= 0,
 				},
-			},
+			},]]
 		},
 
 		maxvelocitykmh		= 52.5,

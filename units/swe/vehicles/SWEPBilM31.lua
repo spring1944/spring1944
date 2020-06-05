@@ -37,7 +37,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 					thickness		= 0,
 				},
 			},
-			turret = {
+			--[[turret = {
 				front = {
 					thickness		= 6,
 					slope			= 30, -- guess
@@ -51,7 +51,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 				top = {
 					thickness		= 0,
 				},
-			},
+			},]]
 		},
 		maxammo				= 19,
 		maxvelocitykmh		= 60,

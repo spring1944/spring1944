@@ -76,7 +76,8 @@ local weaponInfos = {}
 
 -- counters for piece hits
 local hitCounts = {} -- ["base"] = number, etc
-local hits = {} -- unitdefID = {base, turret}
+local hits = {} -- unitdefID = {base, turret, super}
+local bounces = {} -- unitDefID = {base, turret, super}
 
 -- Remember where projectile owners were when they were spawned
 local ownerPos = {}
@@ -198,7 +199,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	local weaponDef = WeaponDefs[weaponDefID]
 	
 	-- If the hit unit wasn't armoured, we're done
-	if not unitInfo or not weaponInfo or not weaponDef then return damage end	
+	if not unitInfo or not unitInfo.armour or not weaponInfo or not weaponDef then return damage end	
 	
 	-- smallarms do 0 damage to heavy armour
 	if unitInfo and weaponDef.customParams.damagetype == "smallarm" then 
@@ -230,6 +231,8 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 			--Spring.Echo("New vector", unpack(frontDir))
 			rightDir = {GG.Vector.MultMatrix3(matrix, unpack(rightDir))}
 		end
+	else
+		pieceHit = "base" -- when in doubt, just use base, but don't record it as such in the stats
 	end
 	local rearDir = {-frontDir[1], -frontDir[2], -frontDir[3]}
 	local leftDir = {-rightDir[1], -rightDir[2], -rightDir[3]}
@@ -239,13 +242,15 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	local dotFront, dotUp
 	local dx, dy, dz = Spring.GetProjectileDirection(projectileID)
 	-- for some reason we need to flip the direction of all these for stuff to work :/
-	if not dx then
+	--[[if not dx then
 		Spring.Echo("dx was nil?", dx, dy, dz, projectileID, weaponDef.name, UnitDefs[unitDefID].name)
 		return 0
+	end]]
+	if dx then
+		dx = -dx 
+		dy = -dy
+		dz = -dz
 	end
-	dx = -dx 
-	dy = -dy
-	dz = -dz
 	local ux, uy, uz
 	if ownerPos[attackerID] then -- position when the projectile was _created_
 		ux, uy, uz = Spring.GetUnitPiecePosDir(unitID, pieceHit and unitInfo[pieceHit] or 1)--GetUnitPosition(unitID)
@@ -253,6 +258,9 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		local sx, sy, sz -- displacement vector
 		sx, sy, sz = ax - ux, ay - uy, az - uz
 		d = GG.Vector.Magnitude(sx, sy, sz)
+		if not dx then
+			dx, dy, dz = GG.Vector.Normalized(sx, sy, sz)
+		end
 		dotUp = vDotProduct(dx,dy,dz, upDir[1], upDir[2], upDir[3])
 		dotFront = vDotProduct(dx,dy,dz, frontDir[1],frontDir[2],frontDir[3])
 	else
@@ -267,6 +275,7 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	--splash hits don't use armor_hit_side
 	if not armor_hit_side then
 			--and (weaponInfo[1] ~= "explosive" or damage / weaponDef.damages[unitInfo[6]] > DIRECT_HIT_THRESHOLD) then
+		if not (dotFront or cosLW) then Spring.Echo("game_armor error 1:", dotFront, cosLW, pieceHit, UnitDefs[Spring.GetUnitDefID(unitID)].name) end
 		if dotUp > SQRT_HALF or dotUp < -SQRT_HALF then
 			armor_hit_side = "top"
 		else
@@ -279,8 +288,11 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 			end
 		end
 	end
-	armor = unitInfo.armour[pieceHit][armor_hit_side].thickness or 0
-	slope = unitInfo.armour[pieceHit][armor_hit_side].slope or 0
+	if not unitInfo.armour[pieceHit][armor_hit_side] then
+		Spring.Echo("291 check", armor_hit_side, pieceHit, unitInfo, unitInfo[pieceHit], UnitDefs[unitDefID].name)
+	end
+	armor = (armor_hit_side and pieceHit and unitInfo.armour[pieceHit][armor_hit_side].thickness) or 0
+	slope = (armor_hit_side and pieceHit and unitInfo.armour[pieceHit][armor_hit_side].slope) or 0
 	if armor_hit_side == "top" then 
 		hitVector = upDir
 	elseif armor_hit_side == "rear" then
@@ -310,26 +322,33 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 		--Spring.Echo("Rotated vector (" .. fx,fy,fz ..") Mag: " .. GG.Vector.Magnitude(fx,fy,fz))
 
 		local armorPre = armor -- just for debug echo
-		armor = GG.Vector.EffectiveThickness(armor, dx,dy,dz, fx,fy,fz)
-		local dotActual = vDotProduct(dx,dy,dz, fx,fy,fz)
-		if (not modOptions) or (modOptions and modOptions.sloped_armour_debug == "1") then
-			Spring.Echo(pieceHit .. " (" .. armor_hit_side .. ") actual armour is " .. armorPre .. "mm @ " .. slope .. "°" ..
-						". Effective armour is " .. string.format("%3d",armor) .. "mm @ " .. string.format("%3d",math.deg(math.acos(dotActual))) .. "°" ..
-						" (Pen: " .. string.format("%3d",penetration) .."mm)")
-		end
+		if dx then -- we can end up here if there was no projectile?
+			armor = GG.Vector.EffectiveThickness(armor, dx,dy,dz, fx,fy,fz)
+			local dotActual = vDotProduct(dx,dy,dz, fx,fy,fz)
+			if false then--(not modOptions) or (modOptions and modOptions.sloped_armour_debug == "1") then
+				Spring.Echo(pieceHit .. " (" .. armor_hit_side .. ") actual armour is " .. armorPre .. "mm @ " .. slope .. "°" ..
+							". Effective armour is " .. string.format("%3d",armor) .. "mm @ " .. string.format("%3d",math.deg(math.acos(dotActual))) .. "°" ..
+							" (Pen: " .. string.format("%3d",penetration) .."mm)")
+			end
 		
-		if OVERMATCH * penetration < armor then -- might bounce, check angle
-			if dotActual < BOUNCE_MIN_ANGLE then
-				local px,py,pz = Spring.GetProjectilePosition(projectileID)
-				local vx, vy, vz = Spring.GetProjectileVelocity(projectileID)
-				local v = BOUNCE_MULT * GG.Vector.Magnitude(vx, vy, vz)
-				local params = {pos = {px,py,pz}, 
-								speed = {v*(-dx+2*dotActual*fx), v*(-dy+2*dotActual*fy), v*(-dz+2*dotActual*fz)}, 
-								--speed = {fx, fy, fz}, -- for testing vectors
-								ttl = BOUNCE_TTL,
-								gravity = -0.25,
-								owner = unitID}
-				Spring.SpawnProjectile(weaponDefID, params)
+			if OVERMATCH * penetration < armor then -- might bounce, check angle
+				if dotActual < BOUNCE_MIN_ANGLE then
+					local px,py,pz = Spring.GetProjectilePosition(projectileID)
+					local vx, vy, vz = Spring.GetProjectileVelocity(projectileID)
+					if vx then -- somehow, in very rare circumstances, it can be nil
+						local v = BOUNCE_MULT * GG.Vector.Magnitude(vx, vy, vz)
+						local params = {pos = {px,py,pz}, 
+										speed = {v*(-dx+2*dotActual*fx), v*(-dy+2*dotActual*fy), v*(-dz+2*dotActual*fz)}, 
+										--speed = {fx, fy, fz}, -- for testing vectors
+										ttl = BOUNCE_TTL,
+										gravity = -0.25,
+										owner = unitID}
+						Spring.SpawnProjectile(weaponDefID, params)
+						if not bounces[unitDefID] then bounces[unitDefID] = {} end
+						bounces[unitDefID][pieceHit] = (bounces[unitDefID][pieceHit] or 0) + 1
+					end
+					return 0 -- bounced shots do no damage
+				end
 			end
 		end
 	end
@@ -360,17 +379,24 @@ function gadget:Explosion(weaponID, px, py, pz, ownerID)
 end
 
 function gadget:GameOver()
+	Spring.Echo("GameOver was actually called for once!")
 	for piece, count in pairs(hitCounts) do
 		Spring.Echo(piece .. " hits: " .. count)
 	end
 	for unitDefID, hitTable in pairs(hits) do
 		Spring.Echo(UnitDefs[unitDefID].name, "was hit")
 		for piece, times in pairs(hitTable) do
-			Spring.Echo(piece, times)
+			if bounces[unitDefID] and bounces[unitDefID][piece] then
+				Spring.Echo(piece, times, "(bounced)", bounces[unitDefID][piece])
+			else
+				Spring.Echo(piece, times)
+			end
 		end
 	end
 end
 
-function gadget:UnitDestroyed()
+--function gadget:UnitDestroyed()
+function gadget:TeamDied()
+	Spring.Echo("TeamDied")
 	gadget:GameOver()
 end
