@@ -46,17 +46,17 @@ local GBRCromwell = MediumTank:New{
 					thickness		= 14, -- engine deck
 				},
 			},
-			turret = {
+			turret = { -- https://i.imgur.com/9ilel2q.jpg
 				front = {
-					thickness		= 64,
+					thickness		= 73,
 					slope			= 1,
 				},
 				rear = {
-					thickness		= 44,
+					thickness		= 57,
 					slope			= 1,
 				},
 				side = {
-					thickness 		= 51,
+					thickness 		= 64,
 					slope			= 1,
 				},
 				top = {
