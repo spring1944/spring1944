@@ -600,8 +600,8 @@ local function Rock(anglex, anglez)
 	WaitForTurn(base, x_axis)
 	WaitForTurn(base, z_axis)
 
-	Turn(base, z_axis, 0, speedz / 2)
-	Turn(base, x_axis, 0, speedx / 2)
+	Turn(base, z_axis, 0, speedz / 10)
+	Turn(base, x_axis, 0, speedx / 10)
 end
 
 function script.RockUnit(anglex, anglez)
