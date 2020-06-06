@@ -170,7 +170,10 @@ if UnitDef.isBuilder then -- yard
 			end
 		end
 		--Spring.Echo("OpenCloseAnim", GetUnitValue(COB.YARD_OPEN))
+		local count = 0
 		while not (GetUnitValue(COB.YARD_OPEN) == open) do
+			count = count + 1
+			if count > 1 then Spring.Echo("Loop needed! Inform FLOZi immediately!!", count, UnitDefs[unitDefID].name) end
 			SetUnitValue(COB.BUGGER_OFF, 1)
 			Sleep(1500)
 			SetUnitValue(COB.YARD_OPEN, open)
