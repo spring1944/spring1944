@@ -4,13 +4,42 @@ local ChiHaBase = LightTank:New{
 	trackWidth			= 14,
 	
 	customParams = {
-		armor_front			= 25,
-		armor_rear			= 20,
-		armor_side			= 25,
-		armor_top			= 11,
-		slope_front			= 31,
-		slope_rear			= 25,
-		slope_side			= 40,
+		armour = {
+			base = {
+				front = {
+					thickness		= 25,
+					slope			= 31,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= 25,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 40,
+				},
+				top = {
+					thickness		= 11,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 32,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 12,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 10,
+				},
+				top = {
+					thickness		= 11,
+				},
+			},
+		},
 		maxvelocitykmh		= 38,
 		exhaust_fx_name			= "diesel_exhaust",
 
@@ -90,6 +119,17 @@ local JPNShinhotoChiHa = JPNChiHa:New{ -- just change the gun
 	},
 	
 	customParams = {
+		armour = {
+			turret = {
+				front = {
+					thickness		= 32,
+					slope			= 9,
+				},
+				rear = {
+					slope			= 0,
+				},
+			},
+		},
 		maxammo				= 15,
 	},
 }	

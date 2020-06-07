@@ -22,13 +22,42 @@ local SWEStrvM37 = Tankette:New{
 		},
 	},
 	customParams = {
-		armor_front			= 16,
-		armor_rear			= 10,
-		armor_side			= 10,
-		armor_top			= 4,
-		slope_front			= 68,
-		slope_rear			= 15,
-		slope_side			= 14,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 15,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 16,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 17,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 12,
+					slope			= 8,
+				},
+				rear = {
+					thickness		= 12,
+					slope			= 8,
+				},
+				side = {
+					thickness 		= 12,
+					slope			= 8,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		},
 		maxvelocitykmh		= 60,
 
 	},

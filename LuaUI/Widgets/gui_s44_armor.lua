@@ -15,18 +15,17 @@ end
 ------------------------------------------------
 --config
 ------------------------------------------------
-local dist = 32
+local MAX_DIST = 48
 local fontSizeWorld = 10--12
 local fontSizeScreen = 24
 local lineWidth = 1
 local maxArmor = 120
+local maxSlope = 55
 local smooth = false
 
 ------------------------------------------------
 --vars
 ------------------------------------------------
-local closeDist = dist - fontSizeWorld
-local farDist = dist + fontSizeWorld
 local SQRT2 = math.sqrt(2)
 
 local xlist
@@ -87,8 +86,21 @@ local HE_MULT = 1.45
 ------------------------------------------------
 --local functions
 ------------------------------------------------
+
+local function GetColor(t, maxValue)
+	if t then 
+		t = math.abs(t)
+		return {2 - 2 * t / maxValue, 2 * t / maxValue, 0}
+	end
+	return
+end
+
 local function GetArmorColor(t)
-	return {2 - 2 * t / maxArmor, 2 * t / maxArmor, 0}
+	return GetColor(t, maxArmor)
+end
+
+local function GetSlopeColor(t)
+	return GetColor(t, maxSlope)
 end
 
 local function GetDamageColor(percentage)
@@ -101,21 +113,32 @@ local function GetDamageColor(percentage)
 	return {red, green, 0}
 end
 
-local function GetArmorString(a, suffix, s)
-	return a .. suffix .. "\n@" .. s .. "°"
-end
-
-local function GetDamageString(a, suffix)
-	return a .. suffix
+local function GetString(a, suffix, prefix)
+	return (prefix or "") .. a .. suffix
 end
 
 local function forwardArmorTranslation(x)
   return x ^ ARMOR_POWER
 end
 
-local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction, suffix)
-	local front, side, rear, top, fslope, sslope, rslope = unpack(textTable)
-	local tx, ty, tz = GetUnitPosition(unitID)
+local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction, suffix, prefix, piece, dist)
+	dist = dist or MAX_DIST
+	local closeDist = dist/1.5 - fontSizeWorld
+	local farDist = dist + fontSizeWorld
+	local front, side, rear, top = unpack(textTable)
+	local tx, ty, tz =  GetUnitPosition(unitID)
+	local matrix
+	if piece ~= "base" then 
+		local pieceMap = Spring.GetUnitPieceMap(unitID) -- TODO: cache this
+		if not pieceMap[piece] then
+			Spring.Echo("gui_s44_armor piece error 1:", piece, UnitDefs[Spring.GetUnitDefID(unitID)].name)
+		else
+			matrix = {Spring.GetUnitPieceMatrix(unitID, pieceMap[piece])}
+			if piece == "super" then -- more ick, superstructure origin is in same place as base
+				ty = ty + 20
+			end
+		end
+	end
 	local frontdir, updir, rightdir = GetUnitVectors(unitID)
 
 	if not suffix then suffix = "" end
@@ -147,6 +170,10 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction
 
 	glPushMatrix()
 		glTranslate(tx, ty, tz)
+		if piece ~= "base" then 
+			glPushMatrix()
+			gl.MultMatrix(unpack(matrix))
+		end
 		glColor(1, 1, 1)
 		glShape(GL_LINES, vertices)
 		if front then
@@ -154,7 +181,7 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction
 			glPushMatrix()
 				glTranslate(frontdir[1] * dist, frontdir[2] * dist, frontdir[3] * dist)
 				glBillboard()
-				font:Print(stringFunction(front, suffix, fslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(front, suffix, prefix), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		end
 
@@ -163,13 +190,13 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction
 			glPushMatrix()
 				glTranslate(rightdir[1] * dist, rightdir[2] * dist, rightdir[3] * dist)
 				glBillboard()
-				font:Print(stringFunction(side, suffix, sslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(side, suffix, prefix), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		
 			glPushMatrix()
 				glTranslate(-rightdir[1] * dist, -rightdir[2] * dist, -rightdir[3] * dist)
 				glBillboard()
-				font:Print(stringFunction(side, suffix, sslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(side, suffix, prefix), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		end
 		
@@ -178,26 +205,39 @@ local function DrawValuesOnUnit(unitID, textTable, colorFunction, stringFunction
 			glPushMatrix()
 				glTranslate(-frontdir[1] * dist, -frontdir[2] * dist, -frontdir[3] * dist)
 				glBillboard()
-				font:Print(stringFunction(rear, suffix, rslope), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
+				font:Print(stringFunction(rear, suffix, prefix), 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
 		end
 
-		if top then
+		--[[if top then
 			glColor(colorFunction(top))
 			glPushMatrix()
 				glTranslate(updir[1] * dist / 2, updir[2] * dist / 2, updir[3] * dist / 2)
 				glBillboard()
 				font:Print(top .. suffix, 0, -fontSizeWorld / 2, fontSizeWorld, "nc")
 			glPopMatrix()
-		end
+		end]]
 
 	glPopMatrix()
-
+	if piece ~= "base" then 
+		glPopMatrix()
+	end
 	glLineWidth(1)
 end
 
-local function CalculateDamage(weaponInfo, unitInfo, distance, health)
-	local front, side, rear, top, armorType, armorTypeName = unpack(unitInfo)
+local function CalculateDamage(weaponInfo, unitInfo, distance, health, piece)
+	local armorType = unitInfo.armorType
+	local armour = unitInfo.armour
+	if (not armour) or (not armour[piece]) then 
+		Spring.Echo("gui_s44_armor error 2:", piece) 
+		return {false, false, false, false}
+	end
+	-- TODO: cache this
+	local front = forwardArmorTranslation(armour[piece].front.thickness / math.cos(math.rad(armour[piece].front.slope or 0)))
+	local side = forwardArmorTranslation(armour[piece].side.thickness / math.cos(math.rad(armour[piece].side.slope or 0)))
+	local rear = forwardArmorTranslation(armour[piece].rear.thickness / math.cos(math.rad(armour[piece].rear.slope or 0)))
+	local top = forwardArmorTranslation(armour[piece].top.thickness / math.cos(math.rad(armour[piece].top.slope or 0)))
+	
 	local penetration, dropoff, range, damages, armorHitSide = unpack(weaponInfo)
 	local isHE = (penetration == 0)
 	distance = min(distance, range)
@@ -244,7 +284,7 @@ local function CalculateDamage(weaponInfo, unitInfo, distance, health)
 			false
 		}
 	end
-	if isHE and armorTypeName == "armouredvehicles" then
+	if isHE and Game.armorTypes[armorType] == "armouredvehicles" then
 		for i = 1,4 do
 			if damage[i] then
 				damage[i] = damage[i] + floor(baseDamage)
@@ -264,25 +304,10 @@ function widget:Initialize()
 	local armorTypes = Game.armorTypes
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local cp = unitDef.customParams
-		if cp.armor_front then
-			local armor_front = cp.armor_front
-			local armor_side = cp.armor_side or armor_front
-			local armor_rear = cp.armor_rear or armor_side
-			local armor_top = cp.armor_top or armor_rear
-			local slope_front = math.rad(cp.slope_front or 0)
-			local slope_side = math.rad(cp.slope_side or 0)
-			local slope_rear = math.rad(cp.slope_rear or 0)
-			
+		if cp.armour then
 			unitInfos[unitDefID] = {
-				forwardArmorTranslation(armor_front),
-				forwardArmorTranslation(armor_side),
-				forwardArmorTranslation(armor_rear),
-				forwardArmorTranslation(armor_top),
-				unitDef.armorType,
-				armorTypes[unitDef.armorType],
-				slope_front,
-				slope_side,
-				slope_rear,
+				["armorType"] = unitDef.armorType,
+				["armour"] = table.unserialize(cp.armour),
 			}
 		end
 	end
@@ -323,6 +348,16 @@ function widget:Initialize()
 	font = WG.S44Fonts.TypewriterBold32
 end
 
+local function DrawValuesWrapper(unitInfo, mouseTarget, textTable, suffix, prefix, part, name, dist)
+	local textTable = {
+		unitInfo.armour[part].front and unitInfo.armour[part].front[name] or 0,
+		unitInfo.armour[part].side and unitInfo.armour[part].side[name] or 0,
+		unitInfo.armour[part].rear and unitInfo.armour[part].rear[name] or 0,
+		unitInfo.armour[part].top and unitInfo.armour[part].top[name] or 0,
+	}
+	DrawValuesOnUnit(mouseTarget, textTable, GetArmorColor, GetString, suffix, prefix, part, dist)
+end
+
 function widget:DrawWorld()
 	local mx, my = GetMouseState()
 	local mouseTargetType, mouseTarget = TraceScreenRay(mx, my)
@@ -333,9 +368,8 @@ function widget:DrawWorld()
 		local unitDef = UnitDefs[udid]
 		local customParams = unitDef.customParams
 		local unitInfo = unitInfos[udid]
-		if customParams.armor_front then
-			if unitInfo and (not IsUnitAllied(mouseTarget) or 
-							 spec and not AreTeamsAllied(GetLocalTeamID(), GetUnitTeam(mouseTarget))) then
+		if unitInfo then
+			if (not IsUnitAllied(mouseTarget) or spec and not AreTeamsAllied(GetLocalTeamID(), GetUnitTeam(mouseTarget))) then
 				local sorted = GetSelectedUnitsSorted()
 				local maxDamagePerUnit = {}
 				local drawDamage = false
@@ -358,17 +392,14 @@ function widget:DrawWorld()
 									end
 									distance = unitDistances[selectedUnitID]
 									local _, health = Spring.GetUnitHealth(mouseTarget)
-									local damage = CalculateDamage(weaponInfo, unitInfo, distance, health)
-									if not maxDamagePerUnit[selectedUnitID] then
-										maxDamagePerUnit[selectedUnitID] = {false, false, false, false}
-									end
-									local maxDamage = maxDamagePerUnit[selectedUnitID]
-									for i = 1,4 do
-										local currentValue = damage[i]
-										if currentValue then
-											local oldValue = (maxDamage[i] or -1)
-											if oldValue < currentValue then
-												maxDamage[i] = currentValue
+									for piece, _ in pairs(unitInfo.armour) do
+										local damage = CalculateDamage(weaponInfo, unitInfo, distance, health, piece)
+										if not maxDamagePerUnit[piece] then
+											maxDamagePerUnit[piece] = {-1, -1, -1, -1}
+										end
+										for i = 1,4 do -- 4 sides
+											if damage[i] and damage[i] > maxDamagePerUnit[piece][i] then
+												maxDamagePerUnit[piece][i] = damage[i]
 											end
 										end
 									end
@@ -378,32 +409,28 @@ function widget:DrawWorld()
 					end
 				end
 				if drawDamage then
-					local totalDamage = {false, false, false, false}
-					for _, damage in pairs(maxDamagePerUnit) do
-						for i = 1,4 do
-							if damage[i] then
-								totalDamage[i] = (totalDamage[i] or 0) + damage[i]
-							end
-						end
+					DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["base"], GetDamageColor, GetString, "%", nil, "base", MAX_DIST)
+					if unitInfo.armour.super then
+						DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["super"], GetDamageColor, GetString, "%", nil, "super", MAX_DIST/2)	
+					elseif unitInfo.armour.turret then
+						DrawValuesOnUnit(mouseTarget, maxDamagePerUnit["turret"], GetDamageColor, GetString, "%", nil, "turret", MAX_DIST/2)
 					end
-					
-					DrawValuesOnUnit(mouseTarget, totalDamage, GetDamageColor, GetDamageString, "%")
 					return
 				end
 			end
-			local textTable = {
-				customParams.armor_front,
-				customParams.armor_side or armor_front,
-				customParams.armor_rear or armor_side,
-				customParams.armor_top or armor_rear,
-				customParams.slope_front or 0,
-				customParams.slope_side or 0,
-				customParams.slope_rear or 0,
-			}
-			DrawValuesOnUnit(mouseTarget, textTable, GetArmorColor, GetArmorString, "mm")
+			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "base", "thickness", MAX_DIST)
+			DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "base", "slope", MAX_DIST)
+			if unitInfo.armour.super then
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "super", "thickness", MAX_DIST/2)
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "super", "slope", MAX_DIST/2)
+			elseif unitInfo.armour.turret then
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "mm", nil, "turret", "thickness", MAX_DIST/2)
+				DrawValuesWrapper(unitInfo, mouseTarget, textTable, "°", "\n", "turret", "slope", MAX_DIST/2)
+			end
 		end
 	end
 end
+
 
 function widget:DrawScreen()
 	local selectedUnit = GetSelectedUnits()[1]

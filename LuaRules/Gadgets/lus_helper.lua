@@ -202,103 +202,25 @@ local vMagnitude = GG.Vector.Magnitude
 local vNormalized = GG.Vector.Normalized
 local SQRT_HALF = sqrt(0.5)
 
---format: unitDefID = { armor_front, armor_side, armor_rear, armor_top, armorTypeString, armorTypeNumber }
---armor values pre-exponentiated
-local unitInfos = {}
-
---format: weaponDefID = { armor_penetration, armor_dropoff, armor_hit_side }
---armor_penetration is in mm
---armor_dropoff is in inverse elmos (exponential penetration decay)
-local weaponInfos = {}
-
-local ARMOR_POWER = 8.75 --3.7
-
---effective penetration = HE_MULT * sqrt(damage)
-
-local HE_MULT = 3.15 --1.9/2.2
-
-local DIRECT_HIT_THRESHOLD = 0.98
-
-local function forwardArmorTranslation(x)
-	return x ^ ARMOR_POWER
-end
-
-function WeaponDataPreload()
-	local armorTypes = Game.armorTypes
-
-	for i,  unitDef in pairs(UnitDefs) do
-		local customParams = unitDef.customParams
-		if customParams.armor_front then
-			local armor_front = customParams.armor_front
-			local armor_side = customParams.armor_side or armor_front
-			local armor_rear = customParams.armor_rear or armor_side
-			local armor_top = customParams.armor_top or armor_rear
-			
-			unitInfos[i] = {
-				forwardArmorTranslation(armor_front),
-				forwardArmorTranslation(armor_side),
-				forwardArmorTranslation(armor_rear),
-				forwardArmorTranslation(armor_top),
-				armorTypes[unitDef.armorType],
-				unitDef.armorType,
-			}
-		end
-	end
-	
-	for i, weaponDef in pairs(WeaponDefs) do
-		local customParams = weaponDef.customParams
-		local penetration
-		local dropoff
-		local range = weaponDef.range
-		local damages = weaponDef.damages
-		local armorHitSide = customParams.armor_hit_side
-		if (customParams.damagetype ~= "grenade") then
-			if (customParams.damagetype == "shapedcharge") then 
-				local armor_penetration = customParams.armor_penetration
-				penetration = tonumber(armor_penetration)
-				dropoff = 0
-			elseif (customParams.damagetype == "explosive") then
-				penetration = 0
-				dropoff = 0
-			else
-				if (tonumber(customParams.armor_penetration) or 0) > (penetration or 0) then
-					local armor_penetration = customParams.armor_penetration
-					local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration
-					penetration = tonumber(armor_penetration)
-					dropoff = log(armor_penetration_1000m / armor_penetration) / 1000
-				elseif (tonumber(customParams.armor_penetration_100m) or 0) > (penetration or 0) then
-					local armor_penetration_100m = customParams.armor_penetration_100m
-					local armor_penetration_1000m = customParams.armor_penetration_1000m or armor_penetration_100m
-					penetration = (armor_penetration_100m / armor_penetration_1000m) ^ (1/9) * armor_penetration_100m
-					dropoff = log(armor_penetration_1000m / armor_penetration_100m) / 900
-				end
-			end
-		end
-		if penetration then
-			weaponInfos[i] = {penetration, dropoff, range, damages, armorHitSide}
-		end
-	end
-
-	GG.lusHelper.weaponInfos = weaponInfos
-	GG.lusHelper.unitInfos = unitInfos
-end
-
-local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
+local function standardTargetWeight(unitID, unitDefID, weaponNum, targetID)
 	local resultWeight = 1
 	-- get our position, get target position. Find out distance and target side we're going to hit
-	local targetDefID = GetUnitDefID(targetUnitID)
+	local targetDefID = GetUnitDefID(targetID)
 	if targetDefID then
 		local myWeapons = UnitDefs[unitDefID].weapons
 		local thisWeapon = myWeapons[weaponNum]
 		local targetInfo = GG.lusHelper.unitInfos[targetDefID]
-		local weaponID = thisWeapon.weaponDef
+		local weaponDefID = thisWeapon.weaponDef
 		local weaponInfo = GG.lusHelper.weaponInfos[weaponID]
 		if weaponInfo and targetInfo then
-			local ux, uy, uz = GetUnitPosition(targetUnitID)
-			local wx, wy, wz = GetUnitPosition(unitID)
-			local distance = vMagnitude(ux - wx, uy - wy, uz - wz)
+			--local ux, uy, uz = GetUnitPosition(targetUnitID)
+			local ax, ay, az = GetUnitPosition(unitID)
+			local damage = WeaponDefs[weaponDefID][damages][UnitDefs[targetDefID].armorType]
+			local effectiveDamage = GG.ResolveDamage(targetID, targetDefID, "base", nil, weaponDefID, damage, ax, ay, az)
+			
+			--[[local distance = vMagnitude(ux - wx, uy - wy, uz - wz)
 			local targetHealth, maxTargetHealth = Spring.GetUnitHealth(targetUnitID)
-			local front, side, rear, top, armorTypeName, armorType = unpack(targetInfo)
+			local front, side, rear, top, armorTypeName, armorType = unpack(targetInfo) -- TODO: Uh oh
 			local penetration, dropoff, range, damages, armorHitSide = unpack(weaponInfo)
 			local isHE = (penetration == 0)
 			distance = min(distance, range)
@@ -344,13 +266,13 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetUnitID)
 			
 			local mult = penetration / (penetration + armor)
 			
-			if isHE and armorTypeName == "armouredvehicles" then
+			if isHE and armorTypeName == "armouredvehicles" then -- TODO?
 				mult = mult + 1
-			end
+			end]]
 			
 			-- if we can't 1-shot a target then go for max damage%
 			-- if we can 1-shot then go for the one with max HP remaining. Adding 1 to result so these are always higher weight than the ones above
-			local effectiveDamage = damage * mult
+			--local effectiveDamage = damage * mult
 			if targetHealth > effectiveDamage then
 				resultWeight = effectiveDamage / targetHealth
 			else
@@ -530,7 +452,6 @@ function gadget:GamePreload()
 		-- And finally, stick it in GG for the script to access
 		GG.lusHelper[unitDefID] = info
 	end
-	WeaponDataPreload()
 end
 
 function gadget:Initialize()

@@ -20,13 +20,41 @@ local GBRStaghound = ArmouredCarAA:New{
 		},
 	},
 	customParams = {
-		armor_front			= 22,
-		armor_rear			= 9,
-		armor_side			= 19,
-		armor_top			= 13,
-		slope_front			= 47,
-		slope_rear			= 28,
-		slope_side			= -9,
+		armour = {
+			base = {
+				front = {
+					thickness		= 22,
+					slope			= 47,
+				},
+				rear = {
+					thickness		= 9,
+					slope			= 28,
+				},
+				side = {
+					thickness 		= 19,
+					slope			= -12,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 32,
+					slope			= 42,
+				},
+				rear = {
+					thickness		= 32,
+					slope			= 2,
+				},
+				side = {
+					thickness 		= 32,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		turretturnspeed		= 43, -- may find this too slow in game
 		maxvelocitykmh		= 89,
 

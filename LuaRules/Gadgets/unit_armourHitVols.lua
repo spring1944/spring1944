@@ -16,8 +16,8 @@ local GetUnitPieceList					= Spring.GetUnitPieceList
 local SetPieceColVol					= Spring.SetUnitPieceCollisionVolumeData
 local GetPieceColVol					= Spring.GetUnitPieceCollisionVolumeData
 
-local armourPieces = {["base"] = true, ["turret"] = true}
-local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2"] = true}
+local armourPieces = {["base"] = true, ["turret"] = true, ["super"] = true, ["trailer"] = true}
+local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2"] = true, ["turret"] = true} -- turret for CharB1
 
 local function SetColVols(unitID, ud, colPieces)
 	if (ud.modeltype or ud.model.type) ~= "3do" then
@@ -55,7 +55,7 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 	local cp = ud.customParams
 	if cp and cp.children then
 		SetColVols(unitID, ud, boatPieces)
-	elseif cp and cp.armor_front then
+	elseif cp and cp.armour then
 		SetColVols(unitID, ud, armourPieces)
 	end
 end

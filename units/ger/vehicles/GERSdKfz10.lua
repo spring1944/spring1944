@@ -11,10 +11,38 @@ local GERSdKfz10 = ArmouredCarAA:New{
 		},
 	},
 	customParams = {
-		armor_front			= 11,
-		armor_rear			= 0,
-		armor_side			= 0,
-		armor_top			= 0,
+		armour = {
+			base = {
+				front = {
+					thickness		= 11,
+					slope			= 17,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 7,
+					slope			= 28,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 25,
 		maxvelocitykmh		= 75,
 

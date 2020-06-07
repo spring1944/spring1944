@@ -26,13 +26,42 @@ local JPNChiNu = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 50,
-		armor_rear			= 20,
-		armor_side			= 20,
-		armor_top			= 12,
-		slope_front			= 16,
-		slope_rear			= -1,
-		slope_side			= 30,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50,
+					slope			= 16,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= -1,
+				},
+				side = {
+					thickness 		= 20,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 12,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 50,
+					slope			= 16,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 10,
+				},
+				top = {
+					thickness		= 12,
+				},
+			},
+		},
 		maxammo				= 12,
 		maxvelocitykmh		= 39,
 		exhaust_fx_name			= "diesel_exhaust",

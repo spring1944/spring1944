@@ -16,13 +16,42 @@ local GERJagdPanther = HeavyTank:New(TankDestroyer):New{
 		},
 	},
 	customParams = {
-		armor_front			= 80,
-		armor_rear			= 40,
-		armor_side			= 50,
-		armor_top			= 25,
-		slope_front			= 55,
-		slope_rear			= 26,
-		slope_side			= 29,
+		armour = {
+			base = {
+				front = {
+					thickness		= 80,
+					slope			= 55,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= -26,
+				},
+				side = {
+					thickness 		= 50,
+					slope			= 29,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 80,
+					slope			= 55,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= 35,
+				},
+				side = {
+					thickness 		= 50,
+					slope			= 29,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+		},
 		maxammo				= 15,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 46,

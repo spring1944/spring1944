@@ -30,12 +30,40 @@ local HUN40MTuran = MediumTank:New{
 	},
 
 	customParams = {
-		armor_front			= 50,
-		armor_rear			= 25,
-		armor_side			= 25,
-		armor_top			= 13,
-		slope_front			= 18,
-		slope_side			= 10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50,
+					slope			= 18,
+				},
+				rear = {
+					thickness		= 25,
+				},
+				side = {
+					thickness 		= 25, -- upper hull
+					slope			= 10,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 50,
+					slope			= 10,
+				},
+				rear = {
+					thickness		= 25,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 10,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+		},
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 
@@ -78,7 +106,21 @@ local HUN41MTuranII = HUN40MTuran:New{
 	},
 	
 	customParams = {
-		armor_side			= 33, --+ 8mm skirts
+		armour = {
+			base = {
+				side = {
+					thickness 		= 33, -- +8mm skirts
+				},
+			},
+			turret = {
+				rear = {
+					thickness		= 33, -- + 8mm skirts
+				},
+				side = {
+					thickness 		= 33, -- + 8mm skirts
+				},
+			},
+		},
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 		weapontoggle		= "priorityAPHEATHE",
@@ -116,9 +158,35 @@ local HUN43MTuranIII = HUN41MTuranII:New{
 	},
 	
 	customParams = {
-		armor_front			= 75,
-		armor_rear			= 35,
-		armor_side			= 35,
+		armour = {
+			base = {
+				front = {
+					thickness		= 75,
+				},
+				rear = {
+					thickness		= 35,
+				},
+				side = {
+					thickness 		= 43, -- 35mm + 8mm skirt
+					slope			= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 75,
+				},
+				rear = {
+					thickness		= 55,
+					slope			= 10,
+				},
+				side = {
+					thickness 		= 35,
+				},
+				top = {
+					thickness		= 35,
+				},
+			},
+		},
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 		weapontoggle		= "priorityAPHE",

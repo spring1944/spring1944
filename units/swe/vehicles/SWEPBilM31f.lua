@@ -16,13 +16,42 @@ local SWEPBilM31f = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 10,
-		armor_rear			= 10,
-		armor_side			= 8,
-		armor_top			= 3,
-		slope_front			= 28,
-		slope_rear			= 17,
-		slope_side			= 10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 30,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 18,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 8,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 15,
+					slope			= 14,
+				},
+				rear = {
+					thickness		= 13, -- BA-11
+					slope			= 9,
+				},
+				side = {
+					thickness 		= 13, -- BA-11
+					slope			= 10,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		},
 		reversemult			= 0.75,
 		maxvelocitykmh		= 60,
 

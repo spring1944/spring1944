@@ -19,12 +19,39 @@ local ITASemovente75_46 = MediumTank:New(AssaultGun):New{
 		},
 	},
 	customParams = {
-		armor_front			= 100,
-		armor_rear			= 25,
-		armor_side			= 70,
-		armor_top			= 15,
-		slope_front			= 25,
-		slope_rear			= -15,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50,
+					slope			= 40,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -15,
+				},
+				side = {
+					thickness 		= 40,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 100,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 45,
+				},
+				side = {
+					thickness 		= 70,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
 		maxammo				= 11,
 		maxvelocitykmh		= 38,
 

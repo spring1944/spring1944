@@ -17,13 +17,42 @@ local ITAL6_40lf = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 15,
-		armor_side			= 15,
-		armor_top			= 10,
-		slope_front			= 11,
-		slope_rear			= 1,
-		slope_side			= 11,
+		armour = {
+			base = {
+				front = {
+					thickness		= 30,
+					slope			= 11,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= 1,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 11,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 40,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= 16,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 20,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 		maxammo				= 8,
 		weapontoggle		= "false",
 		maxvelocitykmh		= 42,

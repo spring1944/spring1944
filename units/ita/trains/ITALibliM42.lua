@@ -57,10 +57,22 @@ local ITALibliM42Base = MediumTank:New{
 		},
 	},
 	customparams = {
-		armor_front			= 13,
-		armor_rear			= 13,
-		armor_side			= 13,
-		armor_top			= 13,
+		armour = {
+			base = {
+				front = {
+					thickness		= 13,
+				},
+				rear = {
+					thickness		= 13,
+				},
+				side = {
+					thickness 		= 13,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+		},
 
 		customanims			= 'libli',
 		

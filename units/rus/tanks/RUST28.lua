@@ -39,11 +39,38 @@ local RUST28 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 20,
-		armor_side			= 30,
-		armor_top			= 10,
-		slope_front			= 30,
+		armour = {
+			base = {
+				front = {
+					thickness		= 30,
+					slope			= 23,
+				},
+				rear = {
+					thickness		= 20,
+					slope			= 6,
+				},
+				side = {
+					thickness 		= 20,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 20,
+				},
+				rear = {
+					thickness		= 20,
+				},
+				side = {
+					thickness 		= 20,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
 		maxammo				= 19,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 42,
@@ -66,8 +93,31 @@ local RUST28E = RUST28:New{
 		},
 	},
 	customParams = {
-		armor_front = 55,
-		armor_side = 40,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50,
+					slope			= 20,
+				},
+				rear = {
+					thickness		= 50,
+				},
+				side = {
+					thickness 		= 50,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 50,
+				},
+				rear = {
+					thickness		= 50,
+				},
+				side = {
+					thickness 		= 50,
+				},
+			},
+		},
 		maxvelocitykmh = 36,
 	},
 }

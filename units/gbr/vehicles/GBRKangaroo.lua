@@ -15,12 +15,24 @@ local GBRKangaroo = MediumTank:New(Transport):New{
 	},
 	customParams = {
 		weapontoggle		= 'explicitly-undefined-in-child',
-		armor_front			= 89,
-		armor_rear			= 38,
-		armor_side			= 64,
-		armor_top			= 25,--engine deck
-		slope_front			= 54,
-		slope_rear			= -9,
+				armour = {
+			base = {
+				front = {
+					thickness		= 89,
+					slope			= 54,
+				},
+				rear = {
+					thickness		= 38,
+					slope			= -9,
+				},
+				side = {
+					thickness 		= 64,
+				},
+				top = {
+					thickness		= 25,--engine deck
+				},
+			},
+		},
 		maxvelocitykmh		= 40,
 		normaltex			= "unittextures/GBRKangaroo_normals.dds",
 	},

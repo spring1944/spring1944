@@ -19,13 +19,40 @@ local GERStuGIII = MediumTank:New(AssaultGun):New{
 		},
 	},
 	customParams = {
-		armor_front			= 80,
-		armor_rear			= 50,
-		armor_side			= 30,
-		armor_top			= 17,
-		slope_front			= 9,
-		slope_rear			= -10,
-		slope_side			= 10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 80,
+					slope			= -19,
+				},
+				rear = {
+					thickness		= 50,	
+					slope			= 15,
+				},
+				side = {
+					thickness 		= 35, -- with 5mm skirts
+				},
+				top = {
+					thickness		= 16, -- engine deck
+				},
+			},
+			super = {
+				front = {
+					thickness		= 80,
+					slope			= 11,
+				},
+				rear = {
+					thickness		= 30,
+				},
+				side = {
+					thickness 		= 35, -- with 5mm skirts
+					slope			= 10,
+				},
+				top = {
+					thickness		= 11,
+				},
+			},
+		},
 		maxammo				= 11,
 		soundcategory		= "GER/Tank/StuG",
 		maxvelocitykmh		= 40,

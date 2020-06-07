@@ -30,17 +30,51 @@ local GERPanther = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 82,
-		armor_rear			= 40,
-		armor_side			= 50,
-		armor_top			= 17,
-		slope_front			= 55,
-		slope_rear			= -24,
-		slope_side			= 30,
+		armour = {
+			base = {
+				front = {
+					thickness		= 80,
+					slope			= 56,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= -31,
+				},
+				side = {
+					thickness 		= 50,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 17,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 110,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 45,
+					slope			= 25,
+				},
+				side = {
+					thickness 		= 45,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
 		maxammo				= 15,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 46,
-
+		piecehitvols		= {
+			base = {
+				scale = {1, 0.8, 1},
+				offset = {0, -0.1, 0},
+			},
+		},
 	},
 }
 

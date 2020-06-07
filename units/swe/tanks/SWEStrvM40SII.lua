@@ -26,14 +26,43 @@ local SWEStrvM40SII = LightTank:New{
 			name				= ".50calproof",
 		},
 	},
-	customParams = {
-		armor_front			= 43,
-		armor_rear			= 13,
-		armor_side			= 13,
-		armor_top			= 5,
-		slope_front			= 58,
-		slope_rear			= -35,
-		slope_side			= 16,
+	customParams = {		
+		armour = {
+			base = {
+				front = {
+					thickness		= 43,
+					slope			= 58,
+				},
+				rear = {
+					thickness		= 13,
+					slope			= -35,
+				},
+				side = {
+					thickness 		= 13,
+					slope			= 16,
+				},
+				top = {
+					thickness		= 5,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 35,
+					slope			= 15,
+				},
+				rear = {
+					thickness		= 13,
+					slope			= -21,
+				},
+				side = {
+					thickness 		= 13,
+					slope			= 15,
+				},
+				top = {
+					thickness		= 5,
+				},
+			},
+		},
 		maxammo				= 18,
 		maxvelocitykmh		= 46,
 

@@ -25,10 +25,42 @@ local HUN39MCsaba = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 13,
-		armor_rear			= 7,
-		armor_side			= 7,
-		armor_top			= 6,
+		armour = {
+			base = {
+				front = {
+					thickness		= 9,
+					slope			= 59,
+				},
+				rear = {
+					thickness		= 9,
+					slope			= -28,
+				},
+				side = {
+					thickness 		= 9,
+					slope			= -25, -- lower hull
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 9, -- typically protection is similar across hull and turret
+					slope			= 7,
+				},
+				rear = {
+					thickness		= 9,
+					slope			= 30,
+				},
+				side = {
+					thickness 		= 9,
+					slope			= 16,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		},
 		maxammo				= 24,
 		reversemult			= 0.75,
 		maxvelocitykmh			= 65,

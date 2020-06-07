@@ -37,7 +37,7 @@ local Yard = Building:New{
 	showNanoSpray				= false,
 	workerTime					= 30,
 	yardmap						= [[ooooooo 
-								    ooooooo 
+								    occccco 
 									occccco 
 									oocccco 
 									oocccco 
@@ -345,10 +345,23 @@ local Storage = Building:New{
 	reclaimable				= true,
 	yardmap					= [[oooo oooo oooo oooo oooo oooo]],
 	customparams = {
-		armor_front				= 0,
-		armor_rear				= 0,
-		armor_side				= 15,
-		armor_top				= 30,
+		armour = {
+			base = {
+				front = {
+					thickness = 0,
+				},
+				rear = {
+					thickness = 0,
+				},
+				side = {
+					thickness	= 15,
+					slope		= 30,
+				},
+				top = {
+					thickness	= 30,
+				},
+			},
+		},
 		dontcount				= 1,
 		wiki_parser             = "storage",  -- storage.md template
 		wiki_comments           = "",         -- To be override by each unit

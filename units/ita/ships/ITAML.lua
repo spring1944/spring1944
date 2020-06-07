@@ -23,10 +23,22 @@ local ITA_ML = InfantryLandingCraft:New{
 		}
 	},
 	customparams = {
-		armor_front				= 6,
-		armor_rear				= 6,
-		armor_side				= 6,
-		armor_top				= 6,
+		armour = {
+			base = {
+				front = {
+					thickness		= 6,
+				},
+				rear = {
+					thickness		= 6,
+				},
+				side = {
+					thickness 		= 6,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		}
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},

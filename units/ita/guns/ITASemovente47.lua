@@ -23,12 +23,39 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 30,
-		armor_rear			= 15,
-		armor_side			= 15,
-		armor_top			= 0,
-		slope_front			= 12,
-		slope_side			= 11,
+		armour = {
+			base = {
+				front = {
+					thickness		= 30,
+					slope			= -7,
+				},
+				rear = {
+					thickness		= 15,
+				},
+				side = {
+					thickness 		= 15,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 50,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 15,
+				},
+				side = {
+					thickness 		= 15,
+					slope			= 11,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 		maxammo				= 18,
 		weapontoggle		= "priorityHEATAP",
 		maxvelocitykmh		= 42.3,

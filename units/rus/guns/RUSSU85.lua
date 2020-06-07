@@ -15,13 +15,41 @@ local RUSSU85 = MediumTank:New(TankDestroyer):New{
 		},
 	},
 	customParams = {
-		armor_front			= 45,
-		armor_rear			= 45,
-		armor_side			= 45,
-		armor_top			= 20,
-		slope_front			= 49,
-		slope_rear			= 48,
-		slope_side			= 18,
+		armour = {
+			base = {
+				front = {
+					thickness		= 45,
+					slope			= 52,
+				},
+				rear = {
+					thickness		= 45,
+					slope			= 48,
+				},
+				side = {
+					thickness 		= 45,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 45,
+					slope			= 52,
+				},
+				rear = {
+					thickness		= 45,
+					slope			= 12,
+				},
+				side = {
+					thickness 		= 45,
+					slope			= 18,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+		},
 
 		maxammo				= 9,
 		maxvelocitykmh		= 55,

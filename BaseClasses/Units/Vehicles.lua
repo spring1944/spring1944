@@ -94,6 +94,7 @@ local ArmouredCar = Vehicle:New{
 	category			= "MINETRIGGER OPENVEH",
 	iconType			= "armoredcar", -- sic
 	movementClass		= "TANK_Car",
+	usepiececollisionvolumes = true,
 
 	customParams = {
 		damageGroup		= "armouredVehicles",

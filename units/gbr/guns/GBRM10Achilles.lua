@@ -20,13 +20,42 @@ local GBRM10Achilles = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 		},
 	},
 	customParams = {
-		armor_front			= 38,
-		armor_rear			= 25,
-		armor_side			= 19,
-		armor_top			= 19,
-		slope_front			= 55,
-		slope_rear			= 28,
-		slope_side			= 38,
+		armour = {
+			base = {
+				front = {
+					thickness		= 38,
+					slope			= 55,
+				},
+				rear = {
+					thickness		= 19,
+					slope			= 28,
+				},
+				side = {
+					thickness 		= 19,
+					slope			= 38,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 25, -- not mantlet
+					slope			= 67,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -29,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 22,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 10,
 		turretturnspeed		= 10, -- Manual traverse 45s
 		maxvelocitykmh		= 51,

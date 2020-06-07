@@ -28,12 +28,41 @@ local SWEStrvM41 = LightTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 50,
-		armor_rear			= 15,
-		armor_side			= 20,
-		armor_top			= 8,
-		slope_front			= 19,
-		slope_rear			= 15,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50,
+					slope			= 19,
+				},
+				rear = {
+					thickness		= 15,
+					slope			= 15,
+				},
+				side = {
+					thickness 		= 20,
+				},
+				top = {
+					thickness		= 8,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 50,
+					slope			= 9,
+				},
+				rear = {
+					thickness		= 35,
+					slope			= 8,
+				},
+				side = {
+					thickness 		= 20,
+					slope			= 9,
+				},
+				top = {
+					thickness		= 8,
+				},
+			},
+		},
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
 

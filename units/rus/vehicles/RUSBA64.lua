@@ -15,13 +15,42 @@ local RUSBA64 = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 15,
-		armor_rear			= 4,
-		armor_side			= 6,
-		armor_top			= 4,
-		slope_front			= 38,
-		slope_rear			= 26,
-		slope_side			= 34,
+		armour = {
+			base = {
+				front = {
+					thickness		= 15,
+					slope			= 40,
+				},
+				rear = {
+					thickness		= 9,
+					slope			= 30,
+				},
+				side = {
+					thickness 		= 9,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 10,
+					slope			= 30,
+				},
+				rear = {
+					thickness		= 10,
+					slope			= 30,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxvelocitykmh		= 80,
 		normaltex			= "unittextures/RUSBA64_normals.dds",
 	}

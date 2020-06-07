@@ -10,10 +10,7 @@ local GER_StorageBunker = Storage:New(Bunker):New{
 
 -- remove armor values
 if GER_StorageBunker.customparams then
-	GER_StorageBunker.customparams.armor_front = nil
-	GER_StorageBunker.customparams.armor_side = nil
-	GER_StorageBunker.customparams.armor_top = nil
-	GER_StorageBunker.customparams.armor_rear = nil
+	GER_StorageBunker.customparams.armour = nil
 end
 
 return lowerkeys({

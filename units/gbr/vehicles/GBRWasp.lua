@@ -19,10 +19,22 @@ local GBRWasp = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 10,
-		armor_rear			= 8,
-		armor_side			= 8,
-		armor_top			= 0,
+		armour = {
+			base = {
+				front = {
+					thickness		= 10,
+				},
+				rear = {
+					thickness		= 8,
+				},
+				side = {
+					thickness 		= 8,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 7,
 		maxvelocitykmh		= 48,
 

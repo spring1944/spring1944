@@ -18,11 +18,41 @@ local USLVTA4 = LightTank:New(Amphibian):New{
 		},
 	},
 	customParams = {
-		armor_front			= 13,
-		armor_rear			= 6,
-		armor_side			= 8,
-		armor_top			= 6,
-		slope_front			= 31,
+		armour = {
+			base = {
+				front = {
+					thickness		= 13,
+					slope			= 31,
+				},
+				rear = {
+					thickness		= 6,
+				},
+				side = {
+					thickness 		= 6,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 38,
+					slope			= 19,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 2,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 20,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
+
 		maxammo				= 9,
 		maxvelocitykmh		= 40,
 		flagCapRate			= 0.5,

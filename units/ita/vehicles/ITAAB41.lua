@@ -31,13 +31,43 @@ local ITAAB41 = ArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 8,
-		armor_rear			= 6,
-		armor_side			= 8,
-		armor_top			= 6,
-		slope_front			= 22,
-		slope_rear			= -27,
-		slope_side			= 30,
+		armour = {
+			base = {
+				front = {
+					thickness		= 8,
+					slope			= 22,
+				},
+				rear = {
+					thickness		= 6,
+					slope			= -27,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 30,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 18,
+					slope			= 11,
+				},
+				rear = {
+					thickness		= 8,
+					slope			= 17,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		},
+
 		reversemult			= 0.75,
 		maxammo				= 19,
 		maxvelocitykmh		= 78,

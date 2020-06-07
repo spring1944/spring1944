@@ -22,10 +22,37 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		},
 	},
 	customParams = {
-		armor_front			= 6,
-		armor_rear			= 6,
-		armor_side			= 16,
-		armor_top			= 0,
+		armour = {
+			base = {
+				front = {
+					thickness		= 6,
+				},
+				rear = {
+					thickness		= 6,
+				},
+				side = {
+					thickness 		= 6,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+			--[[turret = {
+				front = {
+					thickness		= 6,
+					slope			= 30, -- guess
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},]]
+		},
 		maxammo				= 19,
 		maxvelocitykmh		= 60,
 

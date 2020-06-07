@@ -30,12 +30,40 @@ local GBRShermanFirefly = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 51,
-		armor_rear			= 38,
-		armor_side			= 38,
-		armor_top			= 20,
-		slope_front			= 55,
-		slope_rear			= 22,
+		armour = {
+			base = {
+				front = {
+					thickness		= 51,
+					slope			= 56,
+				},
+				rear = {
+					thickness		= 38,
+					slope			= 21,
+				},
+				side = {
+					thickness 		= 38,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 76,
+					slope			= 30,
+				},
+				rear = {
+					thickness		= 64,
+				},
+				side = {
+					thickness 		= 51,
+					slope			= 3,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+		},
 		maxammo				= 14,
 		turretturnspeed		= 19, 
 		maxvelocitykmh		= 40,

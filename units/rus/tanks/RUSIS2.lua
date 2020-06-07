@@ -27,13 +27,42 @@ local RUSIS2 = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 120,
-		armor_rear			= 60,
-		armor_side			= 100,
-		armor_top			= 30,
-		slope_front			= 61,
-		slope_rear			= 50,
-		slope_side			= 12,
+		armour = {
+			base = {
+				front = {
+					thickness		= 120,
+					slope			= 61,
+				},
+				rear = {
+					thickness		= 60,
+					slope			= 49,
+				},
+				side = {
+					thickness 		= 100,
+					slope			= 14,
+				},
+				top = {
+					thickness		= 30,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 100,
+					slope			= 10,
+				},
+				rear = {
+					thickness		= 100,
+					slope			= 31,
+				},
+				side = {
+					thickness 		= 100,
+					slope			= 20,
+				},
+				top = {
+					thickness		= 30,
+				},
+			},
+		},
 		maxammo				= 5,
 		turretturnspeed		= 12, -- 30s for 360
 		maxvelocitykmh		= 37,

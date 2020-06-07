@@ -7,13 +7,25 @@ local SWETgBilM42 = HalfTrack:New{
 	trackWidth				= 15,
 	
 	customParams = {
-		armor_front				= 20,
-		armor_rear				= 8,
-		armor_side				= 8,
-		armor_top				= 0,
-		slope_front				= 25,
-		slope_rear				= 37,
-		slope_side				= 25, -- guesstimate
+		armour = {
+			base = {
+				front = {
+					thickness		= 20,
+					slope			= 25,
+				},
+				rear = {
+					thickness		= 8,
+					slope			= 37,
+				},
+				side = {
+					thickness 		= 8,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxvelocitykmh			= 70,
 
 	},

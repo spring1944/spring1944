@@ -4,11 +4,37 @@ local USM3Base = Vehicle:New{
 	trackWidth				= 15,
 	
 	customParams = {
-		armor_front				= 13,
-		armor_rear				= 6,
-		armor_side				= 6,
-		armor_top				= 6,
-		slope_front				= 30,
+		armour = {
+			base = {
+				front = {
+					thickness		= 13,
+					slope			= 30,
+				},
+				rear = {
+					thickness		= 6,
+				},
+				side = {
+					thickness 		= 6,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 0,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		normaltex				= "unittextures/gbrm5halftrack_normals.dds",
 		maxvelocitykmh			= 72,
 	},

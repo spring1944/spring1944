@@ -47,10 +47,22 @@ local RUSD2Base = MediumTank:New{
 		},
 	},
 	customparams = {
-		armor_front			= 16,
-		armor_rear			= 16,
-		armor_side			= 16,
-		armor_top			= 10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 16,
+				},
+				rear = {
+					thickness		= 16,
+				},
+				side = {
+					thickness 		= 16,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+		},
 
 		customanims			= 'd2',
 		

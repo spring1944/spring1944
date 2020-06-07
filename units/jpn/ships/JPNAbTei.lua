@@ -20,10 +20,22 @@ local JPN_AbTei = ArmedBoat:New{
 	},
 	customparams = {
 		damageGroup			= 'hardships',
-	    armor_front	= 6,
-		armor_rear	= 6,
-		armor_side	= 6,
-		armor_top	= 6,
+		armour = {
+			base = {
+				front = {
+					thickness		= 6,
+				},
+				rear = {
+					thickness		= 6,
+				},
+				side = {
+					thickness 		= 6,
+				},
+				top = {
+					thickness		= 6,
+				},
+			},
+		},
 		children = {
 			"JPNAbTei_turret_57mm_front",
 			"JPNAbTei_turret_MG",

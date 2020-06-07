@@ -18,15 +18,42 @@ local GERSdKfz251 = HalfTrack:New{
 	},
 	
 	customParams = {
-		armor_front			= 9,
-		armor_rear			= 9,
-		armor_side			= 10,
-		armor_top			= 0,
-		slope_front			= 18,
-		slope_rear			= -30,
-		slope_side			= 35,
-		maxvelocitykmh		= 52.5,
+		armour = {
+			base = {
+				front = {
+					thickness		= 9,
+					slope			= 18,
+				},
+				rear = {
+					thickness		= 9,
+					slope			= -30,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 35,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+			--[[turret = {
+				front = {
+					thickness		= 7,
+					slope			= 27,
+				},
+				rear = {
+					thickness		= 0,
+				},
+				side = {
+					thickness 		= 0,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},]]
+		},
 
+		maxvelocitykmh		= 52.5,
 	},
 	
 }

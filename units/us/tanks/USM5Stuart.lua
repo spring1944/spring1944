@@ -6,12 +6,24 @@ local StuartBase = LightTank:New{
 	trackType			= "USStuart",
 	
 	customParams = {
-		armor_front			= 29,
-		armor_rear			= 25,
-		armor_side			= 29,
-		armor_top			= 13,
-		slope_front			= 50,
-		slope_rear			= -2,
+		armour = {
+			base = {
+				front = {
+					thickness		= 29,
+					slope			= 50,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= -2,
+				},
+				side = {
+					thickness 		= 29,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+		},
 
 		maxvelocitykmh		= 58,
 
@@ -49,6 +61,25 @@ local USM5Stuart = StuartBase:New{
 		},
 	},
 	customParams = {
+		armour = {
+			turret = {
+				front = {
+					thickness		= 44, -- not mantlet
+					slope			= 13,
+				},
+				rear = {
+					thickness		= 32,
+					slope			= 2,
+				},
+				side = {
+					thickness 		= 32,
+					slope			= 1,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+		},
 		maxammo				= 27,
 		weapontoggle		= false,
 		turretturnspeed		= 25.7, -- 14s for 360
@@ -74,6 +105,25 @@ local USM8Scott = StuartBase:New(AssaultGun):New{
 		},
 	},
 	customParams = {
+		armour = {
+			turret = {
+				front = {
+					thickness		= 38,
+					slope			= 19,
+				},
+				rear = {
+					thickness		= 25,
+					slope			= 2,
+				},
+				side = {
+					thickness 		= 25,
+					slope			= 20,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxammo				= 9,
 		weapontoggle		= false,
 		turretturnspeed		= 12, -- manual

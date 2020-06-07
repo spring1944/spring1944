@@ -6,13 +6,24 @@ local JPNHoHa = HalfTrack:New{
 	trackWidth				= 15,
 	
 	customParams = {
-		armor_front				= 12,
-		armor_rear				= 8,
-		armor_side				= 10,
-		armor_top				= 0,
-		slope_front			= 39,
-		slope_side			= 31,
-
+		armour = {
+			base = {
+				front = {
+					thickness		= 12,
+					slope			= 39,
+				},
+				rear = {
+					thickness		= 8,
+				},
+				side = {
+					thickness 		= 10,
+					slope			= 31,
+				},
+				top = {
+					thickness		= 0,
+				},
+			},
+		},
 		maxvelocitykmh			= 50,
 		exhaust_fx_name			= "diesel_exhaust",
 

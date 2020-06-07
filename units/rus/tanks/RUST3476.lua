@@ -1,5 +1,5 @@
 local RUST3476 = MediumTank:New{
-	name				= "T-34-76",
+	name				= "T-34 Model 1943",
 	buildCostMetal		= 2400,
 	maxDamage			= 3090,
 	trackOffset			= 5,
@@ -29,13 +29,43 @@ local RUST3476 = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 45,
-		armor_rear			= 40,
-		armor_side			= 40,
-		armor_top			= 16,
-		slope_front			= 60,
-		slope_rear			= 47,
-		slope_side			= 40,
+		armour = {
+			base = {
+				front = {
+					thickness		= 45,
+					slope			= 60,
+				},
+				rear = {
+					thickness		= 40,
+					slope			= 47,
+				},
+				side = {
+					thickness 		= 40,
+					slope			= 40,
+				},
+				top = {
+					thickness		= 16,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 53,
+					slope			= 30,
+				},
+				rear = {
+					thickness		= 53,
+					slope			= 18,
+				},
+				side = {
+					thickness 		= 53,
+					slope			= 21,
+				},
+				top = {
+					thickness		= 15,
+				},
+			},
+		},
+
 		maxammo				= 19,
 		turretturnspeed		= 26.5, -- 13.6s for 360
 		maxvelocitykmh		= 53,

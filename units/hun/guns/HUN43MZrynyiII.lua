@@ -23,12 +23,40 @@ local HUN43MZrynyiII = MediumTank:New(AssaultGun):New{
 	},
 
 	customParams = {
-		armor_front			= 75,
-		armor_rear			= 25,
-		armor_side			= 30, -- Schuertzen
-		armor_top			= 13,
-		slope_front			= 19,
-		slope_side			= 10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 50, -- LFP
+					slope			= -30,
+				},
+				rear = {
+					thickness		= 25,
+				},
+				side = {
+					thickness 		= 30, --+5mm skirt
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+			super = {
+				front = {
+					thickness		= 75,
+					slope			= 18,
+				},
+				rear = {
+					thickness		= 13,
+					slope			= 50,
+				},
+				side = {
+					thickness 		= 30, -- +5mm skirt
+					slope			= 10,
+				},
+				top = {
+					thickness		= 13,
+				},
+			},
+		},
 		maxammo				= 18,
 		maxvelocitykmh		= 43,
 		weapontoggle		= "priorityHEATHE",

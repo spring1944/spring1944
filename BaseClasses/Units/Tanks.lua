@@ -14,6 +14,7 @@ local Tank = Unit:New{ -- some overlap with Vehicle
 	seismicSignature	= 1,
 	trackType			= "Stdtank",
 	turnRate			= 75,
+	usepiececollisionvolumes	= true,
 	
 	customParams = {
 		blockfear			= true,

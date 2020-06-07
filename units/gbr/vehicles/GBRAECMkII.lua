@@ -25,14 +25,41 @@ local GBRAECMkII = HeavyArmouredCar:New{
 		},
 	},
 	customParams = {
-		armor_front			= 17,
-		armor_rear			= 14,
-		armor_side			= 25,
-		armor_top			= 8,
-		slope_front			= 58,
-		slope_rear			= -10,
+		armour = {
+			base = {
+				front = {
+					thickness		= 17,
+					slope			= 58,
+				},
+				rear = {
+					thickness		= 14,
+					slope			= -10,
+				},
+				side = {
+					thickness 		= 25,
+				},
+				top = {
+					thickness		= 10,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 31,
+				},
+				rear = {
+					thickness		= 20,
+				},
+				side = {
+					thickness 		= 25,
+				},
+				top = {
+					thickness		= 17,
+				},
+			},
+		},
+
 		maxammo				= 10,
-		turretturnspeed		= 32, -- 11s for 360
+		turretturnspeed		= 32, -- 11s for 360 (WT says 14.3)
 		maxvelocitykmh		= 66,
 		normaltex			= "unittextures/GBRAECMkII_normals.dds",
 	}

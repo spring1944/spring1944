@@ -8,9 +8,9 @@ local FRACharB1Bis = MediumTank:New{
 	trackOffset			= 5,
 	trackWidth			= 20,
 
-	collisionVolumeType	= "box",
-	collisionVolumeOffsets	= [[0.0 0 -2]],
-	collisionVolumeScales	= [[2.5 1.0 6.0]],
+	--collisionVolumeType	= "box",
+	--collisionVolumeOffsets	= [[0.0 0 -2]],
+	--collisionVolumeScales	= [[2.5 1.0 6.0]],
 	
 	-- Transport tags
 	transportSize		= 1, -- assumes footprint of BoatChild == 1
@@ -40,11 +40,41 @@ local FRACharB1Bis = MediumTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 60,
-		armor_rear			= 50,
-		armor_side			= 55,
-		armor_top			= 25,
-		slope_front			= 42,
+		armour = {
+			base = {
+				front = {
+					thickness		= 60,
+					slope			= 42,
+				},
+				rear = {
+					thickness		= 50,
+					slope			= -1,
+				},
+				side = {
+					thickness 		= 55,
+				},
+				top = {
+					thickness		= 25,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 56,
+					slope			= 1,
+				},
+				rear = {
+					thickness		= 56,
+					slope			= 19,
+				},
+				side = {
+					thickness 		= 56,
+					slope			= 19,
+				},
+				top = {
+					thickness		= 30,
+				},
+			},
+		},
 		maxammo				= 24,
 
 		barrelrecoildist		= 1,
@@ -58,7 +88,12 @@ local FRACharB1Bis = MediumTank:New{
 			"FRA_75mmSA35_Turret",
 		},
 		customanims			= "charb1bis",
-
+		piecehitvols		= {
+			base = {
+				scale = {1, 0.6, 1}, -- sodding radio antenna
+				offset = {0, -6, 0},
+			},
+		},
 	},
 }
 
@@ -67,6 +102,7 @@ local FRA_75mmSA35_Turret = EnclosedBoatTurret:New{
 	description				= "Primary Turret",
 	category				= "MINETRIGGER TURRET HARDVEH",
 	objectName				= "FRA/FRA_75mmSA35_Turret.s3o",
+	usePieceCollisionVolumes	= true,
   	weapons = {	
 		[1] = {
 			name				= "FRA75mmSA35HE",
@@ -81,7 +117,6 @@ local FRA_75mmSA35_Turret = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-
     },
 }
 

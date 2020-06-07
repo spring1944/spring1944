@@ -25,13 +25,43 @@ local HUN44MTas = HeavyTank:New{
 		},
 	},
 	customParams = {
-		armor_front			= 75,
-		armor_rear			= 100,
-		armor_side			= 50,
-		armor_top			= 20,
-		slope_front			= 60,
-		slope_rear			= -15,
-		slope_side			= 25,
+		armour = {
+			base = {
+				front = {
+					thickness		= 75,
+					slope			= 60,
+				},
+				rear = {
+					thickness		= 100,
+					slope			= -15,
+				},
+				side = {
+					thickness 		= 50,
+					slope			= 25,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+			turret = {
+				front = {
+					thickness		= 100,
+					slope			= 12,
+				},
+				rear = {
+					thickness		= 100,
+					slope			= 20,
+				},
+				side = {
+					thickness 		= 100,
+					slope			= 20,
+				},
+				top = {
+					thickness		= 20,
+				},
+			},
+		},
+
 		maxammo				= 15,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 45,
