@@ -217,6 +217,10 @@ local function ResolveDamage(targetID, targetDefID, pieceHit, projectileID, weap
 	local dotFront, dotUp
 	local dx, dy, dz 
 	if projectileID and projectileID > 0 then -- a hit by an actual projectile (not explosion or TargetWeight trial)
+		-- count how many turret and base hits we get
+		if not hits[targetDefID] then hits[targetDefID] = {} end
+		hits[targetDefID][pieceHit] = (hits[targetDefID][pieceHit] or 0) + 1
+		hitCounts[pieceHit] = (hitCounts[pieceHit] or 0) + 1
 		dx, dy, dz = Spring.GetProjectileDirection(projectileID)
 		-- for some reason we need to flip the direction of all these for stuff to work :/
 		dx = -dx 
@@ -358,13 +362,8 @@ function gadget:UnitPreDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, w
 	--binocs and tracers do zero damage already, so we don't need to be doing a string search...
 	if damage <= 1 then return 0 end
 	
-	-- count how many turret and base hits we get
-	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID) or "base"
-	if not hits[unitDefID] then hits[unitDefID] = {} end
-	hits[unitDefID][pieceHit] = (hits[unitDefID][pieceHit] or 0) + 1
-	hitCounts[pieceHit] = (hitCounts[pieceHit] or 0) + 1
-	
 	-- If we got this far, we might be doing armour calculations	
+	local pieceHit = Spring.GetUnitLastAttackedPiece(unitID) or "base"
 	local ax, ay, az 
 	if ownerPos[attackerID] and ownerPos[attackerID][projectileID] then 
 		ax, ay, az = unpack(ownerPos[attackerID][projectileID])
