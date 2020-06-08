@@ -264,8 +264,8 @@ local function ResolveDamage(targetID, targetDefID, pieceHit, projectileID, weap
 			end
 		end
 	end
-	if not unitInfo.armour[pieceHit][armor_hit_side] then
-		Spring.Echo("291 check", armor_hit_side, pieceHit, unitInfo, unitInfo[pieceHit], UnitDefs[targetDefID].name)
+	if not pieceHit or not unitInfo.armour[pieceHit] or not unitInfo.armour[pieceHit][armor_hit_side] then
+		Spring.Echo("291 check", armor_hit_side, pieceHit, unitInfo, unitInfo.armour, UnitDefs[targetDefID].name)
 	end
 	armor = (armor_hit_side and pieceHit and unitInfo.armour[pieceHit][armor_hit_side].thickness) or 0
 	slope = (armor_hit_side and pieceHit and unitInfo.armour[pieceHit][armor_hit_side].slope) or 0
