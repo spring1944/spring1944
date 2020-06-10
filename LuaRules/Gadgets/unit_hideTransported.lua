@@ -6,7 +6,7 @@ function gadget:GetInfo()
     date      = "09/02/10",
     license   = "PD",
     layer     = 0,
-    enabled   = true  --  loaded by default?
+    enabled   = false--true  --  loaded by default?
   }
 end
 
@@ -105,7 +105,7 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 		if massLeft[transportID] == 0 then
 			TransportIsFull(transportID)
 		end
-		if unitDef.xsize == 2 and not (transportDef.minWaterDepth > 0) and not unitDef.customParams.hasturnbutton then 
+		if unitDef.xsize == 2 and not transportDef.modCategories.ship and not unitDef.customParams.hasturnbutton then 
 			-- transportee is Footprint of 1 (doubled by engine) and transporter is not a boat and transportee is not an infantry gun
 			SetUnitNoDraw(unitID, true)
 			SetUnitNeutral(unitID, true)

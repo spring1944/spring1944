@@ -440,7 +440,7 @@ function widget:DrawWorld()
 
 			--Verify we can really access information about this unit.
 			--This should solve issues when switching spectated team
-			if udid then
+			if udid and not Spring.GetUnitTransporter(uid) then
 				if not unitData[uid] or unitData[uid].frame < currentFrame then
 					GenerateUnitGraphics(uid, udid, getAuras)
 				end
