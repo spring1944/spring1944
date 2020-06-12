@@ -32,7 +32,7 @@ local moveDefs 	=	 {
 		maxSlope		=	17,
 		slopeMod		=	52,
 		heatmapping		=	true,
-		heatMod			=	0.1,
+		heatMod			=	0.3,
 	},
 	{
 		name			=	"TANK_Car",

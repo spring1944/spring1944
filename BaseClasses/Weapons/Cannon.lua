@@ -173,13 +173,13 @@ local HeavySmoke = Smoke:New{ -- e.g. Ho-Ro
 -- AA Round Class
 
 local AA = Weapon:New{
-	accuracy           = 300,
+	accuracy           = 200,
 	burnblow           = true,
 	canattackground    = false,
 	collisionSize      = 3,
 	cylinderTargeting  = 1.05,
 	leadlimit	= 280,
-	targetMoveError		= 1.8,
+	targetMoveError		= 1.2,
 	edgeEffectiveness  = 0.001,
 	name               = "AA Shell",
 	soundHitDry        = "GEN_Explo_Flak1",

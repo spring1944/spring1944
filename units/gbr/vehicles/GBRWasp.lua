@@ -1,4 +1,4 @@
-local GBRWasp = ArmouredCar:New{
+local GBRWasp = LightTank:New{
 	name				= "Wasp Mk.II",
 	description			= "Universal Carrier Flamethrower",
 	buildCostMetal		= 935,
