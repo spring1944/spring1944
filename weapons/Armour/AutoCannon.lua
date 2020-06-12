@@ -28,8 +28,8 @@ local FlaK3820mmHE = AutoCannonHE:New(FlaK3820mm, true)
 local FlaK3820mmAP = AutoCannonAP:New(FlaK3820mm, true):New{
   weaponVelocity     = 1560,
   customparams = {
-    armor_penetration_1000m = 9,
-    armor_penetration_100m  = 20,
+    armor_penetration_1000m = 19,
+    armor_penetration_100m  = 34,
   },
   damage = {
     default            = 385,
@@ -98,8 +98,8 @@ local TNSh20mmHE = AutoCannonHE:New(TNSh20mm, true)
 local TNSh20mmAP = AutoCannonAP:New(TNSh20mm, true):New{
   weaponVelocity     = 1500,
   customparams = {
-    armor_penetration_1000m = 16,
-    armor_penetration_100m  = 35,
+    armor_penetration_1000m = 12,
+    armor_penetration_100m  = 29,
   },
   damage = {
     default            = 310,
@@ -147,8 +147,8 @@ local BredaM3520mmAP = AutoCannonAP:New(BredaM3520mm, true):New{
   sprayAngle         = 400,
   weaponVelocity     = 1560,
   customparams = {
-    armor_penetration_1000m = 6,
-    armor_penetration_100m  = 29,
+    armor_penetration_1000m = 19,
+    armor_penetration_100m  = 36,
   },
   damage = {
     default            = 345,
@@ -188,9 +188,9 @@ local BoforsM40_20mmHE = AutoCannonHE:New(BoforsM40_20mm, true):New{
 local BoforsM40_20mmAP = AutoCannonAP:New(BoforsM40_20mm, true):New{
 	sprayAngle         = 200,
 	weaponVelocity     = 2060,
-	customparams = {	-- data taken from http://www.jaegerplatoon.net/AT_GUNS1.htm
-		armor_penetration_1000m = 10,
-		armor_penetration_100m  = 32,
+	customparams = {
+		armor_penetration_1000m = 21,
+		armor_penetration_100m  = 40,
 	},
 	damage = {
 		default            = 345,

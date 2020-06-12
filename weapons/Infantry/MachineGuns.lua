@@ -289,6 +289,10 @@ local M2Browning = HeavyMGClass:New{
   range              = 880,
   reloadTime         = 2,
   soundStart         = [[US_50CAL]],
+  customparams = {
+    armor_penetration_1000m = 20,
+    armor_penetration_100m  = 29,
+  },
 }
 -- M2 Browning AA
 local M2BrowningAA = M2Browning:New(AAMG):New{
