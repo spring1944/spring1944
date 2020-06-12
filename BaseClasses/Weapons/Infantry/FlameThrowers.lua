@@ -27,7 +27,7 @@ local FlamerClass = Weapon:New{
 		damagetype         = [[fire]],
 		fearid             = 501,
 		scriptanimation    = "flame",
-		weaponcost         = 4,
+		weaponcost         = 2,
 		onlytargetcategory     = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH SHIP LARGESHIP DEPLOYED",
 	},
 	damage = {

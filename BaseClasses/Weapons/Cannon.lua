@@ -325,7 +325,7 @@ local AutoCannon = Cannon:New{
 		cegflare           = "XSMALL_MUZZLEFLASH",
 		flareonshot        = true,
 		projectilelups     = {"cannon20tracer"},
-		weaponcost         = 4,
+		weaponcost         = 2,
 	},
 }
 
@@ -360,7 +360,7 @@ local AntiAirGun = Cannon:New{
 		badtargetcategory  = "INFANTRY HARDVEH SHIP LARGESHIP DEPLOYED",
 		cegflare           = "SMALL_MUZZLEFLASH", -- this class used mainly for ~40mm weapons
 		flareonshot        = true,
-		weaponcost         = 8,
+		weaponcost         = 6,
 	},
 }
 
