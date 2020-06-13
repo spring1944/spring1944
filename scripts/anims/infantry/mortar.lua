@@ -76,6 +76,38 @@ local anims = {
 }
 
 local stances = {
+	sit = {
+		turns = {
+			{rthigh, x_axis, -math.rad(90)},
+			{lthigh, x_axis, -math.rad(90)},
+			{rleg, x_axis, math.rad(90)},
+			{lleg, x_axis, math.rad(90)},
+			{mortarbase, x_axis, math.rad(270)},
+			{mortarbase, y_axis, math.rad(90)},
+			{mortarbase, z_axis, 0},
+			{ruparm, x_axis, 0},
+			{ruparm, y_axis, 0},
+			{ruparm, z_axis, 0},
+			{rloarm, x_axis, 0},
+			{rloarm, y_axis, 0},
+			{rloarm, z_axis, 0},
+			{luparm, x_axis, 0},
+			{luparm, y_axis, 0},
+			{luparm, z_axis, 0},
+			{lloarm, x_axis, 0},
+			{lloarm, y_axis, 0},
+			{lloarm, z_axis, 0},
+			{head, x_axis, 0},
+			{head, y_axis, 0},
+			{head, z_axis, 0},
+		},
+		moves = {
+			{pelvis, y_axis, -6},
+			{mortarbase, x_axis, 2.3},
+			{mortarbase, y_axis, 0},
+			{mortarbase, z_axis, -4},
+		},
+	},
 	stand =	{
 					turns = {
 						{head, x_axis, 0},
@@ -287,6 +319,7 @@ local keyframeDelays = {
 }
 
 local variants = {
+	sit = {stances.sit},
 	stand = {stances.stand},
 	prone = {stances.prone},
 	run = {stances.run},

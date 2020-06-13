@@ -30,7 +30,7 @@ function gadget:GetInfo()
 		author    = "Tobi Vollebregt",
 		date      = "2 September 2009",
 		license   = "GPL v2",
-		layer     = 0,
+		layer     = 3, -- must be after lus_helper
 		enabled   = true --  loaded by default?
 	}
 end
@@ -348,6 +348,7 @@ end
 
 
 function Spring.UnitScript.Sleep(milliseconds)
+	if not milliseconds then return end
 	local n = floor(milliseconds / 33)
 	if (n <= 0) then n = 1 end
 	n = n + sp_GetGameFrame()
@@ -360,11 +361,13 @@ function Spring.UnitScript.Sleep(milliseconds)
 	local activeUnit = GetActiveUnit() or error("[Sleep] no active unit on stack?", 2)
 	local activeThread = activeUnit.threads[co_running() or error("[Sleep] not in a thread?", 2)]
 
-	zzz[#zzz+1] = activeThread
-	activeThread.container = zzz
-	-- yield the running thread:
-	-- it will be resumed in frame #n (in gadget:GameFrame).
-	co_yield()
+	if activeThread then
+		zzz[#zzz+1] = activeThread
+		activeThread.container = zzz
+		-- yield the running thread:
+		-- it will be resumed in frame #n (in gadget:GameFrame).
+		co_yield()
+	end
 end
 
 
@@ -372,10 +375,12 @@ end
 function Spring.UnitScript.StartThread(fun, ...)
 	local activeUnit = GetActiveUnit()
 	local co = co_create(fun)
+	-- signal_mask is inherited from current thread, if any
+	local thd = co_running() and activeUnit.threads[co_running()]
+	local sigmask = thd and thd.signal_mask or 0
 	local thread = {
 		thread = co,
-		-- signal_mask is inherited from current thread, if any
-		signal_mask = (co_running() and (activeUnit.threads[co_running()] and activeUnit.threads[co_running()].signal_mask) or 0),
+		signal_mask = sigmask,
 		unitID = activeUnit.unitID,
 	}
 
@@ -401,7 +406,7 @@ end
 function Spring.UnitScript.SetSignalMask(mask)
 	local activeUnit = GetActiveUnit()
 	local activeThread = activeUnit.threads[co_running() or error("[SetSignalMask] not in a thread", 2)]
-	activeThread.signal_mask = mask
+	if activeThread then activeThread.signal_mask = mask end
 end
 
 function Spring.UnitScript.Signal(mask)
@@ -418,7 +423,7 @@ function Spring.UnitScript.Signal(mask)
 		end
 	else
 		for _,thread in pairs(activeUnit.threads) do
-			if (thread.signal_mask == mask and thread.container) then
+			if ((thread.signal_mask == mask or not mask) and thread.container) then
 				RemoveTableElement(thread.container, thread)
 			end
 		end
@@ -539,7 +544,8 @@ function gadget:Initialize()
 	--  * basename match
 	--  * exact match where .cob->.lua
 	--  * basename match where .cob->.lua
-	for i, unitDef in pairs(UnitDefs) do
+	for i=1,#UnitDefs do
+		local unitDef = UnitDefs[i]
 		if (unitDef and not scripts[unitDef.scriptName]) then
 			local fn  = UNITSCRIPT_DIR .. unitDef.scriptName:lower()
 			local bn  = Basename(fn)
@@ -650,6 +656,7 @@ local include_cache = {}
 
 -- core of include() function for unit scripts
 local function ScriptInclude(filename)
+	--Spring.Echo("  Loading include: " .. UNITSCRIPT_DIR .. filename)
 	local chunk = LoadChunk(UNITSCRIPT_DIR .. filename)
 	if chunk then
 		include_cache[filename] = chunk

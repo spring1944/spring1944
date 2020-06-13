@@ -2,6 +2,7 @@ local USM3Base = Vehicle:New{
 	maxDamage				= 930,
 	trackOffset				= 10,
 	trackWidth				= 15,
+	transportCapacity		= 11, -- 13 inc driver and gunner
 	
 	customParams = {
 		armour = {
@@ -37,10 +38,11 @@ local USM3Base = Vehicle:New{
 		},
 		normaltex				= "unittextures/gbrm5halftrack_normals.dds",
 		maxvelocitykmh			= 72,
+		frontseats				= 2,
 	},
 }
 
-local USM3Halftrack = USM3Base:New(HalfTrack):New{
+local USM3Halftrack = HalfTrack:New(USM3Base):New{
 	name					= "M3A1 Halftrack",
 	buildCostMetal			= 1200,
 	
@@ -63,6 +65,7 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 	name					= "M16 MGMC",
 	buildCostMetal			= 990,
 	corpse					= "usm16mgmc_destroyed",
+	transportCapacity		= 0,
 
 	weapons = {
 		[1] = {

@@ -77,6 +77,7 @@ local HUN43MLehel = HalfTrack:New{
 	maxDamage				= 1020,
 	trackOffset				= 10,
 	trackWidth				= 15,
+	transportCapacity		= 8,
 	
 	customParams = {
 		armour = {

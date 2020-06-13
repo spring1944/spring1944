@@ -191,6 +191,7 @@ local Transport = Def:New{ -- not a full class (role/mixin)
 	transportMass		= 750,
 	transportSize		= 1,
 	unloadSpread		= 3,
+	holdSteady			= true,
 }
 
 local Amphibian = Def:New{ -- not a full class (role/mixin)

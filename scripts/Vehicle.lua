@@ -291,6 +291,7 @@ local function SwapTracks()
 end
 
 local function EmitDust()
+	Signal(SIG_MOVE)
 	SetSignalMask(SIG_MOVE)
 	local dustEmitters = info.dustTrails
 	while true do
@@ -707,11 +708,29 @@ end
 if UnitDef.transportCapacity > 0 then
 	local tow_point = piece "tow_point"
 	local canTow = not not tow_point
+	local seats = {}
+	for i = 1, UnitDef.transportCapacity do
+		seats[i] = piece("seat" ..i)
+ 	end
+	local passengers = {}
+	local numPassengers = 0
 
 	function script.TransportPickup(passengerID)
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
 		if mass < 100 then --ugly check for inf gun vs. infantry.
-			AttachUnit(-1, passengerID)
+			numPassengers = numPassengers + 1
+			passengers[numPassengers] = passengerID
+			AttachUnit(seats[numPassengers] or -1, passengerID)
+			env = Spring.UnitScript.GetScriptEnv(passengerID)
+			Spring.UnitScript.CallAsUnit(passengerID, env.script.StopMoving)
+			Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "sit")
+			if numPassengers > info.frontSeats then -- first n seats face forwards
+				if numPassengers % 2 == 0 then
+					Turn(seats[numPassengers], y_axis, math.rad(90))
+				else
+					Turn(seats[numPassengers], y_axis, -math.rad(90))
+				end
+			end
 		elseif canTow then
 			AttachUnit(tow_point, passengerID)
 			canTow = false
@@ -723,6 +742,16 @@ if UnitDef.transportCapacity > 0 then
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
 		if mass >= 100 then
 			canTow = true
+		else
+			passengers[numPassengers] = nil
+			numPassengers = numPassengers - 1
+			env = Spring.UnitScript.GetScriptEnv(passengerID)
+			Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "stand")
+			Sleep(31)
+			 -- call it again because sometimes it doesn't seem to work the first time
+			Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "stand")
+			AttachUnit(tow_point, passengerID) -- exit through gift shop
+			Sleep(31)
 		end
 		Spring.UnitScript.DropUnit(passengerID)
 	end

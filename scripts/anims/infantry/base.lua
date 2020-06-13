@@ -255,6 +255,31 @@ local anims = {
 
 local stances = {
 	null = {},
+	sit = {
+		turns = {
+			{rthigh, x_axis, -math.rad(90)},
+			{lthigh, x_axis, -math.rad(90)},
+			{rleg, x_axis, math.rad(90)},
+			{lleg, x_axis, math.rad(90)},
+			{gun, z_axis, math.rad(180)},
+			{gun, x_axis, 0},
+			{ruparm, x_axis, 0},
+			{ruparm, y_axis, 0},
+			{ruparm, z_axis, 0},
+			{rloarm, x_axis, 0},
+			{rloarm, y_axis, 0},
+			{rloarm, z_axis, 0},
+			{luparm, x_axis, 0},
+			{luparm, y_axis, 0},
+			{luparm, z_axis, 0},
+			{lloarm, x_axis, 0},
+			{lloarm, y_axis, 0},
+			{lloarm, z_axis, 0},
+		},
+		moves = {
+			{pelvis, y_axis, -6},
+		},
+	},
 	stand_base = {
 					turns ={ -- Turns
 						{pelvis, y_axis, 0},
@@ -662,6 +687,7 @@ local stances = {
 
 local variants = {
 	null = {stances.null},
+	sit = {stances.sit},
 	stand_base = { stances.stand_base },
 	prone_base = { stances.prone_base_1,
 				   stances.prone_base_2 },

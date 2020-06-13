@@ -217,7 +217,7 @@ function widget:DrawWorldPreUnit()
 
   local lastColorSet = nil
   for _,unitID in ipairs(spGetAllUnits()) do
-    if (spIsUnitVisible(unitID)) then
+    if (spIsUnitVisible(unitID) and not Spring.GetUnitTransporter(unitID)) then
       local teamID = spGetUnitTeam(unitID)
       if (teamID and teamID ~= Spring.GetGaiaTeamID()) then
         local udid = spGetUnitDefID(unitID)

@@ -175,8 +175,8 @@ local function PlayAnim()
 end
 
 local function ChangePose(transition, nextPoseID, nextPoseName)
-	SetSignalMask(0)
 	--Spring.Echo("start transition")
+	SetSignalMask(0)
 	for i, frame in pairs(transition) do
 		local duration, turns, moves, headingTurn, pitchTurn, anim, emit =
 			  frame.duration, frame.turns, frame.moves, frame.headingTurn, frame.pitchTurn, frame.anim, frame.emit
@@ -225,11 +225,11 @@ local function ChangePose(transition, nextPoseID, nextPoseName)
 	currentPoseName = nextPoseName
 end
 
-local function PickPose(name)
+function PickPose(name)
 
 	local nextPoseID = GetNewPoseID(name)
-	if not currentPoseID then
-		--Spring.Echo("warp")
+	if not currentPoseID or force then
+		--Spring.Echo("warp", name)
 		currentPoseID = nextPoseID
 		currentPoseName = name
 		local pose = poses[currentPoseID]
@@ -245,8 +245,9 @@ local function PickPose(name)
 			end
 		end
 	else
-
+		--Spring.Echo("PickPose else", name)
 		local transition
+		
 		-- do not attempt to change for morphing units
 		if firing and Spring.GetUnitRulesParam(unitID, 'movectrl') ~= 1 then
 			if fireTransitions[currentPoseID] and fireTransitions[currentPoseID][nextPoseID] then

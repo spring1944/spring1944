@@ -182,7 +182,9 @@ for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 	end
 end
 
-
+if not poseVariants.sit then
+	CreatePose(variants.null, variants.sit, "sit")
+end
 if not poseVariants.crawl then
 	CreatePose(variants.null, variants.crawl, "crawl")
 end
@@ -363,6 +365,10 @@ end
 --CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.stand)
 CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.prone, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
 CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.run)
+CreateVariantTransitions(transitions, poseVariants.sit, poseVariants.stand)
+CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.sit)
+CreateVariantTransitions(transitions, poseVariants.sit, poseVariants.run)
+CreateVariantTransitions(transitions, poseVariants.run, poseVariants.sit)
 
 if UnitDefs[unitDefID].isBuilder then
 	CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.build)

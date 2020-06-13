@@ -218,58 +218,6 @@ local function standardTargetWeight(unitID, unitDefID, weaponNum, targetID)
 			local damage = WeaponDefs[weaponDefID][damages][UnitDefs[targetDefID].armorType]
 			local effectiveDamage = GG.ResolveDamage(targetID, targetDefID, "base", nil, weaponDefID, damage, ax, ay, az)
 			
-			--[[local distance = vMagnitude(ux - wx, uy - wy, uz - wz)
-			local targetHealth, maxTargetHealth = Spring.GetUnitHealth(targetUnitID)
-			local front, side, rear, top, armorTypeName, armorType = unpack(targetInfo) -- TODO: Uh oh
-			local penetration, dropoff, range, damages, armorHitSide = unpack(weaponInfo)
-			local isHE = (penetration == 0)
-			distance = min(distance, range)
-			local baseDamage = damages[armorType]
-			local damage = baseDamage
-			if isHE then
-				penetration = HE_MULT * sqrt(baseDamage)
-			elseif dropoff ~= 0 then
-				penetration = penetration * exp(dropoff * distance)
-			end
-			penetration = forwardArmorTranslation(penetration)
-			--baseDamage = (baseDamage / health) * 100
-			--local numerator = baseDamage * penetration
-			
-			-- TBD: find out hit direction and then get the one damage we really need out of this
-			local dx, dy, dz, d = vNormalized(wx - ux, wy - uy, wz - uz)
-			local frontDir, upDir = Spring.GetUnitVectors(unitID)
-			local dotUp = dx * upDir[1] + dy * upDir[2] + dz * upDir[3]
-			local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
-
-			local armor = 0
-			
-			if armorHitSide 
-					and (not isHE or damage / damages[armorType] > GG.lusHelper.DIRECT_HIT_THRESHOLD) then
-				if armorHitSide == "top" then armor = top
-				elseif armorHitSide == "rear" then armor = rear
-				elseif armorHitSide == "side" then armor = side
-				else armor = front
-				end
-			else
-				if dotUp > SQRT_HALF or dotUp < -SQRT_HALF then
-					armor = top
-				else
-					if dotFront > SQRT_HALF then
-						armor = front
-					elseif dotFront > -SQRT_HALF then
-						armor = side
-					else
-						armor = rear
-					end
-				end
-			end
-			
-			local mult = penetration / (penetration + armor)
-			
-			if isHE and armorTypeName == "armouredvehicles" then -- TODO?
-				mult = mult + 1
-			end]]
-			
 			-- if we can't 1-shot a target then go for max damage%
 			-- if we can 1-shot then go for the one with max HP remaining. Adding 1 to result so these are always higher weight than the ones above
 			--local effectiveDamage = damage * mult
@@ -436,7 +384,7 @@ function gadget:GamePreload()
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)
-
+		info.frontSeats = (tonumber(cp.frontseats) or 0)
 		info.planeVoice = table.unserialize(cp.planevoice) or {}
 		
 

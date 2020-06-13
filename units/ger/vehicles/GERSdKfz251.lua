@@ -4,6 +4,7 @@ local GERSdKfz251 = HalfTrack:New{
 	maxDamage				= 850,
 	trackOffset				= 10,
 	trackWidth				= 15,
+	transportCapacity		= 10,
 	
 	weapons = {
 		[1] = {
@@ -36,21 +37,6 @@ local GERSdKfz251 = HalfTrack:New{
 					thickness		= 0,
 				},
 			},
-			--[[turret = {
-				front = {
-					thickness		= 7,
-					slope			= 27,
-				},
-				rear = {
-					thickness		= 0,
-				},
-				side = {
-					thickness 		= 0,
-				},
-				top = {
-					thickness		= 0,
-				},
-			},]]
 		},
 
 		maxvelocitykmh		= 52.5,
