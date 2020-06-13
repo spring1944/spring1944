@@ -137,7 +137,7 @@ function gadget:GameFrame(n)
 							local unitToDamage = unitsToDamage[i]
 							local unitDefID = Spring.GetUnitDefID(unitToDamage)
 							local ud = UnitDefs[unitDefID]
-							if (ud.customParams.feartarget == "1") then
+							if (ud and ud.customParams.feartarget == "1") then
 								if burningUnits[unitToDamage] == nil then	
 									local unitDefID = Spring.GetUnitDefID(unitToDamage)
 									local ud = UnitDefs[unitDefID]
