@@ -10,11 +10,23 @@ local HUN_LaBo41 = TankLandingCraftComposite:New{
 	maxVelocity				= 2,
 	transportMass			= 4000,
 	turnRate				= 35,	
+	
+	script = "BoatTransport.lua",
+	transportUnloadMethod = 0,
+	holdSteady = true,
+	--loadingRadius = 150,
+
+	 
+	 
 	customparams = {
 		deathanim = {
 			["x"] = {angle = -5, speed = 2.5},
 		},
 		customanims = "hun_labo",
+		
+		armlength 	= 98,
+		ramplength	= 50,
+		colsize		= 40,
 	},
 }
 

@@ -162,6 +162,8 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 		local pieceMap = GetUnitPieceMap(unitID)
 		local numRockets = 0
 		local numBarrels = 0
+		local numRamps = 0
+		local numWakes = 0
 		for pieceName, pieceNum in pairs(pieceMap) do
 			--[[local weapNumPos = pieceName:find("_") or 0
 			local weapNumEndPos = pieceName:find("_", weapNumPos+1) or 0
@@ -172,10 +174,16 @@ function gadget:UnitCreated(unitID, unitDefID, teamID, builderID)
 			elseif pieceName:find("barrel") then
 				--barrelIDs[weaponNum] = true
 				numBarrels = numBarrels + 1
+			elseif pieceName:find("ramp") then
+				numRamps = numRamps + 1
+			elseif pieceName:find("wake") then
+				numWakes = numWakes + 1
 			end
 		end
 		info.numBarrels = numBarrels
 		info.numRockets = numRockets
+		info.numRamps = numRamps
+		info.numWakes = numWakes
 	end
 	
 	-- Remove aircraft land and repairlevel buttons
@@ -384,10 +392,15 @@ function gadget:GamePreload()
 		info.deathAnim = table.unserialize(cp.deathanim) or {}
 		info.axes = {["x"] = 1, ["y"] = 2, ["z"] = 3}
 		info.fearLimit = (tonumber(cp.fearlimit) or nil)
-		info.frontSeats = (tonumber(cp.frontseats) or 0)
 		info.planeVoice = table.unserialize(cp.planevoice) or {}
-		
 
+		-- transports
+		info.frontSeats = (tonumber(cp.frontseats) or 0)
+		info.armLength = (tonumber(cp.armlength) or 0)
+		info.rampLength = (tonumber(cp.ramplength) or 0)
+		info.rowSize = (tonumber(cp.rowsize) or 1)
+		info.colSize = (tonumber(cp.colsize) or 1)
+		
 		-- deploy anims
 		if cp.customanims then
 			info.customAnimsName = cp.customanims

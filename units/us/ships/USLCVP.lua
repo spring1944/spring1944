@@ -30,7 +30,9 @@ local US_LCVP = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
-
+		armlength 	= 42,
+		rowsize		= 3,
+		colsize		= 3,
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

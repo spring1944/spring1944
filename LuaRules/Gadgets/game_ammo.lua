@@ -189,11 +189,11 @@ local function Resupply(unitID, unitDefID)
 	local supplierID = FindSupplier(unitID, teamID)
 	
 	if supplierID then
-		local oldAmmo = GetUnitRulesParam(unitID, "ammo")
+		local oldAmmo = tonumber(GetUnitRulesParam(unitID, "ammo"))
 		local unitWeaponsWithAmmo = weaponsWithAmmo[unitDefID]
 		local logisticsLevel = Spring.GetTeamResources(teamID, "energy")
-		local weaponCost = weaponsCosts[unitDefID]
-		local maxAmmo = maxAmmo[unitDefID]	
+		local weaponCost = weaponsCosts[unitDefID] or 0
+		local maxAmmo = maxAmmo[unitDefID] or 0	
 		
 		if logisticsLevel < weaponCost then
 			SetUnitRulesParam(unitID, "insupply", 2)
