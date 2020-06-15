@@ -445,9 +445,6 @@ for stance, _ in pairs(poseVariants) do
 	CreateVariantTransitions(transitions, poseVariants[stance], poseVariants.sit)
 end
 
-for k,v in pairs(fireTransitions) do
-	Spring.Echo("FT", k, v)
-end
 local info = GG.lusHelper[unitDefID]
 
 info.animation = {poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities}
