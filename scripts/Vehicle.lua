@@ -722,9 +722,6 @@ if UnitDef.transportCapacity > 0 then
 			passengers[numPassengers] = passengerID
 			AttachUnit(seats[numPassengers] or -1, passengerID)
 			if seats[numPassengers] then
-				env = Spring.UnitScript.GetScriptEnv(passengerID)
-				Spring.UnitScript.CallAsUnit(passengerID, env.script.StopMoving)
-				Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "sit")
 				if numPassengers > info.frontSeats then -- first n seats face forwards
 					if numPassengers % 2 == 0 then
 						Turn(seats[numPassengers], y_axis, math.rad(90))
@@ -732,6 +729,9 @@ if UnitDef.transportCapacity > 0 then
 						Turn(seats[numPassengers], y_axis, -math.rad(90))
 					end
 				end
+				env = Spring.UnitScript.GetScriptEnv(passengerID)
+				Spring.UnitScript.CallAsUnit(passengerID, env.StopAiming)
+				Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "sit")
 			end
 		elseif canTow then
 			AttachUnit(tow_point, passengerID)
@@ -750,9 +750,7 @@ if UnitDef.transportCapacity > 0 then
 				numPassengers = numPassengers - 1
 				env = Spring.UnitScript.GetScriptEnv(passengerID)
 				Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "stand")
-				Sleep(31)
-				-- call it again because sometimes it doesn't seem to work the first time
-				Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "stand")
+				Spring.UnitScript.CallAsUnit(passengerID, env.Stand)
 			end
 			AttachUnit(tow_point, passengerID) -- exit through gift shop
 			Sleep(31)

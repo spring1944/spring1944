@@ -575,7 +575,7 @@ local function ResolvePose(isFire)
 	inTransition = false
 end
 
-local function StopAiming()
+function StopAiming()
 	--Spring.Echo("stopaiming")
 	wantedAiming = false
 	StartThread(ResolvePose)
@@ -587,7 +587,7 @@ local function StopWalk()
 	StartThread(ResolvePose)
 end
 
-local function Stand()
+function Stand()
 	--Spring.Echo("stand")
 	wantedStanding = true
 	StartThread(ResolvePose)
