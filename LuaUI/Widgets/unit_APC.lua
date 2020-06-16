@@ -10,7 +10,8 @@ function widget:GetInfo()
 	}
 end
 
-local RANGE = 850
+local RANGE = 800
+local FUDGE = 1.05
 
 local APCDefCache = {}
 local APCUnitCache = {}
@@ -24,7 +25,7 @@ local troopAPCs = {}
 function widget:Initialize()
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local customParams = unitDef.customParams
-		if unitDef.transportCapacity > 0 and not unitDef.modCategories.ship then
+		if unitDef.transportCapacity > 0 and not unitDef.modCategories.ship and #unitDef.weapons > 0 then
 			APCDefCache[unitDefID] = unitDef.transportCapacity
 			--Spring.Echo("Found APC", unitDef.name)
 		end
@@ -89,15 +90,20 @@ function widget:GameFrame(n)
 					Spring.GiveOrderToUnit(unitID, CMD.GUARD, {troopID}, {"shift"})
 				end]]
 			elseif not enemyID and #troops == 0 then -- no enemy in range and no troops loaded
-				APCUnitCache[unitID] = true
-				if APCTroops[unitID] then
-					-- clear guard commands
-					Spring.GiveOrderToUnit(unitID, CMD.STOP, {}, {})
-					for _, troopID in pairs(APCTroops[unitID]) do
-						if Spring.ValidUnitID(troopID) and not Spring.GetUnitIsDead(troopID) then
-							Spring.GiveOrderToUnit(troopID, CMD.LOAD_ONTO, {unitID}, {})
+				local farEnemy = Spring.GetUnitNearestEnemy(unitID, RANGE*FUDGE)
+				if not farEnemy then -- nothing to see, get back in
+					APCUnitCache[unitID] = true
+					if APCTroops[unitID] then
+						-- clear guard commands
+						Spring.GiveOrderToUnit(unitID, CMD.STOP, {}, {})
+						for _, troopID in pairs(APCTroops[unitID]) do
+							if Spring.ValidUnitID(troopID) and not Spring.GetUnitIsDead(troopID) then
+								Spring.GiveOrderToUnit(troopID, CMD.LOAD_ONTO, {unitID}, {})
+							end
 						end
 					end
+				else
+					-- just keep on with current fight command
 				end
 			elseif not enemyID then
 				Continue(unitID)
