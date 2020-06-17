@@ -3,9 +3,9 @@
 -- Bofors 40mm AA Gun (GBR & USA)
 local Bofors40mm = AntiAirGun:New{
   name               = [[40mm Bofors Anti-Aircraft Gun]],
-  burst              = 4, -- 4 round clips
+  burst              = 5, -- now 5 round clips
   burstrate          = 0.429, -- cyclic 140rpm
-  reloadtime         = 2.7, -- practical 90rpm
+  reloadtime         = 2.7, -- practical 110rpm
   weaponVelocity     = 1646,
   damage = {
     default            = 275,
@@ -44,7 +44,7 @@ local Twin_Bofors40mmHE = Bofors40mmHE:New{
 -- FlaK 43 37mm AA Gun (GER)
 local FlaK4337mm = AntiAirGun:New{
   name               = [[37mm FlaK 43 Anti-Aircraft Gun]],
-  burst              = 4, -- 8 round clips
+  burst              = 5, -- 8 round clips
   burstrate          = 0.240, -- cyclic 250rpm
   reloadtime         = 1.6, -- practical 150rpm 
   weaponVelocity     = 1640,
@@ -76,9 +76,9 @@ local FlaK4337mmAP = AutoCannonAP:New(FlaK4337mm, true):New{
 -- M-1939 61-K 37mm AA Gun (RUS)
 local M1939_61K37mm = AntiAirGun:New{
   name               = [[37mm M-1939 61-K Anti-Aircraft Gun]],
-  burst              = 5, -- 5 round clip
+  burst              = 6, -- 5 round clip
   burstrate          = 0.353, -- cyclic 170rpm
-  reloadtime         = 3.8, -- 80rpm practical
+  reloadtime         = 3.4, -- 105 rpm practical
   weaponVelocity     = 1760,
   damage = {
     default            = 182,
@@ -99,7 +99,7 @@ local Bofors25mm = AntiAirGun:New{
 	name               = [[25mm M/38 Bofors Anti-Aircraft Gun]],
 	burst              = 6, -- 6 round clips
 	burstrate          = 0.429, -- cyclic 140rpm
-	reloadtime         = 2.7, -- practical 90rpm
+	reloadtime         = 2.7, -- practical 132rpm
 	weaponVelocity     = 1646,
 	damage = {
 		default            = 150,
