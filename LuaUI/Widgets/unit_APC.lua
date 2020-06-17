@@ -65,12 +65,25 @@ local function Continue(unitID, fightFirst)
 	end
 end
 
+local function RemoveNonCombatants(list)
+	local newList = {}
+	if list then
+		for _, troopID in pairs(list) do
+			local unitDef = UnitDefs[Spring.GetUnitDefID(troopID)]
+			if #unitDef.weapons > 0 then
+				table.insert(newList, troopID)
+			end
+		end
+	end
+	return newList
+end
+
 function widget:GameFrame(n)
 	if n % 16 == 0 then
 		for unitID in pairs(APCUnitCache) do
 			--Spring.Echo("Tracking APC", unitID)
 			local enemyID = Spring.GetUnitNearestEnemy(unitID, RANGE)
-			local troops = Spring.GetUnitIsTransporting(unitID)
+			local troops = RemoveNonCombatants(Spring.GetUnitIsTransporting(unitID))
 			if enemyID and #troops > 0 then -- enemy in range, demount and fight
 				--Spring.Echo("Enemy in sight!")
 				if not APCCmdCache[unitID] then
@@ -109,8 +122,8 @@ function widget:GameFrame(n)
 end
 
 function widget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
-	if APCUnitCache[transportID] then
-		APCTroops[transportID] = Spring.GetUnitIsTransporting(transportID)
+	if APCUnitCache[transportID] and #UnitDefs[unitDefID].weapons > 0 then
+		APCTroops[transportID] = RemoveNonCombatants(Spring.GetUnitIsTransporting(transportID))
 		APCTroopCounts[transportID] = #APCTroops[transportID]
 		troopAPCs[unitID] = transportID
 	end

@@ -706,6 +706,8 @@ end
 
 --Transports
 if UnitDef.transportCapacity > 0 then
+	local LOS = UnitDef.losRadius
+	local LOS_BOOST = 25
 	local tow_point = piece "tow_point"
 	local canTow = not not tow_point
 	local seats = {}
@@ -733,6 +735,9 @@ if UnitDef.transportCapacity > 0 then
 				Spring.UnitScript.CallAsUnit(passengerID, env.StopAiming)
 				Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "sit")
 			end
+			if UnitDef.modCategories.openveh then -- only grant LOS boost to open vehicles
+				Spring.SetUnitSensorRadius(unitID, "los", LOS + LOS_BOOST * numPassengers)
+			end
 		elseif canTow then
 			AttachUnit(tow_point, passengerID)
 			canTow = false
@@ -742,20 +747,26 @@ if UnitDef.transportCapacity > 0 then
 	-- note x, y z is in worldspace
 	function script.TransportDrop(passengerID, x, y, z)
 		local mass = UnitDefs[Spring.GetUnitDefID(passengerID)].mass
+		env = Spring.UnitScript.GetScriptEnv(passengerID)
 		if mass >= 100 then
 			canTow = true
 		else
 			passengers[numPassengers] = nil
 			if seats[numPassengers] then
-				numPassengers = numPassengers - 1
-				env = Spring.UnitScript.GetScriptEnv(passengerID)
 				Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "stand")
 				Spring.UnitScript.CallAsUnit(passengerID, env.Stand)
+				Sleep(500)
 			end
 			AttachUnit(tow_point, passengerID) -- exit through gift shop
 			Sleep(31)
+			numPassengers = numPassengers - 1
+			if UnitDef.modCategories.openveh then -- only grant LOS boost to open vehicles
+				Spring.SetUnitSensorRadius(unitID, "los", LOS + LOS_BOOST * numPassengers)
+			end
 		end
 		Spring.UnitScript.DropUnit(passengerID)
+		--Spring.UnitScript.CallAsUnit(passengerID, env.script.Create)
+		Spring.UnitScript.CallAsUnit(passengerID, env.PickPose, "stand")
 	end
 end
 
