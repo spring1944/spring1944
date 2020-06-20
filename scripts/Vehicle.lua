@@ -502,7 +502,7 @@ end
 function script.BlockShot(weaponNum, targetUnitID, userTarget)
 	if IsMainGun(weaponNum) then
 		if usesAmmo then
-			local ammo = Spring.GetUnitRulesParam(unitID, 'ammo')
+			local ammo = tonumber(Spring.GetUnitRulesParam(unitID, 'ammo'))
 			if ammo <= 0 then
 				return true
 			end

@@ -133,7 +133,7 @@ end
 
 local function ProcessWeapons(unitID, unitDefID)
 	local weaponsWithAmmo = weaponsWithAmmo[unitDefID] or 2
-	local ammoLevel = GetUnitRulesParam(unitID, "ammo")
+	local ammoLevel = tonumber(GetUnitRulesParam(unitID, "ammo"))
 	local weaponFired = false
 	local reloadFrame = 0
 
