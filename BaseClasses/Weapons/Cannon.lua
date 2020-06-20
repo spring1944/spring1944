@@ -197,7 +197,7 @@ local AutoCannonAA = AA:New{
 	areaOfEffect       = 30,
 	explosionGenerator = [[custom:HE_Small]],
 	movingAccuracy     = 800,
-	targetMoveError    = 0,
+	targetMoveError    = 0.8,
 }
 
 local AntiAirGunAA = AA:New{
