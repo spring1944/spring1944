@@ -228,11 +228,13 @@ local function CopyCategories(ud)
 			end
 
 			--Spring.Echo("Replacing " .. ud.name .. " weapon " .. weaponID .. " (" .. weapon.name .. ") OnlyTargetCategory with:", targetCat.only, "BadTargetCategory with:", targetCat.bad)
-			ud.weapons[weaponID].onlytargetcategory = only
+			if only and not ud.weapons[weaponID].onlytargetcategory then -- don't overwrite if they exist
+				ud.weapons[weaponID].onlytargetcategory = only
+			end
 			if bad and not ud.weapons[weaponID].badtargetcategory then -- don't overwrite
 				ud.weapons[weaponID].badtargetcategory = bad
-			elseif bad then
-				ud.weapons[weaponID].badtargetcategory = ud.weapons[weaponID].badtargetcategory .. " " .. bad
+			elseif bad then -- append
+				ud.weapons[weaponID].badtargetcategory = (ud.weapons[weaponID].badtargetcategory or "") .. " " .. bad
 			end
 		else
 			Spring.Log('weapondefs_post', 'error', ud.name .. ' weapon number ' .. weaponID .. ' name ' .. weapon.name .. ' does not exist in the category cache -- it is probably invalid')

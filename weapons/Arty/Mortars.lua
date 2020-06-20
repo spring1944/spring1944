@@ -21,6 +21,10 @@ local BL4InMortar = Mortar:New{
 	name			 = [[BL 4 Inch Mortar]],
 	range			 = 1232,
 	commandFire		 = true,
+	
+	customParams = {
+		onlyTargetCategory = "BUILDING INFANTRY SOFTVEH OPENVEH HARDVEH DEPLOYED", -- don't fire at ships or turrets
+	},
 }
 local BL4InMortarSmoke = MortarSmoke:New(BL4InMortar, true)
 

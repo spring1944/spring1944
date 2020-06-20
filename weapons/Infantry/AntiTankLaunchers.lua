@@ -97,6 +97,7 @@ local Buzoganyveto44MHEAT = Rocket_ATLClass:New{
 	customparams = {
 		armor_penetration  = 300,
 		weaponCost			= 50,
+		onlyTargetCategory = "HARDVEH OPENVEH SOFTVEH SHIP LARGESHIP", -- don't fire at infantry
 	},
 	damage = {
 		default            = 8000,
