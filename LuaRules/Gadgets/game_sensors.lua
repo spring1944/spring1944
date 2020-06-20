@@ -65,7 +65,7 @@ local function updateShipVisibility(shipUnitID, shipAllyTeamID)
     local shipX, shipY, shipZ = GetUnitPosition(shipUnitID)
 	local turrets = GG.boatMothers[shipUnitID]
     for _, viewingAllyTeamID in ipairs(GetAllyTeamList()) do
-        if viewingAllyTeamID ~= shipAllyTeamID then
+        if viewingAllyTeamID ~= shipAllyTeamID and shipZ then
             if IsPosInAirLos(shipX, shipY, shipZ, viewingAllyTeamID) then
                 showUnitToAllyTeam(shipUnitID, viewingAllyTeamID)
 				if turrets then
