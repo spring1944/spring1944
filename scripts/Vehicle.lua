@@ -404,7 +404,7 @@ local function ResolveDirection(headingPiece, pitchPiece)
 
 	for weaponNum, dir in pairs(wantedDirection) do
 		if info.aimPieces[weaponNum] and info.aimPieces[weaponNum][1] == headingPiece and
-				(not IsMainGun(weaponNum) or Spring.GetUnitRulesParam(unitID, "ammo") > 0) and dir[1] then
+				(not IsMainGun(weaponNum) or tonumber(Spring.GetUnitRulesParam(unitID, "ammo") or 0) > 0) and dir[1] then
 			local _, isUserTarget = Spring.GetUnitWeaponTarget(unitID, weaponNum)
 			if isUserTarget then --is manual target
 				topDirection = dir
