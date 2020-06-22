@@ -1,7 +1,7 @@
 local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 	name				= "Semovente da 47/32",
 	description			= "Light Turretless Tank Destroyer",
-	buildCostMetal		= 900,
+	buildCostMetal		= 720,
 	maxDamage			= 640,
 	trackOffset			= 5,
 	trackWidth			= 11,
