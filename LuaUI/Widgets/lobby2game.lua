@@ -21,10 +21,12 @@ function widget:GetConfigData()
     return {
         -- No matters what the configuration says, we want to reset the variable
         -- to its original false state
-        launched_by_lobby = WG.LOBBY2GAME,
+        launched_by_lobby = WG.LOBBY2GAME.launched_by_lobby,
     }
 end
 
 function widget:SetConfigData(data)
-    WG.LOBBY2GAME.launched_by_lobby = data.launched_by_lobby or WG.LOBBY2GAME.launched_by_lobby
+    if data.launched_by_lobby ~= nil then
+        WG.LOBBY2GAME.launched_by_lobby = data.launched_by_lobby
+    end
 end
