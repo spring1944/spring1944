@@ -1,4 +1,4 @@
---//=============================================================================
+--// ============================================================================= 
 
 --- TabPanel module
 
@@ -6,41 +6,56 @@
 -- Inherits from LayoutPanel.
 -- @see layoutpanel.LayoutPanel
 -- @table TabPanel
--- @tparam {tab1,tab2,...} tabs contained in the tab panel, each tab has a .name (string) and a .children field (table of Controls)(default {})
+-- @tparam {tab1, tab2, ...} tabs contained in the tab panel, each tab has a .name (string) and a .children field (table of Controls)(default {})
 -- @tparam chili.Control currentTab currently visible tab
 TabPanel = LayoutPanel:Inherit{
-  classname = "tabpanel",
-  orientation = "vertical",
-  resizeItems = false,
-  itemPadding = {0, 0, 0, 0},
-  itemMargin  = {0, 0, 0, 0},
-  barHeight = 40,
-  tabs = {},
-  currentTab = {},
+	classname     = "tabpanel",
+	orientation   = "vertical",
+	resizeItems   = false,
+	scrollTabs    = false, -- NB: Requires the .tabbar to be explicitly resized due to autosize bug
+	itemPadding   = {0, 0, 0, 0},
+	itemMargin    = {0, 0, 0, 0},
+	barHeight     = 40,
+	tabs          = {},
+	currentTab    = {},
+	OnTabChange   = {},
 }
 
 local this = TabPanel
 local inherited = this.inherited
 
---//=============================================================================
+--// ============================================================================= 
 
 function TabPanel:New(obj)
-	obj = inherited.New(self,obj)
-	
-	local tabNames = {}
-	for i=1,#obj.tabs do
-		tabNames[i] = obj.tabs[i].name
-	end
-	obj:AddChild(
-		TabBar:New {
-			tabs = tabNames,
+	obj = inherited.New(self, obj)
+
+	obj.tabbar = TabBar:New {
+		tabs = obj.tabs,
+		x = 0,
+		y = 0,
+		right = 0,
+		height = obj.barHeight,
+	}
+	if obj.scrollTabs then
+		local tabScrollPanel = ScrollPanel:New {
 			x = 0,
-			y = 0,
 			right = 0,
+			y = 0,
 			height = obj.barHeight,
+			padding = {0, 0, 0, 0},
+			borderColor = {0, 0, 0, 0},
+			backgroundColor = {0, 0, 0, 0},
+			verticalScrollbar = false,
+			scrollbarSize = 5,
+			children = {
+				obj.tabbar
+			}
 		}
-	)
-  
+		obj:AddChild(tabScrollPanel)
+	else
+		obj:AddChild(obj.tabbar)
+	end
+
 	obj.currentTab = Control:New {
 		x = 0,
 		y = obj.barHeight,
@@ -50,8 +65,8 @@ function TabPanel:New(obj)
 	}
 	obj:AddChild(obj.currentTab)
 	obj.tabIndexMapping = {}
-	for i=1, #obj.tabs do
-		local tabName = obj.tabs[i].name	
+	for i = 1, #obj.tabs do
+		local tabName = obj.tabs[i].name
 		local tabFrame = Control:New {
 			padding = {0, 0, 0, 0},
 			x = 0,
@@ -68,36 +83,75 @@ function TabPanel:New(obj)
 			tabFrame:SetVisibility(false)
 		end
 	end
-	obj.children[1].OnChange = { function(tabbar, tabname) obj:ChangeTab(tabname) end }
+	obj.tabbar.OnChange = { function(tabbar, tabname) obj:ChangeTab(tabname) end }
 	return obj
 end
 
-function TabPanel:AddTab(tab)
-    local tabbar = self.children[1]
-    tabbar:AddChild(
-        TabBarItem:New{caption = tab.name, defaultWidth = tabbar.minItemWidth, defaultHeight = tabbar.minItemHeight} --FIXME: implement an "Add Tab in TabBar too"
-    )
-    local tabFrame = Control:New {
-        padding = {0, 0, 0, 0},
-        x = 0,
-        y = 0,
-        right = 0,
-        bottom = 0,
-        children = tab.children
-    }
-    self.tabIndexMapping[tab.name] = tabFrame
-    self.currentTab:AddChild(tabFrame)
-    tabFrame:SetVisibility(false)
+local function _CallChildrenListeners(self, eventname, ...)
+	local children = self.children
+	for _, child in ipairs(children) do
+		child:CallListeners(child[eventname], ...)
+	end
+end            
+
+function TabPanel:AddTab(tab, neverSwitchTab)
+	local switchToTab = (#self.tabbar.children == 0) and not neverSwitchTab
+		self.tabbar:AddChild(TabBarItem:New {
+			name = tab.name,
+			tooltip = tab.tooltip,
+			caption = tab.caption or tab.name,
+			defaultWidth = self.tabbar.minItemWidth,
+			defaultHeight = self.tabbar.minItemHeight
+		}) --FIXME: implement an "Add Tab in TabBar too"
+		local tabFrame = Control:New {
+			padding = {0, 0, 0, 0},
+			x = 0,
+			y = 0,
+			right = 0,
+			bottom = 0,
+			children = tab.children,
+			OnShow = { function(self) _CallChildrenListeners(self, "OnShow") end },
+			OnHide = { function(self) _CallChildrenListeners(self, "OnHide") end },
+		}
+		self.tabIndexMapping[tab.name] = tabFrame
+		self.currentTab:AddChild(tabFrame)
+		tabFrame:SetVisibility(false)
+	if switchToTab then
+		self:ChangeTab(tab.name)
+	end
 end
 
---//=============================================================================
+function TabPanel:RemoveTab(name)
+	if self.currentFrame == self.tabIndexMapping[name] then
+		self.currentFrame = nil
+	end
+	self.tabbar:Remove(name)
+	self.currentTab:RemoveChild(self.tabIndexMapping[name])
+	self.tabIndexMapping[name] = nil
+end
+
+function TabPanel:GetTab(tabname)
+	if not tabname or not self.tabIndexMapping[tabname] then
+		return false
+	end
+	return self.tabIndexMapping[tabname]
+end
+
+
+--// ============================================================================= 
 
 function TabPanel:ChangeTab(tabname)
 	if not tabname or not self.tabIndexMapping[tabname] then
 		return
 	end
-	self.currentFrame:SetVisibility(false)
+	if self.currentFrame == self.tabIndexMapping[tabname] then
+		return
+	end
+	if self.currentFrame then
+		self.currentFrame:SetVisibility(false)
+	end
 	self.currentFrame = self.tabIndexMapping[tabname]
 	self.currentFrame:SetVisibility(true)
+	self:CallListeners(self.OnTabChange, tabname)
 end
---//=============================================================================
+--// ============================================================================= 
