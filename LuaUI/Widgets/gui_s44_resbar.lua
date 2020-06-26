@@ -1,4 +1,4 @@
-local versionNumber = "v2.1"
+local versionNumber = "v3.0"
 
 function widget:GetInfo()
 	return {
@@ -15,8 +15,14 @@ end
 ------------------------------------------------
 --constants
 ------------------------------------------------
-local mainScaleHeight = 0.045 --height as a proportion of screen height; sets the overall scale of things
-local mainScaleWidth = 0.75 --width as a proportion of screen width
+local mainScaleWidth = 0.75 --Default widget width
+local mainScaleHeight = 0.045 -- Default widget height
+WG.RESBAROPTS = {
+    x = 1.0 - mainScaleWidth,
+    y = 0.0,
+    width = mainScaleWidth,
+    height = mainScaleHeight,
+}
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ResBar/"
 local GLYPHS = {
     metal = '\204\134',
@@ -83,6 +89,14 @@ local function OptimumFontSize(font, txt, w, h)
     local wf = w / font:GetTextWidth(txt)
     local hf, _, _ = h / font:GetTextHeight(txt)
     return floor(min(wf, hf) * font.size)
+end
+
+local function __OnMainWinSize(self, w, h)
+    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    WG.RESBAROPTS.x = self.x / viewSizeX
+    WG.RESBAROPTS.y = self.y / viewSizeY
+    WG.RESBAROPTS.width = self.width / viewSizeX
+    WG.RESBAROPTS.height = self.height / viewSizeY
 end
 
 local function __OnResBarSize(self, w, h)
@@ -181,6 +195,20 @@ local function ResBar(parent, x, color, res_name)
     return container
 end
 
+function ResetResbar(cmd, optLine)
+    -- Reset default values
+    WG.RESBAROPTS.x = 1.0 - mainScaleWidth
+    WG.RESBAROPTS.y = 0.0
+    WG.RESBAROPTS.width = mainScaleWidth
+    WG.RESBAROPTS.height = mainScaleHeight
+    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    x = WG.RESBAROPTS.x * viewSizeX
+    y = WG.RESBAROPTS.y * viewSizeY
+    w = WG.RESBAROPTS.width * viewSizeX
+    h = WG.RESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
@@ -204,24 +232,50 @@ function widget:Initialize()
     -- Create the window
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = tostring(floor(100 * (1.0 - mainScaleWidth))) .. "%",
-        y = "0%",
-        width = tostring(floor(100 * mainScaleWidth)) .. "%",
-        height = tostring(floor(100 * mainScaleHeight)) .. "%",
+        x = tostring(floor(100 * WG.RESBAROPTS.x)) .. "%",
+        y = tostring(floor(100 * WG.RESBAROPTS.y)) .. "%",
+        width = tostring(floor(100 * WG.RESBAROPTS.width)) .. "%",
+        height = tostring(floor(100 * WG.RESBAROPTS.height)) .. "%",
         minHeight = 25,
         padding = {0, 0, 0, 0},
     }
+    -- If we set OnMove/OnResize during the initialization, they are called
+    -- eventually breaking our WG.RESBAROPTS data
+    main_win.OnMove = {__OnMainWinSize,}
+    main_win.OnResize = {__OnMainWinSize,}
 
     local mresbar = ResBar(main_win, "0%", {0.7, 0.7, 0.7, 1}, "metal")
     local eresbar = ResBar(main_win, "50%", {0.9, 0.9, 0.1, 1}, "energy")
 
     main_win.mresbar = mresbar
     main_win.eresbar = eresbar
+
+    widgetHandler:AddAction("resetresbar", ResetResbar)
+
+    -- Set the widget size, which apparently were not working well
+    x = WG.RESBAROPTS.x * viewSizeX
+    y = WG.RESBAROPTS.y * viewSizeY
+    w = WG.RESBAROPTS.width * viewSizeX
+    h = WG.RESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
+end
+
+function widget:Shutdown()
+    Spring.SendCommands("resbar 1")
+    widgetHandler:RemoveAction("resetresbar")
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
     vsx = viewSizeX
     vsy = viewSizeY
+    if main_win == nil then
+        return
+    end
+    x = WG.RESBAROPTS.x * viewSizeX
+    y = WG.RESBAROPTS.y * viewSizeY
+    w = WG.RESBAROPTS.width * viewSizeX
+    h = WG.RESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
 end
 
 function widget:GameFrame(n)
@@ -260,4 +314,20 @@ function widget:GameFrame(n)
     eresbar.pbar:SetValue(100 * eCurr / eStor)
     eresbar.pbar:SetCaption(ToSI(eCurr) .. "/" .. ToSI(eStor) .. " (Resupply in " .. resupplyString .. ")" )
     __SetSliderValue(eresbar.slider, 100 * eShar)
+end
+
+function widget:GetConfigData()
+    return {
+        x      = WG.RESBAROPTS.x,
+        y      = WG.RESBAROPTS.y,
+        width  = WG.RESBAROPTS.width,
+        height = WG.RESBAROPTS.height,
+    }
+end
+
+function widget:SetConfigData(data)
+    WG.RESBAROPTS.x      = data.x or WG.RESBAROPTS.x
+    WG.RESBAROPTS.y      = data.y or WG.RESBAROPTS.y
+    WG.RESBAROPTS.width  = data.width or WG.RESBAROPTS.width
+    WG.RESBAROPTS.height = data.height or WG.RESBAROPTS.height
 end
