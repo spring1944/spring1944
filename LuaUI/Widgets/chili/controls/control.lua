@@ -19,6 +19,7 @@
 -- @int[opt = 10] minHeight minimum height
 -- @int[opt = 1e9] maxWidth maximum width
 -- @int[opt = 1e9] maxHeight maximum height
+-- @tparam {func1, fun2, ...} OnMove table of function listeners for position changes, (default {})
 -- @tparam {func1, fun2, ...} OnResize table of function listeners for size changes, (default {})
 Control = Object:Inherit{
 	classname       = 'control',
@@ -81,6 +82,7 @@ Control = Object:Inherit{
 	useRTT = false and ((gl.CreateFBO and gl.BlendFuncSeparate) ~= nil),
 	useDLists = false, --(gl.CreateList ~= nil), --FIXME broken in combination with RTT (wrong blending)
 
+	OnMove          = {},
 	OnResize        = {},
 	OnEnableChanged = {},
 
@@ -415,6 +417,12 @@ function Control:UpdateClientArea(dontRedraw)
 		--FIXME sometimes this makes self:RequestRealign() redundant! try to reduce the Align() calls somehow
 		self.parent:RequestRealign()
 	end
+	local needMove = false
+	if (self.x ~= self._oldx_uca) or (self.y ~= self._oldy_uca) then
+		needMove = true
+		self._oldx_uca  = self.x
+		self._oldy_uca = self.y
+	end
 	local needResize = false
 	if (self.width ~= self._oldwidth_uca) or (self.height ~= self._oldheight_uca) then
 		self:RequestRealign()
@@ -427,6 +435,9 @@ function Control:UpdateClientArea(dontRedraw)
 		self:Invalidate()
 	end
 	
+	if needMove then
+		self:CallListeners(self.OnMove, self.x, self.y)
+	end
 	if needResize then
 		self:CallListeners(self.OnResize, self.clientWidth, self.clientHeight)
 	end
