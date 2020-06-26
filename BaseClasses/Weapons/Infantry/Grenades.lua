@@ -40,7 +40,7 @@ local APGrenadeClass = GrenadeClass:New{
 	reloadtime         = 8,
 	soundHitDry        = "GEN_Explo_Grenade",
 	customparams = {
-		armor_penetration  = 40, 
+		armor_penetration  = 28, 
 		damagetype         = "grenade",
 		badtargetcategory  = "OPENVEH HARDVEH BUILDING",
 	},
