@@ -50,7 +50,7 @@ local BOUNCE_TTL = 45 -- 1.5 seconds
 local PIECES = {["base"] = true, ["super"] = true, ["turret"] = true}
 
 --effective penetration = HE_MULT * sqrt(damage)
-local HE_MULT = 1.45 --1.9/2.2
+local HE_MULT = 1.9 --1.45 --1.9 --2.2
 
 local DIRECT_HIT_THRESHOLD = 0.98
 
