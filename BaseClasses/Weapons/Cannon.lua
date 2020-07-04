@@ -107,7 +107,7 @@ local MediumHE = HE:New{ -- Medium & MediumHeavy & InfGun
 }
 
 local HeavyHE = HE:New{
-	edgeEffectiveness  = 0.1,
+	edgeEffectiveness  = 0.4,
 	explosionGenerator = "custom:HE_XLarge",
 	soundHitDry        = "GEN_Explo_4",
 	customparams = {
