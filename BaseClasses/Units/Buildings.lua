@@ -136,7 +136,7 @@ local GunYardLongRange = GunYard:New{
 	name				= "Long Range Artillery Yard",
 	description			= "Long Range Cannons Prep. Facility",
 	buildCostMetal		= 5000,
-	workerTime			= 125,
+	workerTime			= 75,
 	customParams = {
 		wiki_subclass_comments = [[This yard is intended to build towed
 guns, including the long-range artillery units. Long-range artillery can be
