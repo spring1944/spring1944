@@ -226,10 +226,11 @@ function RemoveSmoke(unitID)
 	local defaultMincloak = SmokedUnits[unitID].oldMincloak
 
 	SetUnitRulesParam(unitID, "smoked", 0)
-	-- set the unit's los to that value
+	-- Set sensor values back to unit defaults
+	-- airLos seems to also set los in current engine (104.0.1). That's why airLos has to be set first.
+	SetUnitSensorRadius(unitID, "airLos", defaultAirLos)
 	SetUnitSensorRadius(unitID, "los", defaultLos)
 	SetUnitSensorRadius(unitID, "radar", defaultRadar)
-	SetUnitSensorRadius(unitID, "airLos", defaultAirLos)
 	SetUnitSensorRadius(unitID, "seismic", defaultSeismic)
 
 	-- unhide the unit
