@@ -32,7 +32,7 @@ local CMD_LOAD_ONTO = CMD.LOAD_ONTO
 local CMD_STOP = CMD.STOP
 local CMD_MOVE = CMD.MOVE
 
-local LOS_TYPES = {"los", "airLos", "radar", "sonar", "seismic", "radarJammer", "sonarJammer"}
+local LOS_TYPES = {"airLos", "los", "radar", "sonar", "seismic", "radarJammer", "sonarJammer"}
 -- Variables
 local massLeft = {}
 local toBeLoaded = {}
@@ -43,6 +43,8 @@ local function StoreLOSRadius(unitID, unitDefID)
 		radiusArray = {}
 		for i, losType in pairs(LOS_TYPES) do
 			radiusArray[i] = GetUnitSensorRadius(unitID, losType)
+		end
+		for i, losType in pairs(LOS_TYPES) do
 			SetUnitSensorRadius(unitID, losType, 0)
 		end
 		savedRadius[unitDefID] = radiusArray
