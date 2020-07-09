@@ -44,12 +44,12 @@ local function StoreLOSRadius(unitID, unitDefID)
 		for i, losType in pairs(LOS_TYPES) do
 			radiusArray[i] = GetUnitSensorRadius(unitID, losType)
 		end
-		for i, losType in pairs(LOS_TYPES) do
+		for i, losType in ipairs(LOS_TYPES) do
 			SetUnitSensorRadius(unitID, losType, 0)
 		end
 		savedRadius[unitDefID] = radiusArray
 	else
-		for i, losType in pairs(LOS_TYPES) do
+		for i, losType in ipairs(LOS_TYPES) do
 			SetUnitSensorRadius(unitID, losType, 0)
 		end
 	end
@@ -57,7 +57,7 @@ end
 
 local function RestoreLOSRadius(unitID, unitDefID)
 	radiusArray = savedRadius[unitDefID]
-	for i, losType in pairs(LOS_TYPES) do
+	for i, losType in ipairs(LOS_TYPES) do
 		SetUnitSensorRadius(unitID, losType, radiusArray[i])
 	end
 end
