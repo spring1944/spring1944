@@ -127,7 +127,7 @@ function widget:Initialize()
 end
 
 function widget:Shutdown()
-    RemoveAction("s44quitmenu")
+    widgetHandler:RemoveAction("s44quitmenu")
     Spring.SendCommands("unbind any+esc s44quitmenu")
     Spring.SendCommands({
         "bind esc quitmessage",
