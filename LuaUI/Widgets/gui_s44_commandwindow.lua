@@ -10,8 +10,9 @@ function widget:GetInfo()
         enabled     = true,
     }
 end
--- INCLUDES
 
+-- INCLUDES
+MORPHS = include("LuaRules/Configs/morph_defs.lua")
 
 -- CONSTANTS
 local mainScaleLeft   = 0.0   -- Default widget position
@@ -89,17 +90,78 @@ local function OptimumFontSize(font, txt, w, h)
     return floor(min(wf, hf) * font.size)
 end
 
+local function __split(str, sep)
+    if sep == nil then
+        sep = "%s"
+    end
+    local t = {}
+    for s in string.gmatch(str, "([^".. sep .."]+)") do
+        Spring.Echo(s)
+        table.insert(t, s)
+    end
+    return t
+end
+
+local function __unique(t)
+    local hash = {}
+    local res = {}
+
+    for _,v in ipairs(t) do
+        if (not hash[v]) then
+            table.insert(res, v)
+            hash[v] = true
+        end
+    end
+
+    return res
+end
+
+local function __morphName(cmd)
+    if cmd.name == "Deploy" then
+        return cmd.name
+    end
+    if (cmd.id < 0) and (cmd.name:match(".+_morph_.+") == cmd.name) and (cmd.action:match("buildunit_.+_morph_.+") == cmd.action) then
+        local names = __unique(__split(cmd.name:match("^.+_morph_(.*)"), "_"))
+        local from, into = names[1], names[2]
+
+        if MORPHS[from] == nil then
+            -- Special case of packable factories
+            from = from .. "_" .. into
+        end
+        if MORPHS[from] == nil then
+            Spring.Echo("MORPHS[from] == nil")
+            return nil
+        end
+
+        if MORPHS[from].into ~= nil then
+            if (MORPHS[from].into == into) or (MORPHS[from].into == into .. "_" .. from) then
+                return MORPHS[from].name
+            end
+        else
+            for _, morph in ipairs(MORPHS[from]) do
+                if (morph.into == into) or (morph.into == into .. "_" .. from) then
+                    return morph.name
+                end
+            end
+        end
+        return nil
+    end
+
+    return nil
+end
+
 function findButtonData(cmd)
     local isState = (cmd.type == CMDTYPE.ICON_MODE and #cmd.params > 1)
-    local isMorph = (cmd.name == "Deploy")    
     local isBuild = (cmd.id < 0)
+    local morphName = __morphName(cmd)
+    local isMorph = morphName ~= nil
     local buttontext = ""
     local container
     local texture = nil
     if isMorph then
-        buttontext = cmd.name
+        buttontext = morphName
         container = buildWindow
-        texture = cmd.texture
+        if cmd.texture == "" then texture = '#'..-cmd.id else texture = cmd.texture end
     elseif not isState and not isBuild then
         buttontext = GLYPHS[cmd.action] or cmd.name
         container = commandWindow
@@ -118,6 +180,7 @@ function createMyButton(cmd)
     if(type(cmd) == 'table')then
         buttontext, container, isMorph, isState, isBuild, texture = findButtonData(cmd)
         Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isBuild, texture)
+        Spring.Echo(cmd.id, cmd.name, cmd.action, cmd.tooltip)
 
         local color = {0,0,0,1}
         local button = Chili.Button:New {
@@ -164,12 +227,29 @@ function createMyButton(cmd)
     end
 end
 
+local function __isUnwanted(cmd)
+    if table.contains(COMMANDSTOEXCLUDE, cmd.action) then
+        return true
+    end
+    -- We must remove the fake morphs for factories. Unfortunately, we cannot
+    -- use the hidden property, since all the commands are marked as hidden
+    -- after the default menu. Therefore, we look for commands with:
+    --  * id > 0
+    --  * action == "fake_morph"
+    if (cmd.id > 0) and (cmd.action == "deploy") and (cmd.name ~= "Deploy") then
+        Spring.Echo("__isUnwanted", cmd.id, cmd.action, cmd.name)
+        return true
+    end
+
+    return false
+end
+
 function filterUnwanted(commands)
     local uniqueList = {}
     if not(#commands == 0)then
         j = 1
         for _, cmd in ipairs(commands) do
-            if not table.contains(COMMANDSTOEXCLUDE,cmd.action) then
+            if not __isUnwanted(cmd) then
                 uniqueList[j] = cmd
                 j = j + 1
             end
@@ -241,7 +321,7 @@ function loadPanel()
     resetWindow(buildWindow)
     local commands = Spring.GetActiveCmdDescs()
     commands = filterUnwanted(commands)
-    table.sort(commands, function(x,y) return x.action < y.action end)
+    -- table.sort(commands, function(x,y) return x.action < y.action end)
     for cmdid, cmd in pairs(commands) do
         createMyButton(commands[cmdid]) 
     end
