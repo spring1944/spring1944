@@ -276,7 +276,7 @@ function ResizeContainers()
     -- that they are wrapped in a scroll panel. To this end we are progressively
     -- hiding rows from bottom to top, granting at least one row per container
     local H = main_win.clientHeight
-    local max_rows = max(floor((H - 3 * 10) / buttonsize), 3)
+    local max_rows = max(floor((H - 3 * 14) / buttonsize), 3)
     local rows = stateWindow.rows + commandWindow.rows + buildWindow.rows
     local out_rows = rows - max_rows
     local showing_rows = {stateWindow.rows, commandWindow.rows, buildWindow.rows}
@@ -293,7 +293,7 @@ function ResizeContainers()
     for i = 1, #conts - 1 do
         local c = conts[i]
         local rows = showing_rows[i]
-        local h = buttonsize * rows + 10
+        local h = buttonsize * rows + 14
         c.parent:SetPosRelative(nil, y, nil, h, true, false)
         c:UpdateLayout()
         y = y + h
@@ -411,10 +411,23 @@ function widget:Initialize()
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
         OnResize = {__OnContainerSize,}
     }
+    Chili.Label:New {
+        parent = stateScroll,
+        caption = "State",
+        x=4,
+        y=4,
+        align   = "left",
+        valign  = "top",
+        font = {
+            outlineColor = {0.0,0.0,0.0,1.0},
+            outline = true,
+            shadow  = false,
+        },
+    }
     stateWindow = Chili.Grid:New{
         parent = stateScroll,
         x = 0,
-        y = 0,
+        y = 4,
         width = "100%",
         height = "100%",
         minHeight = 50,
@@ -434,10 +447,23 @@ function widget:Initialize()
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
         OnResize = {__OnContainerSize,}
     }
+    Chili.Label:New {
+        parent = commandScroll,
+        caption = "Commands",
+        x=4,
+        y=4,
+        align   = "left",
+        valign  = "top",
+        font = {
+            outlineColor = {0.0,0.0,0.0,1.0},
+            outline = true,
+            shadow  = false,
+        },
+    }
     commandWindow = Chili.Grid:New{
         parent = commandScroll,
         x = 0,
-        y = 0,
+        y = 4,
         width = "100%",
         height = "100%",
         minWidth = 50,
@@ -457,10 +483,23 @@ function widget:Initialize()
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
         OnResize = {__OnContainerSize,}
     }
+    Chili.Label:New {
+        parent = buildScroll,
+        caption = "Build",
+        x=4,
+        y=4,
+        align   = "left",
+        valign  = "top",
+        font = {
+            outlineColor = {0.0,0.0,0.0,1.0},
+            outline = true,
+            shadow  = false,
+        },
+    }
     buildWindow = Chili.Grid:New{
         parent = buildScroll,
         x = 0,
-        y = 0,
+        y = 4,
         width = "100%",
         height = "100%",
         minWidth = 50,
