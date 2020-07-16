@@ -547,6 +547,13 @@ function widget:CommandsChanged()
 end
 
 function widget:DrawScreen()
+    local selection = Spring.GetSelectedUnits()
+    if (selection == nil) or (#selection == 0) then
+        main_win:Hide()
+        return
+    end
+
+    main_win:Show()
     if updateRequired then
         updateRequired = false
         loadPanel()
