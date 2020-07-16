@@ -52,6 +52,7 @@ local commandWindow
 local stateWindow
 local buildWindow
 local updateRequired = true
+local queue = {}
 
 -- CONTROLS
 local abs = math.abs
@@ -170,6 +171,9 @@ function findButtonData(cmd)
         buttontext = cmd.params[indexChoice]
         container = stateWindow
     else
+        if queue[-cmd.id] ~= nil then
+            buttontext = tostring(queue[-cmd.id])
+        end
         container = buildWindow
         texture = '#'..-cmd.id
     end
@@ -178,6 +182,8 @@ end
 
 function createMyButton(cmd)
     if(type(cmd) == 'table')then
+        local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+        local size = MINBUTTONSIZE * max(viewSizeX, viewSizeY)
         buttontext, container, isMorph, isState, isBuild, texture = findButtonData(cmd)
         Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isBuild, texture)
         Spring.Echo(cmd.id, cmd.name, cmd.action, cmd.tooltip)
@@ -189,34 +195,47 @@ function createMyButton(cmd)
             y = 0,
             padding = {5, 5, 5, 5},
             margin = {0, 0, 0, 0},
-            minWidth = 40,
-            minHeight = 40,
+            minWidth = size,
+            minHeight = size,
             caption = buttontext,
             isDisabled = false,
             cmdid = cmd.id,
             OnMouseDown = {ClickFunc},
             TileImageBK = IMAGE_DIRNAME .. "empty.png",
             TileImageFG = IMAGE_DIRNAME .. "s44_button_alt_fg.png",
-            font = {size = OptimumFontSize(main_win.font, buttontext, 40, 40) - 2}
+            font = {
+                size = OptimumFontSize(main_win.font, buttontext, size, size) - 2,
+                outlineColor = {0.0,0.0,0.0,1.0},
+                outline = true,
+                shadow  = false,
+            },
         }
         
         if texture then
-            button:Resize(80,80)
             local image = Chili.Image:New {
-                width="100%";
-                height="90%";
-                y="5%";
+                parent = button,
+                width="100%",
+                height="90%",
+                y="5%",
                 keepAspect = true,
-                file = texture;
-                parent = button;
+                file = texture,
             }
             if buttontext ~= "" then
+                button.caption = ""
                 local image = Chili.Label:New {
-                    width="100%";
-                    height="100%";
-                    y="0%";
-                    caption = buttontext,
                     parent = image;
+                    width="100%",
+                    height="100%",
+                    y=5,
+                    x=5,
+                    caption = buttontext,
+                    align   = "left",
+                    valign  = "top",
+                    font = {
+                        outlineColor = {0.0,0.0,0.0,1.0},
+                        outline = true,
+                        shadow  = false,
+                    },
                 }
             end
         end
@@ -315,10 +334,30 @@ function ResizeContainers()
 
 end
 
+local function getQueue()
+    queue = {}
+    for _,u in ipairs(Spring.GetSelectedUnits()) do
+        local buildQueue  = Spring.GetFullBuildQueue(u)
+        if (buildQueue ~= nil) then
+            local i = 1
+            while buildQueue[i] do
+                local unitBuildDefID, count = next(buildQueue[i], nil)
+                if queue[unitBuildDefID] == nil then
+                    queue[unitBuildDefID] = count
+                else
+                    queue[unitBuildDefID] = queue[unitBuildDefID] + count
+                end
+                i = i + 1
+            end
+        end
+    end
+end
+
 function loadPanel()
     resetWindow(commandWindow)
     resetWindow(stateWindow)
     resetWindow(buildWindow)
+    getQueue()
     local commands = Spring.GetActiveCmdDescs()
     commands = filterUnwanted(commands)
     -- table.sort(commands, function(x,y) return x.action < y.action end)
