@@ -13,6 +13,7 @@ end
 
 -- INCLUDES
 MORPHS = include("LuaRules/Configs/morph_defs.lua")
+SORTIES = include("LuaRules/Configs/sortie_defs.lua")
 
 -- CONSTANTS
 local mainScaleLeft   = 0.0   -- Default widget position
@@ -117,55 +118,31 @@ local function __unique(t)
     return res
 end
 
-local function __morphName(cmd)
-    if cmd.name == "Deploy" then
-        return cmd.name
-    end
-    if (cmd.id < 0) and (cmd.name:match(".+_morph_.+") == cmd.name) and (cmd.action:match("buildunit_.+_morph_.+") == cmd.action) then
-        local names = __unique(__split(cmd.name:match("^.+_morph_(.*)"), "_"))
-        local from, into = names[1], names[2]
-
-        if MORPHS[from] == nil then
-            -- Special case of packable factories
-            from = from .. "_" .. into
-        end
-        if MORPHS[from] == nil then
-            Spring.Echo("MORPHS[from] == nil")
-            return nil
-        end
-
-        if MORPHS[from].into ~= nil then
-            if (MORPHS[from].into == into) or (MORPHS[from].into == into .. "_" .. from) then
-                return MORPHS[from].name
-            end
-        else
-            for _, morph in ipairs(MORPHS[from]) do
-                if (morph.into == into) or (morph.into == into .. "_" .. from) then
-                    return morph.name
-                end
-            end
-        end
-        return nil
+local function __isMorph(cmd)
+    if cmd.name == "Deploy" or ((cmd.id > 0) and (cmd.action == "deploy")) then
+        return true
     end
 
-    return nil
+    return false
 end
 
 function findButtonData(cmd)
     local isState = (cmd.type == CMDTYPE.ICON_MODE and #cmd.params > 1)
     local isBuild = (cmd.id < 0)
-    local morphName = __morphName(cmd)
-    local isMorph = morphName ~= nil
+    local isMorph = __isMorph(cmd)
     local buttontext = ""
     local container
     local texture = nil
     if isMorph then
-        buttontext = morphName
+        buttontext = cmd.name
         container = buildWindow
         if cmd.texture == "" then texture = '#'..-cmd.id else texture = cmd.texture end
     elseif not isState and not isBuild then
         buttontext = GLYPHS[cmd.action] or cmd.name
         container = commandWindow
+        if SORTIES[cmd.action] ~= nil then
+            texture = "unitpics/" .. SORTIES[cmd.action].buildPic:lower()
+        end
     elseif isState then
         local indexChoice = cmd.params[1] + 2
         buttontext = cmd.params[indexChoice]
@@ -250,13 +227,8 @@ local function __isUnwanted(cmd)
     if table.contains(COMMANDSTOEXCLUDE, cmd.action) then
         return true
     end
-    -- We must remove the fake morphs for factories. Unfortunately, we cannot
-    -- use the hidden property, since all the commands are marked as hidden
-    -- after the default menu. Therefore, we look for commands with:
-    --  * id > 0
-    --  * action == "fake_morph"
-    if (cmd.id > 0) and (cmd.action == "deploy") and (cmd.name ~= "Deploy") then
-        Spring.Echo("__isUnwanted", cmd.id, cmd.action, cmd.name)
+    -- We must remove the building actions refered to morphs
+    if (cmd.id < 0) and (cmd.name:match(".+_morph_.+") == cmd.name) and (cmd.action:match("buildunit_.+_morph_.+") == cmd.action) then
         return true
     end
 
