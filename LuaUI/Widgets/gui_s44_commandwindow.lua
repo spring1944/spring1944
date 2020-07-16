@@ -1,6 +1,6 @@
 function widget:GetInfo()
     return {
-        name        = "Commands window",
+        name        = "1944 Commands window",
         desc        = "Custom commands window for Spring 1944",
         author      = "Jose Luis Cercos Pita",
         date        = "2020-06-30",
@@ -19,7 +19,7 @@ SORTIES = include("LuaRules/Configs/sortie_defs.lua")
 local mainScaleLeft   = 0.0   -- Default widget position
 local mainScaleTop    = 0.135 -- Default widget position
 local mainScaleWidth  = 0.15  -- Default widget width
-local mainScaleHeight = 0.86  -- Default widget height
+local mainScaleHeight = 0.75  -- Default widget height
 WG.COMMWINOPTS = {
     x = mainScaleLeft,
     y = mainScaleTop,
@@ -177,6 +177,7 @@ function createMyButton(cmd)
             caption = buttontext,
             isDisabled = false,
             cmdid = cmd.id,
+            tooltip = cmd.tooltip,
             OnMouseDown = {ClickFunc},
             TileImageBK = IMAGE_DIRNAME .. "empty.png",
             TileImageFG = IMAGE_DIRNAME .. "s44_button_alt_fg.png",
@@ -382,7 +383,6 @@ function widget:Initialize()
         widgetHandler:ConfigLayoutHandler(LayoutHandler)
     end
     Spring.ForceLayoutUpdate()
-    spSendCommands({"tooltip 0"})
 
     local buttonsize = MINBUTTONSIZE * max(viewSizeX, viewSizeY)
     main_win = Chili.Window:New{
@@ -543,8 +543,6 @@ function widget:DrawScreen()
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
-    vsx = viewSizeX
-    vsy = viewSizeY
     if main_win == nil then
         return
     end
@@ -560,12 +558,12 @@ function widget:ViewResize(viewSizeX, viewSizeY)
 end
 
 function widget:Shutdown()
+    main_win:Dispose()
     if widgetHandler.ConfigLayoutHandler then
         widgetHandler:ConfigLayoutHandler( true )
     end
     Spring.ForceLayoutUpdate()
-    widgetHandler.actionHandler:RemoveAction("resetresbar")
-    spSendCommands({"tooltip 1"})
+    widgetHandler.actionHandler:RemoveAction("resetcomwin")
 end 
 
 function widget:GetConfigData()
