@@ -29,7 +29,7 @@ WG.COMMWINOPTS = {
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
 local COMMANDSTOEXCLUDE = {"timewait", "deathwait", "squadwait", "gatherwait",
                            "loadonto", "nextmenu", "prevmenu", "canceltarget",
-                           "settarget", "selfd"}
+                           "settarget", "selfd", "look"}
 local GLYPHS = {
     attack = '\204\164',
     fight = '\204\165',
@@ -42,6 +42,15 @@ local GLYPHS = {
     reclaim = '\204\172',
     clearpath = '\204\173',
     repair = '\204\174',
+    look = '\204\175',
+    ["Repeat on"] = '\204\180',
+    ["Repeat off"] = '\204\181',
+    ["Fire at will"] = '\204\182',
+    ["Return fire"] = '\204\183',
+    ["Hold fire"] = '\204\184',
+    ["Roam"] = '\204\185',
+    ["Maneuver"] = '\204\186',
+    ["Hold pos"] = '\204\187',
 }
 local MINBUTTONSIZE = 0.04
 local MAXBUTTONSONROW = 3
@@ -133,6 +142,7 @@ function findButtonData(cmd)
     local buttontext = ""
     local container
     local texture = nil
+    local tooltip = cmd.tooltip
     if isMorph then
         buttontext = cmd.name
         container = buildWindow
@@ -145,7 +155,8 @@ function findButtonData(cmd)
         end
     elseif isState then
         local indexChoice = cmd.params[1] + 2
-        buttontext = cmd.params[indexChoice]
+        tooltip = tooltip .. "\n(" .. cmd.params[indexChoice] .. ")"
+        buttontext = GLYPHS[cmd.params[indexChoice]] or cmd.params[indexChoice]
         container = stateWindow
     else
         if queue[-cmd.id] ~= nil then
@@ -154,14 +165,14 @@ function findButtonData(cmd)
         container = buildWindow
         texture = '#'..-cmd.id
     end
-    return buttontext, container, isMorph, isState, isBuild, texture    
+    return buttontext, container, isMorph, isState, isBuild, texture, tooltip    
 end
 
 function createMyButton(cmd)
     if(type(cmd) == 'table')then
         local viewSizeX, viewSizeY = Spring.GetViewGeometry()
         local size = MINBUTTONSIZE * max(viewSizeX, viewSizeY)
-        buttontext, container, isMorph, isState, isBuild, texture = findButtonData(cmd)
+        buttontext, container, isMorph, isState, isBuild, texture, tooltip = findButtonData(cmd)
         Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isBuild, texture)
         Spring.Echo(cmd.id, cmd.name, cmd.action, cmd.tooltip)
 
@@ -177,7 +188,7 @@ function createMyButton(cmd)
             caption = buttontext,
             isDisabled = false,
             cmdid = cmd.id,
-            tooltip = cmd.tooltip,
+            tooltip = tooltip,
             OnMouseDown = {ClickFunc},
             TileImageBK = IMAGE_DIRNAME .. "empty.png",
             TileImageFG = IMAGE_DIRNAME .. "s44_button_alt_fg.png",
