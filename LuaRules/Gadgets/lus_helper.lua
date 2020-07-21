@@ -261,7 +261,7 @@ function GG.ApplySpeedChanges(unitID)
 	local unitDefID = GetUnitDefID(unitID)
 	local UnitDef = UnitDefs[unitDefID]
 	local origSpeed = UnitDef.speed
-	local origReverseSpeed = Spring.GetUnitMoveTypeData(unitID).maxReverseSpeed
+	local origReverseSpeed = UnitDef.rSpeed
 
 	local newSpeed = origSpeed
 	local newReverseSpeed = origReverseSpeed
@@ -273,7 +273,7 @@ function GG.ApplySpeedChanges(unitID)
 
 	local immobilized = false
 	local immobilizedMult = 1.0
-	if (GetUnitRulesParam(unitID, "immobilized") or 0) > 0 then
+	if (tonumber(GetUnitRulesParam(unitID, "immobilized") or 0)) > 0 then
 		immobilized = true
 		immobilizedMult = 0
 	end
