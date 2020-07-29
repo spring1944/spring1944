@@ -22,9 +22,12 @@ local boatPieces = {["base"] = true, ["hull"] = true, ["tower"] = true, ["tower2
 local function SetColVols(unitID, ud, colPieces)
 	if (ud.modeltype or ud.model.type) ~= "3do" then
 		local pieces = GetUnitPieceList(unitID)
+		local pieceMap = Spring.GetUnitPieceMap(unitID)
 		local tweaks = table.unserialize(ud.customParams.piecehitvols) or {}
 		for i, pieceName in pairs(pieces) do
-			if colPieces[pieceName] and i ~= "n" then
+			if colPieces[pieceName] and i ~= "n" 
+			and not (pieceName == "turret" and pieceMap["super"]) -- don't use turret if super exists
+			then
 
 				local pieceTweaks = tweaks[pieceName] or {
 					offset = { 0, 0, 0 },
@@ -39,7 +42,6 @@ local function SetColVols(unitID, ud, colPieces)
 				oX = oX + pieceTweaks.offset[1]
 				oY = oY + pieceTweaks.offset[2]
 				oZ = oZ + pieceTweaks.offset[3]
-
 				SetPieceColVol(unitID, i, true, sX, sY, sZ, oX, oY, oZ, volumeType, primaryAxis)
 			else
 				SetPieceColVol(unitID, i, false, 1,1,1, 0,0,0, -1, 0)
