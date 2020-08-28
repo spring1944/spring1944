@@ -60,6 +60,7 @@ local Chili
 local main_win
 local commandWindow
 local stateWindow
+local sortiesWindow
 local buildWindow
 local updateRequired = true
 local queue = {}
@@ -139,6 +140,7 @@ function findButtonData(cmd)
     local isState = (cmd.type == CMDTYPE.ICON_MODE and #cmd.params > 1)
     local isBuild = (cmd.id < 0)
     local isMorph = __isMorph(cmd)
+    local isSortie = SORTIES[cmd.action] ~= nil
     local buttontext = ""
     local container
     local texture = nil
@@ -147,17 +149,18 @@ function findButtonData(cmd)
         buttontext = cmd.name
         container = buildWindow
         if cmd.texture == "" then texture = '#'..-cmd.id else texture = cmd.texture end
-    elseif not isState and not isBuild then
+    elseif not isState and not isBuild and not isSortie then
         buttontext = GLYPHS[cmd.action] or cmd.name
         container = commandWindow
-        if SORTIES[cmd.action] ~= nil then
-            texture = "unitpics/" .. SORTIES[cmd.action].buildPic:lower()
-        end
     elseif isState then
         local indexChoice = cmd.params[1] + 2
         tooltip = tooltip .. "\n(" .. cmd.params[indexChoice] .. ")"
         buttontext = GLYPHS[cmd.params[indexChoice]] or cmd.params[indexChoice]
         container = stateWindow
+    elseif isSortie then
+        buttontext = GLYPHS[cmd.action] or cmd.name
+        container = sortiesWindow
+        texture = "unitpics/" .. SORTIES[cmd.action].buildPic:lower()
     else
         if queue[-cmd.id] ~= nil then
             buttontext = tostring(queue[-cmd.id])
@@ -165,15 +168,19 @@ function findButtonData(cmd)
         container = buildWindow
         texture = '#'..-cmd.id
     end
-    return buttontext, container, isMorph, isState, isBuild, texture, tooltip    
+    return buttontext, container, isMorph, isState, isSortie, isBuild, texture, tooltip    
 end
 
 function createMyButton(cmd)
     if(type(cmd) == 'table')then
         local viewSizeX, viewSizeY = Spring.GetViewGeometry()
-        local size = MINBUTTONSIZE * max(viewSizeX, viewSizeY)
-        buttontext, container, isMorph, isState, isBuild, texture, tooltip = findButtonData(cmd)
-        Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isBuild, texture)
+        local buttontext, container, isMorph, isState, isSortie, isBuild, texture, tooltip = findButtonData(cmd)
+        local size = MINBUTTONSIZE * max(viewSizeX, viewSizeY) * container.buttonsize_mult
+        if isSortie then
+            -- We definitively have sorties
+            sortiesWindow.parent:Show()
+        end
+        Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isSortie, isBuild, texture)
         Spring.Echo(cmd.id, cmd.name, cmd.action, cmd.tooltip)
 
         local color = {0,0,0,1}
@@ -204,8 +211,8 @@ function createMyButton(cmd)
             local image = Chili.Image:New {
                 parent = button,
                 width="100%",
-                height="90%",
-                y="5%",
+                height="100%",
+                y="0%",
                 keepAspect = true,
                 file = texture,
             }
@@ -269,11 +276,15 @@ function ResizeContainers()
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
     local minbuttonsize = MINBUTTONSIZE * max(viewSizeX, viewSizeY)
     local conts = {stateWindow, commandWindow, buildWindow}
+    if sortiesWindow.parent.visible then
+        conts = {stateWindow, commandWindow, sortiesWindow, buildWindow}
+    end
     -- Let's start rearraging each container.
     local cols, rows, n, buttonsize
-    cols = floor((main_win.clientWidth - 12) / minbuttonsize)
-    buttonsize = (main_win.clientWidth - 12) / cols
+    local h, scroll_rows = 0, {}
     for _, c in pairs(conts) do
+        cols = floor((main_win.clientWidth - 12) / (minbuttonsize * c.buttonsize_mult))
+        buttonsize = (main_win.clientWidth - 12) / cols
         n = #(c.children)
         rows = floor(n / cols)
         if n % cols > 0 then
@@ -281,22 +292,23 @@ function ResizeContainers()
         end
         c.columns = cols
         c.rows = rows
+        c.buttonsize = buttonsize
         c:SetPosRelative(nil, nil, nil, c.rows * buttonsize, true, false)
         -- c:UpdateLayout()
+        h = h + c.rows * buttonsize + 24
+        table.insert(scroll_rows, c.rows)
     end
     -- Now analyze the better disposition of the containers, taking into account
     -- that they are wrapped in a scroll panel. To this end we are progressively
     -- hiding rows from bottom to top, granting at least one row per container
     local H = main_win.clientHeight
-    local max_rows = max(floor((H - 3 * 14) / buttonsize), 3)
-    local rows = stateWindow.rows + commandWindow.rows + buildWindow.rows
-    local out_rows = rows - max_rows
-    local showing_rows = {stateWindow.rows, commandWindow.rows, buildWindow.rows}
-    local i
-    for i = #conts, 1, -1 do
+    local i = #conts
+    while (i >= 0) and (h > H) do
         local c = conts[i]
-        showing_rows[i] = max(c.rows - out_rows, 1)
-        out_rows = out_rows - (c.rows - showing_rows[i])
+        local extra_rows = ceil((h - H) / c.buttonsize)
+        scroll_rows[i] = max(c.rows - extra_rows, 1)
+        h = h - (c.rows - scroll_rows[i]) * c.buttonsize
+        i = i - 1
     end
 
     -- Set all the panels position and size, except the last one, which is
@@ -304,8 +316,8 @@ function ResizeContainers()
     local y = 0
     for i = 1, #conts - 1 do
         local c = conts[i]
-        local rows = showing_rows[i]
-        local h = buttonsize * rows + 14
+        local rows = scroll_rows[i]
+        local h = c.buttonsize * rows + 24
         c.parent:SetPosRelative(nil, y, nil, h, true, false)
         c:UpdateLayout()
         y = y + h
@@ -315,7 +327,6 @@ function ResizeContainers()
     local c = conts[#conts]
     c.parent:SetPosRelative(nil, y, nil, H - y - 10, true, false)
     c:UpdateLayout()
-
 end
 
 local function getQueue()
@@ -340,7 +351,11 @@ end
 function loadPanel()
     resetWindow(commandWindow)
     resetWindow(stateWindow)
+    resetWindow(sortiesWindow)
     resetWindow(buildWindow)
+    -- It may or may not have sorties
+    sortiesWindow.parent:Hide()
+
     getQueue()
     local commands = Spring.GetActiveCmdDescs()
     commands = filterUnwanted(commands)
@@ -348,6 +363,7 @@ function loadPanel()
     for cmdid, cmd in pairs(commands) do
         createMyButton(commands[cmdid]) 
     end
+
     ResizeContainers()
 end
 
@@ -373,11 +389,6 @@ local function __OnMainWinSize(self, w, h)
     WG.COMMWINOPTS.height = self.height / viewSizeY
     ResizeContainers()
 end
-
-local function __OnContainerSize(self, w, h)
-    
-end
-
 
 ------------------------------------------------
 --callins
@@ -406,7 +417,7 @@ function widget:Initialize()
         resizable = true,
         padding = {0, 0, 0, 0},
         minWidth = buttonsize + 12 + 10,
-        minHeight = (buttonsize + 10) * 3,
+        minHeight = (buttonsize + 24) * 4,
     }
 
     local stateScroll = Chili.ScrollPanel:New{
@@ -420,7 +431,6 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         BorderTileImage = IMAGE_DIRNAME .. "empty.png",
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
-        OnResize = {__OnContainerSize,}
     }
     Chili.Label:New {
         parent = stateScroll,
@@ -438,10 +448,11 @@ function widget:Initialize()
     stateWindow = Chili.Grid:New{
         parent = stateScroll,
         x = 0,
-        y = 4,
+        y = 10,
         width = "100%",
         height = "100%",
         minHeight = 50,
+        buttonsize_mult = 0.5,
     }    
     stateScroll.win = stateWindow
 
@@ -456,7 +467,6 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         BorderTileImage = IMAGE_DIRNAME .. "empty.png",
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
-        OnResize = {__OnContainerSize,}
     }
     Chili.Label:New {
         parent = commandScroll,
@@ -474,12 +484,49 @@ function widget:Initialize()
     commandWindow = Chili.Grid:New{
         parent = commandScroll,
         x = 0,
-        y = 4,
+        y = 10,
         width = "100%",
         height = "100%",
         minWidth = 50,
+        buttonsize_mult = 0.5,
     }
     commandScroll.win = commandWindow
+
+    local sortiesScroll = Chili.ScrollPanel:New{
+        parent = main_win,
+        x = 0,
+        y = 4 * buttonsize,
+        width = "100%",
+        height = 3 * buttonsize,
+        minHeight = 50,
+        horizontalScrollbar = false,
+        padding = {0, 0, 0, 0},
+        BorderTileImage = IMAGE_DIRNAME .. "empty.png",
+        BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
+    }
+    Chili.Label:New {
+        parent = sortiesScroll,
+        caption = "Sorties",
+        x=4,
+        y=4,
+        align   = "left",
+        valign  = "top",
+        font = {
+            outlineColor = {0.0,0.0,0.0,1.0},
+            outline = true,
+            shadow  = false,
+        },
+    }
+    sortiesWindow = Chili.Grid:New{
+        parent = sortiesScroll,
+        x = 0,
+        y = 10,
+        width = "100%",
+        height = "100%",
+        minWidth = 50,
+        buttonsize_mult = 1.0,
+    }
+    sortiesScroll.win = sortiesWindow
 
     local buildScroll = Chili.ScrollPanel:New{
         parent = main_win,
@@ -492,7 +539,6 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         BorderTileImage = IMAGE_DIRNAME .. "empty.png",
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
-        OnResize = {__OnContainerSize,}
     }
     Chili.Label:New {
         parent = buildScroll,
@@ -510,10 +556,11 @@ function widget:Initialize()
     buildWindow = Chili.Grid:New{
         parent = buildScroll,
         x = 0,
-        y = 4,
+        y = 10,
         width = "100%",
         height = "100%",
         minWidth = 50,
+        buttonsize_mult = 1.0,
     }
     buildScroll.win = buildWindow
 
@@ -530,15 +577,6 @@ function widget:Initialize()
     main_win.OnMove = {__OnMainWinSize,}
     main_win.OnResize = {__OnMainWinSize,}
 
-    __OnContainerSize(commandWindow,
-                      commandWindow.clientWidth,
-                      commandWindow.clientHeight)
-    __OnContainerSize(stateWindow,
-                      stateWindow.clientWidth,
-                      stateWindow.clientHeight)
-    __OnContainerSize(buildWindow,
-                      buildWindow.clientWidth,
-                      buildWindow.clientHeight)
     ResizeContainers()
 end
 
