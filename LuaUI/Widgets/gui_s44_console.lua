@@ -47,6 +47,7 @@ local allies = {}
 local specs = {}
 local sent_history = {}
 local sent_history_index = 1
+local buttons_players = {}
 
 --------------------------------------------------------------------------------
 -- 
@@ -65,23 +66,57 @@ local function OnSwitchMute(self)
     self:SetCaption(name .. " " .. glyph)
 end
 
-local function __playerButton(name, color)
+local function __playerButton(name, color, spec)
     local glyph = GLYPHS["unmuted"]
     if muted[name] then
         glyph = GLYPHS["muted"]
+    end
+    local children = {}
+    if not spec then
+        children = {
+            Chili.Progressbar:New{
+                right = 18,
+                y = 2,
+                width = 20,
+                bottom = 2,
+                backgroundColor = {0, 0, 0, 0},
+                orientation = "vertical",
+                caption = "",
+                value = 0,
+                TileImageFG = IMAGE_DIRNAME .. "s44_cpu_progressbar_full.png",
+                TileImageBK = IMAGE_DIRNAME .. "s44_cpu_progressbar_empty.png",
+            },
+            Chili.Progressbar:New{
+                right = 0,
+                y = 2,
+                width = 20,
+                bottom = 2,
+                backgroundColor = {0, 0, 0, 0},
+                orientation = "vertical",
+                caption = "",
+                value = 0,
+                TileImageFG = IMAGE_DIRNAME .. "s44_cpu_progressbar_full.png",
+                TileImageBK = IMAGE_DIRNAME .. "s44_cpu_progressbar_empty.png",
+            },
+        }
     end
     return Chili.Button:New {
         x = 0,
         y = 0,
         right = 0,
-        height = 32,
+        height = 34,
         caption = name .. " " .. glyph,
         OnClick = { OnSwitchMute, },
         parent = main_win,
         playername = name,
         font = {
+            outlineWidth  = 3,
+            outlineWeight = 10,
+            outline       = true,
             color = color,
         },
+        padding = { 2,2,2,2 },
+        children = children,
     }
 end
 
@@ -108,7 +143,8 @@ local function setupPlayers(playerID)
             stack = main_players.children[1]
             allies[name] = playerID
         end
-        stack:AddChild(__playerButton(name, teamColors[name]))
+        buttons_players[name] = __playerButton(name, teamColors[name], spec)
+        stack:AddChild(buttons_players[name])
     else
         for _, stack in ipairs(main_players.children) do
             for j = 2,#stack.children do
@@ -127,7 +163,8 @@ local function setupPlayers(playerID)
                 stack = main_players.children[1]
                 allies[name] = id
             end
-            stack:AddChild(__playerButton(name, teamColors[name]))
+            buttons_players[name] = __playerButton(name, teamColors[name], spec)
+            stack:AddChild(buttons_players[name])
         end
     end
 end
@@ -314,6 +351,13 @@ function AddConsoleMessage(msg)
     removeToMaxLines()
 end
 
+local function GetColourScale(value)
+    local colour = {0, 1, 0, 1}
+    colour[1] = math.min(50, value) / 50
+    colour[2] = 1 - (math.max(0, value - 50) / 50)
+    return colour
+end
+
 function ShowWin()
     -- Hide the default chat window
     chat_win:Hide()
@@ -342,18 +386,19 @@ function ShowWin()
         }
     end
     chat_stack:SetParent(main_log)
+
+    -- Show the main window
     main_sendto:Select(SENDTO)
     sent_history_index = #sent_history + 1
     main_msg:SetText("")
     Chili.Screen0:FocusControl(main_msg)
-
-    -- Show the main window
     main_win:Show()
 end
 
 function HideWin()
     -- Hide the main window
     main_win:Hide()
+    Chili.Screen0:FocusControl(nil)
     -- Transfer the chat stack to the default chat window
     chat_stack:SetParent(chat_scroll)
     -- Show the default chat window
@@ -717,6 +762,36 @@ end
 
 function widget:PlayerChanged(playerID)
     setupPlayers(playerID)
+end
+
+function widget:DrawScreen()
+    if not main_win.visible then
+        return
+    end
+
+    playerlist = Spring.GetPlayerRoster(3)
+    if playerlist == nil then
+        return
+    end
+
+    for _, player_data in ipairs(playerlist) do
+        local name = player_data[1]
+        local spectator = player_data[5]
+        local button = buttons_players[name]
+        if (not spectator) and (button ~= nil) then
+            local cpu = math.floor(player_data[6] * 100 + 0.5)
+            local ping = math.floor(player_data[7] * 1000 + 0.5)
+            -- Rescale ping
+            ping = math.max(0, ping - 100)
+            ping = math.min(1000, ping)
+            ping = ping / 10
+            -- Set the progress bars
+            button.children[1]:SetValue(cpu)
+            button.children[1]:SetColor(GetColourScale(cpu))
+            button.children[2]:SetValue(ping)
+            button.children[2]:SetColor(GetColourScale(ping))
+        end
+    end
 end
 
 function widget:Shutdown()
