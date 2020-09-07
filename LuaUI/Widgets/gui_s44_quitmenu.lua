@@ -78,6 +78,7 @@ end
 
 function ShowMenu()
     if main_win then
+        CloseMenu()
         return
     end
 
