@@ -55,6 +55,8 @@ local GLYPHS = {
     ["Hold pos"] = '\204\187',
     ["Fire HE"] = '\204\188',
     ["Fire Smoke"] = '\204\189',
+    ["Prefer HE"] = '\204\188',
+    ["Prefer AP"] = '\204\190',
 }
 local MINBUTTONSIZE = 0.04
 local MAXBUTTONSONROW = 3
