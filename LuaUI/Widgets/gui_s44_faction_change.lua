@@ -1,8 +1,8 @@
 
 function widget:GetInfo()
     return {
-        name    = 'Faction Change',
-        desc    = 'Adds button to switch faction',
+        name    = '1944 Faction Change',
+        desc    = 'Adds buttons to switch faction at the game beggining',
         author    = 'Niobium (addapted to s44 by Jose Luis Cercos-Pita)',
         date    = 'May 2011',
         license    = 'GNU GPL v2',
