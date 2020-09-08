@@ -34,14 +34,9 @@ local myTeamID = 0
 local factories = {}
 
 -- CONTROLS
-local abs = math.abs
-local min, max = math.min, math.max
-local floor, ceil = math.floor, math.ceil
 local GetUnitDefID      = Spring.GetUnitDefID
 local GetUnitHealth     = Spring.GetUnitHealth
 local GetUnitStates     = Spring.GetUnitStates
-local GetSelectedUnits  = Spring.GetSelectedUnits
-local GetFullBuildQueue = Spring.GetFullBuildQueue
 local GetUnitIsBuilding = Spring.GetUnitIsBuilding
 local GetMyTeamID       = Spring.GetMyTeamID
 local GetTeamUnits      = Spring.GetTeamUnits
@@ -69,6 +64,9 @@ local function ResizeContainer()
     main_win:Show()
 
     buttonsize = container.width
+    if not container.parent._vscrollbar then
+        buttonsize = buttonsize - container.parent.scrollbarSize
+    end
     for _, c in ipairs(container.children) do
         c:Resize(buttonsize, buttonsize)
         c.image:Resize(buttonsize - 2, buttonsize - 2)
@@ -148,8 +146,6 @@ end
 local function OnFactory(self, x, y, btn)
     local unitID = self.unitID
 
-    Spring.Echo("OnFactory", x, y, btn)
-
     if btn == 1 then
         Spring.SelectUnitArray({unitID})
     elseif btn == 2 then
@@ -211,10 +207,10 @@ function widget:Initialize()
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = tostring(floor(100 * WG.BUILDBAROPTS.x)) .. "%",
-        y = tostring(floor(100 * WG.BUILDBAROPTS.y)) .. "%",
-        width = tostring(floor(100 * WG.BUILDBAROPTS.width)) .. "%",
-        height = tostring(floor(100 * WG.BUILDBAROPTS.height)) .. "%",
+        x = tostring(math.floor(100 * WG.BUILDBAROPTS.x)) .. "%",
+        y = tostring(math.floor(100 * WG.BUILDBAROPTS.y)) .. "%",
+        width = tostring(math.floor(100 * WG.BUILDBAROPTS.width)) .. "%",
+        height = tostring(math.floor(100 * WG.BUILDBAROPTS.height)) .. "%",
         draggable = true,
         resizable = true,
         padding = {0, 0, 0, 0},
@@ -226,9 +222,9 @@ function widget:Initialize()
     local scroll = Chili.ScrollPanel:New{
         parent = main_win,
         x = 0,
-        y = 0,
+        y = 20,
         width = "100%",
-        height = "100%",
+        bottom = 10,
         horizontalScrollbar = false,
         BorderTileImage = IMAGE_DIRNAME .. "empty.png",
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
