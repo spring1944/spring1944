@@ -418,6 +418,12 @@ function OnSend()
     end
 
     sent_history[#sent_history + 1] = msg
+    if msg:find("/") == 1 then
+        Spring.SendCommands(msg:sub(2))
+        OnCancel()
+        return
+    end
+
     SENDTO = main_sendto.caption
     if SENDTO == 'all' then
         Spring.SendCommands("say " .. msg)
