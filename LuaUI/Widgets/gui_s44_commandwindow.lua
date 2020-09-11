@@ -18,7 +18,7 @@ SORTIES = include("LuaRules/Configs/sortie_defs.lua")
 -- CONSTANTS
 local mainScaleLeft   = 0.05  -- Default widget position
 local mainScaleTop    = 0.135 -- Default widget position
-local mainScaleWidth  = 0.15  -- Default widget width
+local mainScaleWidth  = 0.1   -- Default widget width
 local mainScaleHeight = 0.75  -- Default widget height
 WG.COMMWINOPTS = {
     x = mainScaleLeft,

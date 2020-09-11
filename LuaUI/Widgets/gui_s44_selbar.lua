@@ -14,7 +14,7 @@ end
 local mainScaleLeft   = 0.95  -- Default widget position
 local mainScaleTop    = 0.05  -- Default widget position
 local mainScaleWidth  = 0.05  -- Default widget width
-local mainScaleHeight = 0.75  -- Default widget height
+local mainScaleHeight = 0.85  -- Default widget height
 WG.SELBAROPTS = {
     x = mainScaleLeft,
     y = mainScaleTop,

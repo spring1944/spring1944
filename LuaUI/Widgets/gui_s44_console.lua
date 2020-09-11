@@ -505,9 +505,9 @@ function widget:Initialize()
     chat_win = Chili.Window:New{
         parent = Chili.Screen0,
         x = "40%",
-        y = "80%",
+        y = "90%",
         width = "60%",
-        height = "20%",
+        height = "10%",
         draggable = false,
         resizable = false,
         padding = {0, 0, 0, 0},
