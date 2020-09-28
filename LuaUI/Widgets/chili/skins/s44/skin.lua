@@ -17,7 +17,8 @@ skin.general = {
   borderColor = {1.0, 1.0, 1.0, 1.0},
 
   font = {
-    font    = SKINDIR .. "fonts/armalite-rifle.regular.ttf",
+    -- font    = SKINDIR .. "fonts/armalite-rifle.regular.ttf",
+    font    = SKINDIR .. "fonts/BlackOpsOne-Regular.ttf",
     color        = {1,1,0.6,1},
     outlineColor = {0.05,0.05,0.05,0.9},
     outline = false,
