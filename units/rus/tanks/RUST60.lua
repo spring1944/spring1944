@@ -59,7 +59,7 @@ local RUST60 = Tankette:New{
 				},
 			},
 		},
-		maxammo				= 36,
+		maxammo				= 28,
 		maxvelocitykmh		= 44,
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount		= 3,
