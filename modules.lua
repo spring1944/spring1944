@@ -1,6 +1,4 @@
 -- MODULES
--- * mandatory include-config file for all technolgies/modules refencing any notAlab submodule with other submodules dependencies
--- * ALTERNATIVE DESCRIPTION: here you just fill paths for 3rd and higher levels potential dependencies
 
 local MODULES_DIR = "modules/"
 
@@ -85,28 +83,6 @@ modules = {
 			path = MODULES_DIR .. "goals/data/",
 			head = "goals.lua"
 		}
-	},
-	notAchili = {
-		config = {
-			ss44UI = {
-				path = MODULES_DIR .. "notAchili/ss44UI/",
-				files = {
-					"tools.lua",
-					"unitControlTools.lua",
-					"minimapWidget.lua",
-					"selectionWidget.lua",
-					"ordersWidget.lua",
-					"buildWidget.lua",
-					"resourceBarWidget.lua",
-					"consoleWidget.lua",
-					"missionGoalsWidget.lua",
-				},
-			},
-		},
-		data = {
-			path = MODULES_DIR .. "notAchili/data/",
-			head = "core.lua",	
-		},	
 	},
 	strongpoints = {
 		data = {
