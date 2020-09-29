@@ -82,8 +82,8 @@ skin.combobox_item = {
 
 
 skin.checkbox = {
-  TileImageFG = ":cl:tech_checkbox_checked.png",
-  TileImageBK = ":cl:tech_checkbox_unchecked.png",
+  TileImageFG = ":cl:s44_checkbox_checked.png",
+  TileImageBK = ":cl:s44_checkbox_unchecked.png",
   tiles       = {3,3,3,3},
   boxsize     = 13,
 
