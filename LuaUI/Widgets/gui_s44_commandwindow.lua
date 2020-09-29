@@ -185,8 +185,8 @@ function createMyButton(cmd)
             -- We definitively have sorties
             sortiesWindow.parent:Show()
         end
-        Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isSortie, isBuild, texture)
-        Spring.Echo(cmd.id, cmd.name, cmd.action, cmd.tooltip)
+        -- Spring.Echo("createMyButton", cmd.action, buttontext, isMorph, isState, isSortie, isBuild, texture)
+        -- Spring.Echo(cmd.id, cmd.name, cmd.action, cmd.tooltip)
 
         local color = {0,0,0,1}
         local button = Chili.Button:New {
