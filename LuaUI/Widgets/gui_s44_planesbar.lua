@@ -44,7 +44,7 @@ local glUnit             = gl.Unit
 local glDrawGroundCircle = gl.DrawGroundCircle
 
 -- SCRIPT FUNCTIONS
-function ResetBuildBar(cmd, optLine)
+function ResetPlanesBar()
     -- Reset default values
     WG.PLANESBAROPTS.x = mainScaleLeft
     WG.PLANESBAROPTS.y = mainScaleTop
@@ -263,7 +263,7 @@ function widget:Initialize()
         preserveChildrenOrder = true,
     }
 
-    widgetHandler:AddAction(widget, "resetplanesbar", ResetBuildBar)
+    widgetHandler:AddAction("resetplanesbar", ResetPlanesBar)
 
     -- Set the widget size, which apparently were not working well
     x = WG.PLANESBAROPTS.x * viewSizeX

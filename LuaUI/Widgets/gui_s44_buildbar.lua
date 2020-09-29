@@ -42,7 +42,8 @@ local GetMyTeamID       = Spring.GetMyTeamID
 local GetTeamUnits      = Spring.GetTeamUnits
 
 -- SCRIPT FUNCTIONS
-function ResetBuildBar(cmd, optLine)
+function ResetBuildBar()
+    Spring.Echo("-> ResetBuildBar")
     -- Reset default values
     WG.BUILDBAROPTS.x = mainScaleLeft
     WG.BUILDBAROPTS.y = mainScaleTop
@@ -54,6 +55,7 @@ function ResetBuildBar(cmd, optLine)
     w = WG.BUILDBAROPTS.width * viewSizeX
     h = WG.BUILDBAROPTS.height * viewSizeY
     main_win:SetPosRelative(x, y, w, h, true, false)
+    Spring.Echo("ResetBuildBar ->")
 end
 
 local function ResizeContainer()
@@ -242,7 +244,7 @@ function widget:Initialize()
         preserveChildrenOrder = true,
     }
 
-    widgetHandler:AddAction(widget, "resetbuildbar", ResetBuildBar)
+    widgetHandler:AddAction("resetbuildbar", ResetBuildBar)
 
     -- Set the widget size, which apparently were not working well
     x = WG.BUILDBAROPTS.x * viewSizeX

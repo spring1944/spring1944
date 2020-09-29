@@ -42,7 +42,7 @@ local GetUnitIsDead          = Spring.GetUnitIsDead
 local IsUnitSelected         = Spring.IsUnitSelected
 
 -- SCRIPT FUNCTIONS
-function ResetSelBar(cmd, optLine)
+function ResetSelBar()
     -- Reset default values
     WG.SELBAROPTS.x = mainScaleLeft
     WG.SELBAROPTS.y = mainScaleTop
@@ -273,7 +273,7 @@ function widget:Initialize()
         preserveChildrenOrder = true,
     }
 
-    widgetHandler:AddAction(widget, "resetselbar", ResetSelBar)
+    widgetHandler:AddAction("resetselbar", ResetSelBar)
 
     -- Set the widget size, which apparently were not working well
     x = WG.SELBAROPTS.x * viewSizeX
