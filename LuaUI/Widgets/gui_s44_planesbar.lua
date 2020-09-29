@@ -237,7 +237,7 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         minWidth = 96,
         minHeight = 96,
-        caption = "Factories"
+        caption = "Aircrafts"
     }
 
     local scroll = Chili.ScrollPanel:New{
