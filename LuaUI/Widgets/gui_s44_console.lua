@@ -808,7 +808,7 @@ function widget:Shutdown()
 
     widgetHandler:RemoveAction("s44chat")
     Spring.SendCommands({"unbind any+enter s44chat"})
-    -- Spring.SendCommands({"bind any+enter chat"})
+    Spring.SendCommands({"bind any+enter chat"})
     widgetHandler:RemoveAction("s44chatswitchally")
     Spring.SendCommands({"unbind alt+ctrl+a s44chatswitchally"})
     Spring.SendCommands({"bind alt+ctrl+a chatswitchally"})
