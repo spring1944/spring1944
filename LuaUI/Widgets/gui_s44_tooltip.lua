@@ -111,7 +111,7 @@ function widget:Initialize()
     txt_box = Chili.TextBox:New{
         parent = container,
         x = "0%",
-        y = "0%",
+        y = 2,
         width = "100%",
         height = "100%",
         text = ""
