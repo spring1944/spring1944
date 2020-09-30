@@ -1,6 +1,6 @@
 function widget:GetInfo()
     return {
-        name        = "1944 Aircraft Selection Buttons",
+        name        = "1944 Aircraft Selection Bar",
         desc        = "A selection bar for aircrafts",
         author      = "Ray Modified by Godde, Szunti, kmar, Jose Luis Cercos Pita",
         date        = "2011-09-06",
