@@ -22,6 +22,7 @@ local abs = math.abs
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
 local strFormat = string.format
+local customizable_windows = {}
 
 
 function OptimumFontSize(font, txt, w, h)
@@ -49,6 +50,24 @@ function ToSI(num)
     end
 end
 
+function AddCustomizableWindow(window)
+    customizable_windows[#customizable_windows + 1] = window
+end
+
+local function __SetCustomizableWindowsState(state)
+    for _, w in ipairs(customizable_windows) do
+        w.resizable = state
+        w.draggable = state
+    end
+end
+
+function LockCustomizableWindows()
+    __SetCustomizableWindowsState(false)
+end
+
+function UnlockCustomizableWindows()
+    __SetCustomizableWindowsState(true)
+end
 
 function widget:Initialize()
     if (not WG.Chili) then
@@ -58,6 +77,9 @@ function widget:Initialize()
 
     WG.Chili.OptimumFontSize = OptimumFontSize
     WG.Chili.ToSI = ToSI
+    WG.Chili.AddCustomizableWindow = AddCustomizableWindow
+    WG.Chili.LockCustomizableWindows = LockCustomizableWindows
+    WG.Chili.UnlockCustomizableWindows = UnlockCustomizableWindows
 end
 
 function widget:Shutdown()

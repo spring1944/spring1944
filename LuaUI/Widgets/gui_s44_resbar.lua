@@ -217,7 +217,10 @@ function widget:Initialize()
         height = tostring(floor(100 * WG.RESBAROPTS.height)) .. "%",
         minHeight = 25,
         padding = {0, 0, 0, 0},
+        draggable = true,
+        resizable = true,
     }
+    Chili.AddCustomizableWindow(main_win)
     -- If we set OnMove/OnResize during the initialization, they are called
     -- eventually breaking our WG.RESBAROPTS data
     main_win.OnMove = {__OnMainWinSize,}

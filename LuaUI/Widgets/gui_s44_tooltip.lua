@@ -95,6 +95,7 @@ function widget:Initialize()
         minWidth = 50,
         minHeight = 24,
     }
+    Chili.AddCustomizableWindow(main_win)
 
     local container = Chili.Window:New{
         parent = main_win,

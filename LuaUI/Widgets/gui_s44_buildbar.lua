@@ -218,6 +218,7 @@ function widget:Initialize()
         minHeight = 96,
         caption = "Factories"
     }
+    Chili.AddCustomizableWindow(main_win)
 
     local scroll = Chili.ScrollPanel:New{
         parent = main_win,

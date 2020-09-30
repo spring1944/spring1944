@@ -3,8 +3,8 @@
 
 function widget:GetInfo()
     return {
-        name         = "1944 Reset GUI",
-        desc         = "Create a command to reset the GUI",
+        name         = "1944 GUI Reset",
+        desc         = "Create commands to reset and restart the GUI",
         author       = "Jose Luis Cercos-Pita",
         date         = "2020-09-29",
         license      = "GNU GPL, v2 or later",

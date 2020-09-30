@@ -421,6 +421,7 @@ function widget:Initialize()
         minWidth = buttonsize + 12 + 10,
         minHeight = (buttonsize + 24) * 4,
     }
+    Chili.AddCustomizableWindow(main_win)
 
     local stateScroll = Chili.ScrollPanel:New{
         parent = main_win,
