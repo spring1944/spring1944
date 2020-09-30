@@ -278,10 +278,10 @@ end
 
 function __AddButton(parent, caption, action, y)
     y = y or "0%"
-    local fontsize = OptimumFontSize(parent.font,
-                                     "Close",
-                                     0.8 * ((parent.width - 10) - 10),
-                                     0.6 * (0.05 * (parent.height - 10) - 10))
+    local fontsize = Chili.OptimumFontSize(parent.font,
+                                           "Close",
+                                           0.8 * ((parent.width - 10) - 10),
+                                           0.6 * (0.05 * (parent.height - 10) - 10))
     return Chili.Button:New{
         parent = parent,
         x = "0%",
