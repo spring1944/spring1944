@@ -17,6 +17,10 @@ local glRotate = gl.Rotate
 local glColor = gl.Color
 local glTexture = gl.Texture
 local glTexRect = gl.TexRect
+local glShape = gl.Shape
+
+local GL_QUAD_STRIP = GL.QUAD_STRIP
+local GL_LINE_LOOP = GL.LINE_LOOP
 
 ----------------------------------------------------------------
 --gl lists
