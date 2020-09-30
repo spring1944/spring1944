@@ -61,7 +61,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 			slaveTo				= 5,
 		},
 		[9] = {
-			name				= "MaximAAReversed",
+			name				= "UBTReversed",
 			maxAngleDif			= 90,
 			mainDir				= [[0 .25 -1]],
 		},
