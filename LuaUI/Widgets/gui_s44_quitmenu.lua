@@ -1,15 +1,15 @@
 local versionNumber = "v1.0"
 
 function widget:GetInfo()
-	return {
-		name = "1944 Quit menu",
-		desc = versionNumber .. " custom quit menu for Spring 1944",
-		author = "Jose Luis Cercos-Pita",
-		date = "26/06/2020",
-		license = "GNU GPL v2 or later",
-		layer = 1,
-		enabled = true,
-	}
+    return {
+        name = "1944 Quit menu",
+        desc = versionNumber .. " custom quit menu for Spring 1944",
+        author = "Jose Luis Cercos-Pita",
+        date = "26/06/2020",
+        license = "GNU GPL v2 or later",
+        layer = 1,
+        enabled = true,
+    }
 end
 
 ------------------------------------------------
