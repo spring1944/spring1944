@@ -225,6 +225,13 @@ local function __escape_lua_pattern(s)
 end
 
 local function __color2str(color)
+    -- Let's be safe. Buumi reported errors, maybe related with cached content.
+    -- So if the received color is just nil, we use the default one, defined in
+    -- LuaUI/Widgets/chili/skins/s44/skin.lua
+    if color == nil then
+        color = {1.0, 1.0, 0.6, 1.0}
+    end
+
     local txt = "\\255"
     for i = 1,3 do 
         txt = txt .. "\\" .. tostring(math.floor(color[i] * 255))
