@@ -60,7 +60,6 @@ function widget:Initialize()
 
     widgetHandler:AddAction("resetgui", ResetGUI)
     widgetHandler:AddAction("restartgui", RestartGUI)
-    RestartGUI()
 end
 
 function widget:Shutdown()
