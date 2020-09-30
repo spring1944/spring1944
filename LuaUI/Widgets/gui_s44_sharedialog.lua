@@ -40,10 +40,8 @@ local mCurr, eCurr = 0, 0
 ------------------------------------------------
 --speedups
 ------------------------------------------------
-local abs = math.abs
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
-local strFormat = string.format
 local GetTeamResources = Spring.GetTeamResources
 
 --------------------------------------------------------------------------------
@@ -108,31 +106,6 @@ local function __playerButton(name, color)
     }
 end
 
-local function ToSI(num)
-    if (num == 0) then
-        return "0"
-    else
-        local absNum = abs(num)
-        if (absNum < 0.1) then
-            return "0" --too small to matter
-        elseif (absNum < 1e3) then
-            return strFormat("%.2f", num)
-        elseif (absNum < 1e6) then
-            return strFormat("%.2fk", 1e-3 * num)
-        elseif (absNum < 1e9) then
-            return strFormat("%.2fM", 1e-6 * num)
-        else
-            return strFormat("%.2fB", 1e-9 * num)
-        end
-    end
-end
-
-local function OptimumFontSize(font, txt, w, h)
-    local wf = w / font:GetTextWidth(txt)
-    local hf, _, _ = h / font:GetTextHeight(txt)
-    return floor(min(wf, hf) * font.size)
-end
-
 local function OnResSlider(self, value, old_value)
     local pbar = self.parent
     pbar:SetValue(value)
@@ -144,9 +117,15 @@ local function __OnResBarSize(self, w, h)
     local slider = self.slider
     h = floor(0.9 * min(self.height, 0.15 * self.width))
     icon:Resize(h, h, true, true)
-    icon.font.size = OptimumFontSize(self.font, icon.caption, h, h) - 2
+    icon.font.size = Chili.OptimumFontSize(self.font,
+                                           icon.caption,
+                                           h,
+                                           h) - 2
     pbar:SetPos(h + 5, 0.1 * h, self.width - h - 20, 0.7 * h, true, true)
-    pbar.font.size = OptimumFontSize(self.font, "XXXXX/XXXXX", 0.9 * (self.width - h - 20), 0.5 * h) - 1
+    pbar.font.size = Chili.OptimumFontSize(self.font,
+                                           "XXXXX/XXXXX",
+                                           0.9 * (self.width - h - 20),
+                                           0.5 * h) - 1
 end
 
 local function __ResBar(parent, y, h, color, res_name)
@@ -173,7 +152,10 @@ local function __ResBar(parent, y, h, color, res_name)
         align = "left",
         valign = "top",
         caption = GLYPHS[res_name],
-        font = {size = OptimumFontSize(container.font, GLYPHS[res_name], h, h) - 2,
+        font = {size = Chili.OptimumFontSize(container.font,
+                                             GLYPHS[res_name],
+                                             h,
+                                             h) - 2,
                 color = color},
     }
     container.icon = icon
@@ -416,9 +398,9 @@ function widget:GameFrame(n)
     eCurr, _ = GetTeamResources(myTeamID, "energy")
 
     local mfactor = main_metal.pbar.value / 100
-    main_metal.pbar:SetCaption(ToSI(mCurr * mfactor) .. "/" .. ToSI(mCurr))
+    main_metal.pbar:SetCaption(Chili.ToSI(mCurr * mfactor) .. "/" .. Chili.ToSI(mCurr))
     local efactor = main_energy.pbar.value / 100
-    main_energy.pbar:SetCaption(ToSI(eCurr * efactor) .. "/" .. ToSI(eCurr))
+    main_energy.pbar:SetCaption(Chili.ToSI(eCurr * efactor) .. "/" .. Chili.ToSI(eCurr))
 end
 
 function widget:DrawScreen()

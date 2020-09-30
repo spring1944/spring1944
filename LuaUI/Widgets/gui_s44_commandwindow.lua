@@ -72,7 +72,6 @@ local updateRequired = true
 local queue = {}
 
 -- CONTROLS
-local abs = math.abs
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
 local spGetActiveCommand    = Spring.GetActiveCommand
@@ -100,12 +99,6 @@ function ClickFunc(chiliButton, x, y, button, mods)
 
         Spring.SetActiveCommand(index, button, left, right, alt, ctrl, meta, shift)
     end
-end
-
-local function OptimumFontSize(font, txt, w, h)
-    local wf = w / font:GetTextWidth(txt)
-    local hf, _, _ = h / font:GetTextHeight(txt)
-    return floor(min(wf, hf) * font.size)
 end
 
 local function __split(str, sep)
@@ -205,7 +198,7 @@ function createMyButton(cmd)
             TileImageBK = IMAGE_DIRNAME .. "empty.png",
             TileImageFG = IMAGE_DIRNAME .. "s44_button_alt_fg.png",
             font = {
-                size = OptimumFontSize(main_win.font, buttontext, size, size) - 2,
+                size = Chili.OptimumFontSize(main_win.font, buttontext, size, size) - 2,
                 outlineColor = {0.0,0.0,0.0,1.0},
                 outline = true,
                 shadow  = false,

@@ -47,10 +47,8 @@ local main_win
 ------------------------------------------------
 --speedups
 ------------------------------------------------
-local abs = math.abs
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
-
 local strFormat = string.format
 
 local GetTeamResources = Spring.GetTeamResources
@@ -61,34 +59,9 @@ local SetShareLevel = Spring.SetShareLevel
 --util
 ------------------------------------------------
 
-local function ToSI(num)
-  if (num == 0) then
-    return "0"
-  else
-    local absNum = abs(num)
-    if (absNum < 0.1) then
-      return "0" --too small to matter
-    elseif (absNum < 1e3) then
-      return strFormat("%.2f", num)
-    elseif (absNum < 1e6) then
-      return strFormat("%.2fk", 1e-3 * num)
-    elseif (absNum < 1e9) then
-      return strFormat("%.2fM", 1e-6 * num)
-    else
-      return strFormat("%.2fB", 1e-9 * num)
-    end
-  end
-end
-
 local function FramesToTimeString(n)
   local seconds = n / 30
   return strFormat(floor(seconds / 60) .. ":" .. strFormat("%02i", ceil(seconds % 60)))
-end
-
-local function OptimumFontSize(font, txt, w, h)
-    local wf = w / font:GetTextWidth(txt)
-    local hf, _, _ = h / font:GetTextHeight(txt)
-    return floor(min(wf, hf) * font.size)
 end
 
 local function __OnMainWinSize(self, w, h)
@@ -105,9 +78,15 @@ local function __OnResBarSize(self, w, h)
     local slider = self.slider
     h = floor(0.9 * min(self.height, 0.15 * self.width))
     icon:Resize(h, h, true, true)
-    icon.font.size = OptimumFontSize(self.font, icon.caption, h, h) - 2
+    icon.font.size = Chili.OptimumFontSize(self.font,
+                                           icon.caption,
+                                           h,
+                                           h) - 2
     pbar:SetPos(h + 5, 0.1 * h, self.width - h - 20, 0.7 * h, true, true)
-    pbar.font.size = OptimumFontSize(self.font, "XXXXX/XXXXX (Resupply in 00:00)", 0.9 * (self.width - h - 20), 0.5 * h) - 1
+    pbar.font.size = Chili.OptimumFontSize(self.font,
+                                           "XXXXX/XXXXX (Resupply in 00:00)",
+                                           0.9 * (self.width - h - 20),
+                                           0.5 * h) - 1
 end
 
 local function __OnResSlider(self, value, old_value)
@@ -146,7 +125,7 @@ local function ResBar(parent, x, color, res_name)
         align = "left",
         valign = "top",
         caption = GLYPHS[res_name],
-        font = {size = OptimumFontSize(container.font, GLYPHS[res_name], h, h) - 2,
+        font = {size = Chili.OptimumFontSize(container.font, GLYPHS[res_name], h, h) - 2,
                 color = color},
     }
     container.icon = icon
@@ -166,7 +145,7 @@ local function ResBar(parent, x, color, res_name)
         color = color,
         backgroundColor = bgcolor,
         caption = "0/0 (0)",
-        font = {size = OptimumFontSize(container.font, "XXXXX/XXXXX (Resupply in 00:00)", 0.9 * w, 0.5 * h) - 1,
+        font = {size = Chili.OptimumFontSize(container.font, "XXXXX/XXXXX (Resupply in 00:00)", 0.9 * w, 0.5 * h) - 1,
                 color = {1.0,1.0,1.0,1.0},
                 outlineColor = {0.0,0.0,0.0,1.0},
                 outline = true,
@@ -308,11 +287,11 @@ function widget:GameFrame(n)
 
     local mresbar = main_win.mresbar
     mresbar.pbar:SetValue(100 * mCurr / mStor)
-    mresbar.pbar:SetCaption(ToSI(mCurr) .. "/" .. ToSI(mStor) .. " (" .. ToSI(mInco - mPull) .. ")" )
+    mresbar.pbar:SetCaption(Chili.ToSI(mCurr) .. "/" .. Chili.ToSI(mStor) .. " (" .. Chili.ToSI(mInco - mPull) .. ")" )
     __SetSliderValue(mresbar.slider, 100 * mShar)
     local eresbar = main_win.eresbar
     eresbar.pbar:SetValue(100 * eCurr / eStor)
-    eresbar.pbar:SetCaption(ToSI(eCurr) .. "/" .. ToSI(eStor) .. " (Resupply in " .. resupplyString .. ")" )
+    eresbar.pbar:SetCaption(Chili.ToSI(eCurr) .. "/" .. Chili.ToSI(eStor) .. " (Resupply in " .. resupplyString .. ")" )
     __SetSliderValue(eresbar.slider, 100 * eShar)
 end
 

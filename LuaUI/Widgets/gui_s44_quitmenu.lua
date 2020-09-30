@@ -26,27 +26,17 @@ local Chili, main_win
 ------------------------------------------------
 --speedups
 ------------------------------------------------
-local abs = math.abs
-local min, max = math.min, math.max
-local floor, ceil = math.floor, math.ceil
-
-local strFormat = string.format
+local floor = math.floor
 
 ------------------------------------------------
 --util
 ------------------------------------------------
-local function __OptimumFontSize(font, txt, w, h)
-    local wf = w / font:GetTextWidth(txt)
-    local hf, _, _ = h / font:GetTextHeight(txt)
-    return floor(min(wf, hf) * font.size)
-end
-
 function __AddButton(parent, caption, action, y)
     y = y or "0%"
-    local fontsize = __OptimumFontSize(parent.font,
-                                       "Continue playing",
-                                       0.8 * ((parent.width - 10) - 10),
-                                       0.6 * (0.33 * (parent.height - 10) - 10))
+    local fontsize = Chili.OptimumFontSize(parent.font,
+                                           "Continue playing",
+                                           0.8 * ((parent.width - 10) - 10),
+                                           0.6 * (0.33 * (parent.height - 10) - 10))
     return Chili.Button:New{
         parent = parent,
         x = "0%",
