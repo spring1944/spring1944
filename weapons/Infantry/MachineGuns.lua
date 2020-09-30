@@ -288,6 +288,13 @@ local BeresinUBS = HeavyMGClass:New(AMG):New{
     no_range_adjust    = true,
   }
 }
+-- UBT
+local UBTReversed = BeresinUBS:New(AMG):New{
+  customparams = {
+    no_range_adjust    = true,
+    reversed           = true,
+  }
+}
 -- M2 Browning  (USA)
 local M2Browning = HeavyMGClass:New{
   name               = [[M2 Browning .50 Caliber Heavy Machine Gun]],
@@ -321,7 +328,6 @@ local M2BrowningAMG = M2Browning:New(AMG):New{
 	--onlytargetCategory = "AIR",
   }
 }
-
 -- Breda M1931 (ITA)
 local BredaM1931 = HeavyMGClass:New{
   name               = [[Breda M1931 13mm Heavy Machine Gun]],
@@ -438,6 +444,7 @@ return lowerkeys({
   MaximAA = MaximAA,
   MaximAAReversed = MaximAAReversed,
   ShKAS1941 = ShKAS1941,
+  UBTReversed = UBTReversed,
   M1919A4Browning = M1919A4Browning,
   M1919A4Browning_Deployed = M1919A4Browning_Deployed,
   Breda30 = Breda30,
