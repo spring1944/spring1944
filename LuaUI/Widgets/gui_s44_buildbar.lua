@@ -256,7 +256,8 @@ function widget:Initialize()
     -- eventually breaking our WG.BUILDBAROPTS data
     main_win.OnMove = {OnMainWinSize,}
     main_win.OnResize = {OnMainWinSize,}
-    ResizeContainer()
+
+    GenerateFactories()
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
