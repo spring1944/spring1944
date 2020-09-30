@@ -226,6 +226,10 @@ function createMyButton(cmd)
                     align   = "left",
                     valign  = "top",
                     font = {
+                        size = Chili.OptimumFontSize(main_win.font,
+                                                     buttontext,
+                                                     size,
+                                                     0.4 * size) - 2,
                         outlineColor = {0.0,0.0,0.0,1.0},
                         outline = true,
                         shadow  = false,
