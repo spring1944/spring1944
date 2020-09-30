@@ -54,7 +54,6 @@ function ResetBuildBar()
     w = WG.BUILDBAROPTS.width * viewSizeX
     h = WG.BUILDBAROPTS.height * viewSizeY
     main_win:SetPosRelative(x, y, w, h, true, false)
-    Spring.Echo("ResetBuildBar ->")
 end
 
 local function ResizeContainer()
