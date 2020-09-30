@@ -43,7 +43,6 @@ local GetTeamUnits      = Spring.GetTeamUnits
 
 -- SCRIPT FUNCTIONS
 function ResetBuildBar()
-    Spring.Echo("-> ResetBuildBar")
     -- Reset default values
     WG.BUILDBAROPTS.x = mainScaleLeft
     WG.BUILDBAROPTS.y = mainScaleTop
