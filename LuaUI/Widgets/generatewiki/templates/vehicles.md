@@ -8,17 +8,36 @@ Vehicles are in general faster and stronger than infantry, becoming by themselve
 
 ## Structural details
 
-| Parameter | Value | Parameter | Value | Parameter | Value |
-|-----------|-------|-----------|-------|-----------|-------|
-| ![Cost][1] Cost | {buildCost} | ![Health][2] Health points | {maxDamage} | ![Armour][106] Front armour | {frontArmour} mm |
-| ![Armour][106] Rear armour | {rearArmour} mm | ![Armour][106] Sides armour | {sideArmour} mm | ![Armour][106] Top armour | {topArmour} mm |
-
+| Parameter | Value | Parameter | Value |
+|-----------|-------|-----------|-------|
+| ![Cost][1] Cost | {buildCost} | ![Health][2] Health points |{maxDamage} |
 
 ![Category][104] Targeted as: {categories}
 
 ![Armor][105] Damaged as: {armorType}
 
 {maxammo}
+
+{comment_base_section}
+### Base armour
+
+| Parameter | Value | Parameter | Value |
+|-----------|-------|-----------|-------|
+| ![Armour][106] Front armour | {frontArmour} mm | ![ArmourSlope][107] Front armour slope | {frontArmourSlope} º |
+| ![Armour][106] Rear armour | {rearArmour} mm | ![ArmourSlope][107] Rear armour slope | {rearArmourSlope} º |
+| ![Armour][106] Sides armour | {sideArmour} mm | ![ArmourSlope][107] Sides armour slope | {sideArmourSlope} º |
+| ![Armour][106] Top armour | {topArmour} mm | ![ArmourSlope][107] Top armour slope | {topArmourSlope} º |
+{end_comment_base_section}
+{comment_turret_section}
+### Turret armour
+
+| Parameter | Value | Parameter | Value |
+|-----------|-------|-----------|-------|
+| ![Armour][106] Front armour | {frontTurretArmour} mm | ![ArmourSlope][107] Front armour slope | {frontTurretArmourSlope} º |
+| ![Armour][106] Rear armour | {rearTurretArmour} mm | ![ArmourSlope][107] Rear armour slope | {rearTurretArmourSlope} º |
+| ![Armour][106] Sides armour | {sideTurretArmour} mm | ![ArmourSlope][107] Sides armour slope | {sideTurretArmourSlope} º |
+| ![Armour][106] Top armour | {topTurretArmour} mm | ![ArmourSlope][107] Top armour slope | {topTurretArmourSlope} º |
+{end_comment_turret_section}
 
 ## Line of sight
 
@@ -48,4 +67,4 @@ Vehicles are in general faster and stronger than infantry, becoming by themselve
 [104]: {iconsUrl}/accuracy_icon.{iconExt}
 [105]: {iconsUrl}/explosion_icon.{iconExt}
 [106]: {iconsUrl}/penetration.{iconExt}
-
+[107]: {iconsUrl}/armor_slope.{iconExt}

@@ -18,6 +18,8 @@ UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master
 FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
 WIKI_WIDGET_PICS_URL = "https://raw.githubusercontent.com/wiki/spring1944/spring1944/images/wiki_widget"
 WIKI_WIDGET_PICS_EXT = "png"
+WIKI_COMMENT_START = "<!--"
+WIKI_COMMENT_END = "-->"
 STRUCTURE = "plain"  -- All pages are in root folder, with dot based names
 
 if STRUCTURE == "hierarchical" then
@@ -257,6 +259,11 @@ function _parse_squad(unitDef)
         return ""
     end
     local squad = squadDefs[unitDef.name] or sortieDefs[unitDef.name]
+    if squad.members == nil then
+        -- It is actually happening, see ger_all squad, which is afterwards
+        -- filled by spammer AI
+        return ""
+    end
     local t = "![Cost][1] Cost: " .. tostring(squad.buildCostMetal) .. "\n\n"
     t = t .. "This is a team composed by the following members:\n\n"
     local members = {}
@@ -497,18 +504,7 @@ function _parse_vehicle(unitDef)
     t = string.gsub(t,
                     "{maxDamage}",
                     tostring(unitDef.health))
-    t = string.gsub(t,
-                    "{frontArmour}",
-                    tostring(unitDef.customParams.armor_front or 0))
-    t = string.gsub(t,
-                    "{rearArmour}",
-                    tostring(unitDef.customParams.armor_rear or 0))
-    t = string.gsub(t,
-                    "{sideArmour}",
-                    tostring(unitDef.customParams.armor_side or 0))
-    t = string.gsub(t,
-                    "{topArmour}",
-                    tostring(unitDef.customParams.armor_top or 0))
+
     local categories = ""
     for name, value in pairs(unitDef.modCategories) do
         if value then
@@ -528,6 +524,101 @@ function _parse_vehicle(unitDef)
     t = string.gsub(t,
                     "{maxammo}",
                     maxammo)    
+
+    if unitDef.customParams.armour == nil then
+        t = string.gsub(t,
+                        "{comment_base_section}",
+                        WIKI_COMMENT_START)
+        t = string.gsub(t,
+                        "{end_comment_base_section}",
+                        WIKI_COMMENT_END)
+        t = string.gsub(t,
+                        "{comment_turret_section}",
+                        WIKI_COMMENT_START)
+        t = string.gsub(t,
+                        "{end_comment_turret_section}",
+                        WIKI_COMMENT_END)
+    else
+        local armour = table.unserialize(unitDef.customParams.armour)
+        if armour["base"] == nil then
+            t = string.gsub(t,
+                            "{comment_base_section}",
+                            WIKI_COMMENT_START)
+            t = string.gsub(t,
+                            "{end_comment_base_section}",
+                            WIKI_COMMENT_END)
+        else
+            t = string.gsub(t,
+                            "{comment_base_section}",
+                            "")
+            t = string.gsub(t,
+                            "{end_comment_base_section}",
+                            "")
+            t = string.gsub(t,
+                            "{frontArmour}",
+                            tostring(armour["base"].front.thickness or 0))
+            t = string.gsub(t,
+                            "{rearArmour}",
+                            tostring(armour["base"].rear.thickness or 0))
+            t = string.gsub(t,
+                            "{sideArmour}",
+                            tostring(armour["base"].side.thickness or 0))
+            t = string.gsub(t,
+                            "{topArmour}",
+                            tostring(armour["base"].top.thickness or 0))
+            t = string.gsub(t,
+                            "{frontArmourSlope}",
+                            tostring(armour["base"].front.slope or 0))
+            t = string.gsub(t,
+                            "{rearArmourSlope}",
+                            tostring(armour["base"].rear.slope or 0))
+            t = string.gsub(t,
+                            "{sideArmourSlope}",
+                            tostring(armour["base"].side.slope or 0))
+            t = string.gsub(t,
+                            "{topArmourSlope}",
+                            tostring(armour["base"].top.slope or 0))
+        end
+        if armour["turret"] == nil then
+            t = string.gsub(t,
+                            "{comment_turret_section}",
+                            WIKI_COMMENT_START)
+            t = string.gsub(t,
+                            "{end_comment_turret_section}",
+                            WIKI_COMMENT_END)
+        else
+            t = string.gsub(t,
+                            "{comment_turret_section}",
+                            "")
+            t = string.gsub(t,
+                            "{end_comment_turret_section}",
+                            "")
+            t = string.gsub(t,
+                            "{frontTurretArmour}",
+                            tostring(armour["turret"].front.thickness or 0))
+            t = string.gsub(t,
+                            "{rearTurretArmour}",
+                            tostring(armour["turret"].rear.thickness or 0))
+            t = string.gsub(t,
+                            "{sideTurretArmour}",
+                            tostring(armour["turret"].side.thickness or 0))
+            t = string.gsub(t,
+                            "{topTurretArmour}",
+                            tostring(armour["turret"].top.thickness or 0))
+            t = string.gsub(t,
+                            "{frontTurretArmourSlope}",
+                            tostring(armour["turret"].front.slope or 0))
+            t = string.gsub(t,
+                            "{rearTurretArmourSlope}",
+                            tostring(armour["turret"].rear.slope or 0))
+            t = string.gsub(t,
+                            "{sideTurretArmourSlope}",
+                            tostring(armour["turret"].side.slope or 0))
+            t = string.gsub(t,
+                            "{topTurretArmourSlope}",
+                            tostring(armour["turret"].top.slope or 0))
+        end
+    end
     -- Line of Shight
     t = string.gsub(t,
                     "{sight}",
