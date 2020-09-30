@@ -63,11 +63,16 @@ for weaponNum = 1,info.numWeapons do
 			if headingPiece then
 				info.aimPieces[weaponNum] = {headingPiece, pitchPiece}
 
-				local _, _, _, dx, dy, dz = Spring.GetUnitPiecePosDir(unitID, pieceMap[lastflare])
-				local frontDir = Spring.GetUnitVectors(unitID)
-				local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
-				if dotFront < 0 then
-					info.reversedWeapons[weaponNum] = true
+				local reversed = WeaponDefs[UnitDef.weapons[weaponNum].weaponDef].customParams.reversed
+				if reversed == nil then
+					local _, _, _, dx, dy, dz = Spring.GetUnitPiecePosDir(unitID, pieceMap[lastflare])
+					local frontDir = Spring.GetUnitVectors(unitID)
+					local dotFront = dx * frontDir[1] + dy * frontDir[2] + dz * frontDir[3]
+					if dotFront < 0 then
+						info.reversedWeapons[weaponNum] = true
+					end
+				else
+					info.reversedWeapons[weaponNum] = reversed
 				end
 			end
 		end

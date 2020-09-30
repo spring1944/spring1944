@@ -101,6 +101,12 @@ local MaximAA = Maxim:New(AAMG):New{
     no_range_adjust    = true,
   }
 }
+local MaximAAReversed = MaximAA:New{
+  customparams = {
+    no_range_adjust    = true,
+    reversed           = true,
+  }
+}
 -- ShKAS1941 (RUS)
 local ShKAS1941 = MGClass:New(AMG):New{
   burst              = 9,
@@ -430,6 +436,7 @@ return lowerkeys({
   DT = DT,
   Maxim = Maxim,
   MaximAA = MaximAA,
+  MaximAAReversed = MaximAAReversed,
   ShKAS1941 = ShKAS1941,
   M1919A4Browning = M1919A4Browning,
   M1919A4Browning_Deployed = M1919A4Browning_Deployed,
