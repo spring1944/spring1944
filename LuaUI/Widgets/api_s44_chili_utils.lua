@@ -69,6 +69,54 @@ function UnlockCustomizableWindows()
     __SetCustomizableWindowsState(true)
 end
 
+function SetOpacity(control, opacity)
+    local backup = false
+    if control.opacity_backup == nil then
+        backup = true
+        control.opacity_backup = {}
+    end
+
+    if control.font ~= nil then
+        if control.font.color ~= nil then
+            local c = control.font.color
+            if backup then
+                control.opacity_backup["fontColor"] = (c[4] == nil) and 1 or c[4]
+            end
+            control.font:SetColor(c[1], c[2], c[3],
+                                  control.opacity_backup["fontColor"] * opacity)
+            control:Invalidate()
+        end
+        if control.font.outlineColor ~= nil then
+            local c = control.font.outlineColor
+            if backup then
+                control.opacity_backup["fontOutlineColor"] = (c[4] == nil) and 1 or c[4]
+            end
+            control.font:SetOutlineColor(c[1], c[2], c[3],
+                                         control.opacity_backup["fontOutlineColor"] * opacity)
+            control:Invalidate()
+        end
+    end
+
+    local colors = {"focusColor", "borderColor", "backgroundColor",
+                    "captionColor", "cursorColor", "colorBK",
+                    "colorBK_selected", "colorFG", "colorFG_selected",
+                    "KnobColorSelected", "treeColor"}
+    for _, color in ipairs(colors) do
+        if control[color] ~= nil then
+            local c = control[color]
+            if backup then
+                control.opacity_backup[color] = (c[4] == nil) and 1 or c[4]
+            end
+            control[color][4] = control.opacity_backup[color] * opacity
+            control:Invalidate()
+        end
+    end
+
+    for _, c in ipairs(control.children) do
+        SetOpacity(c, opacity)
+    end
+end
+
 function widget:Initialize()
     if (not WG.Chili) then
         widgetHandler:RemoveWidget()
@@ -80,6 +128,7 @@ function widget:Initialize()
     WG.Chili.AddCustomizableWindow = AddCustomizableWindow
     WG.Chili.LockCustomizableWindows = LockCustomizableWindows
     WG.Chili.UnlockCustomizableWindows = UnlockCustomizableWindows
+    WG.Chili.SetOpacity = SetOpacity
 end
 
 function widget:Shutdown()

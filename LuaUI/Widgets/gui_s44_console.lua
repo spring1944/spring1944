@@ -48,6 +48,13 @@ local specs = {}
 local sent_history = {}
 local sent_history_index = 1
 local buttons_players = {}
+local fadeLag, fadePeriod = 10.0, 1.0
+
+
+local min, max = math.min, math.max
+local function clamp(v, vmin, vmax)
+    return max(min(v, vmax), vmin)
+end
 
 --------------------------------------------------------------------------------
 -- 
@@ -262,6 +269,7 @@ local function removeToMaxLines()
     while #chat_stack.children > MAX_STORED_MESSAGES do
         if chat_stack.children[1] then
             chat_stack.children[1]:Dispose()
+            chat_stack.last_faded = chat_stack.last_faded - 1
         end
     end
 end
@@ -293,9 +301,11 @@ local function AddMessage(msg)
         fontShadow=false,
         autoHeight=true,
         font = {
-            outlineWidth  = 3,
-            outlineWeight = 10,
-            outline       = true,
+            outlineWidth     = 3,
+            outlineWeight    = 10,
+            outline          = true,
+            autoOutlineColor = false,
+            outlineColor  = {0, 0, 0, 1},
         }
     }
 
@@ -334,7 +344,7 @@ local function AddMessage(msg)
             children = {flagButton, messageTextBox},        
         }
     end
-
+    control.timer = 0.0
     chat_stack:AddChild(control, false)
     chat_stack:UpdateClientArea()
 end
@@ -393,7 +403,10 @@ function ShowWin()
         }
     end
     chat_stack:SetParent(main_log)
-
+    -- Set all the messages opaque
+    for i, c in ipairs(chat_stack.children) do
+        Chili.SetOpacity(c, 1.0)
+    end    
     -- Show the main window
     main_sendto:Select(SENDTO)
     sent_history_index = #sent_history + 1
@@ -408,6 +421,11 @@ function HideWin()
     Chili.Screen0:FocusControl(nil)
     -- Transfer the chat stack to the default chat window
     chat_stack:SetParent(chat_scroll)
+    -- Reset the transparency of the outdated messages
+    for i = 2, chat_stack.last_faded do
+        local c = chat_stack.children[i]
+        Chili.SetOpacity(c, 0.0)
+    end
     -- Show the default chat window
     chat_win:Show()
 end
@@ -550,7 +568,8 @@ function widget:Initialize()
         itemMargin  = {0, 0, 0, 0},
         autosize = true,
         preserveChildrenOrder = true,
-        parent = chat_scroll,  
+        parent = chat_scroll,
+        last_faded = 1, -- Care, the stackpanel has a child already
     }
 
     -- This spacer grants chats is always scrolled down
@@ -804,6 +823,24 @@ function widget:DrawScreen()
             button.children[2]:SetValue(ping)
             button.children[2]:SetColor(GetColourScale(ping))
         end
+    end
+end
+
+function widget:Update(dt)
+    if main_win.visible then
+        -- The chat window is visible, so we don't want to fade away messages
+        return
+    end
+
+    for i=max(2, chat_stack.last_faded + 1), #chat_stack.children do
+        local c = chat_stack.children[i]
+
+        c.timer = c.timer + dt
+        local opacity = clamp(1.0 - (c.timer - fadeLag) / fadePeriod, 0.0, 1.0)
+        if opacity <= 0 then
+            chat_stack.last_faded = i
+        end
+        Chili.SetOpacity(c, opacity)
     end
 end
 
