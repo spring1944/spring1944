@@ -89,7 +89,7 @@ function HeatmapMgr.GameStart()
     -- Try to create a Heatmap. This operation would fail if some other allied
     -- team already did the job
     HeatmapMgr.hmap_name = "craig." .. tostring(myAllyTeamID) .. ".ground"
-    GG.HeatmapManager:AddHeatmap(HeatmapMgr.hmap_name, parse_unit, 64)
+    GG.HeatmapManager:AddHeatmap(HeatmapMgr.hmap_name, parse_unit)
     intelligence = gadget.intelligences[myAllyTeamID]
 end
 

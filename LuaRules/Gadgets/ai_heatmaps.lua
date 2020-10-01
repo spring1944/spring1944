@@ -47,6 +47,8 @@ local glVertex = gl.Vertex
 local glBeginEnd = gl.BeginEnd
 local glTexture = gl.Texture
 local glTexRect = gl.TexRect
+local glUseShader = gl.UseShader
+local glRenderToTexture = gl.RenderToTexture
 
 local spGetAllUnits = Spring.GetAllUnits
 local spValidUnitID = Spring.ValidUnitID
@@ -171,7 +173,7 @@ HeatMap.__index = HeatMap
 function HeatMap:Create(tilesize)
     local heatmap = {}
     setmetatable(heatmap, HeatMap)
-    heatmap.tilesize = (tilesize ~= nil) and tilesize or 64
+    heatmap.tilesize = (tilesize ~= nil) and tilesize or 256
     heatmap.sx = math.floor(Game.mapSizeX / heatmap.tilesize)
     heatmap.sy = math.floor(Game.mapSizeZ / heatmap.tilesize)
     heatmap.textures = {}
@@ -186,6 +188,23 @@ function HeatMap:Create(tilesize)
     heatmap.active_texture = 1   -- The one becoming drawn
     heatmap.has_texture = false  -- No texture has been drawn yet
     heatmap.debug = false
+
+    -- Initialize the gradient computation shader
+    shader = shader or gl.CreateShader({
+        fragment = VFS.LoadFile("LuaRules/Gadgets/ai_heatmaps/rsc/gradient.fs", VFS.ZIP),
+        uniformInt = {heatmap = 0},
+        uniformFloat = {dx = 1.0 / heatmap.sx, dy = 1.0 / heatmap.sx}
+    })
+    if not shader then
+        Error("Failure creating heatmap shader")
+        Spring.Echo(gl.GetShaderLog())
+        return nil
+    end
+    heatmap.grad_shader = shader
+    heatmap.grad_texture = glCreateTexture(heatmap.sx, heatmap.sy, {
+        fbo = true, min_filter = GL.NEAREST, mag_filter = GL.NEAREST,
+        wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
+    })
     return heatmap
 end
 
@@ -194,24 +213,36 @@ function HeatMap:Destroy()
         glDeleteTexture(self.textures[i] or "")
         glDeleteFBO(self.fbos[i])
     end
+    glDeleteTexture(self.grad_texture or "")
+    gl.DeleteShader(self.grad_shader)
 end
 
 function HeatMap:SwapBuffer()
+    -- Compute the new gradient texture
+    glBlending(false);
+    glPushMatrix();
+    glLoadIdentity();
+
+    glUseShader(shader)
+        glTexture(0, self.textures[self.active_texture])
+        glRenderToTexture(self.grad_texture, glTexRect, -1, 1, 1, -1)
+        glTexture(0, false)
+    glUseShader(0)
+
+    -- Swap the active texture
     self.active_texture = (self.active_texture == 1) and 2 or 1
-    -- Clear the texture
+    -- Clear the content
     local r, g, b, a = 0.0, 0.0, 0.0, 0.0
     if self.debug then
         a = 1.0
     end
 
-    glBlending(false);
     glColor(r, g, b, a)
-    glPushMatrix();
-    glLoadIdentity();
     glActiveFBO(self.fbos[self.active_texture],
                 glClear,
                 GL_COLOR_BUFFER_BIT,
                 r, g, b, a);
+
     glPopMatrix();
 end
 
@@ -234,6 +265,10 @@ end
 function HeatMap:GetTexture()
     local finished = (self.active_texture == 1) and 2 or 1
     return self.textures[finished]
+end
+
+function HeatMap:GetGradientTexture()
+    return self.grad_texture
 end
 
 HeatmapManager = {}
@@ -260,13 +295,13 @@ end
 -- The callback should be a function to which a unitID is sent, and is returing
 -- a list of heat objects. Each heat object is featured by a color and a radius
 -- in world space units
--- tilesize is optional (64 by default)
+-- tilesize is optional (256 by default)
 function HeatmapManager:AddHeatmap(name, callback, tilesize)
     self.heatmaps[name] = HeatMap:Create(tilesize)
     self.callbacks[name] = callback
 
     -- Testing
-    -- SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
+    SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
 end
 
 function HeatmapManager:GetHeatmap(name)
@@ -362,8 +397,8 @@ function gadget:DrawScreen()
         sx = sy / aspect
     end
 
-    glTexture(heatmap:GetTexture())
-    -- gl.Texture(heatmap.pump_tex)
+    -- glTexture(heatmap:GetTexture())
+    glTexture(heatmap:GetGradientTexture())
     glTexRect(0, 0, sx, sy, false, true)
     glTexture(false)
 end
