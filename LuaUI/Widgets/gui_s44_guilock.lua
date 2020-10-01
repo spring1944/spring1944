@@ -24,5 +24,8 @@ function widget:Initialize()
 end
 
 function widget:Shutdown()
+    if (not WG.Chili) then
+        return
+    end
     WG.Chili.UnlockCustomizableWindows()
 end
