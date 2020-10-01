@@ -4,7 +4,14 @@ local HUN_44M_HeavyAT_Truck = ATGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		maxammo		= 2,
+	},
+	weapons = {
+		[1] = { -- AP
+			name				= "Buzoganyveto44MHEAT",
+			maxAngleDif			= 60,
+			mainDir				= [[0 .25 -1]],
+		},
 	},
 }
 
@@ -24,9 +31,6 @@ local HUN_44MHeavyAT_Stationary = LightATGun:New{
 			name				= "Buzoganyveto44MHEAT",
 			maxAngleDif			= 360,	-- this has full rotation
 		},
-	},
-	customParams = {
-
 	},
 }
 	
