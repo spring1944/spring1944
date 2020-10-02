@@ -20,7 +20,7 @@
 
 // The heatmaps are in general pretty flat, so maybe we can enjoy a
 // magnification factor
-#define MAGF 15.0
+#define MAGF 25.0
 
 uniform sampler2D heatmap;
 uniform float dx;

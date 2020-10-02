@@ -17,7 +17,7 @@ function WaypointMgr.GetGameFrameRate()
 function WaypointMgr.GetWaypoints()
 function WaypointMgr.GetTeamStartPosition(myTeamID)
 function WaypointMgr.GetFrontline(myTeamID, myAllyTeamID)
-	Returns frontline, previous. Frontline is the set of waypoints adjacent
+    Returns frontline, previous. Frontline is the set of waypoints adjacent
 
 ]]--
 
@@ -27,8 +27,9 @@ function CreateWaypointMgr()
 local GAIA_TEAM_ID    = Spring.GetGaiaTeamID()
 local GAIA_ALLYTEAM_ID      -- initialized later on..
 local FLAG_RADIUS     = FLAG_RADIUS
-local WAYPOINT_RADIUS = 500
+local WAYPOINT_RADIUS = FLAG_RADIUS -- 500
 local WAYPOINT_HEIGHT = 100
+local REF_UNIT_DEF = UnitDefNames["gerrifle"] -- Reference unit to check paths
 
 -- speedups
 local Log = Log
@@ -38,11 +39,28 @@ local GetUnitDefID = Spring.GetUnitDefID
 local GetUnitTeam = Spring.GetUnitTeam
 local GetUnitAllyTeam = Spring.GetUnitAllyTeam
 local GetUnitPosition = Spring.GetUnitPosition
+local GetGroundHeight = Spring.GetGroundHeight
+local TestMoveOrder = Spring.TestMoveOrder
 local sqrt = math.sqrt
+local floor, ceil = math.floor, math.ceil
 local isFlag = gadget.flags
 
 -- class
 local WaypointMgr = {}
+
+-- Grid of waypoints to become parsed
+local grid = {}
+local n_grid_x, n_grid_y = floor(Game.mapSizeX / WAYPOINT_RADIUS),
+                           floor(Game.mapSizeZ / WAYPOINT_RADIUS)
+for i=1,n_grid_x do
+    grid[i] = {}
+    for j=1,n_grid_y do
+        grid[i][j] = {
+            valid = nil,
+        }
+    end
+end
+local parse_queue = {}
 
 -- Array containing the waypoints and adjacency relations
 -- Format: { { x = x, y = y, z = z, adj = {}, --[[ more properties ]]-- }, ... }
@@ -63,24 +81,24 @@ local teamStartPosition = {}
 
 
 local function GetDist2D(x, z, p, q)
-	local dx = x - p
-	local dz = z - q
-	return sqrt(dx * dx + dz * dz)
+    local dx = x - p
+    local dz = z - q
+    return sqrt(dx * dx + dz * dz)
 end
 
 
 -- Returns the nearest waypoint to point x, z, and the distance to it.
 local function GetNearestWaypoint2D(x, z)
-	local minDist = 1.0e9
-	local nearest
-	for _,p in ipairs(waypoints) do
-		local dist = GetDist2D(x, z, p.x, p.z)
-		if (dist < minDist) then
-			minDist = dist
-			nearest = p
-		end
-	end
-	return nearest, minDist
+    local minDist = 1.0e9
+    local nearest
+    for _,p in ipairs(waypoints) do
+        local dist = GetDist2D(x, z, p.x, p.z)
+        if (dist < minDist) then
+            minDist = dist
+            nearest = p
+        end
+    end
+    return nearest, minDist
 end
 
 
@@ -89,44 +107,44 @@ end
 --  2) not possessed by any (other) enemy, and
 --  3) reachable from hq, without going through enemy waypoints.
 local function CalculateFrontline(myTeamID, myAllyTeamID)
-	-- mark all waypoints adjacent to any enemy waypoints,
-	-- and create a set of all enemy waypoints in 'blocked'.
-	local marked = {}
-	local blocked = {}
-	for _,p in ipairs(waypoints) do
-		if ((p.owner or myAllyTeamID) ~= myAllyTeamID) then
-			blocked[p] = true
-			for a,edge in pairs(p.adj) do
-				if ((a.owner or myAllyTeamID) == myAllyTeamID) then
-					marked[a] = true
-				end
-			end
-		end
-	end
+    -- mark all waypoints adjacent to any enemy waypoints,
+    -- and create a set of all enemy waypoints in 'blocked'.
+    local marked = {}
+    local blocked = {}
+    for _,p in ipairs(waypoints) do
+        if ((p.owner or myAllyTeamID) ~= myAllyTeamID) then
+            blocked[p] = true
+            for a,edge in pairs(p.adj) do
+                if ((a.owner or myAllyTeamID) == myAllyTeamID) then
+                    marked[a] = true
+                end
+            end
+        end
+    end
 
-	-- block all edges which connect two frontline waypoints
-	-- (ie. prevent units from pathing over the frontline..)
-	for p,_ in pairs(marked) do
-		for a,edge in pairs(p.adj) do
-			if marked[a] then
-				blocked[edge] = true
-			end
-		end
-	end
+    -- block all edges which connect two frontline waypoints
+    -- (ie. prevent units from pathing over the frontline..)
+    for p,_ in pairs(marked) do
+        for a,edge in pairs(p.adj) do
+            if marked[a] then
+                blocked[edge] = true
+            end
+        end
+    end
 
-	-- "perform a Dijkstra" starting at HQ
-	local hq = teamStartPosition[myTeamID]
-	local previous = PathFinder.Dijkstra(waypoints, hq, blocked)
+    -- "perform a Dijkstra" starting at HQ
+    local hq = teamStartPosition[myTeamID]
+    local previous = PathFinder.Dijkstra(waypoints, hq, blocked)
 
-	-- now 'frontline' is intersection between 'marked' and 'previous'
-	local frontline = {}
-	for p,_ in pairs(marked) do
-		if previous[p] then
-			frontline[#frontline+1] = p
-		end
-	end
+    -- now 'frontline' is intersection between 'marked' and 'previous'
+    local frontline = {}
+    for p,_ in pairs(marked) do
+        if previous[p] then
+            frontline[#frontline+1] = p
+        end
+    end
 
-	return frontline, previous
+    return frontline, previous
 end
 
 
@@ -134,30 +152,58 @@ end
 -- A waypoint changes owner when compared to previous update,
 -- a different allyteam now possesses ALL units near the waypoint.
 local function WaypointOwnerChange(waypoint, newOwner)
-	local oldOwner = waypoint.owner
-	waypoint.owner = newOwner
+    local oldOwner = waypoint.owner
+    waypoint.owner = newOwner
 
-	Log("WaypointOwnerChange ", waypoint.x, ", ", waypoint.z, ": ",
-		(oldOwner or "neutral"), " -> ", (newOwner or "neutral"))
+    Log("WaypointOwnerChange ", waypoint.x, ", ", waypoint.z, ": ",
+        (oldOwner or "neutral"), " -> ", (newOwner or "neutral"))
 
-	if (oldOwner ~= nil) then
-		-- invalidate cache for oldOwner
-		for t,at in pairs(teamToAllyteam) do
-			if (at == oldOwner) then
-				frontlineCache[t] = nil
-			end
-		end
-	end
+    if (oldOwner ~= nil) then
+        -- invalidate cache for oldOwner
+        for t,at in pairs(teamToAllyteam) do
+            if (at == oldOwner) then
+                frontlineCache[t] = nil
+            end
+        end
+    end
 
-	if (newOwner ~= nil) then
-		-- invalidate cache for newOwner
-		for t,at in pairs(teamToAllyteam) do
-			if (at == newOwner) then
-				frontlineCache[t] = nil
-			end
-		end
-	end
+    if (newOwner ~= nil) then
+        -- invalidate cache for newOwner
+        for t,at in pairs(teamToAllyteam) do
+            if (at == newOwner) then
+                frontlineCache[t] = nil
+            end
+        end
+    end
 end
+
+local function grid2world(i, j)
+    local x, z = (i - 0.5) * WAYPOINT_RADIUS, (j - 0.5) * WAYPOINT_RADIUS
+    return x, GetGroundHeight(x, z), z
+end
+
+local function world2grid(x, z)
+    local i, j = math.floor(x / WAYPOINT_RADIUS) + 1,
+                             math.floor(z / WAYPOINT_RADIUS) + 1
+    return math.floor(x / WAYPOINT_RADIUS) + 1,
+           math.floor(z / WAYPOINT_RADIUS) + 1
+end
+
+local function adj_grid_nodes(i, j)
+    local nodes = {}
+    for ii = i-1,i+1 do
+        if ii > 0 and ii <= n_grid_x then
+            for jj = j-1,j+1 do
+                if jj > 0 and jj <= n_grid_y and not (ii == i and jj == j) then
+                    nodes[#nodes + 1] = {ii, jj}
+                end
+            end
+        end
+    end
+    return nodes
+end
+
+
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -170,26 +216,50 @@ local Waypoint = {}
 Waypoint.__index = Waypoint
 
 function Waypoint:GetFriendlyUnitCount(myAllyTeamID)
-	return self.allyTeamUnitCount[myAllyTeamID] or 0
+    return self.allyTeamUnitCount[myAllyTeamID] or 0
 end
 
 function Waypoint:GetEnemyUnitCount(myAllyTeamID)
-	local sum = 0
-	for at,count in pairs(self.allyTeamUnitCount) do
-		if (at ~= myAllyTeamID) then
-			sum = sum + count
-		end
-	end
-	return sum
+    local sum = 0
+    for at,count in pairs(self.allyTeamUnitCount) do
+        if (at ~= myAllyTeamID) then
+            sum = sum + count
+        end
+    end
+    return sum
 end
 
 function Waypoint:AreAllFlagsCappedByAllyTeam(myAllyTeamID)
-	for _,f in pairs(self.flags) do
-		if (GetUnitAllyTeam(f) ~= myAllyTeamID) then
-			return false
-		end
-	end
-	return true
+    for _,f in pairs(self.flags) do
+        if (GetUnitAllyTeam(f) ~= myAllyTeamID) then
+            return false
+        end
+    end
+    return true
+end
+
+local function AddWaypoint(x, y, z)
+    local waypoint = {
+        x = x, y = y, z = z, --position
+        adj = {},            --map of adjacent waypoints -> edge distance
+        flags = {},          --array of flag unitIDs
+        allyTeamUnitCount = {},
+    }
+    setmetatable(waypoint, Waypoint)
+    waypoints[#waypoints+1] = waypoint
+    return waypoint
+end
+
+local function GetWaypointDist2D(a, b)
+    local dx = a.x - b.x
+    local dz = a.z - b.z
+    return sqrt(dx * dx + dz * dz)
+end
+
+local function AddConnection(a, b)
+    local edge = {dist = GetWaypointDist2D(a, b)}
+    a.adj[b] = edge
+    b.adj[a] = edge
 end
 
 --------------------------------------------------------------------------------
@@ -199,24 +269,24 @@ end
 --
 
 function WaypointMgr.GetGameFrameRate()
-	-- returns every how many frames GameFrame should be called.
-	-- currently I set this so each waypoint is updated every 30 sec (= 900 frames)
-	return math.floor(900 / #waypoints)
+    -- returns every how many frames GameFrame should be called.
+    -- currently I set this so each waypoint is updated every 30 sec (= 900 frames)
+    return math.floor(900 / #waypoints)
 end
 
 function WaypointMgr.GetWaypoints()
-	return waypoints
+    return waypoints
 end
 
 function WaypointMgr.GetTeamStartPosition(myTeamID)
-	return teamStartPosition[myTeamID]
+    return teamStartPosition[myTeamID]
 end
 
 function WaypointMgr.GetFrontline(myTeamID, myAllyTeamID)
-	if (not frontlineCache[myTeamID]) then
-		frontlineCache[myTeamID] = { CalculateFrontline(myTeamID, myAllyTeamID) }
-	end
-	return unpack(frontlineCache[myTeamID])
+    if (not frontlineCache[myTeamID]) then
+        frontlineCache[myTeamID] = { CalculateFrontline(myTeamID, myAllyTeamID) }
+    end
+    return unpack(frontlineCache[myTeamID])
 end
 
 --------------------------------------------------------------------------------
@@ -226,59 +296,117 @@ end
 --
 
 function WaypointMgr.GameStart()
-	-- Can not run this in the initialization code at the end of this file,
-	-- because at that time Spring.GetTeamStartPosition seems to always return 0,0,0.
-	for _,t in ipairs(Spring.GetTeamList()) do
-		if (t ~= GAIA_TEAM_ID) then
-			local x, y, z = Spring.GetTeamStartPosition(t)
-			if x and x ~= 0 then
-				teamStartPosition[t] = GetNearestWaypoint2D(x, z)
-			end
-		end
-	end
+    -- Can not run this in the initialization code at the end of this file,
+    -- because at that time Spring.GetTeamStartPosition seems to always return 0,0,0.
+    for _,t in ipairs(Spring.GetTeamList()) do
+        if (t ~= GAIA_TEAM_ID) then
+            local x, y, z = Spring.GetTeamStartPosition(t)
+            if x and x ~= 0 then
+                -- Add a waypoint right there
+                local i, j = world2grid(x, z)
+                if grid[i][j].valid == nil then
+                    grid[i][j].valid = true
+                    local gx, gy, gz = grid2world(i, j)
+                    grid[i][j].waypoint = AddWaypoint(gx, gy, gz)
+                    -- Add the adjacent grid nodes to the parsing queue
+                    local candidates = adj_grid_nodes(i, j)
+                    for _, c in ipairs(candidates) do
+                        if grid[c[1]][c[2]].valid == nil then
+                            parse_queue[#parse_queue + 1] = c
+                        end
+                    end
+                end
+                teamStartPosition[t] = GetNearestWaypoint2D(x, z)
+            end
+        end
+    end
 end
 
 function WaypointMgr.GameFrame(f)
-	index = (index % #waypoints) + 1
-	--Log("WaypointMgr: updating waypoint ", index)
-	local p = waypoints[index]
-	p.flags = {}
+    -- Parse another grid waypoint
+    for i=#parse_queue,1,-1 do
+        local gi, gj = parse_queue[i][1], parse_queue[i][2]
+        parse_queue[i] = nil
+        if grid[gi][gj].valid == nil then
+            local dst_x, dst_y, dst_z = grid2world(gi, gj)
+            -- Assume the point cannot be reached
+            grid[gi][gj].valid = false
+            -- Look for the connectivity with the adjacent nodes
+            local candidates = adj_grid_nodes(gi, gj)
+            for _, c in ipairs(candidates) do
+                if grid[c[1]][c[2]].valid == true then
+                    local src_x, src_y, src_z = grid2world(c[1], c[2])
+                    local dx, dy, dz = dst_x - src_x, dst_y - src_y, dst_z - src_z
+                    if TestMoveOrder(REF_UNIT_DEF.id, src_x, src_y, src_z, dx, dy, dz) then
+                        grid[gi][gj].valid = true
+                        if grid[gi][gj].waypoint == nil then
+                            grid[gi][gj].waypoint = AddWaypoint(dst_x, dst_y, dst_z)
+                        end
+                        -- connect the waypoint with the neighbor
+                        AddConnection(grid[c[1]][c[2]].waypoint,
+                                      grid[gi][gj].waypoint)
+                    end
+                end
+            end
 
-	-- Update p.allyTeamUnitCount
-	-- Box check (as opposed to Rectangle, Sphere, Cylinder),
-	-- because this allows us to easily exclude aircraft.
-	local x1, y1, z1 = p.x - WAYPOINT_RADIUS, p.y - WAYPOINT_HEIGHT, p.z - WAYPOINT_RADIUS
-	local x2, y2, z2 = p.x + WAYPOINT_RADIUS, p.y + WAYPOINT_HEIGHT, p.z + WAYPOINT_RADIUS
-	local allyTeamUnitCount = {}
-	for _,u in ipairs(GetUnitsInBox(x1, y1, z1, x2, y2, z2)) do
-		local ud = GetUnitDefID(u)
-		local at = GetUnitAllyTeam(u)
-		if isFlag[ud] then
-			local x, y, z = GetUnitPosition(u)
-			local dist = GetDist2D(x, z, p.x, p.z)
-			if (dist < FLAG_RADIUS) then
-				p.flags[#p.flags+1] = u
-				flags[p] = u
-				--Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
-			end
-		elseif (UnitDefs[ud].speed == 0) and (at ~= GAIA_ALLYTEAM_ID) then
-			allyTeamUnitCount[at] = (allyTeamUnitCount[at] or 0) + 1
-		end
-	end
-	p.allyTeamUnitCount = allyTeamUnitCount
+            if grid[gi][gj].valid == true then
+                -- Ask to parse the pending adjacent nodes
+                for _, c in ipairs(candidates) do
+                    if grid[c[1]][c[2]].valid == nil then
+                        table.insert(parse_queue, 1, {c[1], c[2]})
+                    end
+                end
+            end
 
-	-- Update p.owner
-	local owner = nil
-	for at,count in pairs(allyTeamUnitCount) do
-		if (owner == nil) then
-			if (allyTeamUnitCount[at] > 0) then owner = at end
-		else
-			if (allyTeamUnitCount[at] > 0) then owner = p.owner break end
-		end
-	end
-	if (owner ~= p.owner) then
-		WaypointOwnerChange(p, owner)
-	end
+            -- A grid node per frame is enough
+            break
+        end
+    end
+
+    if #waypoints == 0 then
+        return
+    end
+
+    index = (index % #waypoints) + 1
+    --Log("WaypointMgr: updating waypoint ", index)
+    local p = waypoints[index]
+    p.flags = {}
+
+    -- Update p.allyTeamUnitCount
+    -- Box check (as opposed to Rectangle, Sphere, Cylinder),
+    -- because this allows us to easily exclude aircraft.
+    local x1, y1, z1 = p.x - WAYPOINT_RADIUS, p.y - WAYPOINT_HEIGHT, p.z - WAYPOINT_RADIUS
+    local x2, y2, z2 = p.x + WAYPOINT_RADIUS, p.y + WAYPOINT_HEIGHT, p.z + WAYPOINT_RADIUS
+    local allyTeamUnitCount = {}
+    for _,u in ipairs(GetUnitsInBox(x1, y1, z1, x2, y2, z2)) do
+        local ud = GetUnitDefID(u)
+        local at = GetUnitAllyTeam(u)
+        if isFlag[ud] then
+            local x, y, z = GetUnitPosition(u)
+            local dist = GetDist2D(x, z, p.x, p.z)
+            if (dist < FLAG_RADIUS) then
+                p.flags[#p.flags+1] = u
+                flags[p] = u
+                --Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
+            end
+        elseif (UnitDefs[ud].speed == 0) and (at ~= GAIA_ALLYTEAM_ID) then
+            allyTeamUnitCount[at] = (allyTeamUnitCount[at] or 0) + 1
+        end
+    end
+    p.allyTeamUnitCount = allyTeamUnitCount
+
+    -- Update p.owner
+    local owner = nil
+    for at,count in pairs(allyTeamUnitCount) do
+        if (owner == nil) then
+            if (allyTeamUnitCount[at] > 0) then owner = at end
+        else
+            if (allyTeamUnitCount[at] > 0) then owner = p.owner break end
+        end
+    end
+    if (owner ~= p.owner) then
+        WaypointOwnerChange(p, owner)
+    end
 end
 
 --------------------------------------------------------------------------------
@@ -287,31 +415,31 @@ end
 --
 
 function WaypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
-	if isFlag[unitDefID] then
-		-- This is O(n*m), with n = number of flags and m = number of waypoints.
-		local x, y, z = GetUnitPosition(unitID)
-		local p, dist = GetNearestWaypoint2D(x, z)
-		if (dist < FLAG_RADIUS) then
-			p.flags[#p.flags+1] = unitID
-			flags[unitID] = p
-			Log("Flag ", unitID, " is near ", p.x, ", ", p.z)
-		end
-	end
+    if isFlag[unitDefID] then
+        -- This is O(n*m), with n = number of flags and m = number of waypoints.
+        local x, y, z = GetUnitPosition(unitID)
+        local p, dist = GetNearestWaypoint2D(x, z)
+        if (dist < FLAG_RADIUS) then
+            p.flags[#p.flags+1] = unitID
+            flags[unitID] = p
+            Log("Flag ", unitID, " is near ", p.x, ", ", p.z)
+        end
+    end
 end
 
 function WaypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-	if isFlag[unitDefID] then
-		local p = flags[unitID]
-		if p then
-			flags[unitID] = nil
-			for i=1,#p.flags do
-				if (p.flags[i] == unitID) then
-					table.remove(p.flags, i)
-					break
-				end
-			end
-		end
-	end
+    if isFlag[unitDefID] then
+        local p = flags[unitID]
+        if p then
+            flags[unitID] = nil
+            for i=1,#p.flags do
+                if (p.flags[i] == unitID) then
+                    table.remove(p.flags, i)
+                    break
+                end
+            end
+        end
+    end
 end
 
 --------------------------------------------------------------------------------
@@ -321,64 +449,13 @@ end
 
 do
 
-local function LoadFile(filename)
-	local text = VFS.LoadFile(filename, VFS.ZIP)
-	if (text == nil) then
-		Warning("Failed to load: ", filename)
-		return nil
-	end
-	Warning("Map waypoint profile found. Loading waypoints.")
-	local chunk, err = loadstring(text, filename)
-	if (chunk == nil) then
-		Warning("Failed to load: ", filename, "  (", err, ")")
-		return nil
-	end
-	return chunk
-end
-
-local function AddWaypoint(x, y, z)
-	local waypoint = {
-		x = x, y = y, z = z, --position
-		adj = {},            --map of adjacent waypoints -> edge distance
-		flags = {},          --array of flag unitIDs
-		allyTeamUnitCount = {},
-	}
-	setmetatable(waypoint, Waypoint)
-	waypoints[#waypoints+1] = waypoint
-	return waypoint
-end
-
-local function GetWaypointDist2D(a, b)
-	local dx = a.x - b.x
-	local dz = a.z - b.z
-	return sqrt(dx * dx + dz * dz)
-end
-
-local function AddConnection(a, b)
-	local edge = {dist = GetWaypointDist2D(a, b)}
-	a.adj[b] = edge
-	b.adj[a] = edge
-end
-
--- load chunk
-local chunk = LoadFile("LuaRules/Configs/craig/maps/" .. Game.mapName .. ".lua")
-if (chunk == nil) then
-	Warning("No waypoint profile found. Will not use waypoints on this map.")
-	return false
-end
-
--- execute chunk
-setfenv(chunk, { AddWaypoint = AddWaypoint, AddConnection = AddConnection })
-chunk()
-Log(#waypoints, " waypoints succesfully loaded.")
-
 -- make map of teams to allyTeams
 -- this must contain not only AI teams, but also player teams!
 for _,t in ipairs(Spring.GetTeamList()) do
-	if (t ~= GAIA_TEAM_ID) then
-		local _,_,_,_,_,at = Spring.GetTeamInfo(t)
-		teamToAllyteam[t] = at
-	end
+    if (t ~= GAIA_TEAM_ID) then
+        local _,_,_,_,_,at = Spring.GetTeamInfo(t)
+        teamToAllyteam[t] = at
+    end
 end
 
 -- find GAIA_ALLYTEAM_ID
