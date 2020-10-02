@@ -103,24 +103,70 @@ end
 
 
 -- This calculates the set of waypoints which are
---  1) adjacent to waypoints possessed by an enemy, and
---  2) not possessed by any (other) enemy, and
---  3) reachable from hq, without going through enemy waypoints.
+--  1) owned by allies
+--  2) adjacent to waypoints non-possesed by allies
+--  3) reachable from hq, without going through enemy waypoints
 local function CalculateFrontline(myTeamID, myAllyTeamID)
-    -- mark all waypoints adjacent to any enemy waypoints,
-    -- and create a set of all enemy waypoints in 'blocked'.
-    local marked = {}
-    local blocked = {}
+    -- Get the allied and enemy actual control areas
+    local allied, enemy = {}, {}
+    local allied_frontier, enemy_frontier = {}, {}
     for _,p in ipairs(waypoints) do
-        if ((p.owner or myAllyTeamID) ~= myAllyTeamID) then
-            blocked[p] = true
-            for a,edge in pairs(p.adj) do
-                if ((a.owner or myAllyTeamID) == myAllyTeamID) then
-                    marked[a] = true
+        if p.owner ~= nil then
+            if p.owner == myAllyTeamID then
+                allied[p] = true
+                for a, edge in pairs(p.adj) do
+                    if (a.owner ~= myAllyTeamID) then
+                        allied_frontier[#allied_frontier + 1] = p
+                        break
+                    end
+                end
+            else
+                enemy[p] = true
+                for a, edge in pairs(p.adj) do
+                    if (a.owner ~= p.owner) then
+                        enemy_frontier[#enemy_frontier + 1] = p
+                        break
+                    end
                 end
             end
         end
     end
+
+    -- Dilate all the control areas until they collide
+    -- Mark as frontline candidates all allied waypoints adjacent to
+    -- non-allied ones.
+    local marked = {}
+    while #allied_frontier + #enemy_frontier > 0 do
+        for i=1,#allied_frontier do
+            local p = allied_frontier[#allied_frontier]
+            allied_frontier[#allied_frontier] = nil
+            for a, edge in pairs(p.adj) do
+                if allied[a] == nil then
+                    if enemy[a] == nil then
+                        allied[a] = true
+                        table.insert(allied_frontier, 1, a)
+                    else
+                        marked[p] = true
+                    end
+                end
+            end            
+        end
+        for i=1,#enemy_frontier do
+            local p = enemy_frontier[#enemy_frontier]
+            enemy_frontier[#enemy_frontier] = nil
+            for a, edge in pairs(p.adj) do
+                if enemy[a] == nil then
+                    if allied[a] == nil then
+                        enemy[a] = true
+                        table.insert(enemy_frontier, 1, a)
+                    end
+                end
+            end            
+        end
+    end
+
+    -- mark as blocked all the enemy owned waypoints
+    local blocked = enemy
 
     -- block all edges which connect two frontline waypoints
     -- (ie. prevent units from pathing over the frontline..)
@@ -140,7 +186,7 @@ local function CalculateFrontline(myTeamID, myAllyTeamID)
     local frontline = {}
     for p,_ in pairs(marked) do
         if previous[p] then
-            frontline[#frontline+1] = p
+            frontline[#frontline + 1] = p
         end
     end
 
@@ -377,6 +423,7 @@ function WaypointMgr.GameFrame(f)
     -- because this allows us to easily exclude aircraft.
     local x1, y1, z1 = p.x - WAYPOINT_RADIUS, p.y - WAYPOINT_HEIGHT, p.z - WAYPOINT_RADIUS
     local x2, y2, z2 = p.x + WAYPOINT_RADIUS, p.y + WAYPOINT_HEIGHT, p.z + WAYPOINT_RADIUS
+    local occupationTeams = {}
     local allyTeamUnitCount = {}
     for _,u in ipairs(GetUnitsInBox(x1, y1, z1, x2, y2, z2)) do
         local ud = GetUnitDefID(u)
@@ -389,21 +436,32 @@ function WaypointMgr.GameFrame(f)
                 flags[p] = u
                 --Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
             end
-        elseif (UnitDefs[ud].speed == 0) and (at ~= GAIA_ALLYTEAM_ID) then
+            -- Flags not conquered yet are a special case, and we specifically
+            -- want to set it as enemy territory
+            if at == GAIA_ALLYTEAM_ID then
+                occupationTeams[#occupationTeams + 1] = GAIA_ALLYTEAM_ID
+            end
+        end
+        if at ~= GAIA_ALLYTEAM_ID then
+            if allyTeamUnitCount[at] == nil then
+                occupationTeams[#occupationTeams + 1] = at
+            end
             allyTeamUnitCount[at] = (allyTeamUnitCount[at] or 0) + 1
         end
     end
     p.allyTeamUnitCount = allyTeamUnitCount
 
-    -- Update p.owner
+    -- Update p.owner. The owner of a way point is whatever team is occupying
+    -- it. If no-one is currently occupying the waypoint, we just simply
+    -- preserve it. If several teams are disputing a waypoint, is it demoted
+    -- to neutral
     local owner = nil
-    for at,count in pairs(allyTeamUnitCount) do
-        if (owner == nil) then
-            if (allyTeamUnitCount[at] > 0) then owner = at end
-        else
-            if (allyTeamUnitCount[at] > 0) then owner = p.owner break end
-        end
+    if #occupationTeams == 0 then
+        owner = p.owner
+    elseif #occupationTeams == 1 then
+        owner = occupationTeams[1]
     end
+    
     if (owner ~= p.owner) then
         WaypointOwnerChange(p, owner)
     end

@@ -301,7 +301,7 @@ function HeatmapManager:AddHeatmap(name, callback, tilesize)
     self.callbacks[name] = callback
 
     -- Testing
-    SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
+    -- SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
 end
 
 function HeatmapManager:GetHeatmap(name)
