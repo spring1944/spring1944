@@ -101,8 +101,14 @@ end
 
 --------------------------------------------------------------------------------
 --
---  Initialization
+--  Call-outs
 --
+
+function HeatmapMgr.FirepowerGradient(x, z)
+    local heatmap = GG.HeatmapManager:GetHeatmap(HeatmapMgr.hmap_name)
+    local gx, gy = heatmap:GetGradient(x, z)
+    return gx, gy
+end
 
 return HeatmapMgr
 end

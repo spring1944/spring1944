@@ -46,17 +46,16 @@ local unitBuildOrder = gadget.unitBuildOrder
 -- Unit limits
 local unitLimitsMgr = CreateUnitLimitsMgr(myTeamID)
 
+-- Heatmap management
+local heatmapMgr = CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
+
 -- Combat management
 local waypointMgr = gadget.waypointMgr
 local lastWaypoint = 0
-local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, Log)
+local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, Log)
 
 -- Flag capping
 local flagsMgr = CreateFlagsMgr(myTeamID, myAllyTeamID, mySide, Log)
-
--- Heatmap management
-local heatmapMgr = CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
-Team.heatmapMgr = heatmapMgr
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

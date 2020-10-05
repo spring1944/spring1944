@@ -12,7 +12,7 @@ function CombatMgr.UnitFinished(unitID, unitDefID, unitTeam)
 function CombatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 ]]--
 
-function CreateCombatMgr(myTeamID, myAllyTeamID, Log)
+function CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, Log)
 
 -- Can not manage combat if we don't have waypoints..
 if (not gadget.waypointMgr) then
@@ -24,8 +24,10 @@ local CombatMgr = {}
 -- constants
 local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 250
+local FEAR_THRESHOLD = 0.2 + 0.8 * math.random()  -- [0.2, 1.0]
 
 -- speedups
+local sqrt = math.sqrt
 local waypointMgr = gadget.waypointMgr
 local waypoints = waypointMgr.GetWaypoints()
 local GetUnitNoSelect = Spring.GetUnitNoSelect
@@ -70,8 +72,8 @@ function CombatMgr.GameFrame(f)
         end
     end
 
-    -- move in every minute
-    if f % 900 >= 128 then return end
+    -- move in every 10 seconds, with a lag of 0.5 seconds for each team
+    if (f + 15 * myTeamID) % 600 >= 128 then return end
 
     Log("GO GO GO")
 
@@ -88,6 +90,19 @@ function CombatMgr.GameFrame(f)
         local previous, target = PathFinder.Dijkstra(waypoints, p, {}, function(p)
             return (p.owner ~= myAllyTeamID)
         end)
+        local gx, gz = heatmapMgr.FirepowerGradient(target.x, target.z)
+        local l2 = gx * gx + gz * gz
+        if l2 > FEAR_THRESHOLD * FEAR_THRESHOLD then
+            -- Let's retreat
+            if myTeamID == 3 then
+                Spring.Echo("Grad ", target.x / Game.mapSizeX, target.z / Game.mapSizeZ, gx, gz)
+            end
+            local l = sqrt(l2)
+            target = waypointMgr.GetNext(target, -gx / l, -gz / l)
+            if myTeamID == 3 then
+                Spring.Echo("Retreat to ", target.x / Game.mapSizeX, target.z / Game.mapSizeZ)
+            end
+        end
         if target and (target ~= p) then
             PathFinder.GiveOrdersToUnitArray(previous, target, unitArray, CMD.FIGHT, SQUAD_SPREAD)
             for _,u in ipairs(unitArray) do

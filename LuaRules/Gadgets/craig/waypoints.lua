@@ -101,7 +101,6 @@ local function GetNearestWaypoint2D(x, z)
     return nearest, minDist
 end
 
-
 -- This calculates the set of waypoints which are
 --  1) owned by allies
 --  2) adjacent to waypoints non-possesed by allies
@@ -333,6 +332,20 @@ function WaypointMgr.GetFrontline(myTeamID, myAllyTeamID)
         frontlineCache[myTeamID] = { CalculateFrontline(myTeamID, myAllyTeamID) }
     end
     return unpack(frontlineCache[myTeamID])
+end
+
+function WaypointMgr.GetNext(p, dx, dz)
+    local next, accuracy = p, 0.0
+    for visitor, edge in pairs(p.adj) do
+        local dir_x = (visitor.x - p.x) / edge.dist
+        local dir_z = (visitor.z - p.z) / edge.dist
+        local dot = dx * dir_x + dz * dir_z
+        if dot > accuracy then
+            next = visitor
+            accuracy = dot
+        end
+    end
+    return next
 end
 
 --------------------------------------------------------------------------------

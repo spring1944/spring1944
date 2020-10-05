@@ -49,6 +49,7 @@ local glTexture = gl.Texture
 local glTexRect = gl.TexRect
 local glUseShader = gl.UseShader
 local glRenderToTexture = gl.RenderToTexture
+local glReadPixels = gl.ReadPixels
 
 local spGetAllUnits = Spring.GetAllUnits
 local spValidUnitID = Spring.ValidUnitID
@@ -56,6 +57,7 @@ local spGetUnitPosition = Spring.GetUnitPosition
 local spGetWindowGeometry = Spring.GetWindowGeometry
 
 local min, max = math.min, math.max
+local floor = math.floor
 local function clamp(v, vmin, vmax)
     return min(max(v, vmin), vmax)
 end
@@ -174,8 +176,8 @@ function HeatMap:Create(tilesize)
     local heatmap = {}
     setmetatable(heatmap, HeatMap)
     heatmap.tilesize = (tilesize ~= nil) and tilesize or 256
-    heatmap.sx = math.floor(Game.mapSizeX / heatmap.tilesize)
-    heatmap.sy = math.floor(Game.mapSizeZ / heatmap.tilesize)
+    heatmap.sx = floor(Game.mapSizeX / heatmap.tilesize)
+    heatmap.sy = floor(Game.mapSizeZ / heatmap.tilesize)
     heatmap.textures = {}
     heatmap.fbos = {}
     for i = 1,2 do
@@ -205,6 +207,7 @@ function HeatMap:Create(tilesize)
         fbo = true, min_filter = GL.NEAREST, mag_filter = GL.NEAREST,
         wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
     })
+
     return heatmap
 end
 
@@ -228,6 +231,10 @@ function HeatMap:SwapBuffer()
         glRenderToTexture(self.grad_texture, glTexRect, -1, 1, 1, -1)
         glTexture(0, false)
     glUseShader(0)
+
+    glTexture(self.grad_texture)
+    self.grad_value = glReadPixels(1, 1, self.sx, self.sy)
+    glTexture(false)
 
     -- Swap the active texture
     self.active_texture = (self.active_texture == 1) and 2 or 1
@@ -269,6 +276,28 @@ end
 
 function HeatMap:GetGradientTexture()
     return self.grad_texture
+end
+
+function HeatMap:GetGradient(x, z)
+    if self.grad_value == nil then
+        return 0, 0
+    end
+    local u, v = world2tex(x, z)
+    local i, j = min(floor(u * self.sx + 1), self.sx), min(floor(v * self.sy + 1), self.sy)
+    local color = self.grad_value[i][j]
+    return 2 * color[1] - 1, 2 * color[2] - 1
+end
+
+
+function HeatMap:ReadTexture(texture, x, z)
+    local i, j = world2tex(x, z)
+
+    glPushMatrix();
+    glLoadIdentity();
+    glTexture(texture)
+    glReadPixels(floor(i * self.sx), floor(j * self.sy), 1, 1)
+    glTexture(false)
+    glPopMatrix()    
 end
 
 HeatmapManager = {}
