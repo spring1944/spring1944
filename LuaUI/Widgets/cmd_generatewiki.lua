@@ -89,6 +89,7 @@ end
 -- =============================================================================
 
 UNITS = {}  -- Global list of units to document
+UNITS_CHAIN = {}  -- Parsed units in the current building chain, to don't repeat
 morphDefs = include("LuaRules/Configs/morph_defs.lua")
 
 function _is_morph_link(id)
@@ -186,6 +187,15 @@ function _unit_name(id, side)
     return name
 end
 
+local function __is_unit_in_chain(name)
+    for _, v in ipairs(UNITS_CHAIN) do
+        if name == v then
+            return true
+        end
+    end
+    return false
+end
+
 function _units_tree(startUnit, side)
     -- Departs from the starting unit, and traverse all the tech tree derived
     -- from him, simply following the building capabilities of each unit.
@@ -194,11 +204,13 @@ function _units_tree(startUnit, side)
     local unitDef = UnitDefNames[name]
     local tree = {}
 
-    if UNITS[name] ~= nil then
+    if __is_unit_in_chain(name) then
         -- The unit has been already digested. Parsing that again will result
         -- in an infinite loop
         return tree
     end
+    -- Push the unit into the current building chain
+    UNITS_CHAIN[#UNITS_CHAIN + 1] = name
     UNITS[name] = unitDef.humanName
 
     -- Add its children to the tree
@@ -213,6 +225,9 @@ function _units_tree(startUnit, side)
         name = _unit_name(children[i], side)
         tree[name] = _units_tree(name, side)
     end
+    -- Pop this unit from the building chain, so it can be considered again
+    -- later
+    UNITS_CHAIN[#UNITS_CHAIN] = nil
     return tree
 end
 
