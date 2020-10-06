@@ -20,6 +20,7 @@ WIKI_WIDGET_PICS_URL = "https://raw.githubusercontent.com/wiki/spring1944/spring
 WIKI_WIDGET_PICS_EXT = "png"
 WIKI_COMMENT_START = "<!--"
 WIKI_COMMENT_END = "-->"
+UNIT_THUMBNAIL_SIZE = "36px"
 STRUCTURE = "plain"  -- All pages are in root folder, with dot based names
 
 if STRUCTURE == "hierarchical" then
@@ -132,11 +133,9 @@ local function _to_wikilist(data, url_base, prefix)
     for i, v in pairs(data.children) do
         if next(v.children) == nil and not v.ismorph then
             -- Prefix (replace indentation)
-            local prefix_to_add = tostring(count)
-            if count < 10 then
-                prefix_to_add = "0" .. prefix_to_add
+            if prefix ~= "" then
+                str = str .. prefix .. " - "
             end
-            str = str .. prefix .. prefix_to_add .. ".- "
             -- Image/Logo
             local buildPic = string.lower(UnitDefNames[i].buildpicname)
             str = str .. "![" .. i .. "-logo]"
@@ -152,11 +151,9 @@ local function _to_wikilist(data, url_base, prefix)
     for i, v in pairs(data.children) do
         if next(v.children) == nil and v.ismorph then
             -- Prefix (replace indentation)
-            local prefix_to_add = tostring(count)
-            if count < 10 then
-                prefix_to_add = "0" .. prefix_to_add
+            if prefix ~= "" then
+                str = str .. prefix .. " - "
             end
-            str = str .. prefix .. prefix_to_add .. ".- "
             -- Image/Logo
             local buildPic = string.lower(UnitDefNames[i].buildpicname)
             str = str .. "![" .. i .. "-logo]"
@@ -173,11 +170,9 @@ local function _to_wikilist(data, url_base, prefix)
     for i, v in pairs(data.children) do
         if next(v.children) ~= nil and not v.ismorph then
             -- Prefix (replace indentation)
-            local prefix_to_add = tostring(count)
-            if count < 10 then
-                prefix_to_add = "0" .. prefix_to_add
+            if prefix ~= "" then
+                str = str .. prefix .. " - "
             end
-            str = str .. prefix .. prefix_to_add .. ".- "
             -- Image/Logo
             local buildPic = string.lower(UnitDefNames[i].buildpicname)
             str = str .. "![" .. i .. "-logo]"
@@ -190,7 +185,8 @@ local function _to_wikilist(data, url_base, prefix)
             str = str .. "[" .. UNITS[i] .. "]"
             str = str .. "(" .. url_base .. i .. ")\n\n"
 
-            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add .. ".")
+            local prefix_to_add = '<img src="' .. UNITS_PICS_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
+            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add)
             count = count + 1
         end
     end
@@ -198,12 +194,9 @@ local function _to_wikilist(data, url_base, prefix)
     -- Now add the units with children, skipping the Swedish pack morph
     for i, v in pairs(data.children) do
         if next(v.children) ~= nil and v.ismorph and not _is_swe_pack(i) then
-            -- Prefix (replace indentation)
-            local prefix_to_add = tostring(count)
-            if count < 10 then
-                prefix_to_add = "0" .. prefix_to_add
+            if prefix ~= "" then
+                str = str .. prefix .. " - "
             end
-            str = str .. prefix .. prefix_to_add .. ".- "
             -- Image/Logo
             local buildPic = string.lower(UnitDefNames[i].buildpicname)
             str = str .. "![" .. i .. "-logo]"
@@ -216,7 +209,8 @@ local function _to_wikilist(data, url_base, prefix)
             str = str .. "[" .. UNITS[i] .. "]"
             str = str .. "(" .. url_base .. i .. ")\n\n"
 
-            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add .. ".")
+            local prefix_to_add = '<img src="' .. UNITS_PICS_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
+            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add)
             count = count + 1
         end
     end
@@ -225,11 +219,9 @@ local function _to_wikilist(data, url_base, prefix)
     for i, v in pairs(data.children) do
         if next(v.children) ~= nil and _is_swe_pack(i) then
             -- Prefix (replace indentation)
-            local prefix_to_add = tostring(count)
-            if count < 10 then
-                prefix_to_add = "0" .. prefix_to_add
+            if prefix ~= "" then
+                str = str .. prefix .. " - "
             end
-            str = str .. prefix .. prefix_to_add .. ".- "
             -- Image/Logo
             local buildPic = string.lower(UnitDefNames[i].buildpicname)
             str = str .. "![" .. i .. "-logo]"
