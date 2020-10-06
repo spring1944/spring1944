@@ -107,6 +107,18 @@ function _is_morph_link(id)
     return false
 end
 
+function _is_swe_pack(name)
+    -- Super special case of Swedish factory packing up. Pack should be skipped,
+    -- otherwise the tech tree will become huge, and github gollum will refuse
+    -- to load it
+    fields = __split_str(name, "_")
+    if #fields > 1 and fields[1] == "swevolvotvc" then
+        return true
+    end
+
+    return false
+end
+
 local function _to_wikilist(data, url_base, prefix)
     local str = ""
 
@@ -115,10 +127,10 @@ local function _to_wikilist(data, url_base, prefix)
     end
     local i, v
     local count = 1
-    -- Let's add first the "end of lines", i.e. the ones which may not build
-    -- more units
-    for i, v in pairs(data) do
-        if next(v) == nil then
+    -- Let's add first the "end of lines", i.e. the ones without children, that
+    -- are not transformations
+    for i, v in pairs(data.children) do
+        if next(v.children) == nil and not v.ismorph then
             -- Prefix (replace indentation)
             local prefix_to_add = tostring(count)
             if count < 10 then
@@ -136,9 +148,9 @@ local function _to_wikilist(data, url_base, prefix)
             count = count + 1
         end
     end
-    -- Now add the units with additional children
-    for i, v in pairs(data) do
-        if next(v) ~= nil then
+    -- Add the morphs "end of lines"
+    for i, v in pairs(data.children) do
+        if next(v.children) == nil and v.ismorph then
             -- Prefix (replace indentation)
             local prefix_to_add = tostring(count)
             if count < 10 then
@@ -150,10 +162,86 @@ local function _to_wikilist(data, url_base, prefix)
             str = str .. "![" .. i .. "-logo]"
             str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
             -- Unit name
+            str = str .. "Transform into: "
+            str = str .. "[" .. UNITS[i] .. "]"
+            str = str .. "(" .. url_base .. i .. ")\n\n"
+
+            count = count + 1
+        end
+    end
+    -- Now add the units with children, skipping the morphs
+    for i, v in pairs(data.children) do
+        if next(v.children) ~= nil and not v.ismorph then
+            -- Prefix (replace indentation)
+            local prefix_to_add = tostring(count)
+            if count < 10 then
+                prefix_to_add = "0" .. prefix_to_add
+            end
+            str = str .. prefix .. prefix_to_add .. ".- "
+            -- Image/Logo
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            str = str .. "![" .. i .. "-logo]"
+            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+            -- Is a morph?
+            if v.ismorph then
+                str = str .. "Transform into: "
+            end
+            -- Unit name
             str = str .. "[" .. UNITS[i] .. "]"
             str = str .. "(" .. url_base .. i .. ")\n\n"
 
             str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add .. ".")
+            count = count + 1
+        end
+    end
+
+    -- Now add the units with children, skipping the Swedish pack morph
+    for i, v in pairs(data.children) do
+        if next(v.children) ~= nil and v.ismorph and not _is_swe_pack(i) then
+            -- Prefix (replace indentation)
+            local prefix_to_add = tostring(count)
+            if count < 10 then
+                prefix_to_add = "0" .. prefix_to_add
+            end
+            str = str .. prefix .. prefix_to_add .. ".- "
+            -- Image/Logo
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            str = str .. "![" .. i .. "-logo]"
+            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+            -- Is a morph?
+            if v.ismorph then
+                str = str .. "Transform into: "
+            end
+            -- Unit name
+            str = str .. "[" .. UNITS[i] .. "]"
+            str = str .. "(" .. url_base .. i .. ")\n\n"
+
+            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add .. ".")
+            count = count + 1
+        end
+    end
+
+    -- Finally add the Swedish pack morph
+    for i, v in pairs(data.children) do
+        if next(v.children) ~= nil and _is_swe_pack(i) then
+            -- Prefix (replace indentation)
+            local prefix_to_add = tostring(count)
+            if count < 10 then
+                prefix_to_add = "0" .. prefix_to_add
+            end
+            str = str .. prefix .. prefix_to_add .. ".- "
+            -- Image/Logo
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            str = str .. "![" .. i .. "-logo]"
+            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+            -- Is a morph?
+            if v.ismorph then
+                str = str .. "Pack as: "
+            end
+            -- Unit name
+            str = str .. "[" .. UNITS[i] .. "]"
+            str = str .. "(" .. url_base .. i .. ")\n\n"
+
             count = count + 1
         end
     end
@@ -202,7 +290,8 @@ function _units_tree(startUnit, side)
     local name = startUnit
 
     local unitDef = UnitDefNames[name]
-    local tree = {}
+    local tree = {ismorph = false,
+                  children = {}}
 
     if __is_unit_in_chain(name) then
         -- The unit has been already digested. Parsing that again will result
@@ -215,15 +304,26 @@ function _units_tree(startUnit, side)
 
     -- Add its children to the tree
     local children = unitDef.buildOptions
-    if name == side .. "pontoontruck" then
-        -- The factories transformations are added as morphing links build
-        -- options. However, the pontoontruck morph to shipyard is not specified
-        -- as a build option, so we must manually add it
-        children[#children + 1] = side .. "boatyard"
+    for i = 1,#children do
+        name = _unit_name(children[i], side)
+        tree.children[name] = _units_tree(name, side)
+        tree.children[name].ismorph = _is_morph_link(children[i])
+    end
+    -- Add also the morphs
+    children = {}
+    if morphDefs[startUnit] ~= nil then
+        if morphDefs[startUnit].into ~= nil then
+            -- Conveniently transform it in a single element table
+            morphDefs[startUnit] = {morphDefs[startUnit]}
+        end
+        for _, morphDef in pairs(morphDefs[startUnit]) do
+            children[#children + 1] =  UnitDefNames[morphDef.into].name
+        end
     end
     for i = 1,#children do
         name = _unit_name(children[i], side)
-        tree[name] = _units_tree(name, side)
+        tree.children[name] = _units_tree(name, side)
+        tree.children[name].ismorph = true
     end
     -- Pop this unit from the building chain, so it can be considered again
     -- later
@@ -252,8 +352,8 @@ function _gen_faction(folder, faction)
     handle.write(handle, faction.wiki .. "\n\n")
 
     -- Faction units tree
-    local tree = {}
-    tree[faction.startUnit] = _units_tree(faction.startUnit, side)
+    local tree = {ismorph = false, children={}}
+    tree.children[faction.startUnit] = _units_tree(faction.startUnit, side)
     handle.write(handle, "## Units tree\n\n")
     handle.write(handle, _to_wikilist(tree, "units" .. SEPARATOR))
     handle.write(handle, "\n")    
