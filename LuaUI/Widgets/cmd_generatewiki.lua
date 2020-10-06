@@ -15,6 +15,7 @@ end
 -- WIKI_WIDGET_PICS_EXT = "svg"
 -- STRUCTURE = "hierarchical"  -- Pages are organized in folders
 UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
+UNITS_PICS_SHORT_URL = "/spring1944/spring1944/wiki/unitpics/" -- Just for straight HTML tags, otherwise the rendering will take too long
 FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
 WIKI_WIDGET_PICS_URL = "https://raw.githubusercontent.com/wiki/spring1944/spring1944/images/wiki_widget"
 WIKI_WIDGET_PICS_EXT = "png"
@@ -108,133 +109,90 @@ function _is_morph_link(id)
     return false
 end
 
-function _is_swe_pack(name)
-    -- Super special case of Swedish factory packing up. Pack should be skipped,
-    -- otherwise the tech tree will become huge, and github gollum will refuse
-    -- to load it
-    fields = __split_str(name, "_")
-    if #fields > 1 and fields[1] == "swevolvotvc" then
-        return true
+function _is_deploy(orig, dest)
+    if orig == nil or UnitDefNames[orig].speed == 0 or UnitDefNames[dest].speed > 0 then
+        return false
     end
-
-    return false
+    return true
 end
 
-local function _to_wikilist(data, url_base, prefix)
+function _is_pack(orig, dest)
+    if orig == nil or UnitDefNames[orig].speed > 0 or UnitDefNames[dest].speed == 0 then
+        return false
+    end
+    return true
+end
+
+local function _wikilist_unit_str(str, name, build_chain_prefix, url_base, name_prefix)
+    name_prefix = name_prefix or ""
+    if build_chain_prefix ~= "" then
+        str = str .. build_chain_prefix .. " - "
+    end
+    -- Image/Logo
+    local buildPic = string.lower(UnitDefNames[name].buildpicname)
+    str = str .. "![" .. name .. "-logo]"
+    str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+    -- Unit name
+    str = str .. name_prefix .. " "
+    str = str .. "[" .. UNITS[name] .. "]"
+    str = str .. "(" .. url_base .. name .. ")\n\n"
+
+    return str
+end
+
+local function _to_wikilist(orig, data, url_base, prefix)
     local str = ""
 
     if(prefix == nil) then
         prefix = ""
     end
     local i, v
-    local count = 1
     -- Let's add first the "end of lines", i.e. the ones without children, that
     -- are not transformations
     for i, v in pairs(data.children) do
         if next(v.children) == nil and not v.ismorph then
-            -- Prefix (replace indentation)
-            if prefix ~= "" then
-                str = str .. prefix .. " - "
-            end
-            -- Image/Logo
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            str = str .. "![" .. i .. "-logo]"
-            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
-            -- Unit name
-            str = str .. "[" .. UNITS[i] .. "]"
-            str = str .. "(" .. url_base .. i .. ")\n\n"
-
-            count = count + 1
+            str = _wikilist_unit_str(str, i, prefix, url_base)
         end
     end
     -- Add the morphs "end of lines"
     for i, v in pairs(data.children) do
         if next(v.children) == nil and v.ismorph then
-            -- Prefix (replace indentation)
-            if prefix ~= "" then
-                str = str .. prefix .. " - "
+            local name_prefix = "Transform into:"
+            if _is_deploy(orig, i) then
+                name_prefix = "Deploy as:"
+            elseif _is_pack(orig, i) then
+                name_prefix = "Pack as:"
             end
-            -- Image/Logo
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            str = str .. "![" .. i .. "-logo]"
-            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
-            -- Unit name
-            str = str .. "Transform into: "
-            str = str .. "[" .. UNITS[i] .. "]"
-            str = str .. "(" .. url_base .. i .. ")\n\n"
-
-            count = count + 1
+            str = _wikilist_unit_str(str, i, prefix, url_base, name_prefix)
         end
     end
     -- Now add the units with children, skipping the morphs
     for i, v in pairs(data.children) do
         if next(v.children) ~= nil and not v.ismorph then
-            -- Prefix (replace indentation)
-            if prefix ~= "" then
-                str = str .. prefix .. " - "
-            end
-            -- Image/Logo
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            str = str .. "![" .. i .. "-logo]"
-            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
-            -- Is a morph?
-            if v.ismorph then
-                str = str .. "Transform into: "
-            end
-            -- Unit name
-            str = str .. "[" .. UNITS[i] .. "]"
-            str = str .. "(" .. url_base .. i .. ")\n\n"
+            str = _wikilist_unit_str(str, i, prefix, url_base)
 
-            local prefix_to_add = '<img src="' .. UNITS_PICS_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
-            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add)
-            count = count + 1
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            local prefix_to_add = '<img src="' .. UNITS_PICS_SHORT_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
+            str = str .. _to_wikilist(i, v, url_base, prefix .. prefix_to_add)
         end
     end
 
     -- Now add the units with children, skipping the Swedish pack morph
     for i, v in pairs(data.children) do
-        if next(v.children) ~= nil and v.ismorph and not _is_swe_pack(i) then
-            if prefix ~= "" then
-                str = str .. prefix .. " - "
-            end
-            -- Image/Logo
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            str = str .. "![" .. i .. "-logo]"
-            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
-            -- Is a morph?
-            if v.ismorph then
-                str = str .. "Transform into: "
-            end
-            -- Unit name
-            str = str .. "[" .. UNITS[i] .. "]"
-            str = str .. "(" .. url_base .. i .. ")\n\n"
+        if next(v.children) ~= nil and v.ismorph and not _is_pack(orig, i) then
+            local name_prefix = _is_deploy(orig, i) and "Deploy as:" or "Transform into:"
+            str = _wikilist_unit_str(str, i, prefix, url_base, name_prefix)
 
-            local prefix_to_add = '<img src="' .. UNITS_PICS_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
-            str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add)
-            count = count + 1
+            local buildPic = string.lower(UnitDefNames[i].buildpicname)
+            local prefix_to_add = '<img src="' .. UNITS_PICS_SHORT_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
+            str = str .. _to_wikilist(i, v, url_base, prefix .. prefix_to_add)
         end
     end
 
-    -- Finally add the Swedish pack morph
+    -- Finally add the pack morph
     for i, v in pairs(data.children) do
-        if next(v.children) ~= nil and _is_swe_pack(i) then
-            -- Prefix (replace indentation)
-            if prefix ~= "" then
-                str = str .. prefix .. " - "
-            end
-            -- Image/Logo
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            str = str .. "![" .. i .. "-logo]"
-            str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
-            -- Is a morph?
-            if v.ismorph then
-                str = str .. "Pack as: "
-            end
-            -- Unit name
-            str = str .. "[" .. UNITS[i] .. "]"
-            str = str .. "(" .. url_base .. i .. ")\n\n"
-
-            count = count + 1
+        if next(v.children) ~= nil and v.ismorph and _is_pack(orig, i) then
+            str = _wikilist_unit_str(str, i, prefix, url_base, "Pack as:")
         end
     end
 
@@ -347,7 +305,7 @@ function _gen_faction(folder, faction)
     local tree = {ismorph = false, children={}}
     tree.children[faction.startUnit] = _units_tree(faction.startUnit, side)
     handle.write(handle, "## Units tree\n\n")
-    handle.write(handle, _to_wikilist(tree, "units" .. SEPARATOR))
+    handle.write(handle, _to_wikilist(nil, tree, "units" .. SEPARATOR))
     handle.write(handle, "\n")    
 
     handle.close(handle)
