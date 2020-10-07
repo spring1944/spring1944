@@ -15,7 +15,6 @@ end
 -- WIKI_WIDGET_PICS_EXT = "svg"
 -- STRUCTURE = "hierarchical"  -- Pages are organized in folders
 UNITS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/unitpics/"
-UNITS_PICS_SHORT_URL = "/spring1944/spring1944/wiki/unitpics/" -- Just for straight HTML tags, otherwise the rendering will take too long
 FACTIONS_PICS_URL = "https://raw.githubusercontent.com/spring1944/spring1944/master/LuaUI/Widgets/faction_change/"
 WIKI_WIDGET_PICS_URL = "https://raw.githubusercontent.com/wiki/spring1944/spring1944/images/wiki_widget"
 WIKI_WIDGET_PICS_EXT = "png"
@@ -90,8 +89,11 @@ end
 -- FACTIONS AUTO-DOCUMENTATION
 -- =============================================================================
 
-UNITS = {}  -- Global list of units to document
-UNITS_CHAIN = {}  -- Parsed units in the current building chain, to don't repeat
+UNITS = {}         -- Global list of already parsed units (storing the human name)
+UNITS_DEPTHS = {}  -- Depth of each unit, to find the critical line
+CURRENT_DEPTH = 0  -- Current parsing depth
+UNITS_LINKS = {}   -- Intra-page link to already parsed units
+UNITS_LINKED = {}  -- Units with the link already prepared
 morphDefs = include("LuaRules/Configs/morph_defs.lua")
 
 function _is_morph_link(id)
@@ -123,15 +125,50 @@ function _is_pack(orig, dest)
     return true
 end
 
+local invalid_chars = {"/", ":", ",", ";", "'", '"', "#", "\\", "%.",
+                       "%(", "%)", "%[", "%]", "%%", "%?", "%+", "%*", "%$",
+                       "%^"}
+local function _wikilist_header_to_link(str)
+    str = string.gsub(string.lower(str), " ", "-")
+    for _,c in ipairs(invalid_chars) do
+        str = string.gsub(str, c, "")
+    end
+    return str
+end
+
 local function _wikilist_unit_str(str, name, build_chain_prefix, url_base, name_prefix)
     name_prefix = name_prefix or ""
+
+    str = str .. "#### "
+
     if build_chain_prefix ~= "" then
         str = str .. build_chain_prefix .. " - "
     end
     -- Image/Logo
     local buildPic = string.lower(UnitDefNames[name].buildpicname)
-    str = str .. "![" .. name .. "-logo]"
-    str = str .. "(" .. UNITS_PICS_URL .. buildPic .. ") "
+    str = str .. "![](" .. UNITS_PICS_URL .. buildPic .. ") "
+    -- Eventual link to the first instance
+    local link = ""
+    if build_chain_prefix == "" then
+        link = "#--"
+    else
+        link = "#-----"
+    end
+    if name_prefix ~= "" then
+        link = link .. _wikilist_header_to_link(name_prefix) .. "-"
+    end
+    link = link .. _wikilist_header_to_link(UNITS[name])
+    if UNITS_LINKS[name] == nil and UNITS_DEPTHS[name] == CURRENT_DEPTH then
+        UNITS_LINKS[name] = link
+        UNITS_LINKED[name] = true
+    elseif UNITS_LINKS[name] ~= nil then
+        if UNITS_DEPTHS[name] == CURRENT_DEPTH and not UNITS_LINKED[name] then
+            -- First occurrence, it does not need the link to the critical line
+            UNITS_LINKED[name] = true
+        else
+            str = str .. "[&#8627;](" .. UNITS_LINKS[name] .. ") "
+        end
+    end
     -- Unit name
     str = str .. name_prefix .. " "
     str = str .. "[" .. UNITS[name] .. "]"
@@ -140,61 +177,40 @@ local function _wikilist_unit_str(str, name, build_chain_prefix, url_base, name_
     return str
 end
 
-local function _to_wikilist(orig, data, url_base, prefix)
-    local str = ""
-
+local function _to_wikilist(data, url_base, prefix)
+    -- THIS METHOD SHOUDL BE CALLED TWICE. In the first call the links to the
+    -- critical lines will be collected, while in the second one they are
+    -- conveniently applied. Otherwise, the links to critical lines will work
+    -- only in upwards direction
     if(prefix == nil) then
         prefix = ""
     end
-    local i, v
-    -- Let's add first the "end of lines", i.e. the ones without children, that
-    -- are not transformations
-    for i, v in pairs(data.children) do
-        if next(v.children) == nil and not v.ismorph then
-            str = _wikilist_unit_str(str, i, prefix, url_base)
-        end
+
+    if CURRENT_DEPTH == 0 then
+        UNITS_LINKED = {}
     end
-    -- Add the morphs "end of lines"
-    for i, v in pairs(data.children) do
-        if next(v.children) == nil and v.ismorph then
-            local name_prefix = "Transform into:"
-            if _is_deploy(orig, i) then
+    CURRENT_DEPTH = CURRENT_DEPTH + 1
+
+    local str = ""
+    for _, v in ipairs(data.children) do
+        local name_prefix = ""
+        if v.ismorph then
+            if _is_deploy(data.name, v.name) then
                 name_prefix = "Deploy as:"
-            elseif _is_pack(orig, i) then
+            elseif _is_pack(data.name, v.name) then
                 name_prefix = "Pack as:"
+            else
+                name_prefix = "Transform into:"
             end
-            str = _wikilist_unit_str(str, i, prefix, url_base, name_prefix)
         end
-    end
-    -- Now add the units with children, skipping the morphs
-    for i, v in pairs(data.children) do
-        if next(v.children) ~= nil and not v.ismorph then
-            str = _wikilist_unit_str(str, i, prefix, url_base)
+        str = _wikilist_unit_str(str, v.name, prefix, url_base, name_prefix)
 
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            local prefix_to_add = '<img src="' .. UNITS_PICS_SHORT_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
-            str = str .. _to_wikilist(i, v, url_base, prefix .. prefix_to_add)
-        end
+        local buildPic = string.lower(UnitDefNames[v.name].buildpicname)
+        local prefix_to_add = '<img src="' .. UNITS_PICS_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
+        str = str .. _to_wikilist(v, url_base, prefix .. prefix_to_add)
     end
 
-    -- Now add the units with children, skipping the Swedish pack morph
-    for i, v in pairs(data.children) do
-        if next(v.children) ~= nil and v.ismorph and not _is_pack(orig, i) then
-            local name_prefix = _is_deploy(orig, i) and "Deploy as:" or "Transform into:"
-            str = _wikilist_unit_str(str, i, prefix, url_base, name_prefix)
-
-            local buildPic = string.lower(UnitDefNames[i].buildpicname)
-            local prefix_to_add = '<img src="' .. UNITS_PICS_SHORT_URL .. buildPic .. '" width="' .. UNIT_THUMBNAIL_SIZE .. '">'
-            str = str .. _to_wikilist(i, v, url_base, prefix .. prefix_to_add)
-        end
-    end
-
-    -- Finally add the pack morph
-    for i, v in pairs(data.children) do
-        if next(v.children) ~= nil and v.ismorph and _is_pack(orig, i) then
-            str = _wikilist_unit_str(str, i, prefix, url_base, "Pack as:")
-        end
-    end
+    CURRENT_DEPTH = CURRENT_DEPTH - 1
 
     return str
 end
@@ -237,27 +253,37 @@ end
 function _units_tree(startUnit, side)
     -- Departs from the starting unit, and traverse all the tech tree derived
     -- from him, simply following the building capabilities of each unit.
+    -- THIS METHOD SHOUDL BE CALLED TWICE. In the first call some units subtrees
+    -- can be documented also in suboptimal building chains, while in the second
+    -- call trees are arising just from critical lines
     local name = startUnit
 
     local unitDef = UnitDefNames[name]
-    local tree = {ismorph = false,
-                  children = {}}
+    local tree = {
+        name = startUnit,
+        ismorph = false,
+        children = {}
+    }
 
-    if __is_unit_in_chain(name) then
-        -- The unit has been already digested. Parsing that again will result
-        -- in an infinite loop
+    CURRENT_DEPTH = CURRENT_DEPTH + 1
+
+    if UNITS_DEPTHS[name] ~= nil and UNITS_DEPTHS[name] < CURRENT_DEPTH then
+        -- The unit has a more critical line, so we are not interested into
+        -- parsing it yet
+        CURRENT_DEPTH = CURRENT_DEPTH - 1
         return tree
     end
-    -- Push the unit into the current building chain
-    UNITS_CHAIN[#UNITS_CHAIN + 1] = name
+    UNITS_DEPTHS[name] = CURRENT_DEPTH
     UNITS[name] = unitDef.humanName
 
     -- Add its children to the tree
     local children = unitDef.buildOptions
-    for i = 1,#children do
-        name = _unit_name(children[i], side)
-        tree.children[name] = _units_tree(name, side)
-        tree.children[name].ismorph = _is_morph_link(children[i])
+    local documented_children = {}  -- Morphs can be repeated
+    for _, c in ipairs(children) do
+        name = _unit_name(c, side)
+        tree.children[#tree.children + 1] = _units_tree(name, side)
+        tree.children[#tree.children].ismorph = _is_morph_link(c)
+        documented_children[name] = true
     end
     -- Add also the morphs
     children = {}
@@ -270,14 +296,16 @@ function _units_tree(startUnit, side)
             children[#children + 1] =  UnitDefNames[morphDef.into].name
         end
     end
-    for i = 1,#children do
-        name = _unit_name(children[i], side)
-        tree.children[name] = _units_tree(name, side)
-        tree.children[name].ismorph = true
+    for _, c in ipairs(children) do
+        name = _unit_name(c, side)
+        if not documented_children[name] then
+            tree.children[#tree.children + 1] = _units_tree(name, side)
+            tree.children[#tree.children].ismorph = true
+        end
     end
-    -- Pop this unit from the building chain, so it can be considered again
-    -- later
-    UNITS_CHAIN[#UNITS_CHAIN] = nil
+
+    CURRENT_DEPTH = CURRENT_DEPTH - 1
+
     return tree
 end
 
@@ -302,10 +330,13 @@ function _gen_faction(folder, faction)
     handle.write(handle, faction.wiki .. "\n\n")
 
     -- Faction units tree
-    local tree = {ismorph = false, children={}}
-    tree.children[faction.startUnit] = _units_tree(faction.startUnit, side)
+    _units_tree(faction.startUnit, side)  -- Fake call to store the critical lines
+    local tree = {name = nil, ismorph = false, children={
+        _units_tree(faction.startUnit, side)
+    }}
     handle.write(handle, "## Units tree\n\n")
-    handle.write(handle, _to_wikilist(nil, tree, "units" .. SEPARATOR))
+    _to_wikilist(tree, "units" .. SEPARATOR)  -- Fake call to collect links to critical lines
+    handle.write(handle, _to_wikilist(tree, "units" .. SEPARATOR))
     handle.write(handle, "\n")    
 
     handle.close(handle)
