@@ -1,13 +1,13 @@
 
 function widget:GetInfo()
   return {
-    name      = "1944 Aircraft Selection Buttons",
+    name      = "Aircraft Selection Buttons",
     desc      = "Automatically creates selection buttons for newly entered aircraft.",
     author    = "Ray Modified by Godde, Szunti, kmar",
     date      = "Sep 6, 2011",
     license   = "GNU GPL, v2 or later",
     layer     = 0,
-    enabled   = true  --  loaded by default?
+    enabled   = false  --  loaded by default?
   }
 end
 

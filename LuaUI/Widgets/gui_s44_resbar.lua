@@ -1,4 +1,4 @@
-local versionNumber = "v2.1"
+local versionNumber = "v3.0"
 
 function widget:GetInfo()
 	return {
@@ -15,24 +15,24 @@ end
 ------------------------------------------------
 --constants
 ------------------------------------------------
-local mainScaleHeight = 0.045 --height as a proportion of screen height; sets the overall scale of things
-local mainScaleWidth = 0.75 --width as a proportion of screen width
-
-local barHeight = 0.125
-
-local endLength = 1.5
-
-local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/Bitmaps/"
-local FONT_FILE = LUAUI_DIRNAME .. "Fonts/cmuntb.otf"
+local mainScaleWidth = 0.75 --Default widget width
+local mainScaleHeight = 0.045 -- Default widget height
+WG.RESBAROPTS = {
+    x = 1.0 - mainScaleWidth,
+    y = 0.0,
+    width = mainScaleWidth,
+    height = mainScaleHeight,
+}
+local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ResBar/"
+local GLYPHS = {
+    metal = '\204\134',
+    energy = '\204\137',
+}
 
 ------------------------------------------------
 --locals
 ------------------------------------------------
-local vsx, vsy --viewsize
-local mainSize --size in pixels
-local mainWidth --width in terms of height
-
-local barLength --bar length as a proportion of total width
+local vsx, vsy
 
 local mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = 0, 0, 0, 0, 0, 0, 0, 0
 local eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = 0, 0, 0, 0, 0, 0, 0, 0
@@ -42,324 +42,274 @@ local resupplyString = ""
 local lastStor
 local estimatedSupplySurplus = 1
 
-local activeClick
-
-local font
+local main_win
 
 ------------------------------------------------
 --speedups
 ------------------------------------------------
-local abs = math.abs
+local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
-
 local strFormat = string.format
 
 local GetTeamResources = Spring.GetTeamResources
 local GetMyTeamID = Spring.GetMyTeamID
-local IsGUIHidden = Spring.IsGUIHidden
 local SetShareLevel = Spring.SetShareLevel
-
-local glLineWidth = gl.LineWidth
-
-local glColor = gl.Color
-local glPolygonMode = gl.PolygonMode
-
-local glPushMatrix = gl.PushMatrix
-local glPopMatrix = gl.PopMatrix
-local glTranslate = gl.Translate
-local glScale = gl.Scale
-local glRotate = gl.Rotate
-
-local glRect = gl.Rect
-local glShape = gl.Shape
-
-local glTexture = gl.Texture
-local glTexRect = gl.TexRect
-
-local GL_LINE = GL.LINE
-local GL_FILL = GL.FILL
-
-local GL_TRIANGLES = GL.TRIANGLES
-local GL_FRONT_AND_BACK = GL.FRONT_AND_BACK
 
 ------------------------------------------------
 --util
 ------------------------------------------------
-
-local function ToSI(num)
-  if (num == 0) then
-    return "0"
-  else
-    local absNum = abs(num)
-    if (absNum < 0.1) then
-      return "0" --too small to matter
-    elseif (absNum < 1e3) then
-      return strFormat("%.2f", num)
-    elseif (absNum < 1e6) then
-      return strFormat("%.2fk", 1e-3 * num)
-    elseif (absNum < 1e9) then
-      return strFormat("%.2fM", 1e-6 * num)
-    else
-      return strFormat("%.2fB", 1e-9 * num)
-    end
-  end
-end
 
 local function FramesToTimeString(n)
   local seconds = n / 30
   return strFormat(floor(seconds / 60) .. ":" .. strFormat("%02i", ceil(seconds % 60)))
 end
 
-local function ShareColor(sent, reci)
-	if (sent > 0) then
-		if (reci > 0) then
-			glColor(1, 1, 0, 1)
-		else
-			glColor(1, 0, 0, 1)
-		end
-	elseif (reci > 0) then
-		glColor(0, 1, 0, 1)
-	else
-		glColor(0.75, 0.75, 0.75, 1)
-	end
+local function __OnMainWinSize(self, w, h)
+    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    WG.RESBAROPTS.x = self.x / viewSizeX
+    WG.RESBAROPTS.y = self.y / viewSizeY
+    WG.RESBAROPTS.width = self.width / viewSizeX
+    WG.RESBAROPTS.height = self.height / viewSizeY
 end
 
-------------------------------------------------
---drawing
-------------------------------------------------
-
-local function DrawShareMarker()
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
-  local vertices = {
-    {v = {0, 1, 0}},
-    {v = {2, 3, 0}},
-    {v = {-2, 3, 0}},
-    
-    {v = {0, -1, 0}},
-    {v = {-2, -3, 0}},
-    {v = {2, -3, 0}},
-  }
-  glShape(GL_TRIANGLES, vertices)
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)
+local function __OnResBarSize(self, w, h)
+    local icon = self.icon
+    local pbar = self.pbar
+    local slider = self.slider
+    h = floor(0.9 * min(self.height, 0.15 * self.width))
+    icon:Resize(h, h, true, true)
+    icon.font.size = Chili.OptimumFontSize(self.font,
+                                           icon.caption,
+                                           h,
+                                           h) - 2
+    pbar:SetPos(h + 5, 0.1 * h, self.width - h - 20, 0.7 * h, true, true)
+    pbar.font.size = Chili.OptimumFontSize(self.font,
+                                           "XXXXX/XXXXX (Resupply in 00:00)",
+                                           0.9 * (self.width - h - 20),
+                                           0.5 * h) - 1
 end
 
-local function DrawCommand()
-  --icon
-  glPushMatrix()
-    glTranslate(-mainWidth, -1, 0)
-    glColor(1, 1, 1, 1)
-    glTexture(IMAGE_DIRNAME .. "ResComIcon.png")
-    glTexRect(0, 0, 1, 1)
-    glTexture(false)
-  glPopMatrix()
-
-  --resource bar
-  glPushMatrix()
-    glTranslate(-mainWidth + 1, -0.5, 0)
-    glScale(barLength, barHeight, 1)
-    glColor(0.375, 0.375, 0.375, 1)
-    glRect(0, -1, 1, 1)
-    glColor(0.75, 0.75, 0.75, 1)
-    glRect(0, -1, mCurr / mStor, 1)
-    
-    glPushMatrix()
-      glTranslate(mShar, 0, 0)
-      glScale(barHeight / barLength, 1, 1)
-      ShareColor(mSent, mReci)
-      DrawShareMarker()
-    glPopMatrix()
-  glPopMatrix()
-  
-  --curr/change
-  glPushMatrix()
-    glTranslate(-mainWidth + 1 + barLength / 2, -1.05, 0)
-    font:Print("\255\192\192\192Command: \255\255\255\255" .. ToSI(mCurr), 0, 0, 0.375, "cnd")
-    font:Print("\255\1\255\1+" .. ToSI(mInco) .. " \255\255\1\1-" .. ToSI(mPull), 0, 0.5 + barHeight, 0.375, "cnd")
-  glPopMatrix()
-  
-  --storage
-  glPushMatrix()
-    glTranslate(-mainWidth + 1 + barLength, -0.75, 0)
-    font:Print("\255\255\255\255" .. ToSI(mStor), 0, 0, 0.375)
-  glPopMatrix()
+local function __OnResSlider(self, value, old_value)
+    SetShareLevel(self.res_name, value / 100)
 end
 
-local function DrawSupply()
-  --icon
-  glPushMatrix()
-    glTranslate(-barLength - 1 - endLength, -1, 0)
-    glColor(1, 1, 1, 1)
-    glTexture(IMAGE_DIRNAME .. "ResLogIcon.png")
-    glTexRect(0, 0, 1, 1)
-    glTexture(false)
-  glPopMatrix()
-  
-  --resource bar
-  glPushMatrix()
-    glTranslate(-barLength - endLength, -0.5, 0)
-    glScale(barLength, barHeight, 1)
-    glColor(0.5, 0.5, 0, 1)
-    glRect(0, -1, 1, 1)
-    glColor(1, 1, 0, 1)
-    glRect(0, -1, eCurr / eStor, 1)
-    if estimatedSupplySurplus < eCurr then
-      glColor(1, 0, 0, 1)
-      glRect(estimatedSupplySurplus / eStor, -1, eCurr / eStor, 1)
-    end
-    
-    glPushMatrix()
-      glTranslate(eShar, 0, 0)
-      glScale(barHeight / barLength, 1, 1)
-      ShareColor(eSent, eReci)
-      DrawShareMarker()
-    glPopMatrix()
-  glPopMatrix()
-  
-  --curr/resupply
-  glPushMatrix()
-    glTranslate(-endLength - barLength / 2, -1.05, 0)
-    font:Print("\255\255\255\1Supply: \255\255\255\255" .. ToSI(eCurr), 0, 0, 0.375, "cnd")
-    font:Print("\255\255\1\1-" .. ToSI(ePull) .. " \255\255\255\255(Resupply in " .. resupplyString .. ")", 0, 0.5 + barHeight, 0.375, "cnd")
-  glPopMatrix()
-  
-  --storage
-  glPushMatrix()
-    glTranslate(-endLength, -0.75, 0)
-    font:Print("\255\255\255\255" .. ToSI(eStor), 0, 0, 0.375)
-  glPopMatrix()
+local function __SetSliderValue(slider, v)
+    local tmp = slider.OnChange
+    slider.OnChange = {}
+    slider:SetValue(v)
+    slider.OnChange = tmp
 end
 
-local function DrawMain()
-  glColor(0, 0, 0, 0.25)
-  glRect(-mainWidth, -1, 0, 0)
-  glPushMatrix()
-    DrawCommand()
-    DrawSupply()
-    --WG.VectorImages.DrawCircle({1, 1, 1}, {1, 1, 1}, 16)
-  glPopMatrix()
+local function ResBar(parent, x, color, res_name)
+    -- Create an invisible window container
+    local container = Chili.Window:New{
+        parent = parent,
+        x = x,
+        y = "0%",
+        width = "50%",
+        height = "100%",
+        minHeight = 25,
+        padding = {0, 0, 0, 0},
+        resizable = false,
+        draggable = false,
+        TileImage = ":cl:empty.png",
+    }
+    -- Create the icon at the left
+    h = floor(0.9 * min(container.height, 0.15 * container.width))
+    local icon = Chili.Label:New{
+        parent = container,
+        x = "0%",
+        y = "0%",
+        width = h,
+        height = h,
+        align = "left",
+        valign = "top",
+        caption = GLYPHS[res_name],
+        font = {size = Chili.OptimumFontSize(container.font, GLYPHS[res_name], h, h) - 2,
+                color = color},
+    }
+    container.icon = icon
+
+    -- And the resource bar at the right
+    local w = container.width - h - 20
+    local bgcolor = {color[1] * 0.5,
+                     color[2] * 0.5,
+                     color[3] * 0.5,
+                     color[4]}
+    local pbar = Chili.Progressbar:New{
+        parent = container,
+        x = h + 5,
+        y = floor(0.1 * h),
+        width = w,
+        height = floor(0.7 * h),
+        color = color,
+        backgroundColor = bgcolor,
+        caption = "0/0 (0)",
+        font = {size = Chili.OptimumFontSize(container.font, "XXXXX/XXXXX (Resupply in 00:00)", 0.9 * w, 0.5 * h) - 1,
+                color = {1.0,1.0,1.0,1.0},
+                outlineColor = {0.0,0.0,0.0,1.0},
+                outline = true,
+                shadow  = false,},
+    }
+    container.pbar = pbar
+
+    -- We need a slider overlapped with the progress bar
+    local slider = Chili.Trackbar:New{
+        parent = pbar,
+        x = "0%",
+        y = "0%",
+        width = "100%",
+        height = "150%",
+        TileImage = ":cl:empty.png",
+        StepImage  = ":cl:empty.png",
+        ThumbImage = IMAGE_DIRNAME .. "share_thumb.png",
+        OnChange = {}
+    }
+    slider.res_name = res_name
+    slider.OnChange = {__OnResSlider,}
+    container.slider = slider
+
+    container.OnResize = {__OnResBarSize,}
+    __OnResBarSize(container, container.width, container.height)
+    return container
+end
+
+function ResetResbar(cmd, optLine)
+    -- Reset default values
+    WG.RESBAROPTS.x = 1.0 - mainScaleWidth
+    WG.RESBAROPTS.y = 0.0
+    WG.RESBAROPTS.width = mainScaleWidth
+    WG.RESBAROPTS.height = mainScaleHeight
+    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    x = WG.RESBAROPTS.x * viewSizeX
+    y = WG.RESBAROPTS.y * viewSizeY
+    w = WG.RESBAROPTS.width * viewSizeX
+    h = WG.RESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
 end
 
 ------------------------------------------------
 --callins
 ------------------------------------------------
 function widget:Initialize()
-  --[[if (Game.modShortName ~= "S44") then
-    WG.RemoveWidget(self)
-    return
-  end]]
+    Chili = WG.Chili
+    if Chili == nil then
+        Spring.Log(widget:GetInfo().name, LOG.ERROR,
+                   "Chili not available, disabling widget")
+        WG.RemoveWidget(self)
+        return
+    end
   
-  Spring.SendCommands("resbar 0")
-  
-  local viewSizeX, viewSizeY = Spring.GetViewGeometry()
-  widget:ViewResize(viewSizeX, viewSizeY)
-  widget:GameFrame(0)
-  
-  font = WG.S44Fonts.TypewriterBold16
-  
-  resupplyPeriod = Spring.GetGameRulesParam("resupplyPeriod") or 450 * 30
+    Spring.SendCommands("resbar 0")
+    
+    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    widget:ViewResize(viewSizeX, viewSizeY)
+    widget:GameFrame(0)
+
+    resupplyPeriod = Spring.GetGameRulesParam("resupplyPeriod") or 450 * 30
+
+    -- Create the window
+    main_win = Chili.Window:New{
+        parent = Chili.Screen0,
+        x = tostring(floor(100 * WG.RESBAROPTS.x)) .. "%",
+        y = tostring(floor(100 * WG.RESBAROPTS.y)) .. "%",
+        width = tostring(floor(100 * WG.RESBAROPTS.width)) .. "%",
+        height = tostring(floor(100 * WG.RESBAROPTS.height)) .. "%",
+        minHeight = 25,
+        padding = {0, 0, 0, 0},
+        draggable = true,
+        resizable = true,
+    }
+    Chili.AddCustomizableWindow(main_win)
+    -- If we set OnMove/OnResize during the initialization, they are called
+    -- eventually breaking our WG.RESBAROPTS data
+    main_win.OnMove = {__OnMainWinSize,}
+    main_win.OnResize = {__OnMainWinSize,}
+
+    local mresbar = ResBar(main_win, "0%", {0.7, 0.7, 0.7, 1}, "metal")
+    local eresbar = ResBar(main_win, "50%", {0.9, 0.9, 0.1, 1}, "energy")
+
+    main_win.mresbar = mresbar
+    main_win.eresbar = eresbar
+
+    widgetHandler:AddAction("resetresbar", ResetResbar)
+
+    -- Set the widget size, which apparently were not working well
+    x = WG.RESBAROPTS.x * viewSizeX
+    y = WG.RESBAROPTS.y * viewSizeY
+    w = WG.RESBAROPTS.width * viewSizeX
+    h = WG.RESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
+end
+
+function widget:Shutdown()
+    Spring.SendCommands("resbar 1")
+    widgetHandler:RemoveAction("resetresbar")
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
-  vsx = viewSizeX
-  vsy = viewSizeY
-  mainSize = mainScaleHeight * vsy
-  mainWidth = vsx * mainScaleWidth / mainSize
-  barLength = mainWidth / 2 - 1 - endLength
-end
-
-function widget:DrawScreen()
-  glLineWidth(1)
-  glPushMatrix()
-    glTranslate(vsx, vsy, 0)
-    glScale(mainSize, mainSize, 1)
-    if (not IsGUIHidden()) then
-      DrawMain()
+    vsx = viewSizeX
+    vsy = viewSizeY
+    if main_win == nil then
+        return
     end
-  glPopMatrix()
+    x = WG.RESBAROPTS.x * viewSizeX
+    y = WG.RESBAROPTS.y * viewSizeY
+    w = WG.RESBAROPTS.width * viewSizeX
+    h = WG.RESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
 end
 
 function widget:GameFrame(n)
-  local myTeamID = GetMyTeamID()
-  mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
-  eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
-  
-  if not lastStor then lastStor = eStor end
-  
-  local elapsedSupplyTime = n % resupplyPeriod
-  local remainingSupplyTime = resupplyPeriod - n % resupplyPeriod
-  
-  if remainingSupplyTime == 0 or n <= 32 then
-    estimatedSupplySurplus = 1
-    lastStor = eStor
-  else
-    estimatedSupplySurplus = lastStor - (lastStor - eCurr) * resupplyPeriod / elapsedSupplyTime
-    if estimatedSupplySurplus > eStor then
-      estimatedSupplySurplus = eStor
-    elseif estimatedSupplySurplus < 0 then
-      estimatedSupplySurplus = 0
+    local myTeamID = GetMyTeamID()
+    mCurr, mStor, mPull, mInco, mExpe, mShar, mSent, mReci = GetTeamResources(myTeamID, "metal")
+    eCurr, eStor, ePull, eInco, eExpe, eShar, eSent, eReci = GetTeamResources(myTeamID, "energy")
+    
+    if not lastStor then lastStor = eStor end
+    
+    local elapsedSupplyTime = n % resupplyPeriod
+    local remainingSupplyTime = resupplyPeriod - n % resupplyPeriod
+    
+    if remainingSupplyTime == 0 or n <= 32 then
+        estimatedSupplySurplus = 1
+        lastStor = eStor
+    else
+        estimatedSupplySurplus = lastStor - (lastStor - eCurr) * resupplyPeriod / elapsedSupplyTime
+        if estimatedSupplySurplus > eStor then
+        estimatedSupplySurplus = eStor
+        elseif estimatedSupplySurplus < 0 then
+        estimatedSupplySurplus = 0
+        end
     end
-  end
-  
-  resupplyString = FramesToTimeString(remainingSupplyTime)
-end
+    
+    resupplyString = FramesToTimeString(remainingSupplyTime)
 
-------------------------------------------------
---mouse
-------------------------------------------------
-
-local function MainTransform(x, y)
-  return (x - vsx) / mainSize, (y - vsy) / mainSize
-end
-
-local function CommandShare(tx)
-  local result = (tx + mainWidth - 1) / barLength
-  if result < 0 then return 0 end
-  if result > 1 then return 1 end
-  return result
-end
-
-local function SupplyShare(tx)
-  local result = (tx + barLength + endLength) / barLength
-  if result < 0 then return 0 end
-  if result > 1 then return 1 end
-  return result
-end
-
-local function GetComponent(x, y)
-  local tx, ty = MainTransform(x, y)
-  
-  if ty < 0 and ty > -1 then
-    if tx > -mainWidth + 1 and tx < -mainWidth + barLength + 1 then
-      return "commandbar"
-    elseif tx > -endLength - barLength and tx < -endLength then
-      return "supplybar"
+    if main_win == nil then
+        return
     end
-  end
+
+    local mresbar = main_win.mresbar
+    mresbar.pbar:SetValue(100 * mCurr / mStor)
+    mresbar.pbar:SetCaption(Chili.ToSI(mCurr) .. "/" .. Chili.ToSI(mStor) .. " (" .. Chili.ToSI(mInco - mPull) .. ")" )
+    __SetSliderValue(mresbar.slider, 100 * mShar)
+    local eresbar = main_win.eresbar
+    eresbar.pbar:SetValue(100 * eCurr / eStor)
+    eresbar.pbar:SetCaption(Chili.ToSI(eCurr) .. "/" .. Chili.ToSI(eStor) .. " (Resupply in " .. resupplyString .. ")" )
+    __SetSliderValue(eresbar.slider, 100 * eShar)
 end
 
-local function ReleaseActiveClick(x, y)
-  local tx, ty = MainTransform(x, y)
-  if activeClick == "commandbar" then
-    SetShareLevel("metal", CommandShare(tx))
-  elseif activeClick == "supplybar" then
-    SetShareLevel("energy", SupplyShare(tx))
-  end
-  activeClick = false
+function widget:GetConfigData()
+    return {
+        x      = WG.RESBAROPTS.x,
+        y      = WG.RESBAROPTS.y,
+        width  = WG.RESBAROPTS.width,
+        height = WG.RESBAROPTS.height,
+    }
 end
 
-function widget:MousePress(x, y, button)
-  local component = GetComponent(x, y)
-  if (component and not IsGUIHidden()) then
-    activeClick = component
-    return true
-  end
-  return false
-end
-
-function widget:MouseRelease(x, y, button)
-  if (activeClick) then
-    ReleaseActiveClick(x, y)
-    return true
-  end
-  return false
+function widget:SetConfigData(data)
+    WG.RESBAROPTS.x      = data.x or WG.RESBAROPTS.x
+    WG.RESBAROPTS.y      = data.y or WG.RESBAROPTS.y
+    WG.RESBAROPTS.width  = data.width or WG.RESBAROPTS.width
+    WG.RESBAROPTS.height = data.height or WG.RESBAROPTS.height
 end
