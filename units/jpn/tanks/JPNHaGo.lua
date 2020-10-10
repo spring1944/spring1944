@@ -1,6 +1,6 @@
 local JPNHaGo = LightTank:New{
 	name				= "Type 95 Ha-Go",
-	buildCostMetal		= 1150,
+	buildCostMetal		= 977,
 	maxDamage			= 740,
 	trackOffset			= 5,
 	trackWidth			= 14,

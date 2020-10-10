@@ -1,7 +1,7 @@
 local HUN44MTas = HeavyTank:New{
 	name				= "44.M Tas",
 	corpse				= "HUN44MTas_Abandoned",
-	buildCostMetal			= 5000,
+	buildCostMetal			= 6000,
 	maxDamage			= 3800,
 	trackOffset			= 5,
 	trackWidth			= 19,

@@ -1,6 +1,6 @@
 local JPNChiHe = MediumTank:New{
 	name				= "Type 1 Chi-He",
-	buildCostMetal		= 2300,
+	buildCostMetal		= 1955,
 	maxDamage			= 1700,
 	maxVelocity			= 2.9,
 	trackOffset			= 5,

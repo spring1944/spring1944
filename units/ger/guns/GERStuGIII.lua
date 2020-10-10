@@ -1,6 +1,6 @@
 local GERStuGIII = MediumTank:New(AssaultGun):New{
 	name				= "SdKfz 142/1 StuG III Ausf. G",
-	buildCostMetal		= 2750,
+	buildCostMetal		= 2475,
 	maxDamage			= 2390,
 	trackOffset			= 3,
 	trackWidth			= 19,
