@@ -32,6 +32,7 @@ local Chili
 local main_win, container, buttonsize
 local selection = {}
 local keep_selected = {}
+local number_of_selected_units = 0
 
 -- CONTROLS
 local floor, ceil = math.floor, math.ceil
@@ -214,7 +215,15 @@ local function __makeUnitsButton(unitIDs, unitDefID, unitDef)
 end
 
 function GenerateSelection()
-    local units = GetSelectedUnitsCount() > 0 and GetSelectedUnitsSorted() or {}
+    local n = GetSelectedUnitsCount()
+    if n == number_of_selected_units then
+        -- AFAIK selecting/deselecting units always involve a change on the
+        -- number of selected units. it cannot be done fast enough to avoid it
+        -- So we can just simply skip updating
+        return
+    end
+    number_of_selected_units = n
+    local units = n > 0 and GetSelectedUnitsSorted() or {}
     units.n = nil
     local reselect = false
     -- Check that the units marked as keep selection are still selected
