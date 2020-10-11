@@ -61,7 +61,7 @@ function ResetSelBar()
 end
 
 local function ResizeContainer()
-    if #container.children == 0 then
+    if #container.children == 0 and not main_win.force_show then
         main_win:Hide()
         return
     end
@@ -102,8 +102,14 @@ local function __OnLockWindow(self)
     WG.SELBAROPTS.y = self.y / viewSizeY
     WG.SELBAROPTS.width = self.width / viewSizeX
     WG.SELBAROPTS.height = self.height / viewSizeY
+    self.force_show = false
     ResizeContainer()
 end
+
+local function __OnUnlockWindow(self)
+    self.force_show = true
+end
+
 
 local function OnSelectedUnit(self, x, y, btn)
     local unitIDs = self.unitIDs
@@ -268,7 +274,8 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         minWidth = 96,
         minHeight = 96,
-        caption = "Selection"
+        caption = "Selection",
+        force_show = true,
     }
     Chili.AddCustomizableWindow(main_win)
 
@@ -297,6 +304,7 @@ function widget:Initialize()
     ResizeContainer()
     -- Save the new dimensions when the widget is locked
     main_win.OnLockWindow = {__OnLockWindow,}
+    main_win.OnUnlockWindow = {__OnUnlockWindow,}
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)

@@ -392,6 +392,14 @@ local function __OnLockWindow(self)
     WG.COMMWINOPTS.y = self.y / viewSizeY
     WG.COMMWINOPTS.width = self.width / viewSizeX
     WG.COMMWINOPTS.height = self.height / viewSizeY
+    self.force_show = false
+    self.caption = nil
+    ResizeContainers()
+end
+
+local function __OnUnlockWindow(self)
+    self.force_show = true
+    self.caption = "Commands"
 end
 
 ------------------------------------------------
@@ -422,6 +430,8 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         minWidth = buttonsize + 12 + 10,
         minHeight = (buttonsize + 24) * 4,
+        force_show = true,
+        caption = "Commands",
     }
     Chili.AddCustomizableWindow(main_win)
 
@@ -576,6 +586,7 @@ function widget:Initialize()
     ResizeContainers()
     -- Save the new dimensions when the widget is locked
     main_win.OnLockWindow = {__OnLockWindow,}
+    main_win.OnUnlockWindow = {__OnUnlockWindow,}
 end
 
 function widget:CommandsChanged()
@@ -584,7 +595,7 @@ end
 
 function widget:DrawScreen()
     local selection = Spring.GetSelectedUnits()
-    if (selection == nil) or (#selection == 0) then
+    if (selection == nil) or (#selection == 0) and not main_win.force_show then
         main_win:Hide()
         return
     end
