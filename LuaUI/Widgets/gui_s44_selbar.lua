@@ -25,6 +25,7 @@ local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
 local GLYPHS = {
     locked = '\204\132',
 }
+local MINBUTTONSIZE = 0.04
 
 -- MEMBERS
 local Chili
@@ -33,6 +34,9 @@ local selection = {}
 local keep_selected = {}
 
 -- CONTROLS
+local floor, ceil = math.floor, math.ceil
+local min, max    = math.min, math.max
+local GetViewGeometry        = Spring.GetViewGeometry
 local GetUnitDefID           = Spring.GetUnitDefID
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local GetSelectedUnitsCount  = Spring.GetSelectedUnitsCount
@@ -48,7 +52,7 @@ function ResetSelBar()
     WG.SELBAROPTS.y = mainScaleTop
     WG.SELBAROPTS.width = mainScaleWidth
     WG.SELBAROPTS.height = mainScaleHeight
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
     x = WG.SELBAROPTS.x * viewSizeX
     y = WG.SELBAROPTS.y * viewSizeY
     w = WG.SELBAROPTS.width * viewSizeX
@@ -63,16 +67,29 @@ local function ResizeContainer()
     end
     main_win:Show()
 
-    buttonsize = container.width
+    local w = container.width
     if not container.parent._vscrollbar then
-        buttonsize = buttonsize - container.parent.scrollbarSize
+        w = w - container.parent.scrollbarSize
     end
+
+    -- Count the number of columns and rows
+    local viewSizeX, viewSizeY = GetViewGeometry()
+    local buttonsize = min(w, MINBUTTONSIZE * max(viewSizeX, viewSizeY))
+    local cols = floor(w / buttonsize)
+    local rows = max(1, ceil(#container.children / cols))
+    -- Fit the buttons to the available space
+    buttonsize = w / cols
     for _, c in ipairs(container.children) do
         c:Resize(buttonsize, buttonsize)
         c.image:Resize(buttonsize - 2, buttonsize - 2)
         c.label:SetPos(7, -48)
         c.lock_label:SetPos(buttonsize - 48, buttonsize - 70)
     end
+    -- Set the number of rows and columns of the widget
+    container.columns = cols
+    container.rows = rows
+    -- Set a more convenient height
+    container:SetPosRelative(nil, nil, nil, rows * buttonsize, true, false)
 end
 
 local function __OnMainWinSize(self, w, h)
@@ -80,7 +97,7 @@ local function __OnMainWinSize(self, w, h)
 end
 
 local function __OnLockWindow(self)
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
     WG.SELBAROPTS.x = self.x / viewSizeX
     WG.SELBAROPTS.y = self.y / viewSizeY
     WG.SELBAROPTS.width = self.width / viewSizeX
@@ -238,7 +255,7 @@ function widget:Initialize()
         return
     end
     Chili = WG.Chili
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
@@ -258,24 +275,19 @@ function widget:Initialize()
     local scroll = Chili.ScrollPanel:New{
         parent = main_win,
         x = 0,
-        y = 20,
+        y = 10,
         width = "100%",
         bottom = 10,
         horizontalScrollbar = false,
         BorderTileImage = IMAGE_DIRNAME .. "empty.png",
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
     }
-    container = Chili.StackPanel:New{
+    container = Chili.Grid:New{
         parent = scroll,
         x = 0,
-        y = 10,
+        y = 0,
         width = "100%",
         height = "100%",
-        resizeItems = false,
-        itemPadding  = { 1, 1, 1, 1 },
-        itemMargin  = {0, 0, 0, 0},
-        autosize = true,
-        preserveChildrenOrder = true,
     }
 
     widgetHandler:AddAction("resetselbar", ResetSelBar)
