@@ -272,7 +272,7 @@ function widget:Initialize()
     local scroll = Chili.ScrollPanel:New{
         parent = main_win,
         x = 0,
-        y = 20,
+        y = 10,
         width = "100%",
         bottom = 10,
         horizontalScrollbar = false,
