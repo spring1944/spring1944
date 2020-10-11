@@ -108,6 +108,7 @@ end
 
 local function __OnUnlockWindow(self)
     self.force_show = true
+    ResizeContainer()
 end
 
 local function __makeButton(unitDefID, parent, size)
@@ -267,6 +268,12 @@ function widget:Initialize()
 
     widgetHandler:AddAction("resetbuildbar", ResetBuildBar)
 
+    -- Set the widget size, which apparently were not working well
+    x = WG.BUILDBAROPTS.x * viewSizeX
+    y = WG.BUILDBAROPTS.y * viewSizeY
+    w = WG.BUILDBAROPTS.width * viewSizeX
+    h = WG.BUILDBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
     main_win.OnMove = {__OnMainWinSize,}
     main_win.OnResize = {__OnMainWinSize,}
     GenerateFactories()

@@ -45,7 +45,8 @@ function ResetGUI()
                          "resetplanesbar",
                          "resetselbar",
                          "resetcomwin",
-                         "resettooltipwin"})
+                         "resettooltipwin",
+                         "resetchatbar"})
 end
 
 --------------------------------------------------------------------------------

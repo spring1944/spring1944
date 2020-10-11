@@ -19,6 +19,16 @@ local myName, transmitMagic, voiceMagic, transmitLobbyMagic, MessageProcessor = 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+local mainScaleLeft   = 0.25  -- Default widget position
+local mainScaleTop    = 0.89  -- Default widget position
+local mainScaleWidth  = 0.75  -- Default widget width
+local mainScaleHeight = 0.11  -- Default widget height
+WG.CHATBAROPTS = {
+    x = mainScaleLeft,
+    y = mainScaleTop,
+    width = mainScaleWidth,
+    height = mainScaleHeight,
+}
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
 local SOUNDS = {
     ally = "sounds/talk.wav",
@@ -55,10 +65,25 @@ local min, max = math.min, math.max
 local function clamp(v, vmin, vmax)
     return max(min(v, vmax), vmin)
 end
+local GetViewGeometry = Spring.GetViewGeometry
 
 --------------------------------------------------------------------------------
 -- 
 --------------------------------------------------------------------------------
+
+function ResetChatBar()
+    -- Reset default values
+    WG.CHATBAROPTS.x = mainScaleLeft
+    WG.CHATBAROPTS.y = mainScaleTop
+    WG.CHATBAROPTS.width = mainScaleWidth
+    WG.CHATBAROPTS.height = mainScaleHeight
+    local viewSizeX, viewSizeY = GetViewGeometry()
+    x = WG.CHATBAROPTS.x * viewSizeX
+    y = WG.CHATBAROPTS.y * viewSizeY
+    w = WG.CHATBAROPTS.width * viewSizeX
+    h = WG.CHATBAROPTS.height * viewSizeY
+    chat_win:SetPosRelative(x, y, w, h, true, false)
+end
 
 local function OnSwitchMute(self)
     local name = self.playername
@@ -382,7 +407,9 @@ end
 
 function ShowWin()
     -- Hide the default chat window
-    chat_win:Hide()
+    if not chat_win.force_show then
+        chat_win:Hide()
+    end
     -- Transfer the chat stack to the main window
     chat_stack:SetParent(nil)
     if main_log == nil then
@@ -516,6 +543,23 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
     end
 end
 
+local function __OnLockWindow(self)
+    local viewSizeX, viewSizeY = GetViewGeometry()
+    WG.CHATBAROPTS.x = self.x / viewSizeX
+    WG.CHATBAROPTS.y = self.y / viewSizeY
+    WG.CHATBAROPTS.width = self.width / viewSizeX
+    WG.CHATBAROPTS.height = self.height / viewSizeY
+    self.force_show = false
+    self.caption = nil
+    self.TileImage = IMAGE_DIRNAME .. "empty.png"
+end
+
+local function __OnUnlockWindow(self)
+    self.force_show = true
+    self.caption = "Chat"
+    self.TileImage = IMAGE_DIRNAME .. "s44_customizable_window.png"
+end
+
 --------------------------------------------------------------------------------
 -- Callins
 --------------------------------------------------------------------------------
@@ -527,22 +571,24 @@ function widget:Initialize()
     end
 
     Chili = WG.Chili
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
     playerName, _, _, _, allyTeamId = Spring.GetPlayerInfo(Spring.GetMyPlayerID())
 
     -- Chat window (anchored at bottom-right of the screen)
     -------------------------------------------------------
     chat_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = "40%",
-        y = "90%",
-        width = "60%",
-        height = "10%",
-        draggable = false,
-        resizable = false,
+        x = tostring(math.floor(100 * WG.CHATBAROPTS.x)) .. "%",
+        y = tostring(math.floor(100 * WG.CHATBAROPTS.y)) .. "%",
+        width = tostring(math.floor(100 * WG.CHATBAROPTS.width)) .. "%",
+        height = tostring(math.floor(100 * WG.CHATBAROPTS.height)) .. "%",
+        draggable = true,
+        resizable = true,
         padding = {0, 0, 0, 0},
-        TileImage = IMAGE_DIRNAME .. "empty.png",
+        TileImage = IMAGE_DIRNAME .. "s44_customizable_window.png",
+        caption = "Chat",
     }
+    Chili.AddCustomizableWindow(chat_win)
 
     chat_scroll = Chili.ScrollPanel:New{
         --margin = {5,5,5,5},
@@ -740,6 +786,8 @@ function widget:Initialize()
 
     main_win:Hide()
     setupPlayers()
+
+    widgetHandler:AddAction("resetchatbar", ResetChatBar)
     Spring.SendCommands("unbind any+enter chat")
     widgetHandler:AddAction("s44chat", OnChat)
     Spring.SendCommands("bind any+enter s44chat")
@@ -749,6 +797,33 @@ function widget:Initialize()
     Spring.SendCommands({"unbindkeyset alt+ctrl+s"})
     widgetHandler:AddAction("s44chatswitchspec", OnChatSwitchSpec)
     Spring.SendCommands({"bind alt+ctrl+s s44chatswitchspec"})
+
+    -- Set the widget size, which apparently were not working well
+    x = WG.CHATBAROPTS.x * viewSizeX
+    y = WG.CHATBAROPTS.y * viewSizeY
+    w = WG.CHATBAROPTS.width * viewSizeX
+    h = WG.CHATBAROPTS.height * viewSizeY
+    chat_win:SetPosRelative(x, y, w, h, true, false)
+    -- Save the new dimensions when the widget is locked
+    chat_win.OnLockWindow = {__OnLockWindow,}
+    chat_win.OnUnlockWindow = {__OnUnlockWindow,}
+end
+
+function widget:ViewResize(viewSizeX, viewSizeY)
+    if chat_win == nil then
+        return
+    end
+    x = WG.CHATBAROPTS.x * viewSizeX
+    y = WG.CHATBAROPTS.y * viewSizeY
+    w = WG.CHATBAROPTS.width * viewSizeX
+    h = WG.CHATBAROPTS.height * viewSizeY
+    if w < chat_win.minWidth then
+        w = chat_win.minWidth
+    end
+    if h < chat_win.minHeight then
+        h = chat_win.minHeight
+    end
+    chat_win:SetPosRelative(x, y, w, h, true, false)
 end
 
 function widget:AddConsoleLine(msg, priority)
@@ -855,6 +930,7 @@ function widget:Shutdown()
     end
     Spring.SendCommands({"console 1"})
 
+    widgetHandler:RemoveAction("resetchatbar")
     widgetHandler:RemoveAction("s44chat")
     Spring.SendCommands({"unbind any+enter s44chat"})
     Spring.SendCommands({"bind any+enter chat"})
@@ -864,4 +940,20 @@ function widget:Shutdown()
     widgetHandler:RemoveAction("s44chatswitchspec")
     Spring.SendCommands({"unbind alt+ctrl+s s44chatswitchspec"})
     Spring.SendCommands({"bind alt+ctrl+s chatswitchspec"})
+end
+
+function widget:GetConfigData()
+    return {
+        x      = WG.CHATBAROPTS.x,
+        y      = WG.CHATBAROPTS.y,
+        width  = WG.CHATBAROPTS.width,
+        height = WG.CHATBAROPTS.height,
+    }
+end
+
+function widget:SetConfigData(data)
+    WG.CHATBAROPTS.x      = data.x or WG.CHATBAROPTS.x
+    WG.CHATBAROPTS.y      = data.y or WG.CHATBAROPTS.y
+    WG.CHATBAROPTS.width  = data.width or WG.CHATBAROPTS.width
+    WG.CHATBAROPTS.height = data.height or WG.CHATBAROPTS.height
 end

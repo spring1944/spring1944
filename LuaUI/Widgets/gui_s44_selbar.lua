@@ -11,10 +11,10 @@ function widget:GetInfo()
 end
 
 -- CONSTANTS
-local mainScaleLeft   = 0.95  -- Default widget position
-local mainScaleTop    = 0.05  -- Default widget position
-local mainScaleWidth  = 0.05  -- Default widget width
-local mainScaleHeight = 0.85  -- Default widget height
+local mainScaleLeft   = 0.950  -- Default widget position
+local mainScaleTop    = 0.050  -- Default widget position
+local mainScaleWidth  = 0.050  -- Default widget width
+local mainScaleHeight = 0.835  -- Default widget height
 WG.SELBAROPTS = {
     x = mainScaleLeft,
     y = mainScaleTop,
@@ -108,8 +108,8 @@ end
 
 local function __OnUnlockWindow(self)
     self.force_show = true
+    ResizeContainer()
 end
-
 
 local function OnSelectedUnit(self, x, y, btn)
     local unitIDs = self.unitIDs
@@ -299,6 +299,12 @@ function widget:Initialize()
 
     widgetHandler:AddAction("resetselbar", ResetSelBar)
 
+    -- Set the widget size, which apparently were not working well
+    x = WG.SELBAROPTS.x * viewSizeX
+    y = WG.SELBAROPTS.y * viewSizeY
+    w = WG.SELBAROPTS.width * viewSizeX
+    h = WG.SELBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
     main_win.OnMove = {__OnMainWinSize,}
     main_win.OnResize = {__OnMainWinSize,}
     ResizeContainer()

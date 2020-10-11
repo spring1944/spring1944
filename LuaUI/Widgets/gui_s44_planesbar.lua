@@ -11,10 +11,10 @@ function widget:GetInfo()
 end
 
 -- CONSTANTS
-local mainScaleLeft   = 0.90  -- Default widget position
-local mainScaleTop    = 0.05  -- Default widget position
-local mainScaleWidth  = 0.05  -- Default widget width
-local mainScaleHeight = 0.85  -- Default widget height
+local mainScaleLeft   = 0.900  -- Default widget position
+local mainScaleTop    = 0.050  -- Default widget position
+local mainScaleWidth  = 0.050  -- Default widget width
+local mainScaleHeight = 0.835  -- Default widget height
 WG.PLANESBAROPTS = {
     x = mainScaleLeft,
     y = mainScaleTop,
@@ -110,6 +110,7 @@ end
 
 local function __OnUnlockWindow(self)
     self.force_show = true
+    ResizeContainer()
 end
 
 local function GetColourScale(value, alpha)
@@ -288,6 +289,12 @@ function widget:Initialize()
 
     widgetHandler:AddAction("resetplanesbar", ResetPlanesBar)
 
+    -- Set the widget size, which apparently were not working well
+    x = WG.PLANESBAROPTS.x * viewSizeX
+    y = WG.PLANESBAROPTS.y * viewSizeY
+    w = WG.PLANESBAROPTS.width * viewSizeX
+    h = WG.PLANESBAROPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
     main_win.OnMove = {__OnMainWinSize,}
     main_win.OnResize = {__OnMainWinSize,}
     ResizeContainer()

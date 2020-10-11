@@ -73,9 +73,6 @@ local queue = {}
 -- CONTROLS
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
-local function clamp(v, vmin, vmax)
-    return max(min(v, vmax), vmin)
-end
 local spGetActiveCommand    = Spring.GetActiveCommand
 local spGetActiveCmdDesc    = Spring.GetActiveCmdDesc
 local spGetSelectedUnits    = Spring.GetSelectedUnits
@@ -585,6 +582,12 @@ function widget:Initialize()
 
     widgetHandler.actionHandler:AddAction(widget, "resetcomwin", ResetComWin)
 
+    -- Set the widget size, which apparently were not working well
+    x = WG.COMMWINOPTS.x * viewSizeX
+    y = WG.COMMWINOPTS.y * viewSizeY
+    w = WG.COMMWINOPTS.width * viewSizeX
+    h = WG.COMMWINOPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
     main_win.OnMove = {__OnMainWinSize,}
     main_win.OnResize = {__OnMainWinSize,}
     ResizeContainers()
