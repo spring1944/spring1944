@@ -134,7 +134,7 @@ local function setupPlayers(playerID)
         --lobby: grey chat, spec: white chat, player: color chat
         teamColors[name] = (spec and {1,1,1,1}) or {Spring.GetTeamColor(teamId)}
         for _, stack in ipairs(main_players.children) do
-            for j = 2,#stack.children do
+            for j = #stack.children,2,-1 do
                 if stack.children[j].playername == name then
                     stack.children[j]:Dispose()
                 end
@@ -154,7 +154,7 @@ local function setupPlayers(playerID)
         stack:AddChild(buttons_players[name])
     else
         for _, stack in ipairs(main_players.children) do
-            for j = 2,#stack.children do
+            for j = #stack.children,2,-1 do
                 stack.children[j]:Dispose()
             end
         end
