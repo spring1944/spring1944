@@ -22,6 +22,7 @@ WG.PLANESBAROPTS = {
     height = mainScaleHeight,
 }
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
+local MINBUTTONSIZE = 0.04
 
 -- MEMBERS
 local Chili
@@ -31,6 +32,9 @@ local aircrafts = {}
 local overAircraft = nil
 
 -- CONTROLS
+local floor, ceil = math.floor, math.ceil
+local min, max    = math.min, math.max
+local GetViewGeometry    = Spring.GetViewGeometry
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitHealth      = Spring.GetUnitHealth
 local GetSelectedUnits   = Spring.GetSelectedUnits
@@ -50,7 +54,7 @@ function ResetPlanesBar()
     WG.PLANESBAROPTS.y = mainScaleTop
     WG.PLANESBAROPTS.width = mainScaleWidth
     WG.PLANESBAROPTS.height = mainScaleHeight
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
     x = WG.PLANESBAROPTS.x * viewSizeX
     y = WG.PLANESBAROPTS.y * viewSizeY
     w = WG.PLANESBAROPTS.width * viewSizeX
@@ -65,16 +69,29 @@ local function ResizeContainer()
     end
     main_win:Show()
 
-    buttonsize = container.width
+    local w = container.width
     if not container.parent._vscrollbar then
-        buttonsize = buttonsize - container.parent.scrollbarSize
+        w = w - container.parent.scrollbarSize
     end
+
+    -- Count the number of columns and rows
+    local viewSizeX, viewSizeY = GetViewGeometry()
+    local buttonsize = min(w, MINBUTTONSIZE * max(viewSizeX, viewSizeY))
+    local cols = floor(w / buttonsize)
+    local rows = max(1, ceil(#container.children / cols))
+    -- Fit the buttons to the available space
+    buttonsize = w / cols
     for _, c in ipairs(container.children) do
         c:Resize(buttonsize, buttonsize)
         c.image:Resize(buttonsize - 2, buttonsize - 2)
         c.hbar:SetPos(0.5 * buttonsize, buttonsize - 20, 0.5 * buttonsize - 1, 10)
         c.fbar:SetPos(0.5 * buttonsize, buttonsize - 10, 0.5 * buttonsize - 1, 10)
     end
+    -- Set the number of rows and columns of the widget
+    container.columns = cols
+    container.rows = rows
+    -- Set a more convenient height
+    container:SetPosRelative(nil, nil, nil, rows * buttonsize, true, false)
 end
 
 local function __OnMainWinSize(self, w, h)
@@ -82,7 +99,7 @@ local function __OnMainWinSize(self, w, h)
 end
 
 local function __OnLockWindow(self)
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
     WG.PLANESBAROPTS.x = self.x / viewSizeX
     WG.PLANESBAROPTS.y = self.y / viewSizeY
     WG.PLANESBAROPTS.width = self.width / viewSizeX
@@ -226,7 +243,7 @@ function widget:Initialize()
         return
     end
     Chili = WG.Chili
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = GetViewGeometry()
     myTeamID = GetMyTeamID()
 
     main_win = Chili.Window:New{
@@ -254,17 +271,12 @@ function widget:Initialize()
         BorderTileImage = IMAGE_DIRNAME .. "empty.png",
         BackgroundTileImage = IMAGE_DIRNAME .. "empty.png",
     }
-    container = Chili.StackPanel:New{
+    container = Chili.Grid:New{
         parent = scroll,
         x = 0,
-        y = 10,
+        y = 0,
         width = "100%",
         height = "100%",
-        resizeItems = false,
-        itemPadding  = { 1, 1, 1, 1 },
-        itemMargin  = {0, 0, 0, 0},
-        autosize = true,
-        preserveChildrenOrder = true,
     }
 
     widgetHandler:AddAction("resetplanesbar", ResetPlanesBar)
