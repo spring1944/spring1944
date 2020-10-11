@@ -15,7 +15,7 @@ end
 ------------------------------------------------
 --constants
 ------------------------------------------------
-local mainScaleWidth = 0.75 --Default widget width
+local mainScaleWidth = 0.85 --Default widget width
 local mainScaleHeight = 0.045 -- Default widget height
 WG.RESBAROPTS = {
     x = 1.0 - mainScaleWidth,
