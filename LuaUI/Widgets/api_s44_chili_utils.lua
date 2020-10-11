@@ -23,6 +23,7 @@ local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
 local strFormat = string.format
 local customizable_windows = {}
+local customizable_state = true
 
 
 function OptimumFontSize(font, txt, w, h)
@@ -50,23 +51,39 @@ function ToSI(num)
     end
 end
 
-function AddCustomizableWindow(window)
-    customizable_windows[#customizable_windows + 1] = window
+local function __SetCustomizableWindowsState(window)
+    if window == nil then
+        for _, w in ipairs(customizable_windows) do
+            __SetCustomizableWindowsState(w)
+        end
+        return
+    end
+
+    window.resizable = customizable_state
+    window.draggable = customizable_state
 end
 
-local function __SetCustomizableWindowsState(state)
-    for _, w in ipairs(customizable_windows) do
-        w.resizable = state
-        w.draggable = state
+function AddCustomizableWindow(window)
+    customizable_windows[#customizable_windows + 1] = window
+    __SetCustomizableWindowsState(window)
+end
+
+function RemoveCustomizableWindow(window)
+    for i=#customizable_windows,1,-1 do
+        if customizable_windows[i] == window then
+            table.remove(customizable_windows, i)
+        end
     end
 end
 
 function LockCustomizableWindows()
-    __SetCustomizableWindowsState(false)
+    customizable_state = false
+    __SetCustomizableWindowsState()
 end
 
 function UnlockCustomizableWindows()
-    __SetCustomizableWindowsState(true)
+    customizable_state = true
+    __SetCustomizableWindowsState()
 end
 
 function SetOpacity(control, opacity)
@@ -126,6 +143,7 @@ function widget:Initialize()
     WG.Chili.OptimumFontSize = OptimumFontSize
     WG.Chili.ToSI = ToSI
     WG.Chili.AddCustomizableWindow = AddCustomizableWindow
+    WG.Chili.RemoveCustomizableWindow = RemoveCustomizableWindow
     WG.Chili.LockCustomizableWindows = LockCustomizableWindows
     WG.Chili.UnlockCustomizableWindows = UnlockCustomizableWindows
     WG.Chili.SetOpacity = SetOpacity

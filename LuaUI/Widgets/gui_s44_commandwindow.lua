@@ -617,7 +617,10 @@ function widget:ViewResize(viewSizeX, viewSizeY)
 end
 
 function widget:Shutdown()
-    main_win:Dispose()
+    if main_win ~= nil then
+        Chili.RemoveCustomizableWindow(main_win)
+        main_win:Dispose()
+    end
     if widgetHandler.ConfigLayoutHandler then
         widgetHandler:ConfigLayoutHandler( true )
     end
