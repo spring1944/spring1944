@@ -243,6 +243,11 @@ function widget:Initialize()
 end
 
 function widget:Shutdown()
+    if main_win ~= nil then
+        Chili.RemoveCustomizableWindow(main_win)
+        main_win:Dispose()
+    end
+
     Spring.SendCommands("resbar 1")
     widgetHandler:RemoveAction("resetresbar")
 end

@@ -190,7 +190,10 @@ function widget:DrawScreen()
 end
 
 function widget:Shutdown()
-    main_win:Dispose()
+    if main_win ~= nil then
+        Chili.RemoveCustomizableWindow(main_win)
+        main_win:Dispose()
+    end
     spSendCommands({"tooltip 1"})
     widgetHandler.actionHandler:RemoveAction("resettooltipwin")
 end

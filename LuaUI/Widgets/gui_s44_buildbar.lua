@@ -343,7 +343,10 @@ function widget:Update()
 end
 
 function widget:Shutdown()
-    main_win:Dispose()
+    if main_win ~= nil then
+        Chili.RemoveCustomizableWindow(main_win)
+        main_win:Dispose()
+    end
     container = nil
     widgetHandler:RemoveAction("resetbuildbar")
 end 
