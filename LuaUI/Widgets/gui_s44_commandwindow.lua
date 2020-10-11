@@ -59,7 +59,6 @@ local GLYPHS = {
     ["Prefer AP"] = '\204\190',
 }
 local MINBUTTONSIZE = 0.04
-local MAXBUTTONSONROW = 3
 
 -- MEMBERS
 local Chili
