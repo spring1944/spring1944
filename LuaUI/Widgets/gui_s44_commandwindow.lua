@@ -73,6 +73,9 @@ local queue = {}
 -- CONTROLS
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
+local function clamp(v, vmin, vmax)
+    return max(min(v, vmax), vmin)
+end
 local spGetActiveCommand    = Spring.GetActiveCommand
 local spGetActiveCmdDesc    = Spring.GetActiveCmdDesc
 local spGetSelectedUnits    = Spring.GetSelectedUnits
@@ -400,6 +403,7 @@ end
 local function __OnUnlockWindow(self)
     self.force_show = true
     self.caption = "Commands"
+    ResizeContainers()
 end
 
 ------------------------------------------------
