@@ -252,6 +252,11 @@ end
 
 local function formatMessage(msg)
     if msg.playername then
+        if teamColors[msg.playername] == nil then
+            -- How this guy got here??
+            Spring.Log("Chat", LOG.WARNING, "The player '" .. msg.playername .. "' was not already parsed when calling formatMessage()")
+            setupPlayers()
+        end
         local out = msg.text
         local playerName = __escape_lua_pattern(msg.playername)
         out = out:gsub( '^<' .. playerName ..'> ', '' )
@@ -734,7 +739,7 @@ function widget:Initialize()
     }
 
     main_win:Hide()
-
+    setupPlayers()
     Spring.SendCommands("unbind any+enter chat")
     widgetHandler:AddAction("s44chat", OnChat)
     Spring.SendCommands("bind any+enter s44chat")
