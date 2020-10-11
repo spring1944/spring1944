@@ -290,7 +290,7 @@ function widget:GameFrame(n)
 
     local mresbar = main_win.mresbar
     mresbar.pbar:SetValue(100 * mCurr / mStor)
-    mresbar.pbar:SetCaption(Chili.ToSI(mCurr) .. "/" .. Chili.ToSI(mStor) .. " (" .. Chili.ToSI(mInco - mPull) .. ")" )
+    mresbar.pbar:SetCaption(Chili.ToSI(mCurr) .. "/" .. Chili.ToSI(mStor) .. " (+" .. Chili.ToSI(mInco) .. " - " .. Chili.ToSI(mPull) .. ")" )
     __SetSliderValue(mresbar.slider, 100 * mShar)
     local eresbar = main_win.eresbar
     eresbar.pbar:SetValue(100 * eCurr / eStor)
