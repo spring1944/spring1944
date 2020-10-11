@@ -64,7 +64,7 @@ local function FramesToTimeString(n)
   return strFormat(floor(seconds / 60) .. ":" .. strFormat("%02i", ceil(seconds % 60)))
 end
 
-local function __OnMainWinSize(self, w, h)
+local function __OnLockWindow(self)
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
     WG.RESBAROPTS.x = self.x / viewSizeX
     WG.RESBAROPTS.y = self.y / viewSizeY
@@ -217,14 +217,8 @@ function widget:Initialize()
         height = tostring(floor(100 * WG.RESBAROPTS.height)) .. "%",
         minHeight = 25,
         padding = {0, 0, 0, 0},
-        draggable = true,
-        resizable = true,
     }
     Chili.AddCustomizableWindow(main_win)
-    -- If we set OnMove/OnResize during the initialization, they are called
-    -- eventually breaking our WG.RESBAROPTS data
-    main_win.OnMove = {__OnMainWinSize,}
-    main_win.OnResize = {__OnMainWinSize,}
 
     local mresbar = ResBar(main_win, "0%", {0.7, 0.7, 0.7, 1}, "metal")
     local eresbar = ResBar(main_win, "50%", {0.9, 0.9, 0.1, 1}, "energy")
@@ -240,6 +234,9 @@ function widget:Initialize()
     w = WG.RESBAROPTS.width * viewSizeX
     h = WG.RESBAROPTS.height * viewSizeY
     main_win:SetPosRelative(x, y, w, h, true, false)
+
+    -- Save the new dimensions when the widget is locked
+    main_win.OnLockWindow = {__OnLockWindow,}
 end
 
 function widget:Shutdown()

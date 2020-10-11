@@ -59,8 +59,19 @@ local function __SetCustomizableWindowsState(window)
         return
     end
 
+    -- Show/hide the drag and resize controls
     window.resizable = customizable_state
     window.draggable = customizable_state
+    -- Call the event
+    local callbacks = window.OnLockWindow
+    if customizable_state then
+        callbacks = window.OnUnlockWindow
+    end
+    if callbacks ~= nil then
+        for _, c in ipairs(callbacks) do
+            c(window)
+        end
+    end
 end
 
 function AddCustomizableWindow(window)

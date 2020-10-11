@@ -384,12 +384,15 @@ function ResetComWin(cmd, optLine)
 end
 
 local function __OnMainWinSize(self, w, h)
+    ResizeContainers()
+end
+
+local function __OnLockWindow(self)
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
     WG.COMMWINOPTS.x = self.x / viewSizeX
     WG.COMMWINOPTS.y = self.y / viewSizeY
     WG.COMMWINOPTS.width = self.width / viewSizeX
     WG.COMMWINOPTS.height = self.height / viewSizeY
-    ResizeContainers()
 end
 
 ------------------------------------------------
@@ -569,18 +572,11 @@ function widget:Initialize()
 
     widgetHandler.actionHandler:AddAction(widget, "resetcomwin", ResetComWin)
 
-    -- Set the widget size, which apparently were not working well
-    x = WG.COMMWINOPTS.x * viewSizeX
-    y = WG.COMMWINOPTS.y * viewSizeY
-    w = WG.COMMWINOPTS.width * viewSizeX
-    h = WG.COMMWINOPTS.height * viewSizeY
-    main_win:SetPosRelative(x, y, w, h, true, false)
-    -- If we set OnMove/OnResize during the initialization, they are called
-    -- eventually breaking our WG.COMMWINOPTS data
     main_win.OnMove = {__OnMainWinSize,}
     main_win.OnResize = {__OnMainWinSize,}
-
     ResizeContainers()
+    -- Save the new dimensions when the widget is locked
+    main_win.OnLockWindow = {__OnLockWindow,}
 end
 
 function widget:CommandsChanged()

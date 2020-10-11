@@ -75,13 +75,16 @@ local function ResizeContainer()
     end
 end
 
-local function OnMainWinSize(self, w, h)
+local function __OnMainWinSize(self, w, h)
+    ResizeContainer()
+end
+
+local function __OnLockWindow(self)
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
     WG.BUILDBAROPTS.x = self.x / viewSizeX
     WG.BUILDBAROPTS.y = self.y / viewSizeY
     WG.BUILDBAROPTS.width = self.width / viewSizeX
     WG.BUILDBAROPTS.height = self.height / viewSizeY
-    ResizeContainer()
 end
 
 local function __makeButton(unitDefID, parent, size)
@@ -216,7 +219,7 @@ function widget:Initialize()
         padding = {0, 0, 0, 0},
         minWidth = 96,
         minHeight = 96,
-        caption = "Factories"
+        caption = "Factories",
     }
     Chili.AddCustomizableWindow(main_win)
 
@@ -245,18 +248,11 @@ function widget:Initialize()
 
     widgetHandler:AddAction("resetbuildbar", ResetBuildBar)
 
-    -- Set the widget size, which apparently were not working well
-    x = WG.BUILDBAROPTS.x * viewSizeX
-    y = WG.BUILDBAROPTS.y * viewSizeY
-    w = WG.BUILDBAROPTS.width * viewSizeX
-    h = WG.BUILDBAROPTS.height * viewSizeY
-    main_win:SetPosRelative(x, y, w, h, true, false)
-    -- If we set OnMove/OnResize during the initialization, they are called
-    -- eventually breaking our WG.BUILDBAROPTS data
-    main_win.OnMove = {OnMainWinSize,}
-    main_win.OnResize = {OnMainWinSize,}
-
+    main_win.OnMove = {__OnMainWinSize,}
+    main_win.OnResize = {__OnMainWinSize,}
     GenerateFactories()
+    -- Save the new dimensions when the widget is locked
+    main_win.OnLockWindow = {__OnLockWindow,}
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
