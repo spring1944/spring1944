@@ -23,9 +23,16 @@ function Intelligence.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, att
 function Intelligence.UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
 ]]--
 
-function CreateIntelligence(myAllyTeamID)
-    
+function CreateIntelligence(myTeamID, myAllyTeamID)
+
+local FLAG_RELEVANCE_MULT = 25
 local DIFFICULTY = gadget.difficulty
+local waypointMgr = gadget.waypointMgr
+local waypoints = waypointMgr.GetWaypoints()
+
+local GetUnitRulesParam = Spring.GetUnitRulesParam
+local GetUnitPosition   = Spring.GetUnitPosition
+
 local Intelligence = {}
 
 local enemyTeams = {}
@@ -57,6 +64,45 @@ local function lstRemove(t, i)
     return t
 end
 
+local isFlag = gadget.flags
+local flags = {}
+local strategic_relevance = {}
+local last_waypoint = 0
+
+local function parseWaypointStrategicRelevance(waypoint)
+    local relevance = 1
+    for _, flag in ipairs(flags) do
+        local prod = GetUnitRulesParam(flag, "production")
+        local x, y, z = GetUnitPosition(flag)
+        local dx, dz = waypoint.x - x, waypoint.z - z
+        local r2 = dx * dx + dz * dz
+        relevance = relevance + FLAG_RELEVANCE_MULT * prod / r2
+    end
+
+    strategic_relevance[waypoint] = relevance
+end
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--
+--  The call-out routines
+--
+function Intelligence.GetTarget(x, z)
+    local frontline, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
+    local target, score = nil, -1
+    for _,waypoint in ipairs(frontline) do
+        local dx, dz = waypoint.x - x, waypoint.z - z
+        local r2 = dx * dx + dz * dz
+        local visitor_score = (strategic_relevance[waypoint] ~= nil and strategic_relevance[waypoint] or 1) / r2
+        if visitor_score > score then
+            score = visitor_score
+            target = waypoint
+        end
+    end
+
+    return target, previous
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -79,6 +125,13 @@ function Intelligence.GetUnits(n)
 end
 
 function Intelligence.GameStart()
+    -- Get all the flags
+    for _, u in ipairs(Spring.GetAllUnits()) do
+        if isFlag[Spring.GetUnitDefID(u)] then
+            flags[#flags + 1] = u
+        end
+    end
+
     if DIFFICULTY ~= "hard" then
         return
     end
@@ -93,6 +146,11 @@ function Intelligence.GameStart()
 end
 
 function Intelligence.GameFrame(f)
+    if #waypoints > 0 then
+        last_waypoint = (last_waypoint % #waypoints) + 1
+        parseWaypointStrategicRelevance(waypoints[last_waypoint])
+    end
+
     if DIFFICULTY == "hard" then
         return
     end

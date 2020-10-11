@@ -30,7 +30,9 @@ local FEAR_THRESHOLD = 0.2 + 0.8 * math.random()  -- [0.2, 1.0]
 local sqrt = math.sqrt
 local waypointMgr = gadget.waypointMgr
 local waypoints = waypointMgr.GetWaypoints()
+local intelligence = gadget.intelligences[myTeamID]
 local GetUnitNoSelect = Spring.GetUnitNoSelect
+local GetUnitPosition = Spring.GetUnitPosition
 
 -- members
 local lastWaypoint = 0
@@ -38,6 +40,24 @@ local units = {}
 
 local newUnits = {}
 local newUnitCount = 0
+
+local function avgPosUnitMap(units)
+    local x, z = 0, 0, 0
+    for u, _ in pairs(units) do
+        local xx, _, zz = GetUnitPosition(u)
+        x, z = x + xx, z + zz
+    end
+    return x, z
+end
+
+local function avgPosUnitArray(units)
+    local x, z = 0, 0, 0
+    for _, u in ipairs(units) do
+        local xx, _, zz = GetUnitPosition(u)
+        x, z = x + xx, z + zz
+    end
+    return x, z
+end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
@@ -57,18 +77,15 @@ function CombatMgr.GameFrame(f)
     end
 
     if newUnitCount >= SQUAD_SIZE then
-        local frontline, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
-        if #frontline > 0 then
-            lastWaypoint = (lastWaypoint % #frontline) + 1
-            local target = frontline[lastWaypoint]
-            if target then
-                PathFinder.GiveOrdersToUnitMap(previous, target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
-                for u,_ in pairs(newUnits) do
-                    units[u] = target -- remember where we are going for UnitIdle
-                end
-                newUnits = {}
-                newUnitCount = 0
+        local x, z = avgPosUnitMap(newUnits)
+        local target, previous = intelligence.GetTarget(x, z)
+        if target ~= nil then
+            PathFinder.GiveOrdersToUnitMap(previous, target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
+            for u,_ in pairs(newUnits) do
+                units[u] = target -- remember where we are going for UnitIdle
             end
+            newUnits = {}
+            newUnitCount = 0
         end
     end
 
@@ -85,28 +102,27 @@ function CombatMgr.GameFrame(f)
         squads[p] = squad
     end
 
-    -- give each orders towards the nearest enemy waypoint
+    -- give each orders towards the nearest relevant waypoint
     for p,unitArray in pairs(squads) do
-        local previous, target = PathFinder.Dijkstra(waypoints, p, {}, function(p)
-            return (p.owner ~= myAllyTeamID)
-        end)
-        local gx, gz = heatmapMgr.FirepowerGradient(target.x, target.z)
-        local l2 = gx * gx + gz * gz
-        if l2 > FEAR_THRESHOLD * FEAR_THRESHOLD then
-            -- Let's retreat
-            if myTeamID == 3 then
-                Spring.Echo("Grad ", target.x / Game.mapSizeX, target.z / Game.mapSizeZ, gx, gz)
+        local x, z = avgPosUnitMap(newUnits)
+        local target, previous = intelligence.GetTarget(x, z)
+        if target ~= nil then
+            for i = 1, 3 do
+                local gx, gz = heatmapMgr.FirepowerGradient(target.x, target.z)
+                local l2 = gx * gx + gz * gz
+                if l2 < FEAR_THRESHOLD * FEAR_THRESHOLD then
+                    break
+                end
+                -- Let's retreat
+                local l = sqrt(l2)
+                target = waypointMgr.GetNext(target, -gx / l, -gz / l)
+                
             end
-            local l = sqrt(l2)
-            target = waypointMgr.GetNext(target, -gx / l, -gz / l)
-            if myTeamID == 3 then
-                Spring.Echo("Retreat to ", target.x / Game.mapSizeX, target.z / Game.mapSizeZ)
-            end
-        end
-        if target and (target ~= p) then
-            PathFinder.GiveOrdersToUnitArray(previous, target, unitArray, CMD.FIGHT, SQUAD_SPREAD)
-            for _,u in ipairs(unitArray) do
-                units[u] = target --assume next call this unit will be at target
+            if target and (target ~= p) then
+                PathFinder.GiveOrdersToUnitArray(previous, target, unitArray, CMD.FIGHT, SQUAD_SPREAD)
+                for _,u in ipairs(unitArray) do
+                    units[u] = target --assume next call this unit will be at target
+                end
             end
         end
     end

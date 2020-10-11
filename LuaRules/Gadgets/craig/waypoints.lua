@@ -105,7 +105,11 @@ end
 --  1) owned by allies
 --  2) adjacent to waypoints non-possesed by allies
 --  3) reachable from hq, without going through enemy waypoints
-local function CalculateFrontline(myTeamID, myAllyTeamID)
+local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
+    if dilate == nil then
+        dilate = 1
+    end
+
     -- Get the allied and enemy actual control areas
     local allied, enemy = {}, {}
     local allied_frontier, enemy_frontier = {}, {}
@@ -159,6 +163,23 @@ local function CalculateFrontline(myTeamID, myAllyTeamID)
                         enemy[a] = true
                         table.insert(enemy_frontier, 1, a)
                     end
+                end
+            end            
+        end
+    end
+
+    -- Artificially dilate the allied area to enforce incursion in enemy lines
+    for i = 1,dilate do
+        for i=1,#allied_frontier do
+            local p = allied_frontier[#allied_frontier]
+            allied_frontier[#allied_frontier] = nil
+            for a, edge in pairs(p.adj) do
+                if enemy[a] == true then
+                    enemy[a] = nil
+                    allied[a] = true
+                    table.insert(allied_frontier, 1, a)
+                    marked[p] = false
+                    marked[a] = true
                 end
             end            
         end
@@ -335,17 +356,17 @@ function WaypointMgr.GetFrontline(myTeamID, myAllyTeamID)
 end
 
 function WaypointMgr.GetNext(p, dx, dz)
-    local next, accuracy = p, 0.0
+    local waypoint, accuracy = p, 0.0
     for visitor, edge in pairs(p.adj) do
         local dir_x = (visitor.x - p.x) / edge.dist
         local dir_z = (visitor.z - p.z) / edge.dist
         local dot = dx * dir_x + dz * dir_z
         if dot > accuracy then
-            next = visitor
+            waypoint = visitor
             accuracy = dot
         end
     end
-    return next
+    return waypoint
 end
 
 --------------------------------------------------------------------------------
