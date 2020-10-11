@@ -75,7 +75,11 @@ local function ResizeContainer()
     end
 end
 
-local function OnMainWinSize(self, w, h)
+local function __OnMainWinSize(self, w, h)
+    ResizeContainer()
+end
+
+local function __OnLockWindow(self)
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
     WG.SELBAROPTS.x = self.x / viewSizeX
     WG.SELBAROPTS.y = self.y / viewSizeY
@@ -249,6 +253,7 @@ function widget:Initialize()
         minHeight = 96,
         caption = "Selection"
     }
+    Chili.AddCustomizableWindow(main_win)
 
     local scroll = Chili.ScrollPanel:New{
         parent = main_win,
@@ -275,17 +280,11 @@ function widget:Initialize()
 
     widgetHandler:AddAction("resetselbar", ResetSelBar)
 
-    -- Set the widget size, which apparently were not working well
-    x = WG.SELBAROPTS.x * viewSizeX
-    y = WG.SELBAROPTS.y * viewSizeY
-    w = WG.SELBAROPTS.width * viewSizeX
-    h = WG.SELBAROPTS.height * viewSizeY
-    main_win:SetPosRelative(x, y, w, h, true, false)
-    -- If we set OnMove/OnResize during the initialization, they are called
-    -- eventually breaking our WG.SELBAROPTS data
-    main_win.OnMove = {OnMainWinSize,}
-    main_win.OnResize = {OnMainWinSize,}
+    main_win.OnMove = {__OnMainWinSize,}
+    main_win.OnResize = {__OnMainWinSize,}
     ResizeContainer()
+    -- Save the new dimensions when the widget is locked
+    main_win.OnLockWindow = {__OnLockWindow,}
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
@@ -321,7 +320,10 @@ function widget:DrawScreen()
 end
 
 function widget:Shutdown()
-    main_win:Dispose()
+    if main_win ~= nil then
+        Chili.RemoveCustomizableWindow(main_win)
+        main_win:Dispose()
+    end
     container = nil
     widgetHandler:RemoveAction("resetselbar")
 end 
