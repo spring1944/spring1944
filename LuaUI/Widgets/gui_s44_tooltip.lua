@@ -63,7 +63,7 @@ function ResetTooltipWin(cmd, optLine)
     main_win:SetPosRelative(x, y, w, h, true, false)
 end
 
-local function __OnLockWindow(self)
+local function __OnMainWinSize(self, w, h)
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
     WG.TOOLTIPWINOPTS.x = self.x / viewSizeX
     WG.TOOLTIPWINOPTS.y = self.y / viewSizeY
@@ -120,8 +120,16 @@ function widget:Initialize()
 
     widgetHandler.actionHandler:AddAction(widget, "resettooltipwin", ResetTooltipWin)
 
-    -- Save the new dimensions when the widget is locked
-    main_win.OnLockWindow = {__OnLockWindow,}
+    -- Set the widget size, which apparently were not working well
+    x = WG.TOOLTIPWINOPTS.x * viewSizeX
+    y = WG.TOOLTIPWINOPTS.y * viewSizeY
+    w = WG.TOOLTIPWINOPTS.width * viewSizeX
+    h = WG.TOOLTIPWINOPTS.height * viewSizeY
+    main_win:SetPosRelative(x, y, w, h, true, false)
+    -- If we set OnMove/OnResize during the initialization, they are called
+    -- eventually breaking our WG.TOOLTIPWINOPTS data
+    main_win.OnMove = {__OnMainWinSize,}
+    main_win.OnResize = {__OnMainWinSize,}
 end
 
 function widget:WorldTooltip(ttType, data1, data2, data3)
@@ -182,10 +190,7 @@ function widget:DrawScreen()
 end
 
 function widget:Shutdown()
-    if main_win ~= nil then
-        Chili.RemoveCustomizableWindow(main_win)
-        main_win:Dispose()
-    end
+    main_win:Dispose()
     spSendCommands({"tooltip 1"})
     widgetHandler.actionHandler:RemoveAction("resettooltipwin")
 end

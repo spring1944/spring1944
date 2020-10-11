@@ -61,7 +61,7 @@ function ResetBuildBar()
 end
 
 local function ResizeContainer()
-    if #container.children == 0 then
+    if #container.children == 0 and not main_win.force_show then
         main_win:Hide()
         return
     end
@@ -102,6 +102,12 @@ local function __OnLockWindow(self)
     WG.BUILDBAROPTS.y = self.y / viewSizeY
     WG.BUILDBAROPTS.width = self.width / viewSizeX
     WG.BUILDBAROPTS.height = self.height / viewSizeY
+    self.force_show = false
+    ResizeContainer()
+end
+
+local function __OnUnlockWindow(self)
+    self.force_show = true
 end
 
 local function __makeButton(unitDefID, parent, size)
@@ -237,6 +243,7 @@ function widget:Initialize()
         minWidth = 96,
         minHeight = 96,
         caption = "Factories",
+        force_show = true,
     }
     Chili.AddCustomizableWindow(main_win)
 
@@ -265,6 +272,7 @@ function widget:Initialize()
     GenerateFactories()
     -- Save the new dimensions when the widget is locked
     main_win.OnLockWindow = {__OnLockWindow,}
+    main_win.OnUnlockWindow = {__OnUnlockWindow,}
 end
 
 function widget:ViewResize(viewSizeX, viewSizeY)
