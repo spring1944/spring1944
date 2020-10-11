@@ -263,7 +263,7 @@ local function formatMessage(msg)
         out = out:gsub( '^%[' .. playerName ..'%] ', '' )
         msg.playername2 = playerName
         msg.textFormatted = __color2str(chat_win.font.color) .. out
-        msg.source2 = __color2str(teamColors[msg.playername]) .. playerName
+        msg.source2 = __color2str(teamColors[msg.playername]) .. msg.playername
     else
         msg.textFormatted = msg.text
         msg.source2 = ''
