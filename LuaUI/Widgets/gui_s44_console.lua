@@ -35,7 +35,7 @@ local SOUNDS = {
     label = "sounds/talk.wav",
 }
 local MAX_STORED_MESSAGES = 100
-local CHAT_ALLIES_COLOR = {0.5, 0.7, 0.3, 1}
+local CHAT_ALLIES_COLOR = {0.6, 0.8, 0.35, 1}
 local GLYPHS = {
     flag = '\204\134',
     muted = '\204\138',
