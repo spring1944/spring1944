@@ -17,6 +17,8 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+local SELECTED_BACKGROUND = {1, 1, 1, 0.7}
+local UNSELECTED_BACKGROUND = {1, 1, 1, 0.1}
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
 local GLYPHS = {
     tick = '\204\136',
@@ -50,9 +52,11 @@ local GetTeamResources = Spring.GetTeamResources
 local function OnSelectPlayer(self)
     if selected_player ~= nil then
         selected_player:SetCaption(selected_player.playername)
+        selected_player.backgroundColor = UNSELECTED_BACKGROUND
     end
     selected_player = self
     self:SetCaption(GLYPHS["tick"] .. " " .. self.playername)
+    self.backgroundColor = SELECTED_BACKGROUND
 end
 
 local function __playerButton(name, color, parent)
@@ -77,6 +81,7 @@ local function __playerButton(name, color, parent)
             color         = color,
         },
         padding = { 2,2,2,2 },
+        backgroundColor = UNSELECTED_BACKGROUND,
         children = children,
     }
 
