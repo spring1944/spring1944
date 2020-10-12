@@ -481,20 +481,15 @@ function OnSend()
         return
     end
 
+    local prefix = ""
     SENDTO = main_sendto.caption
-    if SENDTO == 'all' then
-        Spring.SendCommands("say " .. msg)
-    elseif SENDTO == 'allies' then
-        for name, id in pairs(allies) do
-            Spring.SendCommands("WByNum " .. tostring(id) .. " " .. msg)
-        end
+    if SENDTO == 'allies' then
+        prefix = "a:"
     elseif SENDTO == 'spectators' then
-        for name, id in pairs(specs) do
-            Spring.SendCommands("WByNum " .. tostring(id) .. " " .. msg)
-        end
-    else
-        Spring.Log("Chat", LOG.ERROR, "Unknown group '" .. SENDTO .. "'")
+        prefix = "s:"
     end
+
+    Spring.SendCommands("say " .. prefix .. msg)
     OnCancel()
 end
 
