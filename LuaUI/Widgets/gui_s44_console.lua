@@ -35,7 +35,7 @@ local SOUNDS = {
     label = "sounds/talk.wav",
 }
 local MAX_STORED_MESSAGES = 100
-local CHAT_COLOR = {1, 1, 0.6, 1}
+local CHAT_ALLIES_COLOR = {0.5, 0.7, 0.3, 1}
 local GLYPHS = {
     flag = '\204\134',
     muted = '\204\138',
@@ -277,6 +277,10 @@ end
 
 local function formatMessage(msg)
     if msg.playername then
+        local msg_color = chat_win.font.color
+        if msg.msgtype == "player_to_allies" then
+                msg_color = CHAT_ALLIES_COLOR
+        end
         if teamColors[msg.playername] == nil then
             -- How this guy got here??
             Spring.Log("Chat", LOG.WARNING, "The player '" .. msg.playername .. "' was not already parsed when calling formatMessage()")
@@ -287,7 +291,7 @@ local function formatMessage(msg)
         out = out:gsub( '^<' .. playerName ..'> ', '' )
         out = out:gsub( '^%[' .. playerName ..'%] ', '' )
         msg.playername2 = playerName
-        msg.textFormatted = __color2str(chat_win.font.color) .. out
+        msg.textFormatted = __color2str(msg_color) .. out
         msg.source2 = __color2str(teamColors[msg.playername]) .. msg.playername
     else
         msg.textFormatted = msg.text
