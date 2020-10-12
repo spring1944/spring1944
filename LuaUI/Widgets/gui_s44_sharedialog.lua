@@ -30,11 +30,11 @@ local GLYPHS = {
 local Chili
 local main_win, main_players, main_metal, main_energy, main_shareunits
 local main_sendto, main_msg, main_send, main_cancel
-local playerName, myTeamID, allyTeamId
+local myPlayerName, myTeamID, myAllyTeamId
 local selected_player = nil
 local teamColors = {}
-local allies = {}
 local buttons_players = {}
+local isAI = {}
 local mCurr, eCurr = 0, 0
 
 ------------------------------------------------
@@ -55,12 +55,32 @@ local function OnSelectPlayer(self)
     self:SetCaption(GLYPHS["tick"] .. " " .. self.playername)
 end
 
-local function __playerButton(name, color)
+local function __playerButton(name, color, parent)
     local glyph = ""
     if (selected_player ~= nil) and (selected_player.playername == name) then
         glyph = GLYPHS["tick"] .. " "
     end
-    local children = {
+
+    local button = Chili.Button:New {
+        x = 0,
+        y = 0,
+        right = 0,
+        height = 34,
+        caption = glyph .. name,
+        OnClick = { OnSelectPlayer, },
+        parent = parent ~= nil and parent or main_players,
+        playername = name,
+        font = {
+            outlineWidth  = 3,
+            outlineWeight = 10,
+            outline       = true,
+            color         = color,
+        },
+        padding = { 2,2,2,2 },
+        children = children,
+    }
+
+    if not isAI[name] then
         Chili.Progressbar:New{
             right = 30,
             y = 2,
@@ -72,7 +92,8 @@ local function __playerButton(name, color)
             value = 0,
             TileImageFG = IMAGE_DIRNAME .. "s44_cpu_progressbar_full.png",
             TileImageBK = IMAGE_DIRNAME .. "s44_cpu_progressbar_empty.png",
-        },
+            parent = button,
+        }
         Chili.Progressbar:New{
             right = 10,
             y = 2,
@@ -84,26 +105,11 @@ local function __playerButton(name, color)
             value = 0,
             TileImageFG = IMAGE_DIRNAME .. "s44_cpu_progressbar_full.png",
             TileImageBK = IMAGE_DIRNAME .. "s44_cpu_progressbar_empty.png",
-        },
-    }
-    return Chili.Button:New {
-        x = 0,
-        y = 0,
-        right = 0,
-        height = 34,
-        caption = glyph .. name,
-        OnClick = { OnSelectPlayer, },
-        parent = main_win,
-        playername = name,
-        font = {
-            outlineWidth  = 3,
-            outlineWeight = 10,
-            outline       = true,
-            color         = color,
-        },
-        padding = { 2,2,2,2 },
-        children = children,
-    }
+            parent = button,
+        }
+    end
+
+    return button
 end
 
 local function OnResSlider(self, value, old_value)
@@ -214,28 +220,52 @@ end
 local function setupPlayers(playerID)
     local stack
     if playerID then
+        Spring.Echo("setupPlayers (playerID)", playerID, Spring.GetMyPlayerID())
         local name, active, spec, teamId, allyTeamId = Spring.GetPlayerInfo(playerID)
+        if buttons_players[name] ~= nil then
+            buttons_players[name]:Dispose()
+        end
         if not spec and Spring.ArePlayersAllied(Spring.GetMyPlayerID(), playerID) then
-            allies[name] = playerID
             teamColors[name] = {Spring.GetTeamColor(teamId)}
-            for _, child in ipairs(main_players.children) do
-                if child.playername == name then
-                    child:Dispose()
-                end
-            end
             local button = __playerButton(name, teamColors[name])
             button.teamId = teamId
             buttons_players[name] = button
             main_players:AddChild(button)
+        else
+            
         end
     else
-        allies = {}
         main_players:ClearChildren()
+        buttons_players = {}
+        isAI = {}
+        local teams = Spring.GetTeamList(myAllyTeamId)
+        for _, teamId in ipairs(teams) do
+            local _, _, _, ai = Spring.GetTeamInfo(teamId)
+            if ai then
+                local _, name = Spring.GetAIInfo(teamId)
+                isAI[name] = true
+                teamColors[name] = {Spring.GetTeamColor(teamId)}
+                local button = __playerButton(name, teamColors[name])
+                button.teamId = teamId
+                buttons_players[name] = button
+            else
+                local players = Spring.GetPlayerList(teamId, true)
+                for _, id in ipairs(players) do
+                    local name, active, spec = Spring.GetPlayerInfo(id)
+                    if not spec then
+                        teamColors[name] = {Spring.GetTeamColor(teamId)}
+                        local button = __playerButton(name, teamColors[name])
+                        button.teamId = teamId
+                        buttons_players[name] = button
+                    end
+                end
+            end
+        end
+        --[[
         local players = Spring.GetPlayerList()
         for i, id in ipairs(players) do
             local name, active, spec, teamId, allyTeamId = Spring.GetPlayerInfo(id)
             if not spec and Spring.ArePlayersAllied(Spring.GetMyPlayerID(), id) then
-                allies[name] = id
                 teamColors[name] = {Spring.GetTeamColor(teamId)}
                 local button = __playerButton(name, teamColors[name])
                 button.teamId = teamId
@@ -243,7 +273,10 @@ local function setupPlayers(playerID)
                 main_players:AddChild(button)
             end
         end
+        --]]
     end
+
+    main_players:SetPosRelative(nil, nil, nil, #main_players.children * 34 + 10, true, false)
 end
 
 local function GetColourScale(value)
@@ -315,7 +348,7 @@ function widget:Initialize()
 
     Chili = WG.Chili
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
-    playerName, _, _, myTeamID, allyTeamId = Spring.GetPlayerInfo(Spring.GetMyPlayerID())
+    myPlayerName, _, _, myTeamID, myAllyTeamId = Spring.GetPlayerInfo(Spring.GetMyPlayerID())
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
