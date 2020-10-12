@@ -35,7 +35,8 @@ local SOUNDS = {
     label = "sounds/talk.wav",
 }
 local MAX_STORED_MESSAGES = 100
-local CHAT_COLOR = {1, 1, 0.6, 1}
+local CHAT_COLOR = {1.0, 1.0, 0.6, 1.0}
+local CHAT_ALLIES_COLOR = {0.6, 0.8, 0.35, 1.0}
 local GLYPHS = {
     flag = '\204\134',
     muted = '\204\138',
@@ -277,6 +278,10 @@ end
 
 local function formatMessage(msg)
     if msg.playername then
+        local msg_color = CHAT_COLOR
+        if msg.msgtype == "player_to_allies" then
+                msg_color = CHAT_ALLIES_COLOR
+        end
         if teamColors[msg.playername] == nil then
             -- How this guy got here??
             Spring.Log("Chat", LOG.WARNING, "The player '" .. msg.playername .. "' was not already parsed when calling formatMessage()")
@@ -287,7 +292,7 @@ local function formatMessage(msg)
         out = out:gsub( '^<' .. playerName ..'> ', '' )
         out = out:gsub( '^%[' .. playerName ..'%] ', '' )
         msg.playername2 = playerName
-        msg.textFormatted = __color2str(chat_win.font.color) .. out
+        msg.textFormatted = __color2str(msg_color) .. out
         msg.source2 = __color2str(teamColors[msg.playername]) .. msg.playername
     else
         msg.textFormatted = msg.text
@@ -481,20 +486,15 @@ function OnSend()
         return
     end
 
+    local prefix = ""
     SENDTO = main_sendto.caption
-    if SENDTO == 'all' then
-        Spring.SendCommands("say " .. msg)
-    elseif SENDTO == 'allies' then
-        for name, id in pairs(allies) do
-            Spring.SendCommands("WByNum " .. tostring(id) .. " " .. msg)
-        end
+    if SENDTO == 'allies' then
+        prefix = "a:"
     elseif SENDTO == 'spectators' then
-        for name, id in pairs(specs) do
-            Spring.SendCommands("WByNum " .. tostring(id) .. " " .. msg)
-        end
-    else
-        Spring.Log("Chat", LOG.ERROR, "Unknown group '" .. SENDTO .. "'")
+        prefix = "s:"
     end
+
+    Spring.SendCommands("say " .. prefix .. msg)
     OnCancel()
 end
 
@@ -506,14 +506,41 @@ function OnChat()
     end
 end
 
+function OnChatSwitchAll()
+    SENDTO = 'all'
+    main_sendto:Select(SENDTO)
+    main_msg.font:SetColor(CHAT_COLOR)
+end
+
 function OnChatSwitchAlly()
     SENDTO = 'allies'
     main_sendto:Select(SENDTO)
+    main_msg.font:SetColor(CHAT_ALLIES_COLOR)
 end
 
 function OnChatSwitchSpec()
     SENDTO = 'spectators'
     main_sendto:Select(SENDTO)
+    main_msg.font:SetColor(CHAT_COLOR)
+end
+
+local function TextSendToSwitcher(self)
+    local txt = self:GetText()
+    if string.sub(txt, 1, 2) == 'a:' then
+        if main_sendto.caption == 'allies' then
+            OnChatSwitchAll()
+        else
+            OnChatSwitchAlly()
+        end
+        self:SetText(string.sub(txt, 3))
+    elseif string.sub(txt, 1, 2) == 's:' then
+        if main_sendto.caption == 'spectators' then
+            OnChatSwitchAll()
+        else
+            OnChatSwitchSpec()
+        end
+        self:SetText(string.sub(txt, 3))
+    end
 end
 
 local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
@@ -537,9 +564,8 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
             msg = ""
         end
     end
-
     if msg ~= nil then
-        main_msg:SetText(msg)
+        return
     end
 end
 
@@ -670,7 +696,10 @@ function widget:Initialize()
         text = "",
         parent = main_win,
         OnKeyPress = { OnChatInputKey },
+        OnTextInput = { TextSendToSwitcher },
     }
+    -- To allow changing the font color on the Chili skin
+    CHAT_COLOR = main_msg.font.color
 
     main_send = Chili.Button:New {
         right = 133,
