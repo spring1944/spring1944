@@ -227,6 +227,9 @@ local function setupPlayers(playerID)
     if playerID then
         local name, active, spec, teamId, allyTeamId = Spring.GetPlayerInfo(playerID)
         if buttons_players[name] ~= nil then
+            if selected_player == buttons_players[name] then
+                selected_player = nil
+            end
             buttons_players[name]:Dispose()
         end
         if not spec and Spring.ArePlayersAllied(Spring.GetMyPlayerID(), playerID) then
@@ -240,6 +243,7 @@ local function setupPlayers(playerID)
         end
     else
         main_players:ClearChildren()
+        selected_player = nil
         buttons_players = {}
         isAI = {}
         local teams = Spring.GetTeamList(myAllyTeamId)
@@ -279,6 +283,9 @@ end
 
 function ShowWin()
     main_win:Show()
+    if selected_player == nil and #main_players.children > 0 then
+        OnSelectPlayer(main_players.children[1])
+    end
 end
 
 function HideWin()
