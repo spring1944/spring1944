@@ -24,15 +24,16 @@ local CombatMgr = {}
 -- constants
 local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 250
-local FEAR_THRESHOLD = 0.2 + 0.8 * math.random()  -- [0.2, 1.0]
+local FEAR_THRESHOLD = 0.5 + 0.5 * math.random()  -- [0.5, 1.0]
 
 -- speedups
-local sqrt = math.sqrt
+local sqrt, random, min = math.sqrt, math.random, math.min
 local waypointMgr = gadget.waypointMgr
 local waypoints = waypointMgr.GetWaypoints()
 local intelligence = gadget.intelligences[myTeamID]
 local GetUnitNoSelect = Spring.GetUnitNoSelect
 local GetUnitPosition = Spring.GetUnitPosition
+local GetUnitDefID    = Spring.GetUnitDefID
 
 -- members
 local lastWaypoint = 0
@@ -42,12 +43,13 @@ local newUnits = {}
 local newUnitCount = 0
 
 local function avgPosUnitMap(units)
-    local x, z = 0, 0, 0
+    local x, z, n = 0, 0, 0
     for u, _ in pairs(units) do
         local xx, _, zz = GetUnitPosition(u)
         x, z = x + xx, z + zz
+        n = n + 1
     end
-    return x, z
+    return x / n, z / n
 end
 
 local function avgPosUnitArray(units)
@@ -56,7 +58,48 @@ local function avgPosUnitArray(units)
         local xx, _, zz = GetUnitPosition(u)
         x, z = x + xx, z + zz
     end
-    return x, z
+    return x / #units, z / #units
+end
+
+local function DoGiveOrdersToUnit(p, unitID, cmd, eta, spread)
+    local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED or GG.CustomCommands.GetCmdID("CMD_SET_WANTED_MAX_SPEED")
+    local dx, dz = 0, 0
+    if spread then
+        dx = random() * spread * 2 - spread
+        dz = random() * spread * 2 - spread
+    end
+    local x, _, z = GetUnitPosition(unitID)
+    local lx, lz = p.x - x, p.z - z
+    local l = sqrt(lx * lx + lz * lz)
+    local speed = l / eta
+    Spring.Echo(speed)
+    GiveOrderToUnit(unitID, cmd, {p.x + dx, p.y, p.z + dz},  {})
+    GiveOrderToUnit(unitID, CMD_SET_WANTED_MAX_SPEED, {speed}, {"shift"})
+end
+
+local function GiveOrdersToUnitArray(orig, target, unitArray, cmd, spread)
+    local minMaxSpeed = 1000
+    for _, u in ipairs(unitArray) do
+        local speed = UnitDefs[GetUnitDefID(u)].speed
+        if (speed < minMaxSpeed) then
+            minMaxSpeed = speed
+        end
+    end
+    minMaxSpeed = minMaxSpeed / 30
+    local lx, lz = target.x - orig.x, target.z - orig.z
+    local l = sqrt(lx * lx + lz * lz)    
+    local eta = l / minMaxSpeed
+    for _,u in ipairs(unitArray) do
+        DoGiveOrdersToUnit(target, u, cmd, eta, spread)
+    end
+end
+
+local function GiveOrdersToUnitMap(orig, target, unitMap, cmd, spread)
+    local unitArray = {}
+    for u, _ in pairs(unitMap) do
+        unitArray[#unitArray + 1] = u
+    end
+    return GiveOrdersToUnitArray(orig, target, unitArray, cmd, spread)
 end
 
 --------------------------------------------------------------------------------
@@ -80,7 +123,8 @@ function CombatMgr.GameFrame(f)
         local x, z = avgPosUnitMap(newUnits)
         local target, previous = intelligence.GetTarget(x, z)
         if target ~= nil then
-            PathFinder.GiveOrdersToUnitMap(previous, target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
+            local orig = waypointMgr.GetNearestWaypoint2D(x, z)
+            GiveOrdersToUnitMap(orig,  target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
             for u,_ in pairs(newUnits) do
                 units[u] = target -- remember where we are going for UnitIdle
             end
@@ -104,7 +148,7 @@ function CombatMgr.GameFrame(f)
 
     -- give each orders towards the nearest relevant waypoint
     for p,unitArray in pairs(squads) do
-        local x, z = avgPosUnitMap(newUnits)
+        local x, z = avgPosUnitArray(unitArray)
         local target, previous = intelligence.GetTarget(x, z)
         if target ~= nil then
             for i = 1, 3 do
@@ -119,7 +163,8 @@ function CombatMgr.GameFrame(f)
                 
             end
             if target and (target ~= p) then
-                PathFinder.GiveOrdersToUnitArray(previous, target, unitArray, CMD.FIGHT, SQUAD_SPREAD)
+                local orig = waypointMgr.GetNearestWaypoint2D(x, z)
+                GiveOrdersToUnitArray(orig, target, unitArray, CMD.FIGHT, SQUAD_SPREAD)
                 for _,u in ipairs(unitArray) do
                     units[u] = target --assume next call this unit will be at target
                 end

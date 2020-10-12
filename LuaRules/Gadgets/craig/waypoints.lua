@@ -369,6 +369,8 @@ function WaypointMgr.GetNext(p, dx, dz)
     return waypoint
 end
 
+WaypointMgr.GetNearestWaypoint2D = GetNearestWaypoint2D
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --

@@ -26,6 +26,7 @@ function Intelligence.UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer
 function CreateIntelligence(myTeamID, myAllyTeamID)
 
 local FLAG_RELEVANCE_MULT = 25
+local DIST2_MULT = 1.0 / (FLAG_RADIUS * FLAG_RADIUS)
 local DIFFICULTY = gadget.difficulty
 local waypointMgr = gadget.waypointMgr
 local waypoints = waypointMgr.GetWaypoints()
@@ -75,7 +76,7 @@ local function parseWaypointStrategicRelevance(waypoint)
         local prod = GetUnitRulesParam(flag, "production")
         local x, y, z = GetUnitPosition(flag)
         local dx, dz = waypoint.x - x, waypoint.z - z
-        local r2 = dx * dx + dz * dz
+        local r2 = (dx * dx + dz * dz) * DIST2_MULT
         relevance = relevance + FLAG_RELEVANCE_MULT * prod / r2
     end
 
@@ -87,13 +88,22 @@ end
 --
 --  The call-out routines
 --
+
 function Intelligence.GetTarget(x, z)
     local frontline, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
     local target, score = nil, -1
+    --[[
+    Spring.MarkerAddPoint(x, 200, z)
+    for i = 2,#frontline do
+        Spring.MarkerAddLine(frontline[i - 1].x, frontline[i - 1].y + 10, frontline[i - 1].z,
+                             frontline[i].x, frontline[i].y + 10, frontline[i].z)
+    end
+    --]]
     for _,waypoint in ipairs(frontline) do
         local dx, dz = waypoint.x - x, waypoint.z - z
-        local r2 = dx * dx + dz * dz
+        local r2 = (dx * dx + dz * dz) * DIST2_MULT
         local visitor_score = (strategic_relevance[waypoint] ~= nil and strategic_relevance[waypoint] or 1) / r2
+        -- Spring.MarkerAddPoint(waypoint.x, waypoint.y, waypoint.z, string.format("%.2f", visitor_score))
         if visitor_score > score then
             score = visitor_score
             target = waypoint
