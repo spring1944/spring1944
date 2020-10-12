@@ -220,7 +220,6 @@ end
 local function setupPlayers(playerID)
     local stack
     if playerID then
-        Spring.Echo("setupPlayers (playerID)", playerID, Spring.GetMyPlayerID())
         local name, active, spec, teamId, allyTeamId = Spring.GetPlayerInfo(playerID)
         if buttons_players[name] ~= nil then
             buttons_players[name]:Dispose()
@@ -261,19 +260,6 @@ local function setupPlayers(playerID)
                 end
             end
         end
-        --[[
-        local players = Spring.GetPlayerList()
-        for i, id in ipairs(players) do
-            local name, active, spec, teamId, allyTeamId = Spring.GetPlayerInfo(id)
-            if not spec and Spring.ArePlayersAllied(Spring.GetMyPlayerID(), id) then
-                teamColors[name] = {Spring.GetTeamColor(teamId)}
-                local button = __playerButton(name, teamColors[name])
-                button.teamId = teamId
-                buttons_players[name] = button
-                main_players:AddChild(button)
-            end
-        end
-        --]]
     end
 
     main_players:SetPosRelative(nil, nil, nil, #main_players.children * 34 + 10, true, false)
@@ -299,13 +285,11 @@ function OnApply()
         return
     end
     local mshare = mCurr * main_metal.pbar.value / 100
-    Spring.ShareTeamResource(myTeamID, selected_player.teamID, "metal", mshare)
+    Spring.ShareResources(selected_player.teamId, "metal", mshare)
     local eshare = eCurr * main_energy.pbar.value / 100
-    Spring.ShareTeamResource(myTeamID, selected_player.teamID, "metal", eshare)
+    Spring.ShareResources(selected_player.teamId, "energy", eshare)
     if main_shareunits.checked then
-        for _, unitID in ipairs(Spring.GetSelectedUnits()) do
-            Spring.TransferUnit(unitID, selected_player.teamID)
-        end
+        Spring.ShareResources(selected_player.teamId, "units")
     end
 end
 
