@@ -33,6 +33,8 @@ local Chili
 local main_win, container, buttonsize
 local myTeamID = 0
 local factories = {}
+-- To optimize we want to traverse just one factory per frame
+local factories_iterator, current_factory = {}, 0
 
 -- CONTROLS
 local floor, ceil = math.floor, math.ceil
@@ -196,6 +198,9 @@ local function __makeFactory(unitID, unitDefID, unitDef)
     button.unitDef = unitDef
     button.OnClick = {OnFactory, }
     button.tooltip = tooltip
+    if factories[unitID] == nil then
+        factories_iterator[#factories_iterator + 1] = unitID
+    end
     factories[unitID] = button
     local ustate = GetUnitStates(unitID)
     if ustate["repeat"] then
@@ -208,6 +213,8 @@ end
 
 function GenerateFactories()
     factories = {}
+    factories_iterator = {}
+    current_factory = 0
     container:ClearChildren()
     local teamUnits = GetTeamUnits(myTeamID)
     for _, unitID in ipairs(teamUnits) do
@@ -321,6 +328,12 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
         return
     end
 
+    for i, u in ipairs(factories_iterator) do
+        if u == unitID then
+            table.remove(factories_iterator, i)
+            break
+        end
+    end
     factories[unitID]:Dispose()
     factories[unitID] = nil
     ResizeContainer()
@@ -337,31 +350,36 @@ function widget:Update()
         return
     end
 
+    if #factories_iterator == 0 then
+        return
+    end
+
+    current_factory = (current_factory % #factories_iterator) + 1
+    local unitID = factories_iterator[current_factory]
+    local button = factories[unitID]
     local progress
-    for unitID, button in pairs(factories) do
-        -- Check if the factory is building something
-        unitBuildID = GetUnitIsBuilding(unitID)
-        if unitBuildID ~= nil then
-            button.image.file = '#' .. GetUnitDefID(unitBuildID)
-            _, _, _, _, progress = GetUnitHealth(unitBuildID)
-        else
-            button.image.file = '#' .. GetUnitDefID(unitID)
-            _, _, _, _, progress = GetUnitHealth(unitID)
-        end
-        if progress >= 1 then
-            button.pbar:SetValue(0)
-            button.pbar:Hide()
-        else
-            button.pbar:SetValue(100 * progress)
-            button.pbar:Show()
-        end
-        -- Update the repeat label
-        local ustate = GetUnitStates(unitID)
-        if ustate["repeat"] then
-            button.label:SetCaption(GLYPHS.repeat_on)
-        else
-            button.label:SetCaption(GLYPHS.repeat_off)
-        end
+    -- Check if the factory is building something
+    unitBuildID = GetUnitIsBuilding(unitID)
+    if unitBuildID ~= nil then
+        button.image.file = '#' .. GetUnitDefID(unitBuildID)
+        _, _, _, _, progress = GetUnitHealth(unitBuildID)
+    else
+        button.image.file = '#' .. GetUnitDefID(unitID)
+        _, _, _, _, progress = GetUnitHealth(unitID)
+    end
+    if progress >= 1 then
+        button.pbar:SetValue(0)
+        button.pbar:Hide()
+    else
+        button.pbar:SetValue(100 * progress)
+        button.pbar:Show()
+    end
+    -- Update the repeat label
+    local ustate = GetUnitStates(unitID)
+    if ustate["repeat"] then
+        button.label:SetCaption(GLYPHS.repeat_on)
+    else
+        button.label:SetCaption(GLYPHS.repeat_off)
     end
 end
 
