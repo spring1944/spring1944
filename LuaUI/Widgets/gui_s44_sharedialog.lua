@@ -45,6 +45,7 @@ local mCurr, eCurr = 0, 0
 local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
 local GetTeamResources = Spring.GetTeamResources
+local GetPlayerRoster  = Spring.GetPlayerRoster
 
 --------------------------------------------------------------------------------
 -- 
@@ -436,11 +437,11 @@ function widget:GameFrame(n)
 end
 
 function widget:DrawScreen()
-    if not main_win.visible then
+    if main_win == nil or not main_win.visible then
         return
     end
 
-    playerlist = Spring.GetPlayerRoster(1)
+    playerlist = GetPlayerRoster(1)
     if playerlist == nil then
         return
     end
