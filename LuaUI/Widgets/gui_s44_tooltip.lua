@@ -41,12 +41,13 @@ local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
 -- MEMBERS
 local Chili
 local main_win, txt_box
+local white = "\255\255\255\255"
+local bland = "\255\211\219\255"
+local last_tooltip = ""
 
 -- CONTROLS
 local floor, ceil = math.floor, math.ceil
 local spGetCurrentTooltip     = Spring.GetCurrentTooltip
-local spGetSelectedUnitsCount = Spring.GetSelectedUnitsCount
-local spSendCommands          = Spring.SendCommands
 
 
 function ResetTooltipWin(cmd, optLine)
@@ -81,7 +82,7 @@ function widget:Initialize()
     end
     Chili = WG.Chili
     local viewSizeX, viewSizeY = Spring.GetViewGeometry()
-    spSendCommands({"tooltip 0"})
+    Spring.SendCommands({"tooltip 0"})
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
@@ -154,12 +155,12 @@ function widget:ViewResize(viewSizeX, viewSizeY)
 end
 
 function widget:DrawScreen()
-    local tooltip = Chili.Screen0.currentTooltip or spGetCurrentTooltip()
-
-    local white = "\255\255\255\255"
-    local bland = "\255\211\219\255"
     local mSub, eSub
     local tooltip = Chili.Screen0.currentTooltip or spGetCurrentTooltip()
+    if tooltip == last_tooltip then
+        return
+    end
+    last_tooltip = tooltip
 
     if (tooltip:sub(1, #magic) == magic) then
         tooltip = 'WORLD TOOLTIP:  ' .. tooltip
@@ -191,7 +192,7 @@ end
 
 function widget:Shutdown()
     main_win:Dispose()
-    spSendCommands({"tooltip 1"})
+    Spring.SendCommands({"tooltip 1"})
     widgetHandler.actionHandler:RemoveAction("resettooltipwin")
 end
 
