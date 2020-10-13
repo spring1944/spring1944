@@ -30,6 +30,8 @@ local main_win, container, buttonsize
 local myTeamID = 0
 local aircrafts = {}
 local overAircraft = nil
+-- To optimize we want to traverse just one aircraft per frame
+local aircrafts_iterator, current_aircraft = {}, 0
 
 -- CONTROLS
 local floor, ceil = math.floor, math.ceil
@@ -116,8 +118,8 @@ end
 local function GetColourScale(value, alpha)
     local v = 100 - value
     local colour = {0, 1, 0, alpha or 1}
-    colour[1] = math.min(50, v) / 50
-    colour[2] = 1 - (math.max(0, v - 50) / 50)
+    colour[1] = min(50, v) / 50
+    colour[2] = 1 - (max(0, v - 50) / 50)
     return colour
 end
 
@@ -224,11 +226,14 @@ local function __makeAircraft(unitID, unitDefID, unitDef)
     button.OnMouseOver = {DrawAircraft, }
     button.OnMouseOut = {UndrawAircraft, }
     button.tooltip = tooltip
+    aircrafts_iterator[#aircrafts_iterator + 1] = unitID
     aircrafts[unitID] = button
 end
 
 function GenerateAircrafts()
     aircrafts = {}
+    aircrafts_iterator = {}
+    current_aircraft = 0
     container:ClearChildren()
     local teamUnits = GetTeamUnits(myTeamID)
     for _, unitID in ipairs(teamUnits) do
@@ -255,10 +260,10 @@ function widget:Initialize()
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = tostring(math.floor(100 * WG.PLANESBAROPTS.x)) .. "%",
-        y = tostring(math.floor(100 * WG.PLANESBAROPTS.y)) .. "%",
-        width = tostring(math.floor(100 * WG.PLANESBAROPTS.width)) .. "%",
-        height = tostring(math.floor(100 * WG.PLANESBAROPTS.height)) .. "%",
+        x = tostring(floor(100 * WG.PLANESBAROPTS.x)) .. "%",
+        y = tostring(floor(100 * WG.PLANESBAROPTS.y)) .. "%",
+        width = tostring(floor(100 * WG.PLANESBAROPTS.width)) .. "%",
+        height = tostring(floor(100 * WG.PLANESBAROPTS.height)) .. "%",
         draggable = true,
         resizable = true,
         padding = {0, 0, 0, 0},
@@ -342,6 +347,12 @@ function widget:UnitDestroyed(unitID, unitDefID, unitTeam)
         return
     end
 
+    for i, u in ipairs(aircrafts_iterator) do
+        if u == unitID then
+            table.remove(aircrafts_iterator, i)
+            break
+        end
+    end
     aircrafts[unitID]:Dispose()
     aircrafts[unitID] = nil
     ResizeContainer()
@@ -358,31 +369,25 @@ function widget:Update()
         return
     end
 
-    for unitID, button in pairs(aircrafts) do
-        local unitDef = button.unitDef
-
-        local sHP, sMaxHP = GetUnitHealth(unitID)
-        button.hbar:SetValue(sHP / sMaxHP * 100)
-
-        local sMaxFuel = unitDef.customParams.maxfuel or 1
-        local sFuel = GetUnitRulesParam(unitID, "fuel") or sMaxFuel
-        button.fbar:SetValue(sFuel / sMaxFuel * 100)
+    if #aircrafts_iterator == 0 then
+        return
     end
+    current_aircraft = (current_aircraft % #aircrafts_iterator) + 1
+    local unitID = aircrafts_iterator[current_aircraft]
+    local button = aircrafts[unitID]
+    local unitDef = button.unitDef
+
+    local sHP, sMaxHP = GetUnitHealth(unitID)
+    button.hbar:SetValue(sHP / sMaxHP * 100)
+
+    local sMaxFuel = unitDef.customParams.maxfuel or 1
+    local sFuel = GetUnitRulesParam(unitID, "fuel") or sMaxFuel
+    button.fbar:SetValue(sFuel / sMaxFuel * 100)
 end
 
 function widget:DrawWorld()
     local unitID = overAircraft
     if unitID == nil then
-        return
-    end
-
-    local inTweak
-    if widgetHandler.InTweakMode then
-        inTweak = widgetHandler:InTweakMode()
-    else
-        inTweak = widgetHandler.tweakMode
-    end
-    if inTweak then
         return
     end
 

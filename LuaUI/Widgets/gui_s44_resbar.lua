@@ -271,16 +271,19 @@ function widget:GameFrame(n)
     
     local elapsedSupplyTime = n % resupplyPeriod
     local remainingSupplyTime = resupplyPeriod - n % resupplyPeriod
-    
+
+    -- NOTE:
+    -- n <= 32 is probably related with some beggining trick to feed units ammo
+    -- without consuming from storages.
     if remainingSupplyTime == 0 or n <= 32 then
         estimatedSupplySurplus = 1
         lastStor = eStor
     else
         estimatedSupplySurplus = lastStor - (lastStor - eCurr) * resupplyPeriod / elapsedSupplyTime
         if estimatedSupplySurplus > eStor then
-        estimatedSupplySurplus = eStor
+            estimatedSupplySurplus = eStor
         elseif estimatedSupplySurplus < 0 then
-        estimatedSupplySurplus = 0
+            estimatedSupplySurplus = 0
         end
     end
     

@@ -75,8 +75,11 @@ local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
 local spGetActiveCommand    = Spring.GetActiveCommand
 local spGetActiveCmdDesc    = Spring.GetActiveCmdDesc
+local spGetActiveCmdDescs   = Spring.GetActiveCmdDescs
 local spGetSelectedUnits    = Spring.GetSelectedUnits
+local spGetFullBuildQueue   = Spring.GetFullBuildQueue
 local spSendCommands        = Spring.SendCommands
+local spGetViewGeometry     = Spring.GetViewGeometry
 
 
 -- SCRIPT FUNCTIONS
@@ -170,7 +173,7 @@ end
 
 function createMyButton(cmd)
     if(type(cmd) == 'table')then
-        local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+        local viewSizeX, viewSizeY = spGetViewGeometry()
         local buttontext, container, isMorph, isState, isSortie, isBuild, texture, tooltip = findButtonData(cmd)
         local size = MINBUTTONSIZE * max(viewSizeX, viewSizeY) * container.buttonsize_mult
         if isSortie then
@@ -274,7 +277,7 @@ function resetWindow(container)
 end
 
 function ResizeContainers()
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = spGetViewGeometry()
     local minbuttonsize = MINBUTTONSIZE * max(viewSizeX, viewSizeY)
     local conts = {stateWindow, commandWindow, buildWindow}
     if sortiesWindow.parent.visible then
@@ -332,8 +335,8 @@ end
 
 local function getQueue()
     queue = {}
-    for _,u in ipairs(Spring.GetSelectedUnits()) do
-        local buildQueue  = Spring.GetFullBuildQueue(u)
+    for _,u in ipairs(spGetSelectedUnits()) do
+        local buildQueue  = spGetFullBuildQueue(u)
         if (buildQueue ~= nil) then
             local i = 1
             while buildQueue[i] do
@@ -358,7 +361,7 @@ function loadPanel()
     sortiesWindow.parent:Hide()
 
     getQueue()
-    local commands = Spring.GetActiveCmdDescs()
+    local commands = spGetActiveCmdDescs()
     commands = filterUnwanted(commands)
     -- table.sort(commands, function(x,y) return x.action < y.action end)
     for cmdid, cmd in pairs(commands) do
@@ -374,7 +377,7 @@ function ResetComWin(cmd, optLine)
     WG.COMMWINOPTS.y = mainScaleTop
     WG.COMMWINOPTS.width = mainScaleWidth
     WG.COMMWINOPTS.height = mainScaleHeight
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = spGetViewGeometry()
     x = WG.COMMWINOPTS.x * viewSizeX
     y = WG.COMMWINOPTS.y * viewSizeY
     w = WG.COMMWINOPTS.width * viewSizeX
@@ -387,7 +390,7 @@ local function __OnMainWinSize(self, w, h)
 end
 
 local function __OnLockWindow(self)
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = spGetViewGeometry()
     WG.COMMWINOPTS.x = self.x / viewSizeX
     WG.COMMWINOPTS.y = self.y / viewSizeY
     WG.COMMWINOPTS.width = self.width / viewSizeX
@@ -412,7 +415,7 @@ function widget:Initialize()
         return
     end
     Chili = WG.Chili
-    local viewSizeX, viewSizeY = Spring.GetViewGeometry()
+    local viewSizeX, viewSizeY = spGetViewGeometry()
 
     if widgetHandler.ConfigLayoutHandler then
         widgetHandler:ConfigLayoutHandler(LayoutHandler)
@@ -601,13 +604,21 @@ function widget:CommandsChanged()
 end
 
 function widget:DrawScreen()
-    local selection = Spring.GetSelectedUnits()
+    -- NOTE:
+    -- Chili is recursively calling to all children SetVisibility() function,
+    ---regardless the current visibility state. Thus it is much cheaper to check
+    -- the visibility before eventually asking for show/hide
+    local selection = spGetSelectedUnits()
     if (selection == nil) or (#selection == 0) and not main_win.force_show then
-        main_win:Hide()
+        if main_win.visible then
+            main_win:Hide()
+        end
         return
     end
 
-    main_win:Show()
+    if not main_win.visible then
+        main_win:Show()
+    end
     if updateRequired then
         updateRequired = false
         loadPanel()

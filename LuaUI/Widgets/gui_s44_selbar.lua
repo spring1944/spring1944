@@ -30,9 +30,8 @@ local MINBUTTONSIZE = 0.04
 -- MEMBERS
 local Chili
 local main_win, container, buttonsize
-local selection = {}
-local keep_selected = {}
-local number_of_selected_units = 0
+local selection, number_of_selected_units = {}, 0
+local keep_selected, refresh_keep_selected = {}, false
 
 -- CONTROLS
 local floor, ceil = math.floor, math.ceil
@@ -129,9 +128,11 @@ local function OnSelectedUnit(self, x, y, btn)
         else
             keep_selected[self.unitDefID] = true
         end
+        refresh_keep_selected = true
     elseif btn == 3 then
         if keep_selected[self.unitDefID] then
             keep_selected[self.unitDefID] = nil
+            refresh_keep_selected = true
             return
         end
         local toselect = {}
@@ -214,15 +215,7 @@ local function __makeUnitsButton(unitIDs, unitDefID, unitDef)
     selection[unitDefID] = button
 end
 
-function GenerateSelection()
-    local n = GetSelectedUnitsCount()
-    if n == number_of_selected_units then
-        -- AFAIK selecting/deselecting units always involve a change on the
-        -- number of selected units. it cannot be done fast enough to avoid it
-        -- So we can just simply skip updating
-        return
-    end
-    number_of_selected_units = n
+function GenerateSelection(n)
     local units = n > 0 and GetSelectedUnitsSorted() or {}
     units.n = nil
     local reselect = false
@@ -255,6 +248,7 @@ function GenerateSelection()
     selection = {}
     container:ClearChildren()
     for unitDefID, unitIDs in pairs(units) do
+        refresh_keep_selected = true
         local unitDef = UnitDefs[unitDefID]
         __makeUnitsButton(unitIDs, unitDefID, unitDef)
     end
@@ -274,10 +268,10 @@ function widget:Initialize()
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = tostring(math.floor(100 * WG.SELBAROPTS.x)) .. "%",
-        y = tostring(math.floor(100 * WG.SELBAROPTS.y)) .. "%",
-        width = tostring(math.floor(100 * WG.SELBAROPTS.width)) .. "%",
-        height = tostring(math.floor(100 * WG.SELBAROPTS.height)) .. "%",
+        x = tostring(floor(100 * WG.SELBAROPTS.x)) .. "%",
+        y = tostring(floor(100 * WG.SELBAROPTS.y)) .. "%",
+        width = tostring(floor(100 * WG.SELBAROPTS.width)) .. "%",
+        height = tostring(floor(100 * WG.SELBAROPTS.height)) .. "%",
         draggable = true,
         resizable = true,
         padding = {0, 0, 0, 0},
@@ -341,15 +335,27 @@ function widget:ViewResize(viewSizeX, viewSizeY)
 end
 
 function widget:Update()
-    GenerateSelection()
+    local n = GetSelectedUnitsCount()
+    if n == number_of_selected_units then
+        -- AFAIK selecting/deselecting units always involve a change on the
+        -- number of selected units. it cannot be done fast enough to avoid it
+        -- So we can just simply skip updating
+        return
+    end
+    number_of_selected_units = n
+
+    GenerateSelection(n)
 end
 
 function widget:DrawScreen()
-    for unitDefID, button in pairs(selection) do
-        if keep_selected[unitDefID] then
-            button.lock_label:Show()
-        else
-            button.lock_label:Hide()
+    if refresh_keep_selected then
+        refresh_keep_selected = false
+        for unitDefID, button in pairs(selection) do
+            if keep_selected[unitDefID] then
+                button.lock_label:Show()
+            else
+                button.lock_label:Hide()
+            end
         end
     end
 end
