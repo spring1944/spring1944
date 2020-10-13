@@ -24,11 +24,6 @@ local HEIGHT = 0.15 -- Default widget height
 local Chili, main_win
 
 ------------------------------------------------
---speedups
-------------------------------------------------
-local floor = math.floor
-
-------------------------------------------------
 --util
 ------------------------------------------------
 function __AddButton(parent, caption, action, y)
@@ -76,10 +71,10 @@ function ShowMenu()
 
     main_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = tostring(floor(100 * 0.5 * (1 - WIDTH))) .. "%",
-        y = tostring(floor(100 * 0.5 * (1 - HEIGHT))) .. "%",
-        width = tostring(floor(100 * WIDTH)) .. "%",
-        height = tostring(floor(100 * HEIGHT)) .. "%",
+        x = tostring(math.floor(100 * 0.5 * (1 - WIDTH))) .. "%",
+        y = tostring(math.floor(100 * 0.5 * (1 - HEIGHT))) .. "%",
+        width = tostring(math.floor(100 * WIDTH)) .. "%",
+        height = tostring(math.floor(100 * HEIGHT)) .. "%",
         padding = {5, 5, 5, 5},
         resizable = false,
         draggable = false,
