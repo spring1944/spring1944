@@ -62,11 +62,12 @@ local buttons_players = {}
 local fadeLag, fadePeriod = 10.0, 1.0
 
 
-local min, max = math.min, math.max
+local min, max, floor = math.min, math.max, math.floor
 local function clamp(v, vmin, vmax)
     return max(min(v, vmax), vmin)
 end
 local GetViewGeometry = Spring.GetViewGeometry
+local GetPlayerRoster = Spring.GetPlayerRoster
 
 --------------------------------------------------------------------------------
 -- 
@@ -267,7 +268,7 @@ local function __color2str(color)
 
     local txt = "\\255"
     for i = 1,3 do 
-        txt = txt .. "\\" .. tostring(math.floor(color[i] * 255))
+        txt = txt .. "\\" .. tostring(floor(color[i] * 255))
     end
     local func, err = loadstring( "return \"" .. txt .. "\"" )
     if (not func) then
@@ -405,8 +406,8 @@ end
 
 local function GetColourScale(value)
     local colour = {0, 1, 0, 1}
-    colour[1] = math.min(50, value) / 50
-    colour[2] = 1 - (math.max(0, value - 50) / 50)
+    colour[1] = min(50, value) / 50
+    colour[2] = 1 - (max(0, value - 50) / 50)
     return colour
 end
 
@@ -604,10 +605,10 @@ function widget:Initialize()
     -------------------------------------------------------
     chat_win = Chili.Window:New{
         parent = Chili.Screen0,
-        x = tostring(math.floor(100 * WG.CHATBAROPTS.x)) .. "%",
-        y = tostring(math.floor(100 * WG.CHATBAROPTS.y)) .. "%",
-        width = tostring(math.floor(100 * WG.CHATBAROPTS.width)) .. "%",
-        height = tostring(math.floor(100 * WG.CHATBAROPTS.height)) .. "%",
+        x = tostring(floor(100 * WG.CHATBAROPTS.x)) .. "%",
+        y = tostring(floor(100 * WG.CHATBAROPTS.y)) .. "%",
+        width = tostring(floor(100 * WG.CHATBAROPTS.width)) .. "%",
+        height = tostring(floor(100 * WG.CHATBAROPTS.height)) .. "%",
         draggable = true,
         resizable = true,
         padding = {0, 0, 0, 0},
@@ -910,7 +911,7 @@ function widget:DrawScreen()
         return
     end
 
-    playerlist = Spring.GetPlayerRoster(3)
+    playerlist = GetPlayerRoster(3)
     if playerlist == nil then
         return
     end
@@ -920,11 +921,11 @@ function widget:DrawScreen()
         local spectator = player_data[5]
         local button = buttons_players[name]
         if (not spectator) and (button ~= nil) then
-            local cpu = math.floor(player_data[6] * 100 + 0.5)
-            local ping = math.floor(player_data[7] * 1000 + 0.5)
+            local cpu = floor(player_data[6] * 100 + 0.5)
+            local ping = floor(player_data[7] * 1000 + 0.5)
             -- Rescale ping
-            ping = math.max(0, ping - 100)
-            ping = math.min(1000, ping)
+            ping = max(0, ping - 100)
+            ping = min(1000, ping)
             ping = ping / 10
             -- Set the progress bars
             button.children[1]:SetValue(cpu)
