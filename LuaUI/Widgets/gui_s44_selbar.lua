@@ -301,6 +301,7 @@ function widget:Initialize()
     }
 
     widgetHandler:AddAction("resetselbar", ResetSelBar)
+    Spring.SetDrawSelectionInfo(false)
 
     -- Set the widget size, which apparently were not working well
     x = WG.SELBAROPTS.x * viewSizeX
@@ -367,7 +368,8 @@ function widget:Shutdown()
     end
     container = nil
     widgetHandler:RemoveAction("resetselbar")
-end 
+    Spring.SetDrawSelectionInfo(true)
+end
 
 function widget:GetConfigData()
     return {
