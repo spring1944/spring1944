@@ -11,7 +11,6 @@
     #define iM_PI 0.318309886
 #endif
 
-// The kernel length is 4.5, but we are interested in the integer
 #define H 5
 #define Hf 5.5
 #define Hf2 30.25

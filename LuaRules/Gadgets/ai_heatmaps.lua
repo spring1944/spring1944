@@ -31,6 +31,8 @@ local HEATMAPS_DEBUG_SIZE = 0.5
 local GL_COLOR_BUFFER_BIT = GL.COLOR_BUFFER_BIT
 local GL_POINTS = GL.POINTS
 local GL_TRIANGLE_FAN = GL.TRIANGLE_FAN
+-- local GL_READ_FRAMEBUFFER_EXT = GL.READ_FRAMEBUFFER_EXT
+GL_READ_FRAMEBUFFER_EXT = 0x8CA8
 
 local glCreateTexture = gl.CreateTexture
 local glCreateFBO = gl.CreateFBO
@@ -50,6 +52,7 @@ local glTexRect = gl.TexRect
 local glUseShader = gl.UseShader
 local glRenderToTexture = gl.RenderToTexture
 local glReadPixels = gl.ReadPixels
+local glFlush = gl.Flush
 
 local spGetAllUnits = Spring.GetAllUnits
 local spValidUnitID = Spring.ValidUnitID
@@ -207,6 +210,7 @@ function HeatMap:Create(tilesize)
         fbo = true, min_filter = GL.NEAREST, mag_filter = GL.NEAREST,
         wrap_s = GL.CLAMP, wrap_t = GL.CLAMP,
     })
+    heatmap.grad_fbo = glCreateFBO({color0 = heatmap.grad_texture})
 
     return heatmap
 end
@@ -218,9 +222,13 @@ function HeatMap:Destroy()
     end
     glDeleteTexture(self.grad_texture or "")
     gl.DeleteShader(self.grad_shader)
+    glDeleteFBO(self.grad_fbo)
 end
 
 function HeatMap:SwapBuffer()
+    local grad_value
+    local sx, sy = self.sx, self.sy
+
     -- Compute the new gradient texture
     glBlending(false);
     glPushMatrix();
@@ -232,9 +240,27 @@ function HeatMap:SwapBuffer()
         glTexture(0, false)
     glUseShader(0)
 
+    glFlush()
+
+    glActiveFBO(self.grad_fbo, GL_READ_FRAMEBUFFER_EXT, function()
+        grad_value = glReadPixels(0, 0, sx, sy)
+    end)
+    self.grad_value = grad_value
+    --[[
     glTexture(self.grad_texture)
-    self.grad_value = glReadPixels(1, 1, self.sx, self.sy)
+    self.grad_value = 
+
+    for j = 1,self.sy do
+        line = ""
+        for i = 1, self.sx do
+            local color = { glReadPixels(i - 1, j - 1, 1, 1) }
+            line = line .. self.grad_value[i][j][4] - color[4] .. ", "
+        end
+        Spring.Echo(line)
+    end
+    Spring.Echo("---------------------")
     glTexture(false)
+    --]]
 
     -- Swap the active texture
     self.active_texture = (self.active_texture == 1) and 2 or 1
@@ -284,8 +310,20 @@ function HeatMap:GetGradient(x, z)
     end
     local u, v = world2tex(x, z)
     local i, j = min(floor(u * self.sx + 1), self.sx), min(floor(v * self.sy + 1), self.sy)
+    Spring.Echo(x, z, "->", u, v, "->", i, j)
+    Spring.Echo(self.sx, self.sy, "vs", #self.grad_value, #self.grad_value[1])
+    for j = 1,self.sy do
+        line = ""
+        for i = 1, self.sx do
+            line = line .. self.grad_value[i][j][4] .. ", "
+        end
+        Spring.Echo(line)
+    end
+    Spring.Echo("---------------------")
+
     local color = self.grad_value[i][j]
-    return 2 * color[1] - 1, 2 * color[2] - 1
+    Spring.Echo(color[1], color[2], color[3], color[4])
+    return 2.0 * color[1] - 1.0, 2.0 * color[2] - 1.0
 end
 
 
@@ -330,7 +368,7 @@ function HeatmapManager:AddHeatmap(name, callback, tilesize)
     self.callbacks[name] = callback
 
     -- Testing
-    -- SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
+    SetDebug("ai_heatmaps", "ai_heatmaps " .. name, {name}, nil)
 end
 
 function HeatmapManager:GetHeatmap(name)
