@@ -107,7 +107,7 @@ end
 --  3) reachable from hq, without going through enemy waypoints
 local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
     if dilate == nil then
-        dilate = 1
+        dilate = 3
     end
 
     -- Get the allied and enemy actual control areas
@@ -210,7 +210,23 @@ local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
         end
     end
 
-    return frontline, previous
+    -- Compute the normal (the mean direction to the enemy lines)
+    local normals = {}
+    for i,p in ipairs(frontline) do
+        local nx, nz = 0, 0
+        for a, edge in pairs(p.adj) do
+            if enemy[a] == true then
+                nx = nx + (a.x - p.x) / edge.dist
+                nz = nz + (a.z - p.z) / edge.dist
+            end
+        end
+        local l = sqrt(nx * nx + nz * nz)
+        nx = nx / l
+        nz = nz / l
+        normals[i] = {nx, nz}
+    end
+
+    return frontline, normals, previous
 end
 
 

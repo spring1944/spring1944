@@ -90,8 +90,8 @@ end
 --
 
 function Intelligence.GetTarget(x, z)
-    local frontline, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
-    local target, score = nil, -1
+    local frontline, normals, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
+    local target, normal, score = nil, {0, 0}, -1
     --[[
     Spring.MarkerAddPoint(x, 200, z)
     for i = 2,#frontline do
@@ -99,7 +99,7 @@ function Intelligence.GetTarget(x, z)
                              frontline[i].x, frontline[i].y + 10, frontline[i].z)
     end
     --]]
-    for _,waypoint in ipairs(frontline) do
+    for i,waypoint in ipairs(frontline) do
         local dx, dz = waypoint.x - x, waypoint.z - z
         local r2 = (dx * dx + dz * dz) * DIST2_MULT
         local visitor_score = (strategic_relevance[waypoint] ~= nil and strategic_relevance[waypoint] or 1) / r2
@@ -107,10 +107,11 @@ function Intelligence.GetTarget(x, z)
         if visitor_score > score then
             score = visitor_score
             target = waypoint
+            normal = normals[i]
         end
     end
 
-    return target, previous
+    return target, normal, previous
 end
 
 --------------------------------------------------------------------------------

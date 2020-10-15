@@ -23,8 +23,9 @@ local CombatMgr = {}
 
 -- constants
 local SQUAD_SIZE = SQUAD_SIZE
-local SQUAD_SPREAD = 250
-local FEAR_THRESHOLD = 0.5 + 0.5 * math.random()  -- [0.5, 1.0]
+local SQUAD_SPREAD = 500
+local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
+
 
 -- speedups
 local sqrt, random, min = math.sqrt, math.random, math.min
@@ -61,23 +62,45 @@ local function avgPosUnitArray(units)
     return x / #units, z / #units
 end
 
-local function DoGiveOrdersToUnit(p, unitID, cmd, eta, spread)
-    local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED or GG.CustomCommands.GetCmdID("CMD_SET_WANTED_MAX_SPEED")
-    local dx, dz = 0, 0
-    if spread then
-        dx = random() * spread * 2 - spread
-        dz = random() * spread * 2 - spread
+local function get_spread_vector(unitID, normal, t_radius)
+    local nx, nz = unpack(normal)
+    local tx, tz = -nz, nx
+
+    local t_spread = random() * t_radius * 2 - t_radius
+
+    local n_radius = 0.25 * t_radius
+    local unitDefID = GetUnitDefID(unitID)
+    local unitDef = UnitDefs[unitDefID]
+    if  #unitDef.weapons > 0 then
+        local weaponDef = WeaponDefs[unitDef.weapons[1].weaponDef]
+        n_radius = 0.25 + 0.5 * weaponDef.range
     end
+    local n_spread = -random() * n_radius
+
+    return n_spread * nx + t_spread * tx, n_spread * nz + t_spread * tz
+end
+
+--[[
+local function DoGiveOrdersToUnit(p, unitID, cmd, normal, spread, eta)
+    local CMD_SET_WANTED_MAX_SPEED = CMD.SET_WANTED_MAX_SPEED or GG.CustomCommands.GetCmdID("CMD_SET_WANTED_MAX_SPEED")
+    local dx, dz = get_spread_vector(unitID, normal, spread)
     local x, _, z = GetUnitPosition(unitID)
     local lx, lz = p.x - x, p.z - z
     local l = sqrt(lx * lx + lz * lz)
     local speed = l / eta
-    Spring.Echo(speed)
+    Spring.Echo(l, eta, speed, UnitDefs[GetUnitDefID(unitID)].speed / 30)
     GiveOrderToUnit(unitID, cmd, {p.x + dx, p.y, p.z + dz},  {})
     GiveOrderToUnit(unitID, CMD_SET_WANTED_MAX_SPEED, {speed}, {"shift"})
 end
+--]]
 
-local function GiveOrdersToUnitArray(orig, target, unitArray, cmd, spread)
+local function DoGiveOrdersToUnit(p, unitID, cmd, normal, spread)
+    local dx, dz = get_spread_vector(unitID, normal, spread)
+    GiveOrderToUnit(unitID, cmd, {p.x + dx, p.y, p.z + dz},  {})
+end
+
+local function GiveOrdersToUnitArray(orig, target, unitArray, cmd, normal, spread)
+    --[[
     local minMaxSpeed = 1000
     for _, u in ipairs(unitArray) do
         local speed = UnitDefs[GetUnitDefID(u)].speed
@@ -90,16 +113,20 @@ local function GiveOrdersToUnitArray(orig, target, unitArray, cmd, spread)
     local l = sqrt(lx * lx + lz * lz)    
     local eta = l / minMaxSpeed
     for _,u in ipairs(unitArray) do
-        DoGiveOrdersToUnit(target, u, cmd, eta, spread)
+        DoGiveOrdersToUnit(target, u, cmd, normal, spread, eta)
+    end
+    --]]
+    for _,u in ipairs(unitArray) do
+        DoGiveOrdersToUnit(target, u, cmd, normal, spread)
     end
 end
 
-local function GiveOrdersToUnitMap(orig, target, unitMap, cmd, spread)
+local function GiveOrdersToUnitMap(orig, target, unitMap, cmd, normal, spread)
     local unitArray = {}
     for u, _ in pairs(unitMap) do
         unitArray[#unitArray + 1] = u
     end
-    return GiveOrdersToUnitArray(orig, target, unitArray, cmd, spread)
+    return GiveOrdersToUnitArray(orig, target, unitArray, cmd, normal, spread)
 end
 
 --------------------------------------------------------------------------------
@@ -121,10 +148,10 @@ function CombatMgr.GameFrame(f)
 
     if newUnitCount >= SQUAD_SIZE then
         local x, z = avgPosUnitMap(newUnits)
-        local target, previous = intelligence.GetTarget(x, z)
+        local target, normal, previous = intelligence.GetTarget(x, z)
         if target ~= nil then
             local orig = waypointMgr.GetNearestWaypoint2D(x, z)
-            GiveOrdersToUnitMap(orig,  target, newUnits, CMD.FIGHT, SQUAD_SPREAD)
+            GiveOrdersToUnitMap(orig,  target, newUnits, CMD.FIGHT, normal, SQUAD_SPREAD)
             for u,_ in pairs(newUnits) do
                 units[u] = target -- remember where we are going for UnitIdle
             end
@@ -149,9 +176,9 @@ function CombatMgr.GameFrame(f)
     -- give each orders towards the nearest relevant waypoint
     for p,unitArray in pairs(squads) do
         local x, z = avgPosUnitArray(unitArray)
-        local target, previous = intelligence.GetTarget(x, z)
+        local target, normal, previous = intelligence.GetTarget(x, z)
         if target ~= nil then
-            for i = 1, 3 do
+            for i = 1, 2 do
                 local gx, gz = heatmapMgr.FirepowerGradient(target.x, target.z)
                 local l2 = gx * gx + gz * gz
                 if l2 < FEAR_THRESHOLD * FEAR_THRESHOLD then
@@ -164,7 +191,7 @@ function CombatMgr.GameFrame(f)
             end
             if target and (target ~= p) then
                 local orig = waypointMgr.GetNearestWaypoint2D(x, z)
-                GiveOrdersToUnitArray(orig, target, unitArray, CMD.FIGHT, SQUAD_SPREAD)
+                GiveOrdersToUnitArray(orig, target, unitArray, CMD.FIGHT, normal, SQUAD_SPREAD)
                 for _,u in ipairs(unitArray) do
                     units[u] = target --assume next call this unit will be at target
                 end
