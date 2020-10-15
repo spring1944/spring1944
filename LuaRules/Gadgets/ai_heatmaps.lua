@@ -246,21 +246,6 @@ function HeatMap:SwapBuffer()
         grad_value = glReadPixels(0, 0, sx, sy)
     end)
     self.grad_value = grad_value
-    --[[
-    glTexture(self.grad_texture)
-    self.grad_value = 
-
-    for j = 1,self.sy do
-        line = ""
-        for i = 1, self.sx do
-            local color = { glReadPixels(i - 1, j - 1, 1, 1) }
-            line = line .. self.grad_value[i][j][4] - color[4] .. ", "
-        end
-        Spring.Echo(line)
-    end
-    Spring.Echo("---------------------")
-    glTexture(false)
-    --]]
 
     -- Swap the active texture
     self.active_texture = (self.active_texture == 1) and 2 or 1
@@ -310,19 +295,7 @@ function HeatMap:GetGradient(x, z)
     end
     local u, v = world2tex(x, z)
     local i, j = min(floor(u * self.sx + 1), self.sx), min(floor(v * self.sy + 1), self.sy)
-    Spring.Echo(x, z, "->", u, v, "->", i, j)
-    Spring.Echo(self.sx, self.sy, "vs", #self.grad_value, #self.grad_value[1])
-    for j = 1,self.sy do
-        line = ""
-        for i = 1, self.sx do
-            line = line .. self.grad_value[i][j][4] .. ", "
-        end
-        Spring.Echo(line)
-    end
-    Spring.Echo("---------------------")
-
     local color = self.grad_value[i][j]
-    Spring.Echo(color[1], color[2], color[3], color[4])
     return 2.0 * color[1] - 1.0, 2.0 * color[2] - 1.0
 end
 
