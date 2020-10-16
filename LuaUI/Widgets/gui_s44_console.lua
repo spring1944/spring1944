@@ -566,6 +566,7 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
         end
     end
     if msg ~= nil then
+        self:SetText(msg)
         return
     end
 end
