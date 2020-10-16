@@ -3,7 +3,7 @@
 
 -- Misc config
 FLAG_RADIUS = 230 --from S44 game_flagManager.lua
-SQUAD_SIZE = 24
+SQUAD_SIZE = 10
 
 -- unit names must be lowercase!
 

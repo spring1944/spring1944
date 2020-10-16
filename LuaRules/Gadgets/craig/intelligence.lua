@@ -25,7 +25,7 @@ function Intelligence.UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer
 
 function CreateIntelligence(myTeamID, myAllyTeamID)
 
-local FLAG_RELEVANCE_MULT = 25
+local FLAG_RELEVANCE_MULT = 5
 local DIST2_MULT = 1.0 / (FLAG_RADIUS * FLAG_RADIUS)
 local DIFFICULTY = gadget.difficulty
 local waypointMgr = gadget.waypointMgr
