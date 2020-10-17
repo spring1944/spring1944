@@ -26,6 +26,16 @@ local GLYPHS = {
     locked = '\204\132',
 }
 local MINBUTTONSIZE = 0.04
+local ICONS = {}
+local iconTypes = VFS.Include("gamedata/icontypes.lua")
+for defID, defs in ipairs(UnitDefs) do
+    if defs.iconType ~= "default" then
+        ICONS[defID] = iconTypes[defs.iconType].bitmap
+    else
+        ICONS[defID] = "icons/unknown.tga"
+    end
+end
+local ICON_SIZE = 0.4
 
 -- MEMBERS
 local Chili
@@ -44,6 +54,7 @@ local SelectUnitArray        = Spring.SelectUnitArray
 local ValidUnitID            = Spring.ValidUnitID
 local GetUnitIsDead          = Spring.GetUnitIsDead
 local IsUnitSelected         = Spring.IsUnitSelected
+local GetUnitIsTransporting  = Spring.GetUnitIsTransporting
 
 -- SCRIPT FUNCTIONS
 function ResetSelBar()
@@ -84,6 +95,18 @@ local function ResizeContainer()
         c.image:Resize(buttonsize - 2, buttonsize - 2)
         c.label:SetPos(7, -48)
         c.lock_label:SetPos(buttonsize - 48, buttonsize - 70)
+
+        if c.image.loaded ~= nil then
+            local icon_size = ICON_SIZE * c.image.width
+            local dx = 0
+            if #c.image.loaded > 1 then
+                dx = (c.image.width - icon_size) / (#c.image.loaded - 1)
+            end
+            for i,img in ipairs(c.image.loaded) do
+                img:Resize(icon_size, icon_size)
+                img:SetPos(dx * (i - 1), c.image.height - icon_size)
+            end
+        end
     end
     -- Set the number of rows and columns of the widget
     container.columns = cols
@@ -213,6 +236,38 @@ local function __makeUnitsButton(unitIDs, unitDefID, unitDef)
     button.OnMouseUp = {OnSelectedUnit, }
     button.label:SetCaption(#unitIDs)
     selection[unitDefID] = button
+
+    -- Transported units
+    if unitDef.transportCapacity > 0 then
+        local transported = {}
+        for _, unitID in ipairs(unitIDs) do
+            for _, u in ipairs(GetUnitIsTransporting(unitID)) do
+                transported[#transported + 1] = ICONS[GetUnitDefID(u)]
+            end
+        end
+        if #transported > 0 then
+            local icon_size = ICON_SIZE * button.image.width
+            local dx = 0
+            if #transported > 1 then
+                dx = (button.image.width - icon_size) / (#transported - 1)
+            end
+            button.image.loaded = {}
+            for i,icon in ipairs(transported) do
+                button.image.loaded[#button.image.loaded + 1] = Chili.Image:New{
+                    parent = button.image,
+                    x=dx * (i - 1),
+                    y=button.image.height - icon_size,
+                    width = icon_size,
+                    height = icon_size,
+                    keepAspect = true,
+                    file = icon,
+                    padding = {0, 0, 0, 0}
+                }
+            end
+        end
+    end
+
+    return button
 end
 
 function GenerateSelection(n)
@@ -358,6 +413,14 @@ function widget:DrawScreen()
                 button.lock_label:Hide()
             end
         end
+    end
+end
+
+function widget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    if IsUnitSelected(transportID) then
+        -- Force to regenerate the selection. It is absolutely not the most
+        -- efficient way to carry out the operation, but it is much simpler
+        number_of_selected_units = -1
     end
 end
 

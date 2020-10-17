@@ -305,7 +305,7 @@ function ResizeContainers()
     -- Now analyze the better disposition of the containers, taking into account
     -- that they are wrapped in a scroll panel. To this end we are progressively
     -- hiding rows from bottom to top, granting at least one row per container
-    local H = main_win.clientHeight
+    local H = main_win.clientHeight - 2
     local i = #conts
     while (i >= 0) and (h > H) do
         local c = conts[i]
@@ -317,7 +317,7 @@ function ResizeContainers()
 
     -- Set all the panels position and size, except the last one, which is
     -- taking all the remaining space
-    local y = 0
+    local y = 2
     for i = 1, #conts - 1 do
         local c = conts[i]
         local rows = scroll_rows[i]
@@ -442,7 +442,7 @@ function widget:Initialize()
     local stateScroll = Chili.ScrollPanel:New{
         parent = main_win,
         x = 0,
-        y = 0,
+        y = 2,
         width = "100%",
         height = buttonsize,
         minHeight = buttonsize,
