@@ -316,7 +316,22 @@ local RGunTractor = Truck:New{
 This unit is unarmed until it is not deployed.]],
 	},
 }
-
+-- SP Arty Tank
+local SPArty = Def:New{ -- not a full class (role/mixin)
+	description 		= "Self-Propelled Howitzer",
+	iconType			= "sparty",
+	turnRate			= 95,
+	customParams = {
+		canareaattack		= false,
+		soundcategory		= "<SIDE>/Tank/SP",
+		weapontoggle		= true,
+		wiki_subclass_comments = [[This is a self-propelled artillery.
+Self-prop. guns are much more expensive than towed ones, however the increase
+of mobility can be quite convenient in some contexts, allowing it to run away
+to avoid counter artillery fire, or even to get close to the enemy base to
+maximize the accuracy.]],
+	}
+}
 return {
 	Vehicle = Vehicle,
 	-- Roles

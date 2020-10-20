@@ -49,7 +49,7 @@ local HUNHetzer = HetzerBase:New(MediumTank):New(TankDestroyer):New{
 	name				= "Sd.Kfz. 138/2 JagdPanzer 38 Hetzer",
 	description			= "Turretless Tank Destroyer",
 	corpse				= "HUNHetzer_Abandoned",
-	buildCostMetal		= 2800,
+	buildCostMetal		= 2240,
 
 
 	weapons = {
