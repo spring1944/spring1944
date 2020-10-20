@@ -16,7 +16,7 @@ end
 --constants
 ------------------------------------------------
 local WIDTH = 0.25 --Default widget width
-local HEIGHT = 0.15 -- Default widget height
+local HEIGHT = 0.25 -- Default widget height
 
 ------------------------------------------------
 --locals
