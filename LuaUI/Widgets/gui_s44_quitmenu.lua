@@ -94,6 +94,18 @@ function CloseMenu()
     main_win = nil
 end
 
+local function bindAnyEsc(status)
+    if status == nil then
+        status = true
+    end
+    if status then
+        Spring.SendCommands("bind any+esc s44quitmenu")
+    else
+        Spring.SendCommands("unbind any+esc s44quitmenu")
+        Spring.SendCommands("bind shift+esc s44quitmenu")
+    end
+end
+
 ------------------------------------------------
 --callins
 ------------------------------------------------
@@ -102,7 +114,7 @@ function widget:Initialize()
     if Chili == nil then
         Spring.Log(widget:GetInfo().name, LOG.ERROR,
                    "Chili not available, disabling widget")
-        WG.RemoveWidget(self)
+        widgetHandler:RemoveWidget()
         return
     end
   
@@ -110,11 +122,14 @@ function widget:Initialize()
                         "unbindaction quitmenu")
     widgetHandler:AddAction("s44quitmenu", ShowMenu)
     Spring.SendCommands("bind any+esc s44quitmenu")
+    -- Let another widgets to take control over Esc action
+    WG.bindAnyEsc = bindAnyEsc
 end
 
 function widget:Shutdown()
     widgetHandler:RemoveAction("s44quitmenu")
     Spring.SendCommands("unbind any+esc s44quitmenu")
+    WG.bindAnyEsc = nil
     Spring.SendCommands({
         "bind esc quitmessage",
         "bind shift+esc quitmenu",
