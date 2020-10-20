@@ -287,10 +287,22 @@ function ShowWin()
     if selected_player == nil and #main_players.children > 0 then
         OnSelectPlayer(main_players.children[1])
     end
+
+    if WG.bindAnyEsc ~= nil then
+        -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
+        WG.bindAnyEsc(false)
+    end
+    Spring.SendCommands("bind esc s44sharedialog")
 end
 
 function HideWin()
     main_win:Hide()
+
+    Spring.SendCommands("unbind esc s44sharedialog")
+    if WG.bindAnyEsc ~= nil then
+        -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
+        WG.bindAnyEsc(true)
+    end
 end
 
 function OnApply()
