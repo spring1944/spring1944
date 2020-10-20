@@ -21,6 +21,23 @@ local main_win
 local function Unlock()
     WG.Chili.UnlockCustomizableWindows()
     main_win:Show()
+
+    if WG.bindAnyEsc ~= nil then
+        -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
+        WG.bindAnyEsc(false)
+    end
+    Spring.SendCommands("bind esc s44lockwidgets")
+end
+
+local function Lock()
+    WG.Chili.LockCustomizableWindows()
+    main_win:Hide()
+
+    Spring.SendCommands("unbind esc s44lockwidgets")
+    if WG.bindAnyEsc ~= nil then
+        -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
+        WG.bindAnyEsc(true)
+    end
 end
 
 function widget:Initialize()
@@ -84,8 +101,7 @@ function widget:Initialize()
                 padding = {0, 0, 0, 0},
                 caption = "Save and close",
                 OnClick = {function()
-                    WG.Chili.LockCustomizableWindows()
-                    main_win:Hide()
+                    Lock()
                 end}
             }
         },
@@ -93,6 +109,7 @@ function widget:Initialize()
 
     WG.Chili.LockCustomizableWindows()
     widgetHandler:AddAction("s44unlockwidgets", Unlock)
+    widgetHandler:AddAction("s44lockwidgets", Lock)
     main_win:Hide()
 end
 
@@ -101,5 +118,6 @@ function widget:Shutdown()
         return
     end
     widgetHandler:RemoveAction("s44unlockwidgets")
+    widgetHandler:RemoveAction("s44lockwidgets")
     WG.Chili.UnlockCustomizableWindows()
 end
