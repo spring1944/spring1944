@@ -451,6 +451,12 @@ function ShowWin()
     main_msg:SetText("")
     Chili.Screen0:FocusControl(main_msg)
     main_win:Show()
+
+    if WG.bindAnyEsc ~= nil then
+        -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
+        WG.bindAnyEsc(false)
+    end
+    Spring.SendCommands("bind esc s44chat")
 end
 
 function HideWin()
@@ -466,6 +472,11 @@ function HideWin()
     end
     -- Show the default chat window
     chat_win:Show()
+
+    Spring.SendCommands("unbind esc s44chat")
+    if WG.bindAnyEsc ~= nil then
+        WG.bindAnyEsc(true)
+    end
 end
 
 function OnCancel()
@@ -956,6 +967,10 @@ function widget:Update(dt)
 end
 
 function widget:Shutdown()
+    if (main_win) then
+        HideWin()
+        main_win:Dispose()
+    end
     if (chat_win) then
         chat_win:Dispose()
     end

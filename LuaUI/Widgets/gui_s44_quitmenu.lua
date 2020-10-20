@@ -16,7 +16,7 @@ end
 --constants
 ------------------------------------------------
 local WIDTH = 0.25 --Default widget width
-local HEIGHT = 0.15 -- Default widget height
+local HEIGHT = 0.25 -- Default widget height
 
 ------------------------------------------------
 --locals
@@ -31,18 +31,26 @@ function __AddButton(parent, caption, action, y)
     local fontsize = Chili.OptimumFontSize(parent.font,
                                            "Continue playing",
                                            0.8 * ((parent.width - 10) - 10),
-                                           0.6 * (0.33 * (parent.height - 10) - 10))
+                                           0.6 * (0.2 * (parent.height - 10) - 10))
     return Chili.Button:New{
         parent = parent,
         x = "0%",
         y = y,
         width = "100%",
-        height = "33%",
+        height = "20%",
         padding = {0, 0, 0, 0},
         caption = caption,
         font = {size = fontsize},
         OnClick = {CloseMenu, action}
     }
+end
+
+function OnGUI(self)
+    Spring.SendCommands("s44unlockwidgets")
+end
+
+function OnGraphics(self)
+    Spring.SendCommands("s44graphicsettings")
 end
 
 function OnCancel(self)
@@ -82,9 +90,11 @@ function ShowMenu()
         minHeight = 32 * 3,
     }
 
-    __AddButton(main_win, "Continue playing", OnCancel, "0%")
-    __AddButton(main_win, "Resign", OnResign, "33%")
-    __AddButton(main_win, "Quit", OnQuit, "66%")
+    __AddButton(main_win, "Configure GUI", OnGUI, "0%")
+    __AddButton(main_win, "Configure graphics", OnGraphics, "20%")
+    __AddButton(main_win, "Continue playing", OnCancel, "40%")
+    __AddButton(main_win, "Resign", OnResign, "60%")
+    __AddButton(main_win, "Quit", OnQuit, "80%")
 end
 
 function CloseMenu()
@@ -92,6 +102,18 @@ function CloseMenu()
         main_win:Dispose()
     end
     main_win = nil
+end
+
+local function bindAnyEsc(status)
+    if status == nil then
+        status = true
+    end
+    if status then
+        Spring.SendCommands("bind any+esc s44quitmenu")
+    else
+        Spring.SendCommands("unbind any+esc s44quitmenu")
+        Spring.SendCommands("bind shift+esc s44quitmenu")
+    end
 end
 
 ------------------------------------------------
@@ -102,7 +124,7 @@ function widget:Initialize()
     if Chili == nil then
         Spring.Log(widget:GetInfo().name, LOG.ERROR,
                    "Chili not available, disabling widget")
-        WG.RemoveWidget(self)
+        widgetHandler:RemoveWidget()
         return
     end
   
@@ -110,11 +132,14 @@ function widget:Initialize()
                         "unbindaction quitmenu")
     widgetHandler:AddAction("s44quitmenu", ShowMenu)
     Spring.SendCommands("bind any+esc s44quitmenu")
+    -- Let another widgets to take control over Esc action
+    WG.bindAnyEsc = bindAnyEsc
 end
 
 function widget:Shutdown()
     widgetHandler:RemoveAction("s44quitmenu")
     Spring.SendCommands("unbind any+esc s44quitmenu")
+    WG.bindAnyEsc = nil
     Spring.SendCommands({
         "bind esc quitmessage",
         "bind shift+esc quitmenu",
