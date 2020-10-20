@@ -26,19 +26,18 @@ local Chili, main_win
 ------------------------------------------------
 --util
 ------------------------------------------------
-function __AddButton(parent, caption, action, y, h)
+function __AddButton(parent, caption, action, y)
     y = y or "0%"
-    h = h or "25%"
     local fontsize = Chili.OptimumFontSize(parent.font,
                                            "Continue playing",
                                            0.8 * ((parent.width - 10) - 10),
-                                           0.6 * (0.33 * (parent.height - 10) - 10))
+                                           0.6 * (0.2 * (parent.height - 10) - 10))
     return Chili.Button:New{
         parent = parent,
         x = "0%",
         y = y,
         width = "100%",
-        height = h,
+        height = "20%",
         padding = {0, 0, 0, 0},
         caption = caption,
         font = {size = fontsize},
@@ -48,6 +47,10 @@ end
 
 function OnGUI(self)
     Spring.SendCommands("s44unlockwidgets")
+end
+
+function OnGraphics(self)
+    Spring.SendCommands("s44graphicsettings")
 end
 
 function OnCancel(self)
@@ -88,9 +91,10 @@ function ShowMenu()
     }
 
     __AddButton(main_win, "Configure GUI", OnGUI, "0%")
-    __AddButton(main_win, "Continue playing", OnCancel, "25%")
-    __AddButton(main_win, "Resign", OnResign, "50%")
-    __AddButton(main_win, "Quit", OnQuit, "75%")
+    __AddButton(main_win, "Configure graphics", OnGraphics, "20%")
+    __AddButton(main_win, "Continue playing", OnCancel, "40%")
+    __AddButton(main_win, "Resign", OnResign, "60%")
+    __AddButton(main_win, "Quit", OnQuit, "80%")
 end
 
 function CloseMenu()
