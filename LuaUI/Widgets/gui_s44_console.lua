@@ -967,6 +967,10 @@ function widget:Update(dt)
 end
 
 function widget:Shutdown()
+    if (main_win) then
+        HideWin()
+        main_win:Dispose()
+    end
     if (chat_win) then
         chat_win:Dispose()
     end

@@ -119,5 +119,8 @@ function widget:Shutdown()
     end
     widgetHandler:RemoveAction("s44unlockwidgets")
     widgetHandler:RemoveAction("s44lockwidgets")
-    WG.Chili.UnlockCustomizableWindows()
+    Unlock()
+    if (main_win) then
+        main_win:Dispose()
+    end
 end
