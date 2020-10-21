@@ -40,7 +40,7 @@ local ICON_SIZE = 0.4
 -- MEMBERS
 local Chili
 local main_win, container, buttonsize
-local selection, number_of_selected_units = {}, 0
+local selection, selected_units = {}, {}
 local keep_selected, refresh_keep_selected = {}, false
 
 -- CONTROLS
@@ -50,6 +50,7 @@ local GetViewGeometry        = Spring.GetViewGeometry
 local GetUnitDefID           = Spring.GetUnitDefID
 local GetSelectedUnitsSorted = Spring.GetSelectedUnitsSorted
 local GetSelectedUnitsCount  = Spring.GetSelectedUnitsCount
+local GetSelectedUnits       = Spring.GetSelectedUnits
 local SelectUnitArray        = Spring.SelectUnitArray
 local ValidUnitID            = Spring.ValidUnitID
 local GetUnitIsDead          = Spring.GetUnitIsDead
@@ -270,7 +271,7 @@ local function __makeUnitsButton(unitIDs, unitDefID, unitDef)
     return button
 end
 
-function GenerateSelection(n)
+function GenerateSelection(n, units)
     local units = n > 0 and GetSelectedUnitsSorted() or {}
     units.n = nil
     local reselect = false
@@ -307,6 +308,7 @@ function GenerateSelection(n)
         local unitDef = UnitDefs[unitDefID]
         __makeUnitsButton(unitIDs, unitDefID, unitDef)
     end
+    selected_units = GetSelectedUnits()
     ResizeContainer()
 end
 
@@ -392,11 +394,26 @@ end
 
 function widget:Update()
     local n = GetSelectedUnitsCount()
-    if n == number_of_selected_units then
-        -- AFAIK selecting/deselecting units always involve a change on the
-        -- number of selected units. it cannot be done fast enough to avoid it
-        -- So we can just simply skip updating
-        return
+    if n == #selected_units then
+        -- We have the same number of units, but this may happens even if the
+        -- selection have changed.
+        -- The fastest reliable way to check if the selection indeed have
+        -- changed is checking the plain array of selected units.
+        -- NOTE: At some point we can try to integrate something in the engine
+        -- like a selection hash, which let easily know if the selection have
+        -- changed.
+        local skip = true
+        local new_selected_units = GetSelectedUnits()
+        for i, u in ipairs(new_selected_units) do
+            if u ~= selected_units[i] then
+                skip = false
+                -- selected_units will be set later, on GenerateSelection()
+                break
+            end
+        end
+        if skip then
+            return
+        end
     end
     number_of_selected_units = n
 
