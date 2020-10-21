@@ -1,9 +1,9 @@
--- $Id: StaticParticles.lua 3345 2008-12-02 00:03:50Z jk $
+-- $Id: OverdriveParticles.lua 3345 2008-12-02 00:03:50Z jk $
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-local StaticParticles = {}
-StaticParticles.__index = StaticParticles
+local OverdriveParticles = {}
+OverdriveParticles.__index = OverdriveParticles
 
 local billShader,sizeUniform,frameUniform
 local colormapUniform,colorsUniform = {},0
@@ -11,9 +11,9 @@ local colormapUniform,colorsUniform = {},0
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function StaticParticles.GetInfo()
+function OverdriveParticles.GetInfo()
 	return {
-		name      = "StaticParticles",
+		name      = "OverdriveParticles",
 		backup    = "", --// backup class, if this class doesn't work (old cards,ati's,etc.)
 		desc      = "",
 
@@ -27,7 +27,7 @@ function StaticParticles.GetInfo()
 	}
 end
 
-StaticParticles.Default = {
+OverdriveParticles.Default = {
 	particles = {},
 	dlist     = 0,
 
@@ -95,7 +95,7 @@ local glVertex       = gl.Vertex
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function StaticParticles:CreateParticleAttributes(partpos,n)
+function OverdriveParticles:CreateParticleAttributes(partpos,n)
 	local life, pos, size;
 
 	size   = rand()*self.sizeSpread
@@ -113,24 +113,29 @@ end
 
 local lasttexture = nil
 
-function StaticParticles:BeginDraw()
+function OverdriveParticles:BeginDraw()
 	gl.UseShader(billShader)
 	lasttexture = nil
 end
 
-function StaticParticles:EndDraw()
+function OverdriveParticles:EndDraw()
 	glTexture(false)
 	glBlending(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA)
 	gl.UseShader(0)
 end
 
-function StaticParticles:Draw()
+function OverdriveParticles:Draw()
 	if (lasttexture ~= self.texture) then
 		glTexture(self.texture)
 		lasttexture = self.texture
 	end
 	glBlending(self.srcBlend,self.dstBlend)
 
+	glUniformInt(colorsUniform, self.ncolors)
+	for i = 1, min(self.ncolors+1,12) do
+		local color = self.colormap[i]
+		glUniform( colormapUniform[i] , color[1], color[2], color[3], color[4] )
+	end
 	glUniform(sizeUniform,self.usize)
 	glUniform(frameUniform,self.frame)
 
@@ -155,7 +160,7 @@ end
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function StaticParticles:Initialize()
+function OverdriveParticles:Initialize()
 	billShader = gl.CreateShader({
 		vertex = [[
 			uniform float size;
@@ -224,7 +229,7 @@ function StaticParticles:Initialize()
 	})
 
 	if (billShader==nil) then
-		print(PRIO_MAJOR,"LUPS->StaticParticles: Critical Shader Error: " ..gl.GetShaderLog())
+		print(PRIO_MAJOR,"LUPS->OverdriveParticles: Critical Shader Error: " ..gl.GetShaderLog())
 		return false
 	end
 
@@ -237,39 +242,47 @@ function StaticParticles:Initialize()
 	end
 end
 
-function StaticParticles:Finalize()
+function OverdriveParticles:Finalize()
 	gl.DeleteShader(billShader)
 end
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function StaticParticles:Update(n)
+function OverdriveParticles:Update(n)
 	self.frame  = self.frame + n
 	self.usize  = self.usize + n*self.sizeGrowth
+	
+	local gameFrame = math.ceil(Spring.GetGameFrame()/10)*10
+	if self.lastGameFrame and self.lastGameFrame >= gameFrame then
+		return
+	end
+	self.lastGameFrame = gameFrame
+	
+	local cur_strength = math.min(4, Spring.GetUnitRulesParam(self.unit,"overdrive") or 1)
+	self.strength = 0.3*cur_strength + 0.7*(self.strength or 1)
+	
+	local a = math.min(1, math.max(0,(self.strength-1)*0.35))
+	self.colormap = {BlendColor(self.color1,self.color2, a)}
+	self.usize     = Blend(self.size1,self.size2, a)
 end
 
 -- used if repeatEffect=true;
-function StaticParticles:ReInitialize()
+function OverdriveParticles:ReInitialize()
 	self.usize = self.size
 	self.frame = 0
 	self.dieGameFrame = self.dieGameFrame + self.life + self.lifeSpread
 end
 
-function StaticParticles:CreateParticle()
+function OverdriveParticles:CreateParticle()
 	local maxSpawnRadius = 0
 	self.ncolors = #self.colormap-1
-	local partposCode = ParseParamString(self.partpos)
+	self.partposCode = ParseParamString(self.partpos)
 
 	self.dlist = gl.CreateList(function()
-		glUniformInt(colorsUniform, self.ncolors)
-		for i=1,min(self.ncolors+1,12) do
-			local color = self.colormap[i]
-			glUniform( colormapUniform[i] , color[1], color[2], color[3], color[4] )
-		end
 		gl.BeginEnd(GL.QUADS, function()
 			for i=1,self.count do
-				local life,size,x,y,z = self:CreateParticleAttributes(partposCode,i-1)
+				local life,size,x,y,z = self:CreateParticleAttributes(self.partposCode,i-1)
 				DrawParticleForDList(size,life,
 														 x,y,z,    -- relative start pos
 														 self.ncolors)
@@ -289,14 +302,14 @@ function StaticParticles:CreateParticle()
 	self.sphereGrowth  = self.sizeGrowth
 end
 
-function StaticParticles:Destroy()
+function OverdriveParticles:Destroy()
 	for _,part in ipairs(self.particles) do
 		gl.DeleteList(part.dlist)
 	end
 	--gl.DeleteTexture(self.texture)
 end
 
-function StaticParticles:Visible()
+function OverdriveParticles:Visible()
 	local radius = self.radius +
 								 self.frame*(self.sphereGrowth) --FIXME: frame is only updated on Update()
 	local posX,posY,posZ = self.pos[1],self.pos[2],self.pos[3]
@@ -335,9 +348,9 @@ end
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function StaticParticles.Create(Options)
-	local newObject = MergeTable(Options, StaticParticles.Default)
-	setmetatable(newObject,StaticParticles)  --// make handle lookup
+function OverdriveParticles.Create(Options)
+	local newObject = MergeTable(Options, OverdriveParticles.Default)
+	setmetatable(newObject,OverdriveParticles)  --// make handle lookup
 	newObject:CreateParticle()
 	return newObject
 end
@@ -345,4 +358,4 @@ end
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-return StaticParticles
+return OverdriveParticles

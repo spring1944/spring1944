@@ -2,15 +2,15 @@
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-local SantaHat = {}
-SantaHat.__index = SantaHat
+local ShieldSphereColorFallback = {}
+ShieldSphereColorFallback.__index = ShieldSphereColorFallback
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function SantaHat.GetInfo()
+function ShieldSphereColorFallback.GetInfo()
 	return {
-		name      = "SantaHat",
+		name      = "ShieldSphereColorFallback",
 		backup    = "", --// backup class, if this class doesn't work (old cards,ati's,etc.)
 		desc      = "",
 
@@ -24,27 +24,23 @@ function SantaHat.GetInfo()
 	}
 end
 
-SantaHat.Default = {
-	pos        = {0,0,0}, -- start pos
-	emitVector = {0.25,1,0},
+ShieldSphereColorFallback.Default = {
+	pos        = {0,0,0},
 	layer      = -24,
-
 	life       = math.huge,
-
-	height     = 10,
-	width      = 4,
-	ballSize   = 0.9,
-
-	color      = {1, 0, 0, 1},
-
 	repeatEffect = true,
+	shieldSize = "large",
 }
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function SantaHat:BeginDraw()
-	gl.DepthMask(true)
+function ShieldSphereColorFallback:Visible()
+	return self.visibleToMyAllyTeam
+end
+
+function ShieldSphereColorFallback:BeginDraw()
+	gl.DepthMask(false)
 	gl.Lighting(true)
 	gl.Light(0, true )
 	gl.Light(0, GL.POSITION, gl.GetSun() )
@@ -54,99 +50,90 @@ function SantaHat:BeginDraw()
 	--gl.Culling(GL.BACK)
 end
 
-function SantaHat:EndDraw()
+function ShieldSphereColorFallback:EndDraw()
 	gl.DepthMask(false)
 	gl.Lighting(false)
-	gl.Light(0, false )
-	--gl.Culling(false)
+	gl.Light(0, false)
 end
 
-function SantaHat:Draw()
-	--gl.Color(self.color)
-	local color = self.color
-	gl.Material({
-		ambient   = {color[1]*0.5,color[2]*0.5,color[3]*0.5,color[4]},
-		diffuse   = color,
-		specular  = {1,1,1,1},
-		shininess = 65,
-	})
-
-	gl.PushMatrix()
+function ShieldSphereColorFallback:Draw()
 	local pos  = self.pos
-	local emit = self.emitVector
 	gl.Translate(pos[1],pos[2],pos[3])
-	gl.Rotate(90,emit[1],emit[2],emit[3])
-
-	gl.PushMatrix()
-	gl.Scale(self.width,self.height,self.width)
-	gl.CallList(self.ConeList)
-	gl.PopMatrix()
-
-	gl.Color(1,1,1,1)
+	
+	local col = GetShieldColor(self.unit, self)
+	
+	-- The Perlin noise shield needs special treatment due to its very high base transparency at low power
+	if self.faintShield then
+		col[4] = col[4] * 0.9 + 0.1
+	else
+		col[4] = col[4] * 0.5
+	end
+	
+	gl.Color(1, 1, 1, 1)
 	gl.Material({
-		ambient   = {0.5,0.5,0.5,1},
-		diffuse   = {1,1,1,1},
-		specular  = {1,1,1,1},
+		ambient   = {col[1], col[2], col[3], col[4]},
+		diffuse   = {1,1,1,col[4]},
+		specular  = {1,1,1,col[4]},
 		shininess = 120,
 	})
 
-	gl.PushMatrix()
-	gl.Translate(0,self.height,0)
-	gl.Scale(self.ballSize,self.ballSize,self.ballSize)
-	gl.CallList(self.BallList)
-	gl.PopMatrix()
-
-	gl.Scale(self.width+0.3,self.width+0.1,self.width+0.3)
-	gl.CallList(self.TorusList)
-
-	gl.PopMatrix()
+	gl.Scale(self.size, self.size, self.size)
+	if self.texture then
+		gl.Texture(self.texture)
+	end
+	gl.CallList(self.SphereList[self.shieldSize])
+	if self.texture then
+		gl.Texture(false)
+	end
 end
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function SantaHat:Initialize()
-	SantaHat.ConeList  = gl.CreateList(DrawPin,1,1,8)
-	SantaHat.BallList  = gl.CreateList(DrawSphere,0,0,0,1,14)
-	SantaHat.TorusList = gl.CreateList(DrawTorus,1,0.15,16,16)
+function ShieldSphereColorFallback:Initialize()
+	ShieldSphereColorFallback.SphereList = {
+		huge = gl.CreateList(DrawSphere,0,0,0,1, 44),
+		large = gl.CreateList(DrawSphere,0,0,0,1, 32),
+		medium = gl.CreateList(DrawSphere,0,0,0,1, 24),
+		small = gl.CreateList(DrawSphere,0,0,0,1, 20),
+	}
 end
 
-function SantaHat:Finalize()
-	gl.DeleteList(SantaHat.ConeList)
-	gl.DeleteList(SantaHat.BallList)
-	gl.DeleteList(SantaHat.TorusList)
-end
-
------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------
-
-function SantaHat:CreateParticle()
-	self.firstGameFrame = Spring.GetGameFrame()
-	self.dieGameFrame   = self.firstGameFrame + self.life
+function ShieldSphereColorFallback:Finalize()
+	for _, list in pairs(ShieldSphereColorFallback.SphereList) do
+		gl.DeleteList(list)
+	end
 end
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-function SantaHat:Update()
+function ShieldSphereColorFallback:CreateParticle()
+	self.dieGameFrame = Spring.GetGameFrame() + self.life
+end
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+function ShieldSphereColorFallback:Update()
 end
 
 -- used if repeatEffect=true;
-function SantaHat:ReInitialize()
+function ShieldSphereColorFallback:ReInitialize()
 	self.dieGameFrame = self.dieGameFrame + self.life
 end
 
-function SantaHat.Create(Options)
-	local newObject = MergeTable(Options, SantaHat.Default)
-	setmetatable(newObject,SantaHat)  -- make handle lookup
+function ShieldSphereColorFallback.Create(Options)
+	local newObject = MergeTable(Options, ShieldSphereColorFallback.Default)
+	setmetatable(newObject,ShieldSphereColorFallback)  -- make handle lookup
 	newObject:CreateParticle()
 	return newObject
 end
 
-function SantaHat:Destroy()
+function ShieldSphereColorFallback:Destroy()
 end
 
 -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------
 
-return SantaHat
+return ShieldSphereColorFallback
