@@ -146,6 +146,16 @@ function CombatMgr.GameFrame(f)
         end
     end
 
+    if gadget.IsDebug(myTeamID) then
+        local frontline, normals, _ = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
+        for i = 1,#frontline do
+            local x, y, z = frontline[i].x, frontline[i].y, frontline[i].z
+            local dx, dy, dz = 15 * normals[i][1], 0, 15 * normals[i][2]
+            Spring.MarkerAddPoint(x, y, z)
+            Spring.MarkerAddLine(x, y, z, x + dx, y + dy, z+ dz)
+        end        
+    end
+
     if newUnitCount >= SQUAD_SIZE then
         local x, z = avgPosUnitMap(newUnits)
         local target, normal, previous = intelligence.GetTarget(x, z)
@@ -159,11 +169,6 @@ function CombatMgr.GameFrame(f)
             newUnitCount = 0
         end
     end
-
-    -- move in every 10 seconds, with a lag of 0.5 seconds for each team
-    if (f + 15 * myTeamID) % 600 >= 128 then return end
-
-    Log("GO GO GO")
 
     -- make temporary data structure of squads (units at or moving towards same waypoint)
     local squads = {} -- waypoint -> array of unitIDs

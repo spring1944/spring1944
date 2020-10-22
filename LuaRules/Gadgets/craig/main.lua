@@ -5,7 +5,7 @@
 -- Thanks to lurker for providing hints on how to make the AI run unsynced.
 
 -- In-game, type /luarules craig teamID in the console to toggle the ai debug
--- messages
+-- messages. Use the same command skipping the teamID to disable debug messages
 
 function gadget:GetInfo()
     return {
@@ -126,10 +126,6 @@ local lastFrame = 0 -- To avoid repeated calls to GameFrame()
 
 local function ChangeAIDebugVerbosity(cmd,line,words,player)
     local team = tonumber(words[1])
-    if team == nil then
-        Spring.Echo("C.R.A.I.G.: A team should be specified" .. CRAIG_Debug_Team)
-        return false
-    end
     CRAIG_Debug_Team = team
     Spring.Echo("C.R.A.I.G.: debug verbosity set to team " .. CRAIG_Debug_Team)
     return true
@@ -145,11 +141,11 @@ local function SetupCmdChangeAIDebugVerbosity()
 end
 
 function gadget.IsDebug(teamID)
-    return CRAIG_Debug_Team > 0
+    return CRAIG_Debug_Team == teamID
 end
 
 function gadget.Log(...)
-    if CRAIG_Debug_Team ~= false then
+    if CRAIG_Debug_Team ~= nil then
         Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
     end
 end
