@@ -4,7 +4,8 @@
 -- Slightly based on the Kernel Panic AI by KDR_11k (David Becker) and zwzsg.
 -- Thanks to lurker for providing hints on how to make the AI run unsynced.
 
--- In-game, type /luarules craig in the console to toggle the ai debug messages
+-- In-game, type /luarules craig teamID in the console to toggle the ai debug
+-- messages
 
 function gadget:GetInfo()
     return {
@@ -116,25 +117,21 @@ include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/intelligence.lua")
 
 -- locals
-local CRAIG_Debug_Mode = 0 -- Must be 0 or 1
+local CRAIG_Debug_Team = nil -- Must be 0 or 1
 local team = {}
 local waypointMgrGameFrameRate = 0
+local lastFrame = 0 -- To avoid repeated calls to GameFrame()
 
 --------------------------------------------------------------------------------
 
 local function ChangeAIDebugVerbosity(cmd,line,words,player)
-    local lvl = tonumber(words[1])
-    if lvl then
-        CRAIG_Debug_Mode = lvl
-        Spring.Echo("C.R.A.I.G.: debug verbosity set to " .. CRAIG_Debug_Mode)
-    else
-        if CRAIG_Debug_Mode > 0 then
-            CRAIG_Debug_Mode = 0
-        else
-            CRAIG_Debug_Mode = 1
-        end
-        Spring.Echo("C.R.A.I.G.: debug verbosity toggled to " .. CRAIG_Debug_Mode)
+    local team = tonumber(words[1])
+    if team == nil then
+        Spring.Echo("C.R.A.I.G.: A team should be specified" .. CRAIG_Debug_Team)
+        return false
     end
+    CRAIG_Debug_Team = team
+    Spring.Echo("C.R.A.I.G.: debug verbosity set to team " .. CRAIG_Debug_Team)
     return true
 end
 
@@ -147,8 +144,12 @@ local function SetupCmdChangeAIDebugVerbosity()
     --Script.AddActionFallback(cmd .. ' ',help)
 end
 
+function gadget.IsDebug(teamID)
+    return CRAIG_Debug_Team > 0
+end
+
 function gadget.Log(...)
-    if CRAIG_Debug_Mode > 0 then
+    if CRAIG_Debug_Team ~= false then
         Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
     end
 end
@@ -232,6 +233,11 @@ local function CreateTeams()
 end
 
 function gadget:GameFrame(f)
+    if (f < 1) or (f == lastFrame) then
+        return
+    end
+    lastFrame = f
+
     if f == 1 then
         -- This is executed AFTER headquarters / commander is spawned
         Log("gadget:GameFrame 1")
@@ -248,6 +254,7 @@ function gadget:GameFrame(f)
             intelligence.GameStart()
         end
     end
+
     -- waypointMgr update
     if waypointMgr and f % waypointMgrGameFrameRate < .1 then
         waypointMgr.GameFrame(f)
@@ -257,6 +264,7 @@ function gadget:GameFrame(f)
     for _, intelligence in pairs(intelligences) do
         intelligence.GameFrame(f)
     end
+
     for _,t in pairs(team) do
         t.GameFrame(f)
     end
