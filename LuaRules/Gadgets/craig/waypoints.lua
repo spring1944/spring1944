@@ -107,7 +107,7 @@ end
 --  3) reachable from hq, without going through enemy waypoints
 local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
     if dilate == nil then
-        dilate = 3
+        dilate = 2
     end
 
     -- Get the allied and enemy actual control areas
@@ -168,6 +168,15 @@ local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
         end
     end
 
+    -- Rebuild the allied boundary
+    for _,p in ipairs(allied) do
+        for a, edge in pairs(p.adj) do
+            if not allied[a] then
+                allied_frontier[#allied_frontier + 1] = p
+                break
+            end
+        end
+    end
     -- Artificially dilate the allied area to enforce incursion in enemy lines
     for i = 1,dilate do
         for i=1,#allied_frontier do
@@ -210,7 +219,25 @@ local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
         end
     end
 
-    -- Compute the normal (the mean direction to the enemy lines)
+    -- Remove all the frontline points with just a single connection with enemy
+    -- nodes, to avoid convex corners
+    for i=#frontline,1,-1 do
+        local p = frontline[i]
+        local n_conn = 0
+        for a, edge in pairs(p.adj) do
+            if not allied[a] then
+                n_conn = n_conn + 1
+                if n_conn >= 2 then
+                    break
+                end
+            end
+        end
+        if n_conn < 2 then
+            table.remove(frontline, i)
+        end
+    end
+
+    -- Compute the normal (the mean direction to the enemy lines).
     local normals = {}
     for i,p in ipairs(frontline) do
         local nx, nz = 0, 0

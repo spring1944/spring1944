@@ -127,7 +127,11 @@ local lastFrame = 0 -- To avoid repeated calls to GameFrame()
 local function ChangeAIDebugVerbosity(cmd,line,words,player)
     local team = tonumber(words[1])
     CRAIG_Debug_Team = team
-    Spring.Echo("C.R.A.I.G.: debug verbosity set to team " .. CRAIG_Debug_Team)
+    if CRAIG_Debug_Team ~= nil then
+        Spring.Echo("C.R.A.I.G.: debug verbosity set to team " .. CRAIG_Debug_Team)
+    else
+        Spring.Echo("C.R.A.I.G.: disable debug verbosity")
+    end
     return true
 end
 
