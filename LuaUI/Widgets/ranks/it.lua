@@ -189,29 +189,46 @@ end
 return {
     name = "it",
     lists = {
+        -- OR-2
         {0.2, 0, Caporale},
+        -- OR-3
         {0.3, 0, CaporalMaggiore},
+        -- OR-5
         {0.75, 0, Sergente},
+        -- OR-6
         {1.0, 0, SergenteMaggiore},
+        -- OR-8
         {1.5, 0, MarescialloOrdinario},
+        -- OR-9
         {1.75, 0, MarescialloCapo},
         {2.0, 0, MarescialloMaggiore},
         {2.25, 0, AiutanteDiBattaglia},
+        -- OF-0
         {2.5, 0, Aspirante},
+        -- OF-1
         {2.75, 0, Sottotenente},
         {3.0, 0, Tenente},
         {3.25, 0, PrimoTenente},
-        {3.5.0, 0, Capitano},
+        -- OF-2
+        {3.5, 0, Capitano},
         {4.0, 0, PrimoCapitano},
+        -- OF-3
         {5.0, 0, Maggiore},
+        -- OF-4
         {8.0, 0, TenenteColonnello},
+        -- OF-5
         {10.0, 0, Colonnello},
         {14.0, 0, ColonnelloComandante},
+        -- OF-6
         {20.0, 0, GeneraleDiBrigata},
+        -- OF-7
         {25.0, 0, GeneraleDiDivisione},
+        -- OF-8
         {30.0, 0, GeneraleDiCorpoDArmata},
+        -- OF-9
         {50.0, 0, GeneraleDesignatoDArmata},
         {75.0, 0, GeneraleDArmata},
+        -- OF-10
         {100.0, 0, MarescialloDItalia},
     },
 }
