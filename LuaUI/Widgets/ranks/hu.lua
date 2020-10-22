@@ -161,25 +161,43 @@ end
 return {
     name = "hu",
     lists = {
+        -- OR-1
         {0.1, 0, Kozkatona},
+        -- OR-2
         {0.2, 0, Orvezeto},
+        -- OR-3
         {0.3, 0, Tizedes},
+        -- OR-4
         {0.5, 0, Szakaszvezeto},
+        -- OR-5
         {0.75, 0, Ormester},
+        -- OR-6
         {1.0, 0, Torzsormester},
+        -- OR-7
         {1.25, 0, Fotorzsormester},
+        -- OR-8
         {1.5, 0, Zaszlos},
         {1.75, 0, Torzszaszlos},
+        -- OR-9
         {2.0, 0, Fotorzszaszlos},
+        -- OF-1
         {2.5, 0, Hadnagy},
         {3.0, 0, Fohadnagy},
+        -- OF-2
         {3.5, 0, Szazados},
+        -- OF-3
         {5.0, 0, Ornagy},
+        -- OF-4
         {8.0, 0, Alezredes},
+        -- OF-5
         {12.0, 0, Ezredes},
+        -- OF-6
         {20.0, 0, Dandartabornok},
+        -- OF-7
         {25.0, 0, Vezerornagy},
+        -- OF-8
         {30.0, 0, Altabornagy},
+        -- OF-9
         {50.0, 0, Vezerezredes},
     },
 }
