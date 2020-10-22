@@ -18,6 +18,62 @@ local glTexRect = gl.TexRect
 local color = {1, 1, 0.25}
 local highlightColor = {1, 1, 0.5}
 
+local function Caporale()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITACaporale.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function CaporalMaggiore()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITACaporalMaggiore.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function Sergente()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITASergente.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function SergenteMaggiore()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITASergenteMaggiore.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function MarescialloOrdinario()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITAMarescialloOrdinario.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function MarescialloCapo()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITAMarescialloCapo.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function MarescialloMaggiore()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITAMarescialloMaggiore.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
+local function AiutanteDiBattaglia()
+    glColor(1, 1, 1, 1)
+    glTexture(IMAGE_DIRNAME .. "ITAAiutanteDiBattaglia.png")
+    glTexRect(-2, -2, 2, 2)
+    glTexture(false)
+end
+
 local function Aspirante()
     glColor(1, 1, 1, 1)
     glTexture(IMAGE_DIRNAME .. "ITAAspirante.png")
@@ -133,21 +189,29 @@ end
 return {
     name = "it",
     lists = {
-        {0.1, 0, Aspirante},
-        {0.5, 0, Sottotenente},
-        {1.0, 0, Tenente},
-        {5.0, 0, PrimoTenente},
-        {10.0, 0, Capitano},
-        {20.0, 0, PrimoCapitano},
-        {30.0, 0, Maggiore},
-        {40.0, 0, TenenteColonnello},
-        {50.0, 0, Colonnello},
-        {55.0, 0, ColonnelloComandante},
-        {60.0, 0, GeneraleDiBrigata},
-        {70.0, 0, GeneraleDiDivisione},
-        {80.0, 0, GeneraleDiCorpoDArmata},
-        {90.0, 0, GeneraleDesignatoDArmata},
-        {95.0, 0, GeneraleDArmata},
+        {0.2, 0, Caporale},
+        {0.3, 0, CaporalMaggiore},
+        {0.75, 0, Sergente},
+        {1.0, 0, SergenteMaggiore},
+        {1.5, 0, MarescialloOrdinario},
+        {1.75, 0, MarescialloCapo},
+        {2.0, 0, MarescialloMaggiore},
+        {2.25, 0, AiutanteDiBattaglia},
+        {2.5, 0, Aspirante},
+        {2.75, 0, Sottotenente},
+        {3.0, 0, Tenente},
+        {3.25, 0, PrimoTenente},
+        {3.5.0, 0, Capitano},
+        {4.0, 0, PrimoCapitano},
+        {5.0, 0, Maggiore},
+        {8.0, 0, TenenteColonnello},
+        {10.0, 0, Colonnello},
+        {14.0, 0, ColonnelloComandante},
+        {20.0, 0, GeneraleDiBrigata},
+        {25.0, 0, GeneraleDiDivisione},
+        {30.0, 0, GeneraleDiCorpoDArmata},
+        {50.0, 0, GeneraleDesignatoDArmata},
+        {75.0, 0, GeneraleDArmata},
         {100.0, 0, MarescialloDItalia},
     },
 }
