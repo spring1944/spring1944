@@ -119,7 +119,6 @@ include("LuaRules/Gadgets/craig/intelligence.lua")
 -- locals
 local CRAIG_Debug_Team = nil -- Must be 0 or 1
 local team = {}
-local waypointMgrGameFrameRate = 0
 local lastFrame = 0 -- To avoid repeated calls to GameFrame()
 
 --------------------------------------------------------------------------------
@@ -184,9 +183,6 @@ function gadget:GamePreload()
     Log("gadget:GamePreload")
     -- Intialise waypoint manager
     waypointMgr = CreateWaypointMgr()
-    if waypointMgr then
-        waypointMgrGameFrameRate = waypointMgr.GetGameFrameRate()
-    end
 end
 
 local function CreateTeams()
@@ -241,9 +237,7 @@ function gadget:GameFrame(f)
     if f == 1 then
         -- This is executed AFTER headquarters / commander is spawned
         Log("gadget:GameFrame 1")
-        if waypointMgr then
-            waypointMgr.GameStart()
-        end
+        waypointMgr.GameStart()
 
         -- We perform this only this late, and then fake UnitFinished for all units
         -- in the team, to support random faction (implemented by swapping out HQ
@@ -255,16 +249,10 @@ function gadget:GameFrame(f)
         end
     end
 
-    -- waypointMgr update
-    if waypointMgr and f % waypointMgrGameFrameRate < .1 then
-        waypointMgr.GameFrame(f)
-    end
-    
-    -- AI update
+    waypointMgr.GameFrame(f)
     for _, intelligence in pairs(intelligences) do
         intelligence.GameFrame(f)
     end
-
     for _,t in pairs(team) do
         t.GameFrame(f)
     end
@@ -304,9 +292,7 @@ end
 --
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
-    if waypointMgr then
-        waypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
-    end
+    waypointMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
     if team[unitTeam] then
         team[unitTeam].UnitCreated(unitID, unitDefID, unitTeam, builderID)
     end
@@ -322,9 +308,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    if waypointMgr then
-        waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    end
+    waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     for teamID, t in pairs(team) do
         t.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     end

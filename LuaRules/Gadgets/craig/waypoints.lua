@@ -27,9 +27,10 @@ function CreateWaypointMgr()
 local GAIA_TEAM_ID    = Spring.GetGaiaTeamID()
 local GAIA_ALLYTEAM_ID      -- initialized later on..
 local FLAG_RADIUS     = FLAG_RADIUS
-local WAYPOINT_RADIUS = FLAG_RADIUS -- 500
+local WAYPOINT_RADIUS = FLAG_RADIUS
 local WAYPOINT_HEIGHT = 100
 local REF_UNIT_DEF = UnitDefNames["gerrifle"] -- Reference unit to check paths
+local FRONTLINE_UPDATE_PERIOD = 30  -- In frames (30 ~ 1 seconds)
 
 -- speedups
 local Log = Log
@@ -79,6 +80,9 @@ local frontlineCache = {}
 -- caches result of Spring.GetTeamStartPosition
 local teamStartPosition = {}
 
+-- Last frontline updated
+local teams = {}
+local lastParsedFrontline = 0
 
 local function GetDist2D(x, z, p, q)
     local dx = x - p
@@ -377,12 +381,6 @@ end
 --  WaypointMgr public interface
 --
 
-function WaypointMgr.GetGameFrameRate()
-    -- returns every how many frames GameFrame should be called.
-    -- currently I set this so each waypoint is updated every 30 sec (= 900 frames)
-    return math.floor(900 / #waypoints)
-end
-
 function WaypointMgr.GetWaypoints()
     return waypoints
 end
@@ -534,16 +532,19 @@ function WaypointMgr.GameFrame(f)
     -- it. If no-one is currently occupying the waypoint, we just simply
     -- preserve it. If several teams are disputing a waypoint, is it demoted
     -- to neutral
-    local owner = nil
-    if #occupationTeams == 0 then
-        owner = p.owner
-    elseif #occupationTeams == 1 then
-        owner = occupationTeams[1]
+    if #occupationTeams == 1 then
+        p.owner = occupationTeams[1]
+    elseif #occupationTeams > 1 then
+        p.owner = nil
     end
-    
-    if (owner ~= p.owner) then
-        WaypointOwnerChange(p, owner)
+
+    -- Update the next frontline (lazy mode)
+    if #teams == 0 or f % FRONTLINE_UPDATE_PERIOD > .1 then
+        return
     end
+
+    lastParsedFrontline = (lastParsedFrontline % #teams) + 1
+    frontlineCache[teams[lastParsedFrontline]] = nil
 end
 
 --------------------------------------------------------------------------------
@@ -590,6 +591,7 @@ do
 -- this must contain not only AI teams, but also player teams!
 for _,t in ipairs(Spring.GetTeamList()) do
     if (t ~= GAIA_TEAM_ID) then
+        teams[#teams + 1] = t
         local _,_,_,_,_,at = Spring.GetTeamInfo(t)
         teamToAllyteam[t] = at
     end
