@@ -17,11 +17,6 @@ function FlagsMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attacke
 
 function CreateFlagsMgr(myTeamID, myAllyTeamID, mySide, Log)
 
--- Can not do flag capping if we don't have waypoints..
-if (not gadget.waypointMgr) then
-	return false
-end
-
 local FlagsMgr = {}
 
 -- constants

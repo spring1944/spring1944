@@ -34,10 +34,8 @@ local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local TEAMS_UPDATE_PERIOD = 128  -- In frames (128 ~ 4.5 seconds)
 local TEAMS_UPDATE_LAG = 16      -- In frames (16 ~ 0.5 seconds)
 
--- Enemy start positions (assumes this are base positions)
-local enemyBases = {}
-local enemyBaseCount = 0
-local enemyBaseLastAttacked = 0
+-- Number of enemies
+local enemies_number = 0
 
 -- Base building (one global buildOrder)
 local baseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, mySide, Log)
@@ -48,15 +46,9 @@ local unitBuildOrder = gadget.unitBuildOrder
 -- Unit limits
 local unitLimitsMgr = CreateUnitLimitsMgr(myTeamID)
 
--- Heatmap management
+-- Combat units control
 local heatmapMgr = CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
-
--- Combat management
-local waypointMgr = gadget.waypointMgr
-local lastWaypoint = 0
 local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, Log)
-
--- Flag capping
 local flagsMgr = CreateFlagsMgr(myTeamID, myAllyTeamID, mySide, Log)
 
 --------------------------------------------------------------------------------
@@ -73,19 +65,16 @@ function Team.GameStart()
         if (t ~= GAIA_TEAM_ID) and (not Spring.AreTeamsAllied(myTeamID, t)) then
             local x,y,z = Spring.GetTeamStartPosition(t)
             if x and x ~= 0 then
-                enemyBaseCount = enemyBaseCount + 1
-                enemyBases[enemyBaseCount] = {x,y,z}
+                enemies_number = enemies_number + 1
                 Log("Enemy base spotted at coordinates: ", x, ", ", z)
             else
                 Log("Oops, Spring.GetTeamStartPosition failed")
             end
         end
     end
-    if waypointMgr then
-        flagsMgr.GameStart()
-    end
+    flagsMgr.GameStart()
     heatmapMgr.GameStart()
-    Log("Preparing to attack ", enemyBaseCount, " enemies")
+    Log("Preparing to attack ", enemies_number, " enemies")
 end
 
 function Team.GameFrame(f)
@@ -105,11 +94,8 @@ function Team.GameFrame(f)
     --Log("GameFrame")
 
     baseMgr.GameFrame(f)
-
-    if waypointMgr then
-        flagsMgr.GameFrame(f)
-        combatMgr.GameFrame(f)
-    end
+    flagsMgr.GameFrame(f)
+    combatMgr.GameFrame(f)
 end
 
 --------------------------------------------------------------------------------
@@ -144,26 +130,8 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
         if not (UnitDefs[unitDefID].speed > 0) then
             -- If there are no enemies, don't bother lagging Spring to death:
             -- just go through the build queue exactly once, instead of repeating it.
-            if (enemyBaseCount > 0 or Spring.GetGameSeconds() < 0.1) then
+            if (enemies_number > 0 or Spring.GetGameSeconds() < 0.1) then
                 GiveOrderToUnit(unitID, CMD.REPEAT, {1}, {})
-                -- Each next factory gives fight command to next enemy.
-                -- Didn't use math.random() because it's really hard to establish
-                -- a 100% correct distribution when you don't know whether the
-                -- upper bound of the RNG is inclusive or exclusive.
-                if (not waypointMgr) then
-                    enemyBaseLastAttacked = enemyBaseLastAttacked + 1
-                    if enemyBaseLastAttacked > enemyBaseCount then
-                        enemyBaseLastAttacked = 1
-                    end
-                    -- queue up a bunch of fight orders towards all enemies
-                    local idx = enemyBaseLastAttacked
-                    for i=1,enemyBaseCount do
-                        -- enemyBases[] is in the right format to pass into GiveOrderToUnit...
-                        GiveOrderToUnit(unitID, CMD.FIGHT, enemyBases[idx], {})
-                        idx = idx + 1
-                        if idx > enemyBaseCount then idx = 1 end
-                    end
-                end
             end
             for _,bo in ipairs(unitBuildOrder[unitDefID]) do
                 if bo and UnitDefs[bo] then
@@ -182,15 +150,9 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
     -- managers are in order of preference
 
     -- need to prefer flag capping over building to handle Russian commissars
-    if waypointMgr then
-        if flagsMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
-    end
-
+    if flagsMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
     if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
-
-    if waypointMgr then
-        if combatMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
-    end
+    if combatMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
 end
 
 function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
@@ -202,11 +164,8 @@ function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDef
     end
 
     baseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-
-    if waypointMgr then
-        flagsMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-        combatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    end
+    flagsMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    combatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 end
 
 function Team.UnitTaken(unitID, unitDefID, unitTeam, newTeam)
