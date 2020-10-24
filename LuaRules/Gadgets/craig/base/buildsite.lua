@@ -372,3 +372,5 @@ Initialize()
 return widget
 
 end
+
+return CreateBuildsiteFinder()

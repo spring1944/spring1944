@@ -105,7 +105,6 @@ waypointMgr = {}
 intelligences = {}  -- One per team
 
 -- include code
-include("LuaRules/Gadgets/craig/buildsite.lua")
 include("LuaRules/Gadgets/craig/base.lua")
 include("LuaRules/Gadgets/craig/combat.lua")
 include("LuaRules/Gadgets/craig/flags.lua")
