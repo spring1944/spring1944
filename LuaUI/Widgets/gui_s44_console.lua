@@ -456,7 +456,7 @@ function ShowWin()
         -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
         WG.bindAnyEsc(false)
     end
-    Spring.SendCommands("bind esc s44chat")
+    Spring.SendCommands("bind esc s44closechat")
 end
 
 function HideWin()
@@ -473,7 +473,7 @@ function HideWin()
     -- Show the default chat window
     chat_win:Show()
 
-    Spring.SendCommands("unbind esc s44chat")
+    Spring.SendCommands("unbind esc s44closechat")
     if WG.bindAnyEsc ~= nil then
         WG.bindAnyEsc(true)
     end
@@ -839,6 +839,7 @@ function widget:Initialize()
     Spring.SendCommands({"unbindkeyset alt+ctrl+s"})
     widgetHandler:AddAction("s44chatswitchspec", OnChatSwitchSpec)
     Spring.SendCommands({"bind alt+ctrl+s s44chatswitchspec"})
+    widgetHandler:AddAction("s44closechat", OnCancel)
 
     -- Set the widget size, which apparently were not working well
     x = WG.CHATBAROPTS.x * viewSizeX
@@ -986,6 +987,7 @@ function widget:Shutdown()
     widgetHandler:RemoveAction("s44chatswitchspec")
     Spring.SendCommands({"unbind alt+ctrl+s s44chatswitchspec"})
     Spring.SendCommands({"bind alt+ctrl+s chatswitchspec"})
+    widgetHandler:RemoveAction("s44closechat")
 end
 
 function widget:GetConfigData()
