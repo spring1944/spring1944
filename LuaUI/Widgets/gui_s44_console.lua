@@ -556,6 +556,14 @@ local function TextSendToSwitcher(self)
     end
 end
 
+local function __str_common(str1, str2, plain)
+    local str = str1
+    while str2:find(str, 1, plain) == nil do
+        str = str:sub(1, #str - 1)
+    end
+    return str
+end
+
 local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
     local msg
     if Spring.GetKeyCode("up") == key then
@@ -575,6 +583,42 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
         msg = sent_history[sent_history_index]
         if msg == nil then
             msg = ""
+        end
+    elseif Spring.GetKeyCode("tab") == key then
+        msg = self:GetText()
+        if msg == "" then
+            return
+        end
+        local last_word = msg:reverse():gmatch("%S+")():reverse()
+        -- The last word can be eventually followed by spaces or tabulators
+        local _, rindex = msg:reverse():find(last_word:reverse(), 1, true)
+        last_word = msg:sub(#msg - rindex  + 1)
+        Spring.Echo(last_word)
+        -- Look for all the players with the asked prefix
+        local candidates = {}
+        for _, stack in ipairs(main_players.children) do
+            for j = #stack.children,2,-1 do
+                if stack.children[j].playername:sub(1, #last_word) == last_word then
+                    candidates[#candidates + 1] = stack.children[j].playername
+                end
+            end
+        end
+        if #candidates == 0 then
+            -- Nothing can be done
+            return
+        end
+        -- Remove the last word from the message
+        msg = msg:sub(1, #msg - rindex)
+        -- Add as many characters as possible
+        if #candidates == 1 then
+            -- Perfect!
+            msg = msg .. candidates[1]
+        else
+            last_word = candidates[1]
+            for _, candidate in ipairs(candidates) do
+                last_word = __str_common(last_word, candidate, true)
+            end
+            msg = msg .. last_word
         end
     end
     if msg ~= nil then
