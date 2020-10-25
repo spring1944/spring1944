@@ -100,7 +100,7 @@ local function OnSwitchMute(self)
     self:SetCaption(name .. " " .. glyph)
 end
 
-local function __playerButton(name, color, spec)
+local function __playerButton(id, name, color, spec)
     local glyph = GLYPHS["unmuted"]
     if muted[name] then
         glyph = GLYPHS["muted"]
@@ -143,6 +143,7 @@ local function __playerButton(name, color, spec)
         OnClick = { OnSwitchMute, },
         parent = main_win,
         playername = name,
+        playerID = id,
         font = {
             outlineWidth  = 3,
             outlineWeight = 10,
@@ -162,7 +163,7 @@ local function setupPlayers(playerID)
         teamColors[name] = (spec and {1,1,1,1}) or {Spring.GetTeamColor(teamId)}
         for _, stack in ipairs(main_players.children) do
             for j = #stack.children,2,-1 do
-                if stack.children[j].playername == name then
+                if stack.children[j].playerID == playerID then
                     stack.children[j]:Dispose()
                 end
             end
@@ -177,7 +178,7 @@ local function setupPlayers(playerID)
             stack = main_players.children[1]
             allies[name] = playerID
         end
-        buttons_players[name] = __playerButton(name, teamColors[name], spec)
+        buttons_players[name] = __playerButton(playerID, name, teamColors[name], spec)
         stack:AddChild(buttons_players[name])
     else
         for _, stack in ipairs(main_players.children) do
@@ -197,7 +198,7 @@ local function setupPlayers(playerID)
                 stack = main_players.children[1]
                 allies[name] = id
             end
-            buttons_players[name] = __playerButton(name, teamColors[name], spec)
+            buttons_players[name] = __playerButton(id, name, teamColors[name], spec)
             stack:AddChild(buttons_players[name])
         end
     end
@@ -915,8 +916,24 @@ function widget:GameStart()
     setupPlayers()
 end
 
-function widget:PlayerChanged(playerID)
+function widget:PlayerAdded(playerID)
     setupPlayers(playerID)
+end
+
+function widget:PlayerRemoved(playerID)
+    local name = nil
+    for _, stack in ipairs(main_players.children) do
+        for j = #stack.children,2,-1 do
+            if stack.children[j].playerID == playerID then
+                name = stack.children[j].playername
+                stack.children[j]:Dispose()
+            end
+        end
+    end
+    if name ~= nil then
+        specs[name] = nil
+        allies[name] = nil
+    end
 end
 
 function widget:DrawScreen()
