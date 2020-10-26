@@ -565,7 +565,7 @@ local function __str_common(str1, str2, plain)
 end
 
 local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
-    local msg
+    local msg, cursor
     if Spring.GetKeyCode("up") == key then
         sent_history_index = sent_history_index - 1
         if sent_history_index < 0 then
@@ -586,44 +586,31 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
         end
     elseif Spring.GetKeyCode("tab") == key then
         msg = self:GetText()
+        cursor = self.cursor
+        -- Neglect the text after the cursor
+        local suffix = msg:sub(cursor)
+        msg = msg:sub(1, cursor - 1)
         if msg == "" then
             return
         end
-        local last_word = msg:reverse():gmatch("%S+")():reverse()
-        -- The last word can be eventually followed by spaces or tabulators
-        local _, rindex = msg:reverse():find(last_word:reverse(), 1, true)
-        last_word = msg:sub(#msg - rindex  + 1)
-        Spring.Echo(last_word)
-        -- Look for all the players with the asked prefix
+        -- Collect all the autocomplete possibilities
         local candidates = {}
         for _, stack in ipairs(main_players.children) do
             for j = #stack.children,2,-1 do
-                if stack.children[j].playername:sub(1, #last_word) == last_word then
-                    candidates[#candidates + 1] = stack.children[j].playername
-                end
+                candidates[#candidates + 1] = stack.children[j].playername
             end
         end
-        if #candidates == 0 then
-            -- Nothing can be done
-            return
-        end
-        -- Remove the last word from the message
-        msg = msg:sub(1, #msg - rindex)
-        -- Add as many characters as possible
-        if #candidates == 1 then
-            -- Perfect!
-            msg = msg .. candidates[1]
-        else
-            last_word = candidates[1]
-            for _, candidate in ipairs(candidates) do
-                last_word = __str_common(last_word, candidate, true)
-            end
-            msg = msg .. last_word
+        msg = Chili.Autocomplete(msg, candidates)
+        if msg ~= nil then
+            cursor = #msg + 1
+            msg = msg .. suffix
         end
     end
     if msg ~= nil then
         self:SetText(msg)
-        return
+    end
+    if cursor ~= nil then
+        self.cursor = cursor
     end
 end
 
