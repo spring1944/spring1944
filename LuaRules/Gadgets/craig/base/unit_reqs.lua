@@ -1,5 +1,5 @@
 -- Constants
-local MAX_DEPTH = 3
+local MAX_DEPTH = 4
 
 -- Sides
 local sideDefs = VFS.Include("gamedata/sidedata.lua")
@@ -160,16 +160,23 @@ function GetBuildChains(unitDefID, chain)
 end
 
 local cached_critical = {}
-function GetBuildCriticalLines(unitDefID)
+function GetBuildCriticalLines(unitDefID, min_depth)
+    -- min_depth > 1 effectively removes engineers building mines or factories
+    -- building units. That way, the base building manager may opt for building
+    -- more barracks to get more infantry
+    min_depth = min_depth ~= nil and min_depth or 2
+
     if cached_critical[unitDefID] then
         return cached_critical[unitDefID]
     end
     local chains = GetBuildChains(unitDefID)
     local critical = {}
     for _, chain in ipairs(chains) do
-        local target = chain.units[#chain.units]
-        if critical[target] == nil or critical[target].metal > chain.metal then
-            critical[target] = chain
+        if #chain.units >= min_depth then
+            local target = chain.units[#chain.units]
+            if critical[target] == nil or critical[target].metal > chain.metal then
+                critical[target] = chain
+            end
         end
     end
 

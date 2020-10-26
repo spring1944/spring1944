@@ -2,8 +2,8 @@ local damageDefs = VFS.Include("gamedata/damageDefs.lua")
 local smallarm = damageDefs.smallarm
 smallarm.armouredvehicles = 0.25  -- Because of the special rule in game_armor.lua
 
-function GetUnitScore(unitDefID, w_cost, w_cap, w_view, w_speed, w_supply,
-                                 w_armour, w_firepower, w_acccuracy,
+function GetUnitScore(unitDefID, w_cap, w_view, w_speed, w_supply,
+                                 w_armour, w_firepower, w_accuracy,
                                  w_penetration, w_range)
     local unitDef = UnitDefs[unitDefID]
     local type_armour = 1.0 - smallarm[unitDef.customParams.damageGroup] / 1.25
@@ -36,12 +36,12 @@ function GetUnitScore(unitDefID, w_cost, w_cap, w_view, w_speed, w_supply,
         end
     end
     return w_cap * unitDef.customParams.flagcaprate +
-           w_view * unitDef.sightDistance +
+           w_view * unitDef.sightDistance / 1000.0 +
            w_speed * unitDef.speed +
-           w_supply * (unitDef.customParams.supplyRange or 0)
+           w_supply * (unitDef.customParams.supplyRange or 0) / 1000.0
            w_armour * (type_armour + proper_armour) +
            w_firepower * firepower +
-           w_acccuracy * accuracy +
+           w_accuracy * accuracy +
            w_penetration * penetration +
            w_range * range
 end

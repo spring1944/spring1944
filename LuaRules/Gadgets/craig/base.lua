@@ -29,7 +29,18 @@ function CreateBaseMgr(myTeamID, myAllyTeamID, mySide, Log)
 local BaseMgr = {}
 
 -- speedups
+local random, min, max = math.random, math.min, math.max
 local GetUnitDefID = Spring.GetUnitDefID
+local GetGameSeconds = Spring.GetGameSeconds
+
+-- Squads
+local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
+local sortieDefs = VFS.Include("LuaRules/Configs/sortie_defs.lua")
+for name, data in sortieDefs do
+    squadDefs[name] = {
+        members = data.members
+    }
+end
 
 -- tools
 local buildsiteFinder = VFS.Include("LuaRules/Gadgets/craig/base/buildsite.lua")
@@ -63,29 +74,66 @@ local function GetBuildingChains()
         end
     end
 
-    -- Forget single node chains (Already available factories building the unit)
-    for target, chain in pairs(chains) do
-        if #chain.units == 1 then
-            chains[target] = nil
-        end
-    end
-
     return chains
 end
 
 -- Chain of units to reach the target
 local selected_chain = {}
+local w_ucost, wccost, w_cap, w_view, w_speed, w_supply, w_armour, w_firepower, w_accuracy, w_penetration, w_range
+local n_view = 0
 
-local function ChainScore()
-    
+local function __random_bounded(vmin, vmax)
+    return vmin + (vmax - vmin) * random()
+end
+
+local function UpdateScoreWeights()
+    local t = GetGameSeconds() / 900.0 + 1.0
+    w_ucost = -__random_bounded(0.0, 0.001) / t
+    w_ccost = -__random_bounded(0.0, 0.0003) / t
+    w_view = __random_bounded(max(0, 32 - n_view), max(0.25, 128 - n_view))
+    w_speed = __random_bounded(0.0, 0.01)
+    w_supply = __random_bounded(0.0, 0.05)
+    w_armour = __random_bounded(0.0, 0.2 * t)
+    w_firepower = __random_bounded(0.0, 0.1)
+    w_accuracy = __random_bounded(0.0, 0.02)
+    w_penetration = __random_bounded(0.0, 0.05 * t)
+    w_range = __random_bounded(0.0, 0.01 * t)
+end
+
+local function ChainScore(target, chain)
+    local udef = UnitDefNames[target]
+    local unit_cost = udef.buildCostMetal
+    local chain_cost = chain.metal - unit_cost
+
+    local score = w_ucost * unit_cost + w_ccost * chain_cost
+    if squadDefs[udef.name] == nil then
+        score = score + GetUnitScore(udef.id,
+                                     w_cap, w_view, w_speed, w_supply,
+                                     w_armour, w_firepower, w_acccuracy,
+                                     w_penetration, w_range)
+    else
+        for _, member in squadDefs[udef.name] do
+            score = score + GetUnitScore(UnitDefNames[member].id,
+                                         w_cap, w_view, w_speed, w_supply,
+                                         w_armour, w_firepower, w_acccuracy,
+                                         w_penetration, w_range)
+            
+        end
+    end
+    return score
 end
 
 local function SelectNewBuildingChain()
     local chains = GetBuildingChains()
-    local score = 0
-    for taret, chain in pairs(chains) do
-        local chain_score = ChainScore()
+    local selected, score = nil, 0
+    for target, chain in pairs(chains) do
+        local chain_score = ChainScore(target, chain)
+        if chain_score > score then
+            selected = chain
+            score = chain_score
+        end
     end
+    return selected
 end
 
 local baseBuildOptions = {} -- map of unitDefIDs (buildOption) to unitDefIDs (builders)
@@ -212,6 +260,9 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
         BuildBaseFinished()
     end
 
+    -- Upgrade the preferences indicators
+    n_view = n_view + UnitDefs[unitDefID].sightDistance / 1000.0
+
     if unit_reqs.IsConstructor(unitDefID) then
         -- keep track of all builders we've walking around
         myConstructors[unitID] = true
@@ -237,6 +288,9 @@ end
 
 function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     buildsiteFinder.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+
+    -- Upgrade the preferences indicators
+    n_view = n_view - UnitDefs[unitDefID].sightDistance / 1000.0
 
     if unit_reqs.IsConstructor(unitDefID) then
         myConstructors[unitID] = nil
