@@ -100,7 +100,7 @@ local function OnSwitchMute(self)
     self:SetCaption(name .. " " .. glyph)
 end
 
-local function __playerButton(name, color, spec)
+local function __playerButton(id, name, color, spec)
     local glyph = GLYPHS["unmuted"]
     if muted[name] then
         glyph = GLYPHS["muted"]
@@ -143,6 +143,7 @@ local function __playerButton(name, color, spec)
         OnClick = { OnSwitchMute, },
         parent = main_win,
         playername = name,
+        playerID = id,
         font = {
             outlineWidth  = 3,
             outlineWeight = 10,
@@ -162,7 +163,7 @@ local function setupPlayers(playerID)
         teamColors[name] = (spec and {1,1,1,1}) or {Spring.GetTeamColor(teamId)}
         for _, stack in ipairs(main_players.children) do
             for j = #stack.children,2,-1 do
-                if stack.children[j].playername == name then
+                if stack.children[j].playerID == playerID then
                     stack.children[j]:Dispose()
                 end
             end
@@ -177,7 +178,7 @@ local function setupPlayers(playerID)
             stack = main_players.children[1]
             allies[name] = playerID
         end
-        buttons_players[name] = __playerButton(name, teamColors[name], spec)
+        buttons_players[name] = __playerButton(playerID, name, teamColors[name], spec)
         stack:AddChild(buttons_players[name])
     else
         for _, stack in ipairs(main_players.children) do
@@ -197,7 +198,7 @@ local function setupPlayers(playerID)
                 stack = main_players.children[1]
                 allies[name] = id
             end
-            buttons_players[name] = __playerButton(name, teamColors[name], spec)
+            buttons_players[name] = __playerButton(id, name, teamColors[name], spec)
             stack:AddChild(buttons_players[name])
         end
     end
@@ -456,7 +457,7 @@ function ShowWin()
         -- WG.bindAnyEsc is provided by "1944 Quit menu" widget
         WG.bindAnyEsc(false)
     end
-    Spring.SendCommands("bind esc s44chat")
+    Spring.SendCommands("bind esc s44closechat")
 end
 
 function HideWin()
@@ -473,7 +474,7 @@ function HideWin()
     -- Show the default chat window
     chat_win:Show()
 
-    Spring.SendCommands("unbind esc s44chat")
+    Spring.SendCommands("unbind esc s44closechat")
     if WG.bindAnyEsc ~= nil then
         WG.bindAnyEsc(true)
     end
@@ -555,8 +556,16 @@ local function TextSendToSwitcher(self)
     end
 end
 
+local function __str_common(str1, str2, plain)
+    local str = str1
+    while str2:find(str, 1, plain) == nil do
+        str = str:sub(1, #str - 1)
+    end
+    return str
+end
+
 local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
-    local msg
+    local msg, cursor
     if Spring.GetKeyCode("up") == key then
         sent_history_index = sent_history_index - 1
         if sent_history_index < 0 then
@@ -575,10 +584,33 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
         if msg == nil then
             msg = ""
         end
+    elseif Spring.GetKeyCode("tab") == key then
+        msg = self:GetText()
+        cursor = self.cursor
+        -- Neglect the text after the cursor
+        local suffix = msg:sub(cursor)
+        msg = msg:sub(1, cursor - 1)
+        if msg == "" then
+            return
+        end
+        -- Collect all the autocomplete possibilities
+        local candidates = {}
+        for _, stack in ipairs(main_players.children) do
+            for j = #stack.children,2,-1 do
+                candidates[#candidates + 1] = stack.children[j].playername
+            end
+        end
+        msg = Chili.Autocomplete(msg, candidates)
+        if msg ~= nil then
+            cursor = #msg + 1
+            msg = msg .. suffix
+        end
     end
     if msg ~= nil then
         self:SetText(msg)
-        return
+    end
+    if cursor ~= nil then
+        self.cursor = cursor
     end
 end
 
@@ -839,6 +871,7 @@ function widget:Initialize()
     Spring.SendCommands({"unbindkeyset alt+ctrl+s"})
     widgetHandler:AddAction("s44chatswitchspec", OnChatSwitchSpec)
     Spring.SendCommands({"bind alt+ctrl+s s44chatswitchspec"})
+    widgetHandler:AddAction("s44closechat", OnCancel)
 
     -- Set the widget size, which apparently were not working well
     x = WG.CHATBAROPTS.x * viewSizeX
@@ -914,8 +947,24 @@ function widget:GameStart()
     setupPlayers()
 end
 
-function widget:PlayerChanged(playerID)
+function widget:PlayerAdded(playerID)
     setupPlayers(playerID)
+end
+
+function widget:PlayerRemoved(playerID)
+    local name = nil
+    for _, stack in ipairs(main_players.children) do
+        for j = #stack.children,2,-1 do
+            if stack.children[j].playerID == playerID then
+                name = stack.children[j].playername
+                stack.children[j]:Dispose()
+            end
+        end
+    end
+    if name ~= nil then
+        specs[name] = nil
+        allies[name] = nil
+    end
 end
 
 function widget:DrawScreen()
@@ -986,6 +1035,7 @@ function widget:Shutdown()
     widgetHandler:RemoveAction("s44chatswitchspec")
     Spring.SendCommands({"unbind alt+ctrl+s s44chatswitchspec"})
     Spring.SendCommands({"bind alt+ctrl+s chatswitchspec"})
+    widgetHandler:RemoveAction("s44closechat")
 end
 
 function widget:GetConfigData()

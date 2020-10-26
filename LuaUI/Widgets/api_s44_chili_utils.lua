@@ -145,6 +145,47 @@ function SetOpacity(control, opacity)
     end
 end
 
+local function __str_common(str1, str2, plain)
+    local str = str1
+    while str2:find(str, 1, plain) == nil do
+        str = str:sub(1, #str - 1)
+    end
+    return str
+end
+
+local function Autocomplete(text, alternatives)
+    -- Get the last word, i.e. the one to look for autocompletes. The last word
+    -- can be eventually followed by spaces or tabulators, that we must take
+    -- into account
+    local last_word = text:reverse():gmatch("%S+")():reverse()
+    local _, rindex = text:reverse():find(last_word:reverse(), 1, true)
+    last_word = text:sub(#text - rindex  + 1)
+    -- Look for all the alternatives with the asked prefix
+    local candidates = {}
+    for _, alternative in ipairs(alternatives) do
+        if alternative:sub(1, #last_word) == last_word then
+            candidates[#candidates + 1] = alternative
+        end
+    end
+    if #candidates == 0 then
+        return nil
+    end
+    -- Remove the last word from the message
+    text = text:sub(1, #text - rindex)
+    -- Add as many characters as possible
+    if #candidates == 1 then
+        -- Perfect!
+        text = text .. candidates[1]
+    else
+        last_word = candidates[1]
+        for _, candidate in ipairs(candidates) do
+            last_word = __str_common(last_word, candidate, true)
+        end
+        text = text .. last_word
+    end
+    return text
+end
+
 function widget:Initialize()
     if (not WG.Chili) then
         widgetHandler:RemoveWidget()
@@ -158,6 +199,7 @@ function widget:Initialize()
     WG.Chili.LockCustomizableWindows = LockCustomizableWindows
     WG.Chili.UnlockCustomizableWindows = UnlockCustomizableWindows
     WG.Chili.SetOpacity = SetOpacity
+    WG.Chili.Autocomplete = Autocomplete
 end
 
 function widget:Shutdown()
