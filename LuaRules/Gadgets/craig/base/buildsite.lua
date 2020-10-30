@@ -29,7 +29,7 @@ unitDef.customParams.buildrange defines the radius of the circle around this
 building on which the AI will try to build. (default: DEFAULT_BUILD_RANGE)
 --]]
 
-function CreateBuildsiteFinder(myTeamID)
+local function CreateBuildsiteFinder(myTeamID)
 
 -- keeping the original name may be easier
 -- when backporting fixes from the widget
@@ -368,9 +368,10 @@ function widget.FindBuildsite(builderID, unitDefID, closest)
 	return nil
 end
 
-Initialize()
-return widget
-
+    Initialize()
+    return widget
 end
 
-return CreateBuildsiteFinder()
+return {
+    CreateBuildsiteFinder = CreateBuildsiteFinder
+}

@@ -116,7 +116,7 @@ include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/intelligence.lua")
 
 -- locals
-local CRAIG_Debug_Team = nil -- Must be 0 or 1
+local CRAIG_Debug_Team = -1 -- Must be nil or a teamID
 local team = {}
 local lastFrame = 0 -- To avoid repeated calls to GameFrame()
 

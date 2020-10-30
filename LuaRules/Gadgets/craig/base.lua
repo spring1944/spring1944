@@ -7,7 +7,7 @@ interface methods.  Private data is stored in the function's closure.
 
 Public interface:
 
-local BaseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, mySide, Log)
+local BaseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, Log)
 
 function BaseMgr.GameFrame(f)
 function BaseMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
@@ -24,7 +24,7 @@ Possible improvements:
   allow it to truely expand exponentionally :-)
 ]]--
 
-function CreateBaseMgr(myTeamID, myAllyTeamID, mySide, Log)
+function CreateBaseMgr(myTeamID, myAllyTeamID, Log)
 
 local BaseMgr = {}
 
@@ -36,16 +36,17 @@ local GetGameSeconds = Spring.GetGameSeconds
 -- Squads
 local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
 local sortieDefs = VFS.Include("LuaRules/Configs/sortie_defs.lua")
-for name, data in sortieDefs do
+for name, data in pairs(sortieDefs) do
     squadDefs[name] = {
         members = data.members
     }
 end
 
 -- tools
-local buildsiteFinder = VFS.Include("LuaRules/Gadgets/craig/base/buildsite.lua")
+local buildsiteFinderModule = VFS.Include("LuaRules/Gadgets/craig/base/buildsite.lua")
 local unit_chains = VFS.Include("LuaRules/Gadgets/craig/base/unit_reqs.lua")
 local unit_scores = VFS.Include("LuaRules/Gadgets/craig/base/unit_score.lua")
+local buildsiteFinder = buildsiteFinderModule.CreateBuildsiteFinder(myTeamID)
 
 -- Base building capabilities
 local myConstructors = {}  -- Units which may build the base
@@ -66,7 +67,7 @@ local function GetBuildingChains()
         for target, chain in pairs(subchains) do
             if chains[target] == nil or chains[target].metal > chain.metal then
                 chains[target] = {
-                    builder = u,
+                    builder = unitID,
                     metal = chain.metal,
                     units = chain.units,
                 }
@@ -78,8 +79,8 @@ local function GetBuildingChains()
 end
 
 -- Chain of units to reach the target
-local selected_chain = {}
-local w_ucost, wccost, w_cap, w_view, w_speed, w_supply, w_armour, w_firepower, w_accuracy, w_penetration, w_range
+local selected_chain = nil
+local w_ucost, w_ccost, w_cap, w_view, w_speed, w_supply, w_armour, w_firepower, w_accuracy, w_penetration, w_range
 local n_view = 0
 
 local function __random_bounded(vmin, vmax)
@@ -90,6 +91,7 @@ local function UpdateScoreWeights()
     local t = GetGameSeconds() / 900.0 + 1.0
     w_ucost = -__random_bounded(0.0, 0.001) / t
     w_ccost = -__random_bounded(0.0, 0.0003) / t
+    w_cap = __random_bounded(0.0, 0.01)
     w_view = __random_bounded(max(0, 32 - n_view), max(0.25, 128 - n_view))
     w_speed = __random_bounded(0.0, 0.01)
     w_supply = __random_bounded(0.0, 0.05)
@@ -102,21 +104,21 @@ end
 
 local function ChainScore(target, chain)
     local udef = UnitDefNames[target]
-    local unit_cost = udef.buildCostMetal
+    local unit_cost = udef.metalCost
     local chain_cost = chain.metal - unit_cost
 
     local score = w_ucost * unit_cost + w_ccost * chain_cost
     if squadDefs[udef.name] == nil then
-        score = score + GetUnitScore(udef.id,
-                                     w_cap, w_view, w_speed, w_supply,
-                                     w_armour, w_firepower, w_acccuracy,
-                                     w_penetration, w_range)
+        score = score + unit_scores.GetUnitScore(udef.id,
+                                                 w_cap, w_view, w_speed, w_supply,
+                                                 w_armour, w_firepower, w_accuracy,
+                                                 w_penetration, w_range)
     else
-        for _, member in squadDefs[udef.name] do
-            score = score + GetUnitScore(UnitDefNames[member].id,
-                                         w_cap, w_view, w_speed, w_supply,
-                                         w_armour, w_firepower, w_acccuracy,
-                                         w_penetration, w_range)
+        for _, member in ipairs(squadDefs[udef.name].members) do
+            score = score + unit_scores.GetUnitScore(UnitDefNames[member].id,
+                                                     w_cap, w_view, w_speed, w_supply,
+                                                     w_armour, w_firepower, w_accuracy,
+                                                     w_penetration, w_range)
             
         end
     end
@@ -124,6 +126,7 @@ local function ChainScore(target, chain)
 end
 
 local function SelectNewBuildingChain()
+    UpdateScoreWeights()
     local chains = GetBuildingChains()
     local selected, score = nil, 0
     for target, chain in pairs(chains) do
@@ -136,96 +139,130 @@ local function SelectNewBuildingChain()
     return selected
 end
 
-local baseBuildOptions = {} -- map of unitDefIDs (buildOption) to unitDefIDs (builders)
-local baseBuildOptionsDirty = false
+-- Map of unitDefIDs (buildOption) to unitDefIDs (builders)
+local baseBuildOptions = {}
+
+local function updateBuildOptions(unitDefID)
+    if unitDefID == nil then
+        baseBuildOptions = {}
+        for u,_ in pairs(myConstructors) do
+            updateBuildOptions(GetUnitDefID(u))
+        end
+        for u,_ in pairs(myFactories) do
+            updateBuildOptions(GetUnitDefID(u))
+        end
+        return
+    end
+
+    for _,bo in ipairs(UnitDefs[unitDefID].buildOptions) do
+        if not baseBuildOptions[bo] then
+            Log("Base can now build ", UnitDefs[bo].humanName)
+            baseBuildOptions[bo] = unitDefID
+        end
+    end
+end
+
+-- Building stuff
 local currentBuildDefID     -- one unitDefID
 local currentBuildID        -- one unitID
 local currentBuilder        -- one unitID
-local bUseClosestBuildSite = true
+local useClosestBuildSite = true
+
+local function GetABuilder(unitDefID)
+    local builder = nil
+
+    local builder_udefid = baseBuildOptions[unitDefID]
+    for u,_ in pairs(myConstructors) do
+        if builder_udefid == GetUnitDefID(u) then
+            builder = u
+            break
+        end
+    end
+    if builder ~= nil then
+        for u,_ in pairs(myFactories) do
+            if builder_udefid == GetUnitDefID(u) then
+                builder = u
+                break
+            end
+        end
+    end
+    
+    return builder
+end
+
+local function StartChain()
+    local target_udef = UnitDefNames[selected_chain.units[1]]
+
+    -- Let's try to use the already known builder
+    local builder = selected_chain.builder
+    if not Spring.ValidUnitID(builder) or Spring.GetUnitIsDead(builder) then
+        builder = GetABuilder(target_udef.id)
+    end
+
+    if builder == nil then
+        -- No way to fulfill the asked building chain. Let's the AI select
+        -- another chain in the next GameFrame() call
+        selected_chain = nil
+        return
+    end
+
+    -- Ask all the constructors to aid the builder. This is also valid for
+    -- factories, so the constructors may try to repair the factory if it is
+    -- damaged by artillery
+    for u,_ in pairs(myConstructors) do
+        if u ~= builder then
+            GiveOrderToUnit(u, CMD.GUARD, {builder}, {})
+        end
+    end
+
+    -- How to build the unit depends mainly on the kind of builder
+    if unit_chains.IsConstructor(GetUnitDefID(builder)) then
+        local x,y,z,facing = buildsiteFinder.FindBuildsite(builder, target_udef.id, useClosestBuildSite)
+        if not x then
+            Log("Could not find buildsite for " .. target_udef.humanName)
+            -- Lets select a different chain
+            selected_chain = nil
+            return
+        end
+
+        Log("Queueing in place: ", target_udef.humanName)
+        GiveOrderToUnit(builder, -target_udef.id, {x,y,z,facing}, {})
+    else
+        Log("Queueing in place: ", target_udef.humanName)
+        GiveOrderToUnit(builder, -target_udef.id, {}, {})
+    end
+
+    currentBuildDefID = target_udef.id
+    currentBuilder = builder
+end
 
 local function BuildBaseFinished()
+    -- Upgrade the chain
+    selected_chain.builder = currentBuildID
+    table.remove(selected_chain.units, 1)
+    -- Restart the state variables
+    useClosestBuildSite = true
     currentBuildDefID = nil
     currentBuildID = nil
     currentBuilder = nil
+
+    if #selected_chain.units > 0 then
+        -- Continue the plan
+        StartChain()
+    else
+        -- A new chain shall be selected
+        selected_chain = nil
+    end
 end
 
 local function BuildBaseInterrupted()
     -- enforce randomized next buildsite, instead of
     -- hopelessly trying again and again on same place
-    bUseClosestBuildSite = false
-    baseBuildIndex = baseBuildIndex - 1
-    return BuildBaseFinished()
-end
-
-local function BuildBase()
-    if currentBuildDefID then
-        if #(Spring.GetUnitCommands(currentBuilder, 1) or {}) == 0 then
-            Log(UnitDefs[currentBuildDefID].humanName, " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
-            BuildBaseInterrupted()
-        end
-    end
-
-    -- nothing to do if something is still being build
-    if currentBuildDefID then return end
-
-    -- fix for infinite loop if baseBuildIndex <= 0
-    local count, maxcount = 1, #baseBuildOrder
-    local unitDefID
-    local newIndex = baseBuildIndex
-    repeat
-        newIndex = (newIndex % maxcount) + 1
-        unitDefID = baseBuildOrder[newIndex]
-        count = count + 1
-        -- if there's nothing to do anymore because all units are limited,
-        -- don't wander around but just wait until there's something to do again.
-        if (count > maxcount) then return end
-    until
-        -- check if Spring would block this build (unit restriction)
-        ((Spring.GetTeamUnitDefCount(myTeamID, unitDefID) or 0) < UnitDefs[unitDefID].maxThisUnit and
-        -- check if some part of the AI would block this build
-        gadget:AllowUnitCreation(unitDefID, nil, myTeamID))
-
-    local builderDefID = baseBuildOptions[unitDefID]
-    -- nothing to do if we have no builders available yet who can build this
-    if not builderDefID then Log("No builder available for ", UnitDefs[unitDefID].humanName) return end
-
-    local builders = {}
-    for u,_ in pairs(myConstructors) do
-        if (GetUnitDefID(u) == builderDefID) then
-            builders[#builders+1] = u
-        end
-    end
-
-    -- get a builder that isn't being build
-    local builderID
-    for _,u in ipairs(builders) do
-        local _,_,inBuild = Spring.GetUnitIsStunned(u)
-        if not inBuild then builderID = u break end
-    end
-    builderID = (builderID or builders[1])
-    if not builderID then Log("internal error: no builders were found") return end
-
-    -- give the order to the builder, iff we can find a buildsite
-    local x,y,z,facing = buildsiteFinder.FindBuildsite(builderID, unitDefID, bUseClosestBuildSite)
-    if not x then Log("Could not find buildsite for ", UnitDefs[unitDefID].humanName) return end
-
-    Log("Queueing in place: ", UnitDefs[unitDefID].humanName)
-    GiveOrderToUnit(builderID, -unitDefID, {x,y,z,facing}, {})
-
-    -- give guard order to all our other builders
-    for u,_ in pairs(myConstructors) do
-        if u ~= builderID then
-            GiveOrderToUnit(u, CMD.GUARD, {builderID}, {})
-        end
-    end
-
-    -- finally, register the build as started
-    baseBuildIndex = newIndex
-    currentBuildDefID = unitDefID
-    currentBuilder = builderID
-
-    -- assume next build can safely be close to the builder again
-    bUseClosestBuildSite = true
+    useClosestBuildSite = false
+    currentBuildDefID = nil
+    currentBuildID = nil
+    currentBuilder = nil
+    StartChain()
 end
 
 --------------------------------------------------------------------------------
@@ -235,16 +272,22 @@ end
 --
 
 function BaseMgr.GameFrame(f)
-    if #selected_chain == 0 then
+    if selected_chain == nil then
         selected_chain = SelectNewBuildingChain()
-        StartChain()
+        if selected_chain then
+            Log("Starting a new chain to reach " .. selected_chain.units[#selected_chain.units])
+            StartChain()
+        else
+            Log("No way I can build nothing new!!!")
+        end
+        return
+    end
+
+    if currentBuildDefID and #(Spring.GetUnitCommands(currentBuilder, 1) or {}) == 0 then
+        Log(UnitDefs[currentBuildDefID].humanName, " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
+        BuildBaseInterrupted()
     end
 end
-
---------------------------------------------------------------------------------
---
---  Unit call-ins
---
 
 function BaseMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
     buildsiteFinder.UnitCreated(unitID, unitDefID, unitTeam)
@@ -261,27 +304,20 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
     end
 
     -- Upgrade the preferences indicators
-    n_view = n_view + UnitDefs[unitDefID].sightDistance / 1000.0
+    n_view = n_view + UnitDefs[unitDefID].losRadius / 1000.0
 
-    if unit_reqs.IsConstructor(unitDefID) then
-        -- keep track of all builders we've walking around
+    if unit_chains.IsConstructor(unitDefID) then
         myConstructors[unitID] = true
-        -- update list of buildings we can build
-        for _,bo in ipairs(UnitDefs[unitDefID].buildOptions) do
-            if not baseBuildOptions[bo] then
-                Log("Base can now build ", UnitDefs[bo].humanName)
-                baseBuildOptions[bo] = unitDefID
-            end
-        end
-        -- give the builder a guard order on current builder
+        updateBuildOptions(unitDefID)
         if currentBuilder then
             GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
         end
         return true --signal Team.UnitFinished that we will control this unit
     end
 
-    if unit_reqs.IsFactory(unitDefID) then
+    if unit_chains.IsFactory(unitDefID) then
         myFactories[unitID] = true
+        updateBuildOptions(unitDefID)
         return false
     end
 end
@@ -290,35 +326,22 @@ function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attacker
     buildsiteFinder.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 
     -- Upgrade the preferences indicators
-    n_view = n_view - UnitDefs[unitDefID].sightDistance / 1000.0
-
-    if unit_reqs.IsConstructor(unitDefID) then
+    n_view = n_view - UnitDefs[unitDefID].losRadius / 1000.0
+    
+    if unit_chains.IsConstructor(unitDefID) then
         myConstructors[unitID] = nil
-        baseBuildOptionsDirty = true
+        updateBuildOptions()
     end
-
-    if unit_reqs.IsFactory(unitDefID) then
+    if unit_chains.IsFactory(unitDefID) then
         myFactories[unitID] = nil
+        updateBuildOptions()
     end
 
     -- update base building
-    if (unitDefID == currentBuildDefID) and ((not currentBuildID) or (unitID == currentBuildID)) then
+    if (currentBuildID ~= nil) and (unitID == currentBuildID) then
         Log("CurrentBuild destroyed")
         BuildBaseInterrupted()
     end
-    if unitID == currentBuilder then
-        Log("CurrentBuilder destroyed")
-        BuildBaseInterrupted()
-    end
-end
-
---------------------------------------------------------------------------------
---
---  Initialization
---
-
-if not baseBuildOrder then
-    error("C.R.A.I.G. is not configured properly to play as " .. mySide)
 end
 
 return BaseMgr

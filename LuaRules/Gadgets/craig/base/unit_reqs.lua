@@ -1,6 +1,19 @@
 -- Constants
 local MAX_DEPTH = 4
 
+-- Utils
+local function __split_str(inputstr, sep)
+    if sep == nil then
+        sep = "%s"
+    end
+    local t, i = {}, 1
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+        t[i] = str
+        i = i + 1
+    end
+    return t
+end
+
 -- Sides
 local sideDefs = VFS.Include("gamedata/sidedata.lua")
 
@@ -23,7 +36,7 @@ local function _is_morph_link(id)
         name = UnitDefs[id].name
     end
 
-    fields = __split_str(name, "_")
+    local fields = __split_str(name, "_")
     if #fields >= 4 and fields[2] == "morph" then
         return true
     end
@@ -42,7 +55,7 @@ local function _unit_name(id)
     end
 
     -- Morphing link resolution
-    fields = __split_str(name, "_")
+    local fields = __split_str(name, "_")
     if #fields >= 4 and _is_a_side(fields[1]) and fields[2] == "morph" then
         -- It is a morphing unit, see BuildMorphDef function in
         -- LuaRules/Gadgets/unit_morph. We are interested in the morphed
@@ -59,13 +72,13 @@ end
 
 -- Check if units are factories/constructors (so they can be further
 -- investigated)
-function IsFactory(unitDefID)
-    return UnitDefs[unitDefID].IsFactory
+local function IsFactory(unitDefID)
+    return UnitDefs[unitDefID].isFactory
 end
 
-function IsConstructor(unitDefID)
+local function IsConstructor(unitDefID)
     local unitDef = UnitDefs[unitDefID]
-    if UnitDefs[unitDefID].IsFactory or unitDef.speed == 0 then
+    if UnitDefs[unitDefID].isFactory or unitDef.speed == 0 then
         return false
     end
     local children = unitDef.buildOptions
@@ -85,8 +98,8 @@ end
 -- Chain setups
 local cached_chains = {}
 local current_depth = 0
-function GetBuildChains(unitDefID, chain)
-    if current_depth == 0 and cached_chains[unitDefID] ~= nil then        
+local function GetBuildChains(unitDefID, chain)
+    if current_depth == 0 and cached_chains[unitDefID] ~= nil then
         return cached_chains[unitDefID]
     end
 
@@ -96,7 +109,7 @@ function GetBuildChains(unitDefID, chain)
         return nil
     end
 
-    if not IsConstructor(unitDefID) or not IsFactory(unitDefID) then
+    if not IsConstructor(unitDefID) and not IsFactory(unitDefID) then
         current_depth = current_depth - 1
         return nil
     end
@@ -106,15 +119,15 @@ function GetBuildChains(unitDefID, chain)
     local children = unitDef.buildOptions
     local buildOptions = {}
     for _, c in ipairs(children) do
-        name = _unit_name(c)
+        local name = _unit_name(c)
         local udef = UnitDefNames[name]
         buildOptions[#buildOptions + 1] = {name=name,
                                            udef=udef,
-                                           metal=udef.buildCostMetal}
+                                           metal=udef.metalCost}
     end
     -- Add also the morphs
     if morphDefs[unitDef.name] ~= nil then
-        if morphDefs[startUnit].into ~= nil then
+        if morphDefs[unitDef.name].into ~= nil then
             -- Conveniently transform it in a single element table
             morphDefs[unitDef.name] = {morphDefs[unitDef.name]}
         end
@@ -130,19 +143,22 @@ function GetBuildChains(unitDefID, chain)
     -- Setup the new chains
     local chains = {}
     for i,child in ipairs(buildOptions) do
-        local new_chain = {units = {}, metal = chain.metal + child.metal}
-        for _, unit in ipairs(chain.units) do
+        local chain_metal = chain and chain.metal or 0
+        local chain_units = chain and chain.units or {}
+        local new_chain = {units = {}, metal = chain_metal + child.metal}
+        for _, unit in ipairs(chain_units) do
             new_chain.units[#new_chain.units + 1] = unit
         end
         new_chain.units[#new_chain.units + 1] = child.name
-        if not IsConstructor(child.udef.id) or not IsFactory(child.udef.id) then
+        if not IsConstructor(child.udef.id) and not IsFactory(child.udef.id) then
             chains[#chains + 1] = new_chain
         else
-            if IsConstructor(child.udef.id) and child.udef.customParams.flagcaprate > 0 then
+            local flagcaprate = child.udef.customParams.flagcaprate or 0
+            if IsConstructor(child.udef.id) and flagcaprate > 0 then
                 -- Rus commisars
                 chains[#chains + 1] = new_chain
             end
-            local subchains = GetPossibilities(child.udef.id, new_chain)
+            local subchains = GetBuildChains(child.udef.id, new_chain)
             if subchains ~= nil then
                 for _, subchain in ipairs(subchains) do
                     chains[#chains + 1] = subchain
@@ -160,7 +176,7 @@ function GetBuildChains(unitDefID, chain)
 end
 
 local cached_critical = {}
-function GetBuildCriticalLines(unitDefID, min_depth)
+local function GetBuildCriticalLines(unitDefID, min_depth)
     -- min_depth > 1 effectively removes engineers building mines or factories
     -- building units. That way, the base building manager may opt for building
     -- more barracks to get more infantry
