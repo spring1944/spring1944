@@ -68,7 +68,6 @@ local function GetBuildingChains()
         local subchains = unit_chains.GetBuildCriticalLines(unitDefID)
         for target, chain in pairs(subchains) do
             if chains[target] == nil or chains[target].metal > chain.metal then
-                Spring.Echo("    GetBuildingChains", target, #chain.units)
                 chains[target] = {
                     builder = unitID,
                     metal = chain.metal,
@@ -135,7 +134,6 @@ local function SelectNewBuildingChain()
     for target, chain in pairs(chains) do
         local chain_score = ChainScore(target, chain)
         if chain_score > score then
-            Spring.Echo("SelectNewBuildingChain", target, chain_score, #chain.units)
             selected = chain
             score = chain_score
         end
@@ -337,9 +335,6 @@ function BaseMgr.GameFrame(f)
     if selected_chain == nil then
         selected_chain = SelectNewBuildingChain()
         if selected_chain then
-            Spring.Echo(selected_chain)
-            Spring.Echo(selected_chain.units)
-            Spring.Echo(#selected_chain.units)
             Log("Starting a new chain to reach " .. selected_chain.units[#selected_chain.units])
             StartChain()
         else

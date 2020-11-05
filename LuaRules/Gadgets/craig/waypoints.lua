@@ -110,6 +110,8 @@ end
 --  2) adjacent to waypoints non-possesed by allies
 --  3) reachable from hq, without going through enemy waypoints
 local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
+    Log("Updating frontline for team " .. myTeamID .. "...")
+
     if dilate == nil then
         dilate = 2
     end
@@ -211,8 +213,14 @@ local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
         end
     end
 
-    -- "perform a Dijkstra" starting at HQ
+    -- Release all the connections departing from the HQ
     local hq = teamStartPosition[myTeamID]
+    blocked[hq] = nil
+    for a, edge in pairs(hq.adj) do
+        blocked[edge] = nil
+    end
+
+    -- "perform a Dijkstra" starting at HQ
     local previous = PathFinder.Dijkstra(waypoints, hq, blocked)
 
     -- now 'frontline' is intersection between 'marked' and 'previous'
@@ -431,15 +439,27 @@ function WaypointMgr.GameStart()
                     grid[i][j].valid = true
                     local gx, gy, gz = grid2world(i, j)
                     grid[i][j].waypoint = AddWaypoint(gx, gy, gz)
-                    -- Add the adjacent grid nodes to the parsing queue
-                    local candidates = adj_grid_nodes(i, j)
-                    for _, c in ipairs(candidates) do
-                        if grid[c[1]][c[2]].valid == nil then
-                            parse_queue[#parse_queue + 1] = c
+                end
+                teamStartPosition[t] = GetNearestWaypoint2D(x, z)
+                -- Add also the surrounding waypoints, to avoid failures in
+                -- TestMoveOrder() due to the already built HQ
+                local neighs = adj_grid_nodes(i, j)
+                for _, neigh in ipairs(neighs) do
+                    if grid[neigh[1]][neigh[2]].valid == nil then
+                        grid[neigh[1]][neigh[2]].valid = true
+                        local gx, gy, gz = grid2world(neigh[1], neigh[2])
+                        grid[neigh[1]][neigh[2]].waypoint = AddWaypoint(gx, gy, gz)
+                        AddConnection(grid[i][j].waypoint,
+                                      grid[neigh[1]][neigh[2]].waypoint)
+                        -- Add the adjacent grid nodes to the parsing queue
+                        local candidates = adj_grid_nodes(neigh[1], neigh[2])
+                        for _, c in ipairs(candidates) do
+                            if grid[c[1]][c[2]].valid == nil then
+                                parse_queue[#parse_queue + 1] = c
+                            end
                         end
                     end
                 end
-                teamStartPosition[t] = GetNearestWaypoint2D(x, z)
             end
         end
     end
@@ -486,6 +506,13 @@ function WaypointMgr.GameFrame(f)
         end
     end
 
+    -- Update the next frontline (lazy mode)
+    if #teams == 0 or f % FRONTLINE_UPDATE_PERIOD < .1 then
+        lastParsedFrontline = (lastParsedFrontline % #teams) + 1
+        frontlineCache[teams[lastParsedFrontline]] = nil
+    end
+
+    -- Update the way points, if available
     if #waypoints == 0 then
         return
     end
@@ -537,14 +564,6 @@ function WaypointMgr.GameFrame(f)
     elseif #occupationTeams > 1 then
         p.owner = nil
     end
-
-    -- Update the next frontline (lazy mode)
-    if #teams == 0 or f % FRONTLINE_UPDATE_PERIOD > .1 then
-        return
-    end
-
-    lastParsedFrontline = (lastParsedFrontline % #teams) + 1
-    frontlineCache[teams[lastParsedFrontline]] = nil
 end
 
 --------------------------------------------------------------------------------

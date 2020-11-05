@@ -193,7 +193,6 @@ local function GetBuildCriticalLines(unitDefID, min_depth)
     -- building units. That way, the base building manager may opt for building
     -- more barracks to get more infantry
     min_depth = min_depth ~= nil and min_depth or 2
-    Spring.Echo("GetBuildCriticalLines", min_depth)
 
     local chains = GetBuildChains(unitDefID)
     local critical = {}
@@ -201,7 +200,6 @@ local function GetBuildCriticalLines(unitDefID, min_depth)
         if #chain.units >= min_depth then
             local target = chain.units[#chain.units]
             if critical[target] == nil or critical[target].metal > chain.metal then
-                Spring.Echo("    GetBuildCriticalLines", target, #chain.units)
                 critical[target] = chain
             end
         end

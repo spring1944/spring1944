@@ -85,8 +85,6 @@ function Team.GameFrame(f)
         return
     end
 
-    --Log("GameFrame")
-
     baseMgr.GameFrame(f)
     flagsMgr.GameFrame(f)
     combatMgr.GameFrame(f)
@@ -111,9 +109,15 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
     --Spring.AddTeamResource(myTeamID, "energy", UnitDefs[unitDefID].energyCost)
 
     -- need to prefer flag capping over building to handle Russian commissars
-    if flagsMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
-    if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
-    if combatMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
+    if flagsMgr.UnitFinished(unitID, unitDefID, unitTeam) then
+        return
+    end
+    if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then
+        return
+    end
+    if combatMgr.UnitFinished(unitID, unitDefID, unitTeam) then
+        return
+    end
 end
 
 function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)

@@ -88,7 +88,6 @@ local function DoGiveOrdersToUnit(p, unitID, cmd, normal, spread, eta)
     local lx, lz = p.x - x, p.z - z
     local l = sqrt(lx * lx + lz * lz)
     local speed = l / eta
-    Spring.Echo(l, eta, speed, UnitDefs[GetUnitDefID(unitID)].speed / 30)
     GiveOrderToUnit(unitID, cmd, {p.x + dx, p.y, p.z + dz},  {})
     GiveOrderToUnit(unitID, CMD_SET_WANTED_MAX_SPEED, {speed}, {"shift"})
 end

@@ -92,13 +92,7 @@ end
 function Intelligence.GetTarget(x, z)
     local frontline, normals, previous = waypointMgr.GetFrontline(myTeamID, myAllyTeamID)
     local target, normal, score = nil, {0, 0}, -1
-    --[[
-    Spring.MarkerAddPoint(x, 200, z)
-    for i = 2,#frontline do
-        Spring.MarkerAddLine(frontline[i - 1].x, frontline[i - 1].y + 10, frontline[i - 1].z,
-                             frontline[i].x, frontline[i].y + 10, frontline[i].z)
-    end
-    --]]
+
     for i,waypoint in ipairs(frontline) do
         local dx, dz = waypoint.x - x, waypoint.z - z
         local r2 = (dx * dx + dz * dz) * DIST2_MULT
