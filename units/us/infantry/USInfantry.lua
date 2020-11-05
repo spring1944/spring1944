@@ -135,7 +135,6 @@ local US_Paratrooper = Infantry:New{
 return lowerkeys({
 	-- Regular Inf
 	["USHQEngineer"] = US_HQEngineer,
-	["USHQAIEngineer"] = US_HQEngineer:Clone("USHQEngineer"),
 	["USRifle"] = US_Rifle,
 	["USThompson"] = US_Thompson,
 	["USBAR"] = US_BAR,

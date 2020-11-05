@@ -116,7 +116,6 @@ local GER_Crew = CrewInf:New(GERInf):New{
 return lowerkeys({
 	-- Regular Inf
 	["GERHQEngineer"] = GER_HQEngineer,
-	["GERHQAIEngineer"] = GER_HQEngineer:Clone("GERHQEngineer"),
 	["GERRifle"] = GER_Rifle,
 	["GERMP40"] = GER_MP40,
 	["GERMG42"] = GER_MG42,

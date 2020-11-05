@@ -172,7 +172,6 @@ local JPN_Type4Mortar_Stationary = Deployed:New{
 return lowerkeys({
 	-- Regular Inf
 	["JPNHQEngineer"] = JPN_HQEngineer,
-	["JPNHQAIEngineer"] = JPN_HQEngineer:Clone("JPNHQEngineer"),
 	["JPNRifle"] = JPN_Rifle,
 	["JPNType100SMG"] = JPN_Type100SMG,
 	["JPNType99LMG"] = JPN_Type99LMG,

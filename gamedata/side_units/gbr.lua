@@ -29,25 +29,6 @@ local gbrunits = {
 	--"pontoonbridge",
   },
 
-  gbrhqaiengineer =
-  {
-    "gbrbarracks",
-    "gbrvehicleyard",
-    "gbrgunyard",
-    "gbrradar",
-    "gbrstorage",
-    "gbratminesign",
-    "gbrapminesign",
-    "gbrtankobstacle",
-    "gbrspyard",
-    "gbrspyard1",
-    "gbrtankyard1",
-    "gbrtankyard2",
-    "gbrassaultboat",
-    "gbrpontoonraft",
-  --"pontoonbridge",
-  },
-
   gbrbarracks =
   {
     "gbrhqengineer",

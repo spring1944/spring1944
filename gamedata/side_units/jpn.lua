@@ -16,27 +16,6 @@ local jpnunits =
     "jpnpontoonraft",
   },
 
-  jpnhqaiengineer =
-  {
-    "jpnvehicleyard",
-    "jpnbarracks",
-	"jpntent",
-    "jpngunyard",
-    "jpnstorage",
-    "jpnradar",
-    "jpnatminesign",
-    "jpnapminesign",
-    "jpntankobstacle",
-    "jpnassaultboat",
-    "jpnpontoonraft",
-    "jpnvehicleyard1",
-    "jpnvehicleyard2",
-    "jpnspyard",
-    "jpnspyard1",
-    "jpntankyard1",
-    "jpntankyard2",
-  },
-
 	jpnriki =
 	{
 		"jpnbarracks",

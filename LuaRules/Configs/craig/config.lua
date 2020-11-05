@@ -20,6 +20,26 @@ local function NameToID(name)
 	end
 end
 
+-- Converts UnitDefName array to UnitDefID array, raises an error if a name is
+-- not valid.
+local function NameArrayToIdArray(array)
+	local newArray = {}
+	for i,name in ipairs(array) do
+		newArray[i] = NameToID(name)
+	end
+	return newArray
+end
+
+-- Converts UnitDefName array to UnitDefID map, raises an error if a name is
+-- not valid.
+local function NameArrayToIdSet(array)
+	local newSet = {}
+	for i,name in ipairs(array) do
+		newSet[NameToID(name)] = true
+	end
+	return newSet
+end
+
 -- Converts an array of UnitDefNames to an array of UnitDefIDs.
 function UnitArray(t)
 	local newArray = {}
@@ -45,31 +65,6 @@ function UnitBag(t)
 		newBag[NameToID(k)] = v
 	end
 	return newBag
-end
-
-local function NameToID(name)
-	local unitDef = UnitDefNames[name]
-	if unitDef then
-		return unitDef.id
-	else
-		error("Bad unitname: " .. name)
-	end
-end
-
-local function NameArrayToIdArray(array)
-	local newArray = {}
-	for i,name in ipairs(array) do
-		newArray[i] = NameToID(name)
-	end
-	return newArray
-end
-
-local function NameArrayToIdSet(array)
-	local newSet = {}
-	for i,name in ipairs(array) do
-		newSet[NameToID(name)] = true
-	end
-	return newSet
 end
 
 -- This lists all the units that should be considered flags.

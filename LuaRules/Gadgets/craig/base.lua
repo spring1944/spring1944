@@ -232,7 +232,7 @@ local function StartChain()
         Log("Queueing in place: ", target_udef.humanName, " [", x, ", ", y, ", ", z, "] ", facing)
         GiveOrderToUnit(builder, -target_udef.id, {x,y,z,facing}, {})
     else
-        Log("Queueing in factory: ", target_udef.humanName)
+        Log("Queueing in factory: ", target_udef.name, ", ", target_udef.humanName)
         GiveOrderToUnit(builder, -target_udef.id, {}, {})
         -- Regardless it is a morph or a proper unit, we are storing the
         -- unitDefID in the queue. If later on it is created as a unit to be
@@ -305,7 +305,7 @@ local function IdleFactory(unitID)
         return        
     end
 
-    Log("Queueing in factory: ", UnitDefs[selected].humanName)
+    Log("Queueing in factory: ", UnitDefs[selected].name, ", ", UnitDefs[selected].humanName, selected)
     GiveOrderToUnit(unitID, -selected, {}, {})
     -- For the time being, add the unitDefID to the queue. Later on, when the
     -- actual unit is created to be built, we are replacing this by the actual
