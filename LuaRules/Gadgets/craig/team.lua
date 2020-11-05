@@ -37,11 +37,8 @@ local TEAMS_UPDATE_LAG = 16      -- In frames (16 ~ 0.5 seconds)
 -- Number of enemies
 local enemies_number = 0
 
--- Base building (one global buildOrder)
+-- Base building
 local baseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, Log)
-
--- Unit building (one buildOrder per factory)
-local unitBuildOrder = gadget.unitBuildOrder
 
 -- Unit limits
 local unitLimitsMgr = CreateUnitLimitsMgr(myTeamID)

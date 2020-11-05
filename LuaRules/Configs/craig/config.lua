@@ -1,6 +1,10 @@
 -- Author: Tobi Vollebregt
 -- License: GNU General Public License v2
 
+-- Misc config
+FLAG_RADIUS = 230 --from S44 game_flagManager.lua
+SQUAD_SIZE = 10
+
 --------------------------------------------------------------------------------
 --
 --  Data structures (constructor syntax)
@@ -43,19 +47,67 @@ function UnitBag(t)
 	return newBag
 end
 
+local function NameToID(name)
+	local unitDef = UnitDefNames[name]
+	if unitDef then
+		return unitDef.id
+	else
+		error("Bad unitname: " .. name)
+	end
+end
+
+local function NameArrayToIdArray(array)
+	local newArray = {}
+	for i,name in ipairs(array) do
+		newArray[i] = NameToID(name)
+	end
+	return newArray
+end
+
+local function NameArrayToIdSet(array)
+	local newSet = {}
+	for i,name in ipairs(array) do
+		newSet[NameToID(name)] = true
+	end
+	return newSet
+end
+
+-- This lists all the units that should be considered flags.
+gadget.flags = NameArrayToIdSet(UnitSet{
+	"flag",
+})
+
+-- Number of units per side used to cap flags.
+gadget.reservedFlagCappers = {
+	gbr = 24,
+	ger = 24,
+	us  = 24,
+	ita = 24,
+	jpn = 24,
+	rus = 2,
+	swe = 24,
+	hun = 24,
+}
+
+-- This lists all the units (of all sides) that may be used to cap flags.
+-- NOTE: To be removed and automatically parsed
+gadget.flagCappers = NameArrayToIdSet(UnitSet{
+	"gbrrifle", "gbrsten",
+	"gerrifle", "germp40",
+	"itarifle", "itam38",
+	"usrifle", "usthompson",
+	"jpnrifle", "jpntype100smg",
+	"ruscommissar", --no commander because it is needed for base building
+	"swerifle",
+	"hunrifle",
+})
+
 --------------------------------------------------------------------------------
 --
 --  Include configuration
 --
 
 local dir = "LuaRules/Configs/craig/s44/"
-
-if (gadgetHandler:IsSyncedCode()) then
-	-- SYNCED
-else
-	-- UNSYNCED
-	include(dir .. "buildorder.lua")
-end
 
 -- both SYNCED and UNSYNCED
 include(dir .. "unitlimits.lua")
