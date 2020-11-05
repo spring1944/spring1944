@@ -14,7 +14,7 @@ function gadget:GetInfo()
         author = "Tobi Vollebregt",
         date = "2009-02-12",
         license = "GNU General Public License",
-          layer = 1,
+        layer = 1,
         enabled = true
     }
 end
@@ -358,17 +358,18 @@ end
 
 -- Set up LUA AI framework.
 callInList = {
-    "GamePreload",
+    --"GamePreload",
     --"GameStart",
-    "GameFrame",
-    "TeamDied",
-    "UnitCreated",
-    "UnitFinished",
-    "UnitDestroyed",
-    "UnitTaken",
-    "UnitGiven",
-    "UnitIdle",
-    "UnitEnteredLos",
-    "UnitLeftLos",
+    --"GameFrame",
+    --"TeamDied",
+    --"UnitCreated",
+    --"UnitFinished",
+    --"UnitDestroyed",
+    --"UnitTaken",
+    --"UnitGiven",
+    --"UnitIdle",
+    --"UnitEnteredLos",
+    --"UnitLeftLos",
 }
-return include("LuaRules/Gadgets/craig/framework.lua")
+
+VFS.Include("LuaRules/Gadgets/craig/framework.lua", nil, VFS.ZIP)

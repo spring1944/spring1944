@@ -124,31 +124,6 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
     --Spring.AddTeamResource(myTeamID, "metal", UnitDefs[unitDefID].metalCost)
     --Spring.AddTeamResource(myTeamID, "energy", UnitDefs[unitDefID].energyCost)
 
-    -- queue unitBuildOrders if we have any for this unitDefID
-    if unitBuildOrder[unitDefID] then
-        -- factory or builder?
-        if not (UnitDefs[unitDefID].speed > 0) then
-            -- If there are no enemies, don't bother lagging Spring to death:
-            -- just go through the build queue exactly once, instead of repeating it.
-            if (enemies_number > 0 or Spring.GetGameSeconds() < 0.1) then
-                GiveOrderToUnit(unitID, CMD.REPEAT, {1}, {})
-            end
-            for _,bo in ipairs(unitBuildOrder[unitDefID]) do
-                if bo and UnitDefs[bo] then
-                    Log("Queueing: ", UnitDefs[bo].humanName)
-                    GiveOrderToUnit(unitID, -bo, {}, {})
-                else
-                    Spring.Echo("CRAIG: invalid buildorder found: " .. UnitDefs[unitDefID].humanName .. " -> " .. (bo or 'nil'))
-                end
-            end
-        else
-            Log("Warning: unitBuildOrder can only be used to control factories")
-        end
-    end
-
-    -- if any unit manager takes care of the unit, return
-    -- managers are in order of preference
-
     -- need to prefer flag capping over building to handle Russian commissars
     if flagsMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end
     if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then return end

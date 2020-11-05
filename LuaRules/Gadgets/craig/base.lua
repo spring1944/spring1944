@@ -30,8 +30,10 @@ local BaseMgr = {}
 
 -- speedups
 local random, min, max = math.random, math.min, math.max
-local GetUnitDefID = Spring.GetUnitDefID
-local GetGameSeconds = Spring.GetGameSeconds
+local GetUnitDefID       = Spring.GetUnitDefID
+local GetGameSeconds     = Spring.GetGameSeconds
+local GetUnitCommands    = Spring.GetUnitCommands
+local GetFactoryCommands = Spring.GetFactoryCommands
 
 -- Squads
 local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
@@ -50,7 +52,7 @@ local buildsiteFinder = buildsiteFinderModule.CreateBuildsiteFinder(myTeamID)
 
 -- Base building capabilities
 local myConstructors = {}  -- Units which may build the base
-local myFactories = {}     -- Factories already available (to shortcut chains)
+local myFactories = {}     -- Factories already available, with their queue
 
 local function GetBuildingChains()
     local producers = {}
@@ -66,6 +68,7 @@ local function GetBuildingChains()
         local subchains = unit_chains.GetBuildCriticalLines(unitDefID)
         for target, chain in pairs(subchains) do
             if chains[target] == nil or chains[target].metal > chain.metal then
+                Spring.Echo("    GetBuildingChains", target, #chain.units)
                 chains[target] = {
                     builder = unitID,
                     metal = chain.metal,
@@ -132,6 +135,7 @@ local function SelectNewBuildingChain()
     for target, chain in pairs(chains) do
         local chain_score = ChainScore(target, chain)
         if chain_score > score then
+            Spring.Echo("SelectNewBuildingChain", target, chain_score, #chain.units)
             selected = chain
             score = chain_score
         end
@@ -225,11 +229,18 @@ local function StartChain()
             return
         end
 
-        Log("Queueing in place: ", target_udef.humanName)
+        Log("Queueing in place: ", target_udef.humanName, " [", x, ", ", y, ", ", z, "] ", facing)
         GiveOrderToUnit(builder, -target_udef.id, {x,y,z,facing}, {})
     else
-        Log("Queueing in place: ", target_udef.humanName)
+        Log("Queueing in factory: ", target_udef.humanName)
         GiveOrderToUnit(builder, -target_udef.id, {}, {})
+        -- Regardless it is a morph or a proper unit, we are storing the
+        -- unitDefID in the queue. If later on it is created as a unit to be
+        -- built, we are then replacing the value by the unitID
+        if myFactories[builder] == nil then
+            myFactories[builder] = {}
+        end
+        myFactories[builder][#myFactories[builder] + 1] = -target_udef.id
     end
 
     currentBuildDefID = target_udef.id
@@ -265,6 +276,57 @@ local function BuildBaseInterrupted()
     StartChain()
 end
 
+-- Factories handling
+local unitBuiltBy = {}
+
+local function IdleFactory(unitID)
+    if #myFactories[unitID] > 0 then
+        -- We still have work to do...
+        return
+    end
+
+    -- Evaluate the build options
+    local unitDefID = GetUnitDefID(unitID)
+    UpdateScoreWeights()
+    local selected, score = nil, 0
+    for _, optDefID in ipairs(UnitDefs[unitDefID].buildOptions) do
+        local optDef = UnitDefs[optDefID]
+        local chain_phony = {metal=optDef.metalCost}
+        local optName = optDef.name
+        local chain_score = ChainScore(optName, chain_phony)
+        if chain_score > score then
+            selected = optDefID
+            score = chain_score
+        end
+    end
+
+    if selected == nil then
+        -- Nothing to do
+        return        
+    end
+
+    Log("Queueing in factory: ", UnitDefs[selected].humanName)
+    GiveOrderToUnit(unitID, -selected, {}, {})
+    -- For the time being, add the unitDefID to the queue. Later on, when the
+    -- actual unit is created to be built, we are replacing this by the actual
+    -- unitID
+    myFactories[unitID][#myFactories[unitID] + 1] = -selected
+end
+
+local function isBuilderIdle(unitID)
+    if myFactories[unitID] ~= nil then
+        local isIdle = (GetFactoryCommands(unitID, 0) or 0) == 0
+        if isIdle then
+            myFactories[unitID] = {}
+        end
+        return isIdle
+    elseif myConstructors[unitID] ~= nil then
+        return (GetUnitCommands(unitID, 0) or 0) == 0
+    end
+
+    return nil
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -275,6 +337,9 @@ function BaseMgr.GameFrame(f)
     if selected_chain == nil then
         selected_chain = SelectNewBuildingChain()
         if selected_chain then
+            Spring.Echo(selected_chain)
+            Spring.Echo(selected_chain.units)
+            Spring.Echo(#selected_chain.units)
             Log("Starting a new chain to reach " .. selected_chain.units[#selected_chain.units])
             StartChain()
         else
@@ -283,7 +348,7 @@ function BaseMgr.GameFrame(f)
         return
     end
 
-    if currentBuildDefID and #(Spring.GetUnitCommands(currentBuilder, 1) or {}) == 0 then
+    if currentBuildDefID and isBuilderIdle(currentBuilder) then
         Log(UnitDefs[currentBuildDefID].humanName, " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
         BuildBaseInterrupted()
     end
@@ -295,6 +360,17 @@ function BaseMgr.UnitCreated(unitID, unitDefID, unitTeam, builderID)
     if (not currentBuildID) and (unitDefID == currentBuildDefID) and (builderID == currentBuilder) then
         currentBuildID = unitID
     end
+
+    if myFactories[builderID] ~= nil then
+        unitBuiltBy[unitID] = builderID
+        -- Replace the unitDefID in the queue by the actual unitID
+        for i, udefid in ipairs(myFactories[builderID]) do
+            if -udefid == unitDefID then
+                myFactories[builderID][i] = unitID
+                return
+            end
+        end
+    end
 end
 
 function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
@@ -303,9 +379,19 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
         BuildBaseFinished()
     end
 
+    local factory = unitBuiltBy[unitID]
+    if factory ~= nil then
+        unitBuiltBy[unitID] = nil
+        if #myFactories[factory] > 0 then
+            table.remove(myFactories[factory], 1)
+        end
+        IdleFactory(factory)
+    end
+
     -- Upgrade the preferences indicators
     n_view = n_view + UnitDefs[unitDefID].losRadius / 1000.0
 
+    -- Add the new constructors
     if unit_chains.IsConstructor(unitDefID) then
         myConstructors[unitID] = true
         updateBuildOptions(unitDefID)
@@ -316,14 +402,32 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
     end
 
     if unit_chains.IsFactory(unitDefID) then
-        myFactories[unitID] = true
+        Log("New factory: ", UnitDefs[unitDefID].humanName)
         updateBuildOptions(unitDefID)
+        if myFactories[unitID] == nil then
+            myFactories[unitID] = {}
+        end
+        IdleFactory(unitID)
         return false
     end
 end
 
 function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     buildsiteFinder.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+
+    if (currentBuildID ~= nil) and (unitID == currentBuildID) then
+        Log("CurrentBuild destroyed")
+        BuildBaseInterrupted()
+    end
+
+    local factory = unitBuiltBy[unitID]
+    if factory ~= nil then
+        unitBuiltBy[unitID] = nil
+        if #myFactories[factory] > 0 then
+            table.remove(myFactories[factory], 1)
+        end
+        IdleFactory(factory)
+    end
 
     -- Upgrade the preferences indicators
     n_view = n_view - UnitDefs[unitDefID].losRadius / 1000.0
@@ -335,12 +439,6 @@ function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attacker
     if unit_chains.IsFactory(unitDefID) then
         myFactories[unitID] = nil
         updateBuildOptions()
-    end
-
-    -- update base building
-    if (currentBuildID ~= nil) and (unitID == currentBuildID) then
-        Log("CurrentBuild destroyed")
-        BuildBaseInterrupted()
     end
 end
 

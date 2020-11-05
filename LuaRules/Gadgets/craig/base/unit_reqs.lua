@@ -73,7 +73,20 @@ end
 -- Check if units are factories/constructors (so they can be further
 -- investigated)
 local function IsFactory(unitDefID)
-    return UnitDefs[unitDefID].isFactory
+    local unitDef = UnitDefs[unitDefID]
+    if not unitDef.isFactory then
+        return false
+    end
+
+    -- Avoid "factories" which only have morphing options, like storages
+    local children = unitDef.buildOptions
+    for _, c in ipairs(children) do
+        if not _is_morph_link(c) then
+            return true
+        end
+    end
+
+    return false
 end
 
 local function IsConstructor(unitDefID)
@@ -175,28 +188,25 @@ local function GetBuildChains(unitDefID, chain)
     return chains
 end
 
-local cached_critical = {}
 local function GetBuildCriticalLines(unitDefID, min_depth)
     -- min_depth > 1 effectively removes engineers building mines or factories
     -- building units. That way, the base building manager may opt for building
     -- more barracks to get more infantry
     min_depth = min_depth ~= nil and min_depth or 2
+    Spring.Echo("GetBuildCriticalLines", min_depth)
 
-    if cached_critical[unitDefID] then
-        return cached_critical[unitDefID]
-    end
     local chains = GetBuildChains(unitDefID)
     local critical = {}
     for _, chain in ipairs(chains) do
         if #chain.units >= min_depth then
             local target = chain.units[#chain.units]
             if critical[target] == nil or critical[target].metal > chain.metal then
+                Spring.Echo("    GetBuildCriticalLines", target, #chain.units)
                 critical[target] = chain
             end
         end
     end
 
-    cached_critical[unitDefID] = critical
     return critical
 end
 
