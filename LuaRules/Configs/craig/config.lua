@@ -96,13 +96,3 @@ gadget.flagCappers = NameArrayToIdSet(UnitSet{
 	"swerifle",
 	"hunrifle",
 })
-
---------------------------------------------------------------------------------
---
---  Include configuration
---
-
-local dir = "LuaRules/Configs/craig/s44/"
-
--- both SYNCED and UNSYNCED
-include(dir .. "unitlimits.lua")

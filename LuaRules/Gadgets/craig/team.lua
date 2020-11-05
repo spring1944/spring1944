@@ -40,9 +40,6 @@ local enemies_number = 0
 -- Base building
 local baseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, Log)
 
--- Unit limits
-local unitLimitsMgr = CreateUnitLimitsMgr(myTeamID)
-
 -- Combat units control
 local heatmapMgr = CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
 local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, Log)
@@ -94,14 +91,6 @@ function Team.GameFrame(f)
     flagsMgr.GameFrame(f)
     combatMgr.GameFrame(f)
 end
-
---------------------------------------------------------------------------------
---
---  Game call-ins
---
-
--- Short circuit callin which would otherwise only forward the call..
-Team.AllowUnitCreation = unitLimitsMgr.AllowUnitCreation
 
 --------------------------------------------------------------------------------
 --

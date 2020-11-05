@@ -41,22 +41,6 @@ if (gadgetHandler:IsSyncedCode()) then
 --  SYNCED
 --
 
--- globals
-local unitLimits = {}
-
--- include code
-include("LuaRules/Gadgets/craig/unitlimits.lua")
-
-function gadget:GamePreload()
-    -- Initialise unit limit for all AI teams.
-    local name = gadget:GetInfo().name
-    for _,t in ipairs(Spring.GetTeamList()) do
-        if Spring.GetTeamLuaAI(t) ==  name then
-            unitLimits[t] = CreateUnitLimitsMgr(t)
-        end
-    end
-end
-
 local function Refill(myTeamID, resource)
     if (gadget.difficulty ~= "easy") then
         local value,storage = Spring.GetTeamResources(myTeamID, resource)
@@ -82,13 +66,6 @@ function gadget:GameFrame(f)
     end
 end
 
-function gadget:AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
-    if unitLimits[builderTeam] then
-        return unitLimits[builderTeam].AllowUnitCreation(unitDefID)
-    end
-    return true
-end
-
 else
 
 --------------------------------------------------------------------------------
@@ -109,7 +86,6 @@ include("LuaRules/Gadgets/craig/base.lua")
 include("LuaRules/Gadgets/craig/combat.lua")
 include("LuaRules/Gadgets/craig/flags.lua")
 include("LuaRules/Gadgets/craig/pathfinder.lua")
-include("LuaRules/Gadgets/craig/unitlimits.lua")
 include("LuaRules/Gadgets/craig/heatmap.lua")
 include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
@@ -273,16 +249,6 @@ function gadget:TeamDied(teamID)
     --for _,t in pairs(team) do
     --    t.TeamDied(teamID)
     --end
-end
-
--- This is not called by Spring, only the synced version of this function is
--- called by Spring.  This unsynced version is here to allow the AI itself to
--- determine whether a unit creation would be allowed.
-function gadget:AllowUnitCreation(unitDefID, builderID, builderTeam, x, y, z)
-    if team[builderTeam] then
-        return team[builderTeam].AllowUnitCreation(unitDefID)
-    end
-    return true
 end
 
 --------------------------------------------------------------------------------
