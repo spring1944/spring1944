@@ -68,25 +68,25 @@ function UnitBag(t)
 end
 
 -- This lists all the units that should be considered flags.
-gadget.flags = NameArrayToIdSet(UnitSet{
+gadget.flags = UnitSet{
 	"flag",
-})
+}
 
 -- Number of units per side used to cap flags.
 gadget.reservedFlagCappers = {
-	gbr = 24,
-	ger = 24,
-	us  = 24,
-	ita = 24,
-	jpn = 24,
+	gbr = SQUAD_SIZE,
+	ger = SQUAD_SIZE,
+	us  = SQUAD_SIZE,
+	ita = SQUAD_SIZE,
+	jpn = SQUAD_SIZE,
 	rus = 2,
-	swe = 24,
-	hun = 24,
+	swe = SQUAD_SIZE,
+	hun = SQUAD_SIZE,
 }
 
 -- This lists all the units (of all sides) that may be used to cap flags.
 -- NOTE: To be removed and automatically parsed
-gadget.flagCappers = NameArrayToIdSet(UnitSet{
+gadget.flagCappers = UnitSet{
 	"gbrrifle", "gbrsten",
 	"gerrifle", "germp40",
 	"itarifle", "itam38",
@@ -95,4 +95,4 @@ gadget.flagCappers = NameArrayToIdSet(UnitSet{
 	"ruscommissar", --no commander because it is needed for base building
 	"swerifle",
 	"hunrifle",
-})
+}
