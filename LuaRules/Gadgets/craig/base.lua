@@ -67,7 +67,7 @@ local function GetBuildingChains()
     for unitDefID, unitID in pairs(producers) do
         local subchains = unit_chains.GetBuildCriticalLines(unitDefID)
         for target, chain in pairs(subchains) do
-            if chains[target] == nil or chains[target].metal > chain.metal then
+            if (chains[target] == nil) or (chains[target].metal > chain.metal) then
                 chains[target] = {
                     builder = unitID,
                     metal = chain.metal,
@@ -82,8 +82,65 @@ end
 
 -- Chain of units to reach the target
 local selected_chain = nil
-local w_ucost, w_ccost, w_cap, w_view, w_speed, w_supply, w_armour, w_firepower, w_accuracy, w_penetration, w_range
 local n_view = 0
+local evolution = gadget.evolution
+local w_ucost
+local f_ucost = -0.001
+evolution.AddParam("f_ucost_0", 0.5)
+evolution.AddParam("f_ucost_t", 0.5)
+evolution.AddParam("f_ucost_v", 0.5)
+local w_ccost
+local f_ccost = -0.0005
+evolution.AddParam("f_ccost_0", 0.5)
+evolution.AddParam("f_ccost_t", 0.5)
+evolution.AddParam("f_ccost_v", 0.5)
+local w_cap
+local f_cap = 0.01
+evolution.AddParam("f_cap_0", 0.5)
+evolution.AddParam("f_cap_t", 0.5)
+evolution.AddParam("f_cap_v", 0.5)
+local w_view
+local f_view = 1.0
+evolution.AddParam("f_view_0", 0.5)
+evolution.AddParam("f_view_t", 0.5)
+evolution.AddParam("f_view_v", 0.5)
+local w_speed
+local f_speed = 0.01
+evolution.AddParam("f_speed_0", 0.5)
+evolution.AddParam("f_speed_t", 0.5)
+local w_supply
+local f_supply = 0.05
+evolution.AddParam("f_supply_0", 0.5)
+evolution.AddParam("f_supply_t", 0.5)
+local w_armour
+local f_armour = 0.2
+evolution.AddParam("f_armour_0", 0.5)
+evolution.AddParam("f_armour_t", 0.5)
+local w_firepower
+local f_firepower = 0.1
+evolution.AddParam("f_firepower_0", 0.5)
+evolution.AddParam("f_firepower_t", 0.5)
+local w_accuracy
+local f_accuracy = 0.02
+evolution.AddParam("f_accuracy_0", 0.5)
+evolution.AddParam("f_accuracy_t", 0.5)
+local w_penetration
+local f_penetration = 0.05
+evolution.AddParam("f_penetration_0", 0.5)
+evolution.AddParam("f_penetration_t", 0.5)
+local w_range
+local f_range = 0.01
+evolution.AddParam("f_range_0", 0.5)
+evolution.AddParam("f_range_t", 0.5)
+
+
+local function __evalScoreWeight(factor, name, t, v)
+    local v = v or 0
+    local w = (evolution.GetParam(myTeamID, name .. "_0") or 0) +
+              (evolution.GetParam(myTeamID, name .. "_t") or 0) * t +
+              (evolution.GetParam(myTeamID, name .. "_v") or 0) * v
+    return factor * w
+end
 
 local function __random_bounded(vmin, vmax)
     return vmin + (vmax - vmin) * random()
@@ -91,17 +148,19 @@ end
 
 local function UpdateScoreWeights()
     local t = GetGameSeconds() / 900.0 + 1.0
-    w_ucost = -__random_bounded(0.0, 0.001) / t
-    w_ccost = -__random_bounded(0.0, 0.0003) / t
-    w_cap = __random_bounded(0.0, 0.01)
-    w_view = __random_bounded(max(0, 32 - n_view), max(0.25, 128 - n_view))
-    w_speed = __random_bounded(0.0, 0.01)
-    w_supply = __random_bounded(0.0, 0.05)
-    w_armour = __random_bounded(0.0, 0.2 * t)
-    w_firepower = __random_bounded(0.0, 0.1)
-    w_accuracy = __random_bounded(0.0, 0.02)
-    w_penetration = __random_bounded(0.0, 0.05 * t)
-    w_range = __random_bounded(0.0, 0.01 * t)
+    local mCurr, mStor, mPull, mInco = Spring.GetTeamResources(myTeamID, "metal")
+    local eCurr, eStor = Spring.GetTeamResources(myTeamID, "energy")
+    w_ucost = __evalScoreWeight(f_ucost, "f_ucost", t, mInco)
+    w_ccost = __evalScoreWeight(f_ccost, "f_ccost", t, mInco)
+    w_cap = __evalScoreWeight(f_cap, "f_cap", t)
+    w_view = __evalScoreWeight(f_view, "f_view", t, n_view / 100)
+    w_speed = __evalScoreWeight(f_speed, "f_speed", t)
+    w_supply = __evalScoreWeight(f_supply, "f_supply", t)
+    w_armour = __evalScoreWeight(f_armour, "f_armour", t)
+    w_firepower = __evalScoreWeight(f_firepower, "f_firepower", t)
+    w_accuracy = __evalScoreWeight(f_accuracy, "f_accuracy", t)
+    w_penetration = __evalScoreWeight(f_penetration, "f_penetration", t)
+    w_range = __evalScoreWeight(f_range, "f_range", t)
 end
 
 local function ChainScore(target, chain)

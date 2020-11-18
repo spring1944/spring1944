@@ -14,6 +14,21 @@ local function __split_str(inputstr, sep)
     return t
 end
 
+local function __deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[__deepcopy(orig_key)] = __deepcopy(orig_value)
+        end
+        setmetatable(copy, __deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
 -- Sides
 local sideDefs = VFS.Include("gamedata/sidedata.lua")
 
@@ -112,8 +127,8 @@ end
 local cached_chains = {}
 local current_depth = 0
 local function GetBuildChains(unitDefID, chain)
-    if current_depth == 0 and cached_chains[unitDefID] ~= nil then
-        return cached_chains[unitDefID]
+    if (current_depth == 0) and (cached_chains[unitDefID] ~= nil) then
+        return __deepcopy(cached_chains[unitDefID])
     end
 
     current_depth = current_depth + 1
@@ -183,7 +198,7 @@ local function GetBuildChains(unitDefID, chain)
     -- Store the result and return
     current_depth = current_depth - 1
     if current_depth == 0 then
-        cached_chains[unitDefID] = chains
+        cached_chains[unitDefID] = __deepcopy(chains)
     end
     return chains
 end
@@ -197,9 +212,13 @@ local function GetBuildCriticalLines(unitDefID, min_depth)
     local chains = GetBuildChains(unitDefID)
     local critical = {}
     for _, chain in ipairs(chains) do
+        local units_str = ""
+        for _, u in ipairs(chain.units) do
+            units_str = units_str .. u .. " -> "
+        end
         if #chain.units >= min_depth then
             local target = chain.units[#chain.units]
-            if critical[target] == nil or critical[target].metal > chain.metal then
+            if (critical[target] == nil) or (critical[target].metal > chain.metal) then
                 critical[target] = chain
             end
         end

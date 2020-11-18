@@ -76,10 +76,15 @@ else
 
 --constants
 local MY_PLAYER_ID = Spring.GetMyPlayerID()
+local FIX_CONFIG_FOLDER = "LuaRules/Configs/craig"
+local CONFIG_FOLDER = "LuaRules/Config/craig"
+local SAVE_PERIOD = 30 * 60  -- Save once per minute
 
 -- globals
 waypointMgr = {}
+evolution = {}
 intelligences = {}  -- One per team
+
 
 -- include code
 include("LuaRules/Gadgets/craig/base.lua")
@@ -90,6 +95,7 @@ include("LuaRules/Gadgets/craig/heatmap.lua")
 include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/intelligence.lua")
+include("LuaRules/Gadgets/craig/evolution.lua")
 
 -- locals
 local CRAIG_Debug_Team = -1 -- Must be nil or a teamID
@@ -119,6 +125,9 @@ local function SetupCmdChangeAIDebugVerbosity()
 end
 
 function gadget.IsDebug(teamID)
+    if teamID == nil then
+        return CRAIG_Debug_Team ~= nil
+    end
     return CRAIG_Debug_Team == teamID
 end
 
@@ -133,6 +142,29 @@ function gadget.Warning(...)
     Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
 end
 
+-- To read/save data, they replace widgets GetConfigData() and SetConfigData()
+-- callins
+function SetConfigData()
+    local data = {}
+    if VFS.FileExists(CONFIG_FOLDER .. "/evolution.lua") then
+        data = VFS.Include(CONFIG_FOLDER .. "/evolution.lua")
+    elseif VFS.FileExists(FIX_CONFIG_FOLDER .. "/evolution.lua") then
+        data = VFS.Include(FIX_CONFIG_FOLDER .. "/evolution.lua")
+    end
+    if data.evolution ~= nil then
+        evolution.SetConfigData(data.evolution)
+    end
+end
+
+function GetConfigData()
+    local new_data = {}
+    new_data.evolution = evolution.GetConfigData()
+
+    Script.LuaUI.CraigGetConfigData(CONFIG_FOLDER,
+                                    "evolution.lua",
+                                    table.serialize(new_data))
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -144,6 +176,7 @@ end
 --  gadget:GamePreload
 --  gadget:UnitCreated (for each HQ / comm)
 --  gadget:GameStart
+--  gadget:GameFrame
 
 function gadget:Initialize()
     setmetatable(gadget, {
@@ -151,12 +184,14 @@ function gadget:Initialize()
         __newindex = function() error("Attempt to write undeclared global variable", 2) end,
     })
     SetupCmdChangeAIDebugVerbosity()
+    evolution = CreateEvolution()
+    SetConfigData()
 end
 
 function gadget:GamePreload()
     -- This is executed BEFORE headquarters / commander is spawned
     Log("gadget:GamePreload")
-    -- Intialise waypoint manager
+    GetConfigData()
     waypointMgr = CreateWaypointMgr()
 end
 
@@ -181,10 +216,11 @@ local function CreateTeams()
                     end
                 end
                 if (side) then
-                    -- Intialise intelligence
+                    -- Intialise intelligence and new evolution individue
                     intelligences[t] = CreateIntelligence(t, at)
 
                     team[t] = CreateTeam(t, at, side)
+                    evolution.Procreate(t)
                     team[t].GameStart()
                     -- Call UnitCreated and UnitFinished for the units we have.
                     -- (the team didn't exist when those were originally called)
@@ -222,6 +258,10 @@ function gadget:GameFrame(f)
         for _, intelligence in pairs(intelligences) do
             intelligence.GameStart()
         end
+    end
+
+    if f % SAVE_PERIOD < 0.01 then
+        GetConfigData()
     end
 
     waypointMgr.GameFrame(f)
@@ -264,6 +304,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+    evolution.UnitFinished(unitID, unitDefID, unitTeam)
     if team[unitTeam] then
         team[unitTeam].UnitFinished(unitID, unitDefID, unitTeam)
     end
@@ -273,6 +314,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    evolution.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     for teamID, t in pairs(team) do
         t.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
@@ -320,7 +362,6 @@ function gadget:UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weap
 end
 
 end
-
 
 -- Set up LUA AI framework.
 callInList = {

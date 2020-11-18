@@ -30,7 +30,7 @@ local FLAG_RADIUS     = FLAG_RADIUS
 local WAYPOINT_RADIUS = FLAG_RADIUS
 local WAYPOINT_HEIGHT = 100
 local REF_UNIT_DEF = UnitDefNames["gerrifle"] -- Reference unit to check paths
-local FRONTLINE_UPDATE_PERIOD = 30  -- In frames (30 ~ 1 seconds)
+local FRONTLINE_UPDATE_PERIOD = 100  -- In frames
 
 -- speedups
 local Log = Log
@@ -113,7 +113,7 @@ local function CalculateFrontline(myTeamID, myAllyTeamID, dilate)
     Log("Updating frontline for team " .. myTeamID .. "...")
 
     if dilate == nil then
-        dilate = 2
+        dilate = 3
     end
 
     -- Get the allied and enemy actual control areas
