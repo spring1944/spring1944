@@ -182,7 +182,8 @@ function CombatMgr.GameFrame(f)
         local x, z = avgPosUnitArray(unitArray)
         local target, normal, previous = intelligence.GetTarget(x, z)
         if target ~= nil then
-            for i = 1, 2 do
+            target = waypointMgr.GetNext(target, normal[1], normal[2])
+            for i = 1, 3 do
                 local gx, gz = heatmapMgr.FirepowerGradient(target.x, target.z)
                 local l2 = gx * gx + gz * gz
                 if l2 < FEAR_THRESHOLD * FEAR_THRESHOLD then
@@ -191,7 +192,6 @@ function CombatMgr.GameFrame(f)
                 -- Let's retreat
                 local l = sqrt(l2)
                 target = waypointMgr.GetNext(target, -gx / l, -gz / l)
-                
             end
             if target and (target ~= p) then
                 local orig = waypointMgr.GetNearestWaypoint2D(x, z)

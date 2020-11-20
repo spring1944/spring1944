@@ -82,7 +82,7 @@ local SAVE_PERIOD = 30 * 60  -- Save once per minute
 
 -- globals
 waypointMgr = {}
-evolution = {}
+base_gann = {}
 intelligences = {}  -- One per team
 
 
@@ -95,7 +95,7 @@ include("LuaRules/Gadgets/craig/heatmap.lua")
 include("LuaRules/Gadgets/craig/team.lua")
 include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/intelligence.lua")
-include("LuaRules/Gadgets/craig/evolution.lua")
+include("LuaRules/Gadgets/craig/gann/gann.lua")
 
 -- locals
 local CRAIG_Debug_Team = -1 -- Must be nil or a teamID
@@ -146,23 +146,23 @@ end
 -- callins
 function SetConfigData()
     local data = {}
-    if VFS.FileExists(CONFIG_FOLDER .. "/evolution.lua") then
-        data = VFS.Include(CONFIG_FOLDER .. "/evolution.lua")
-    elseif VFS.FileExists(FIX_CONFIG_FOLDER .. "/evolution.lua") then
-        data = VFS.Include(FIX_CONFIG_FOLDER .. "/evolution.lua")
+    if VFS.FileExists(CONFIG_FOLDER .. "/craig.lua") then
+        data = VFS.Include(CONFIG_FOLDER .. "/craig.lua")
+    elseif VFS.FileExists(FIX_CONFIG_FOLDER .. "/craig.lua") then
+        data = VFS.Include(FIX_CONFIG_FOLDER .. "/craig.lua")
     end
-    if data.evolution ~= nil then
-        evolution.SetConfigData(data.evolution)
+    if data.base_gann ~= nil then
+        base_gann.SetConfigData(data.base_gann)
     end
 end
 
 function GetConfigData()
-    local new_data = {}
-    new_data.evolution = evolution.GetConfigData()
+    local data = {}
+    data.base_gann = base_gann.GetConfigData()
 
     Script.LuaUI.CraigGetConfigData(CONFIG_FOLDER,
-                                    "evolution.lua",
-                                    table.serialize(new_data))
+                                    "craig.lua",
+                                    table.serialize(data))
 end
 
 --------------------------------------------------------------------------------
@@ -184,7 +184,14 @@ function gadget:Initialize()
         __newindex = function() error("Attempt to write undeclared global variable", 2) end,
     })
     SetupCmdChangeAIDebugVerbosity()
-    evolution = CreateEvolution()
+
+    base_gann = CreateGANN()
+    local base_gann_inputs = VFS.Include("/home/pepe/spring1944/spring1944/LuaRules/Gadgets/craig/base/gann_inputs.lua")
+    for _, input in ipairs(base_gann_inputs) do
+        base_gann.DeclareInput(input)
+    end
+    base_gann.DeclareOutput("score")
+
     SetConfigData()
 end
 
@@ -216,11 +223,11 @@ local function CreateTeams()
                     end
                 end
                 if (side) then
-                    -- Intialise intelligence and new evolution individue
+                    -- Intialise intelligence and the gann individual
                     intelligences[t] = CreateIntelligence(t, at)
-
+                    base_gann.Procreate(t)
+                    -- Create the team
                     team[t] = CreateTeam(t, at, side)
-                    evolution.Procreate(t)
                     team[t].GameStart()
                     -- Call UnitCreated and UnitFinished for the units we have.
                     -- (the team didn't exist when those were originally called)
@@ -304,7 +311,6 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
-    evolution.UnitFinished(unitID, unitDefID, unitTeam)
     if team[unitTeam] then
         team[unitTeam].UnitFinished(unitID, unitDefID, unitTeam)
     end
@@ -314,7 +320,7 @@ function gadget:UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    evolution.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    base_gann.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     waypointMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     for teamID, t in pairs(team) do
         t.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
