@@ -4,6 +4,11 @@ local iconTypes = {
         size     = 0, --5,
         distance = 5000,
     },
+    pistol = {
+        bitmap   = "icons/pistol.tga",
+        size     = 1.0,
+        distance = 0.15,
+    },
     rifle = {
         bitmap   = "icons/rifle.tga",
         size     = 1.65,

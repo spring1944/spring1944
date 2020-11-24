@@ -103,6 +103,16 @@ local HUN_Observ = ObservInf:New(HUNInf):New{
 	},
 }
 
+local HUN_Crew = CrewInf:New(HUNInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "feg37m",
+		},
+		[2] = { -- Grenade
+			name				= "Model24",
+		},
+	},
+}
 
 return lowerkeys({
 	-- Regular Inf
@@ -118,4 +128,5 @@ return lowerkeys({
 	["HUNPanzerschrek"] = HUN_PanzerSchrek,
 	["HUNMortar"] = HUN_Mortar,
 	["HUNObserv"] = HUN_Observ,
+	["HUNCrew"] = HUN_Crew,
 })

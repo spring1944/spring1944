@@ -93,6 +93,17 @@ local GBR_Observ = ObservInf:New(GBRInf):New{
 	},
 }
 
+local GBR_Crew = CrewInf:New(GBRInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "Webley",
+		},
+		[2] = { -- Grenade
+			name				= "No69",
+		},
+	},
+}
+
 -- Still inheriting GBRInf even though I'm overriding the maxDamageMul,
 -- so if anyone adds something there it'll change commandos as well.
 local GBR_Commando = SMGInf:New(GBRInf):New{
@@ -141,6 +152,7 @@ return lowerkeys({
 	["GBRPIAT"] = GBR_PIAT,
 	["GBR3InMortar"] = GBR_3InMortar,
 	["GBRObserv"] = GBR_Observ,
+	["GBRCrew"] = GBR_Crew,
 	-- Glider Inf
 	["GBRParaRifle"] = GBR_Rifle:New{},
 	["GBRParaSTEN"] = GBR_STEN:New{},

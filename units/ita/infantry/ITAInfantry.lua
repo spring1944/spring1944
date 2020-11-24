@@ -114,6 +114,17 @@ local ITA_Observ = ObservInf:New(ITAInf):New{
 	},
 }
 
+local ITA_Crew = CrewInf:New(ITAInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "BerettaM1934",
+		},
+		[2] = { -- Grenade
+			name				= "OTO_model35",
+		},
+	},
+}
+
 -- Bersaglieri
 local ITA_BersaglieriRifle = ITA_Rifle:Clone("ITARifle"):New(Bersaglieri):New{
 	name				= "Carcano Mod.91/41 Rifle",
@@ -233,6 +244,7 @@ return lowerkeys({
 	["ITAPanzerFaust"] = ITA_PanzerFaust,
 	["ITAMortar"] = ITA_Mortar,
 	["ITAObserv"] = ITA_Observ,
+	["ITACrew"] = ITA_Crew,
 	-- Bersaglieri
 	["ITABersaglieriRifle"] = ITA_BersaglieriRifle,
 	["ITABersaglieriM38"] = ITA_BersaglieriM38,

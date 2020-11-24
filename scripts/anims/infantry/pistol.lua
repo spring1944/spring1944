@@ -136,45 +136,45 @@ local stances = {
 				},
 	stand_aim = {
 					turns = {
-						{head, x_axis, 0},
+						{head, x_axis, math.rad(15)},
 						{head, y_axis, 0},
 						{head, z_axis, 0},
-						
-						{ruparm, x_axis, 0},
-						{ruparm, y_axis, math.rad(50)},
-						{ruparm, z_axis, math.rad(-70)},
 
-						{luparm, x_axis, math.rad(-50)},
-						{luparm, y_axis, math.rad(40)},
-						{luparm, z_axis, 0},
+						{luparm, x_axis, math.rad(-45)},
+						{luparm, y_axis, math.rad(10)},
+						{luparm, z_axis, math.rad(-25)},
 						
-						{rloarm, x_axis, math.rad(-50)},
+						{lloarm, x_axis, math.rad(10)},
+						{lloarm, y_axis, math.rad(65)},
+						{lloarm, z_axis, math.rad(-60)},
+
+						{ruparm, x_axis, math.rad(-75)},
+						{ruparm, y_axis, math.rad(80)},
+						{ruparm, z_axis, math.rad(-55)},
+						
+						{rloarm, x_axis, math.rad(-10)},
 						{rloarm, y_axis, 0},
 						{rloarm, z_axis, 0},
 
-						{lloarm, x_axis, math.rad(-20)},
-						{lloarm, y_axis, 0},
-						{lloarm, z_axis, math.rad(-50)},
-						
-						{gun, x_axis, 0},
-						{gun, y_axis, 0},
-						{gun, z_axis, math.rad(-10)},
+						{gun, x_axis, math.rad(5)},
+						{gun, y_axis, math.rad(-10)},
+						{gun, z_axis, math.rad(15)},
 
-						{torso, y_axis, 0},
-						{torso, z_axis, math.rad(10)},
+						{torso, y_axis, math.rad(-20)},
+						{torso, z_axis, math.rad(5)},
 
 						{pelvis, x_axis, 0},
 						{pelvis, z_axis, 0},
 
-						{rthigh, x_axis, 0},
+						{rthigh, x_axis, math.rad(-5)},
 						{rthigh, y_axis, 0},
 						{rthigh, z_axis, 0},
 
-						{lthigh, x_axis, 0},
+						{lthigh, x_axis, math.rad(10)},
 						{lthigh, y_axis, 0},
 						{lthigh, z_axis, 0},
 						
-						{rleg, x_axis, 0},
+						{rleg, x_axis, math.rad(-5)},
 						{rleg, y_axis, 0},
 						{rleg, z_axis, 0},
 
@@ -182,6 +182,9 @@ local stances = {
 						{lleg, y_axis, 0},
 						{lleg, z_axis, 0},
 
+						{lfoot, x_axis, math.rad(-10)},
+						{lfoot, y_axis, 0},
+						{lfoot, z_axis, 0},
 					},
 					moves = {
 						{pelvis, y_axis, 0},
@@ -224,8 +227,7 @@ local stances = {
 				},
 	kf_stand_fire = {
 					turns = {
-						{ruparm , y_axis, math.rad(30)},
-						{rloarm , x_axis, math.rad(-75)},
+						{rloarm , x_axis, math.rad(-20)},
 					},
 					emit = true,
 	},

@@ -120,6 +120,17 @@ local SWE_Observ = ObservInf:New(SWEInf):New{
 	},
 }
 
+local SWE_Crew = CrewInf:New(SWEInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "HusqvarnaM40",
+		},
+		[2] = { -- Grenade
+			name				= "Model24",
+		},
+	},
+}
+
 -- Swedish partisan
 local Partisan = {
 	maxDamageMul		= 0.40,
@@ -176,6 +187,7 @@ return lowerkeys({
 	["SWEPSkottM45"] = SWE_PSkottM45,
 	["SWEMortar"] = SWE_Mortar,
 	["SWEObserv"] = SWE_Observ,
+	["SWECrew"] = SWE_Crew,
 	["SWEPvlvM40"] = SWE_PvlvM40_Mobile,
 	["SWEPartisan"] = SWE_Partisan,
 })

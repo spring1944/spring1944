@@ -116,6 +116,58 @@ combination of a short range sub-machinegun and grenades.]],
 }
 
 -- Support & Specialists
+local ObservInf = Infantry:New{
+	name				= "Scout",
+	description			= "Reconnaisance Infantry",
+	iconType			= "officer",
+	buildCostMetal		= 50, -- TODO: needed?
+	fireState			= 1,
+	cloakCost			= 0,
+	cloakCostMoving		= 0,
+	minCloakDistance	= 160,
+
+	customParams = {
+		wiki_subclass_comments = [[This unit is not intended to can directly
+cause casualties, but to provide line of sight to another longer range weapons
+which may inflict significant damage from a safe position. This unit may sneak
+into enemy lines, since it cannot be detected until enemy comes close to him.
+When a good observation point is reached, this unit may use the binoculars to
+spot an specific area (use attack command to do that). Take care, while using
+the binoculars this unit is not invisible anymore. Don't try to use the unit as
+cloacked scout, because it has a very short sight range.]],
+	},
+
+	weapons = {
+		[1] = { -- Binocs
+			name				= "Binocs",
+		},
+	},
+}
+
+local CrewInf = Infantry:New{
+	name				= "Crew",
+	objectName			= "<SIDE>/<NAME>.dae",
+	description			= "Crew member",
+	iconType			= "pistol",
+	buildCostMetal		= 50, -- TODO: needed?
+
+	customParams = {
+		wiki_subclass_comments = [[A crew member that has scaped from a
+compromised situation. Crew members are equiped just with a hand gun, which
+make them of very little use in combat, although they still can use grenades,
+so they can be of some help during infantry assaults.]],
+	},
+
+	weapons = {
+		[1] = { -- Pistol
+			maxAngleDif			= 170,
+		},
+		[2] = { -- Grenade
+			maxAngleDif			= 170,
+		},
+	},
+}
+
 local LMGInf = Infantry:New{
 	description			= "Light Infantry Fire Support",
 	iconType			= "lightmg",
@@ -181,35 +233,6 @@ On the other hand, this unit is not able to damage structures or vehicles]],
 		},
 	},
 }
-
-local ObservInf = Infantry:New{
-	name				= "Scout",
-	description			= "Reconnaisance Infantry",
-	iconType			= "officer",
-	buildCostMetal		= 50, -- TODO: needed?
-	fireState			= 1,
-	cloakCost			= 0,
-	cloakCostMoving		= 0,
-	minCloakDistance	= 160,
-
-	customParams = {
-		wiki_subclass_comments = [[This unit is not intended to can directly
-cause casualties, but to provide line of sight to another longer range weapons
-which may inflict significant damage from a safe position. This unit may sneak
-into enemy lines, since it cannot be detected until enemy comes close to him.
-When a good observation point is reached, this unit may use the binoculars to
-spot an specific area (use attack command to do that). Take care, while using
-the binoculars this unit is not invisible anymore. Don't try to use the unit as
-cloacked scout, because it has a very short sight range.]],
-	},
-
-	weapons = {
-		[1] = { -- Binocs
-			name				= "Binocs",
-		},
-	},
-}
-
 
 local MedMortarInf = Infantry:New{
 	description			= "Heavy Infantry Fire Support",
@@ -404,13 +427,14 @@ return {
 	RifleInf = RifleInf,
 	SMGInf = SMGInf,
 	-- Support & Specialists
+	ObservInf = ObservInf,
+	CrewInf = CrewInf,
 	LMGInf = LMGInf,
 	HMGInf = HMGInf,
 	SniperInf = SniperInf,
 	LightMortarInf = LightMortarInf,
 	MedMortarInf = MedMortarInf,
 	FlameInf = FlameInf,
-	ObservInf = ObservInf,
 	-- Anti-Tank
 	ATLauncherInf = ATLauncherInf,
 	ATGrenadeInf = ATGrenadeInf,
