@@ -47,7 +47,6 @@ local function ApplyManipulationData(base, data)
 end
 
 local mainAnim = GG.lusHelper[unitDefID].mainAnimation
-Spring.Echo("mainAnim", mainAnim)
 local tags, poses, keyframes, keyframeDelays = include("anims/gun/" .. mainAnim .. ".lua")
 
 

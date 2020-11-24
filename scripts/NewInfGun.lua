@@ -345,7 +345,6 @@ function ToggleWeapon(num, isEnabled)
     weaponEnabled[num] = isEnabled
 end
 
-
 function script.TransportPickup(passengerID)
     -- Add the pax to the first available slot
     passengers = passengers + 1
@@ -360,6 +359,7 @@ function script.TransportPickup(passengerID)
     -- Attach the unit to the found slot
     local p = GetCrewPosition(i)
     AttachUnit(p, passengerID)
+    Spring.SetUnitNoMinimap(passengerID, true)
     if p == -1 then
         SetUnitNoDraw(passengerID, true)
     end
@@ -377,7 +377,9 @@ function script.TransportDrop(passengerID, x, y, z)
         end
     end
     -- Drop the unit
-    DropUnit(passengerID)
+    Spring.UnitScript.DropUnit(passengerID)
+    Spring.GiveOrderToUnit(passengerID, CMD.MOVE, {x,y,z}, {})
     -- Ensure the unit is visible again
     SetUnitNoDraw(passengerID, false)
+    Spring.SetUnitNoMinimap(passengerID, false)
 end
