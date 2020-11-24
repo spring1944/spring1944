@@ -75,7 +75,10 @@ end
 local function UpdateCrew()
     while true do
         local h, mh, p, cap, b = Spring.GetUnitHealth(unitID)
-        if passengers > 0 then
+        if passengers == 0 then
+            Spring.SetUnitNeutral(unitID, true)
+        else
+            Spring.SetUnitNeutral(unitID, false)
             -- Make the unit non-capturable until the crew has not been killed
             Spring.SetUnitHealth(unitID, {capture = 0})
         end

@@ -12,6 +12,7 @@ end
 
 local CMD_FIGHT = CMD.FIGHT
 local CMD_ATTACK = CMD.ATTACK
+local CMD_CAPTURE = CMD.CAPTURE
 local CMD_AREA_ATTACK = 39954 -- as set in areaattack.lua gadget
 local defCom = {}
 
@@ -35,31 +36,34 @@ function widget:Initialize()
     WG.activeCommand=0 -- needed??
 end
 
-function widget:DefaultCommand()
-    local type = false
+function widget:DefaultCommand(targetType, targetID)
+    -- To select the default command, we have several criteria. In order of
+    -- priority:
+    --   1. If we are targeting an unit, which is abandoned and can be captured,
+    --      then we return CMD_CAPTURE
+    --   2. In case all the selected units share a common "defCom" (see
+    --      UnitCreated() above), then we are returing such a "defCom"
+    --   3. nil/false otherwise, so another widget may eventually change that
+    local capturableTarget = false
+    if targetType == "unit" and (Spring.GetUnitAllyTeam(targetID) ~= Spring.GetMyAllyTeamID()) then
+        local targetDefID = Spring.GetUnitDefID(targetID)
+        local targetDef = UnitDefs[targetDefID]
+        capturableTarget = targetDef.capturable and Spring.GetUnitNeutral(targetID)
+    end
+
+    local cmd = false
     for _,u in ipairs(Spring.GetSelectedUnits()) do
+        local unitDefID = Spring.GetUnitDefID(u)
+        if capturableTarget and UnitDefs[unitDefID].canCapture then
+            return CMD_CAPTURE
+        end
+
         local unitDefCom = defCom[Spring.GetUnitDefID(u)]
-        if unitDefCom and type == false then
-            -- only default to fight for groups over 5
-            --[[if unitDefCom == CMD_FIGHT then 
-                if Spring.GetSelectedUnitsCount() >= 6 then
-                    local mx, my = Spring.GetMouseState()
-                    local s,t = Spring.TraceScreenRay(mx, my)
-                    -- apply ATTACK if cursor over a unit
-                    if s == "unit" then
-                        type = CMD_ATTACK
-                    -- apply default otherwise
-                    else
-                        type=unitDefCom
-                    end
-                end
-            -- other default commands should always be applied
-            else]]
-                type=unitDefCom
-            --end
-        elseif type ~= unitDefCom then
-            type=nil
+        if unitDefCom and cmd == false then
+            cmd = unitDefCom
+        elseif cmd ~= unitDefCom then
+            cmd = nil
         end
     end
-    return type
+    return cmd
 end
