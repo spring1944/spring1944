@@ -146,7 +146,6 @@ cloacked scout, because it has a very short sight range.]],
 
 local CrewInf = Infantry:New{
 	name				= "Crew",
-	objectName			= "<SIDE>/<NAME>.dae",
 	description			= "Crew member",
 	iconType			= "pistol",
 	buildCostMetal		= 50, -- TODO: needed?
@@ -381,45 +380,6 @@ from the first line.]],
 	},
 }
 
--- Infantry Guns --
-local InfantryGun = Infantry:New{
-	description			= "Infantry Support Cannon",
-	acceleration		= 0.2,
-	brakeRate			= 0.6,
-	corpse				= "<NAME>_Destroyed",
-	explodeAs			= "Tiny_Explosion",
-	iconType			= "artillery",
-	idleAutoHeal		= 2,
-	idleTime			= 2000,
-	mass				= 100,
-	maxDamage			= 300,
-	maxVelocity			= 0.75,
-	movementClass		= "KBOT_Gun", -- TODO: --KBOT
-	script				= "InfantryGun.lua",
-	turnRate			= 120,
-
-	customParams = {
-		hasturnbutton		= true,
-		maxammo				= 4,
-		infgun				= true,
-		pronespheremovemult = 0.2,
-		scriptAnimation = "infantrygun_anim",
-		wiki_subclass_comments = [[This gun, towed by infantry, is an efficient
-way to provide infantry support, becoming relatively cheap, with a long enough
-range and destructive capabilities. The main drawback of this unit is the
-extremelly low speed. However, this gun can be eventually towed by a supply
-truck, in order to quickly deploy it in the battlefield.
-
-Even though this gun may damage some light armoured vehicles, don't expect a
-great performance against them.]],
-	},
-	weapons = {
-		[1] = { -- Cannon
-			maxAngleDif			= 30,
-		},
-	},
-}
-
 return {
 	Infantry = Infantry,
 	CapInfantry = CapInfantry,
@@ -441,6 +401,4 @@ return {
 	ATRifleInf = ATRifleInf,
 	-- Engineers
 	EngineerInf = EngineerInf,
-	-- Infantry Guns
-	InfantryGun = InfantryGun,
 }

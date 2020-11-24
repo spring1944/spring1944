@@ -1,22 +1,6 @@
 local GERLeIG18 = InfantryGun:New{
 	name					= "7.5cm LeIG 18",
 	corpse					= "gerleig18_destroyed",
-	buildCostMetal				= 1280,
-	weapons = {
-		[1] = { -- HE
-			name				= "leig18HE",
-		},
-	},
-	customParams = {
-
-	},
-}
-
-
-local KK = NewInfGun:New{
-	name					= "7.5cm LeIG 18",
-	objectName				= "GER/GERleIG18.dae",
-	corpse					= "gerleig18_destroyed",
 	buildCostMetal			= 1280,
 
 	collisionVolumeType		= "box",
@@ -36,5 +20,4 @@ local KK = NewInfGun:New{
 
 return lowerkeys({
 	["GERLeIG18"] = GERLeIG18,
-	["GERKK"] = KK,
 })

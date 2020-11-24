@@ -369,6 +369,14 @@ for name, ud in pairs(UnitDefs) do
 	end
 	
 	if not ud.objectname then ud.objectname = name .. ".s3o" end
+	-- Check if the object is actually a Collada one
+	if ud.objectname:sub(#ud.objectname - 2):lower() == "s3o" then
+		local daeobjectname = ud.objectname:sub(1, #ud.objectname - 3) .. "dae"
+		if VFS.FileExists("objects3d/" .. daeobjectname) then
+			ud.objectname = daeobjectname
+		end
+	end
+
 	--if not ud.corpse then ud.corpse = name .. "_Destroyed" end -- currently inf are different and e.g. gun trucks, also 'fake' squad morph etc units have no corpse intentionally
 	if ud.leavetracks then ud.trackstrength = tonumber(ud.mass) / 50 end
 	-- add the unit to gamemaster buildoptions

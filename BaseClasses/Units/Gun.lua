@@ -1,5 +1,5 @@
 -- The Gun without crew members enough
-local NewInfGun = Unit:New{
+local InfantryGun = Unit:New{
     airSightDistance    = 2000,
     category            = "MINETRIGGER OPENVEH",
     corpse              = "<NAME>_Destroyed",
@@ -11,7 +11,7 @@ local NewInfGun = Unit:New{
     maxDamage           = 300,
     radardistance       = 650,
     repairable          = true,
-    script              = "NewInfGun.lua",
+    script              = "InfantryGun.lua",
     seismicDistance     = 1400,
     seismicSignature    = 0, -- required, not default
     sightDistance       = 650,
@@ -68,6 +68,6 @@ local NewInfGun = Unit:New{
 }
 
 return {
-    NewInfGun = NewInfGun,
+    InfantryGun = InfantryGun,
 }
  

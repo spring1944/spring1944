@@ -13,12 +13,14 @@ end
 
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 
+local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
+
 local function SpawnCrewMembers(unitID, unitDefID, teamID)
     Spring.Echo("SpawnCrewMembers")
     local ud = UnitDefs[unitDefID]
     local x,y,z = Spring.GetUnitPosition(unitID)
     for i = 1, ud.transportCapacity do
-        local passengerDefName = ud.name:sub(1, 3) .. "crew"
+        local passengerDefName = getSideName(ud.name) .. "crew"
         local passID = Spring.CreateUnit(passengerDefName, x, y, z, 0, teamID)
         if (passID ~= nil) then
             local env = Spring.UnitScript.GetScriptEnv(unitID)

@@ -5,30 +5,4 @@ ground
                 flare
         wheels
     crewman1
-        pelvis1
-            rthigh1
-                rleg1
-                    rfoot1
-            lthigh1
-                lleg1
-                    lfoot1
-            torso1
-                luparm1
-                    lloarm1
-                ruparm1
-                    rloarm1
-                head1
     crewman2
-        pelvis2
-            rthigh2
-                rleg2
-                    rfoot2
-            lthigh2
-                lleg2
-                    lfoot2
-            torso2
-                luparm2
-                    lloarm2
-                ruparm2
-                    rloarm2
-                head2
