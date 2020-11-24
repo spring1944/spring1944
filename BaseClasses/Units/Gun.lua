@@ -19,6 +19,7 @@ local NewInfGun = Unit:New{
     upright             = true,
 
     capturable          = true,
+    canSelfD            = false,
 
     canMove             = true,  -- Cannot move without crew
     acceleration        = 0.2,
