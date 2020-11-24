@@ -372,12 +372,9 @@ for name, ud in pairs(UnitDefs) do
 			ud.description = ud.description.." ("..newDescrLine..")"
 
 		end
-<<<<<<< HEAD
-=======
 		if ud.customparams.armor_front and (tonumber(ud.maxvelocity) or 0) > 0 and not ud.customparams.infgun then
 			ud.usepiececollisionvolumes = true
 		end
->>>>>>> 98d306f26 (Guns as shields)
 	end
 end
 
