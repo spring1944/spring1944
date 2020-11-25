@@ -150,7 +150,7 @@ local FGGun = DeployedGun:New{
 		turretturnspeed		= 24,
 		hiddenbuilding		= true,
 	},
-	
+
 	weapons = {
 		[1] = { -- HE
 			maxAngleDif			= 60,
