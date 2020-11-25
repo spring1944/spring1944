@@ -16,7 +16,6 @@ if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
 
 local function SpawnCrewMembers(unitID, unitDefID, teamID)
-    Spring.Echo("SpawnCrewMembers")
     local ud = UnitDefs[unitDefID]
     local x,y,z = Spring.GetUnitPosition(unitID)
     for i = 1, ud.transportCapacity do
