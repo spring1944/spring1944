@@ -417,7 +417,7 @@ local function UpdatePose(newStanding, newAiming, newMoving, newPinned, newBuild
 		elseif not wantedBuilding then
 			-- Fix https://github.com/spring1944/spring1944/issues/200
 			comm = Spring.GetUnitCommands(unitID, 1)[1]
-			if not comm or comm.id ~= CMD.RECLAIM then
+			if not comm or (comm.id ~= CMD.RECLAIM and comm.id ~= CMD.CAPTURE) then
 				Spring.SetUnitCOBValue(unitID, COB.INBUILDSTANCE, 0)
 			end
 		end
@@ -694,7 +694,9 @@ function script.StopMoving()
 end
 
 local function CanBuild()
-	return standing and not aiming and not moving and fear == 0 and not inTransition
+	-- Let capture while moving, otherwise they will never start capturing
+	local moving_flag = (not moving) or (Spring.GetUnitCommands(unitID, 1)[1].id == CMD.CAPTURE)
+	return standing and not aiming and moving_flag and fear == 0 and not inTransition
 end
 
 
