@@ -141,6 +141,17 @@ local RUS_Observ = ObservInf:New(RUSInf):New{
 	},
 }
 
+local RUS_Crew = CrewInf:New(RUSInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "TT33",
+		},
+		[2] = { -- Grenade
+			name				= "No69",
+		},
+	},
+}
+
 -- Naval Inf
 local RUS_NI_Rifle = RifleInf:New(RUSInf):New{
 	name				= "SVT-40 Rifle",
@@ -191,6 +202,7 @@ return lowerkeys({
 	["RUSRPG43"] = RUS_RPG43,
 	["RUSMortar"] = RUS_Mortar,
 	["RUSObserv"] = RUS_Observ,
+	["RUSCrew"] = RUS_Crew,
 	-- Naval Inf
 	["RUS_NI_Rifle"] = RUS_NI_Rifle,
 	-- Partisans

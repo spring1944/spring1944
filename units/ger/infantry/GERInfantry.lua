@@ -101,6 +101,17 @@ local GER_Observ = ObservInf:New(GERInf):New{
 	},
 }
 
+local GER_Crew = CrewInf:New(GERInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "WaltherP38",
+		},
+		[2] = { -- Grenade
+			name				= "Model24",
+		},
+	},
+}
+
 
 return lowerkeys({
 	-- Regular Inf
@@ -115,4 +126,5 @@ return lowerkeys({
 	["GERPanzerschrek"] = GER_PanzerSchrek,
 	["GERGrW34"] = GER_GrW34,
 	["GERObserv"] = GER_Observ,
+	["GERCrew"] = GER_Crew,
 })

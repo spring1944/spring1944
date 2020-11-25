@@ -182,9 +182,7 @@ for weaponNum, weaponAnim in pairs(GG.lusHelper[unitDefID].weaponAnimations) do
 	end
 end
 
-if not poseVariants.sit then
-	CreatePose(variants.null, variants.sit, "sit")
-end
+
 if not poseVariants.crawl then
 	CreatePose(variants.null, variants.crawl, "crawl")
 end
@@ -194,7 +192,6 @@ end
 if UnitDefs[unitDefID].isBuilder and not poseVariants.build then
 	CreatePose(variants.stand_base, variants.build, "build")
 end
-
 
 local PI = math.pi
 local TAU = 2 * PI
@@ -366,13 +363,6 @@ end
 CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.prone, keyframes.stand_to_prone, keyframeDelays.stand_to_prone)
 CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.run)
 
-
---[[local stances = {"prone", "crawl", "run", "pinned", "stand"}
-for _, stance in pairs(stances) do
-	CreateVariantTransitions(transitions, poseVariants.sit, poseVariants[stance])
-	CreateVariantTransitions(transitions, poseVariants[stance], poseVariants.sit)
-end]]
-
 if UnitDefs[unitDefID].isBuilder then
 	CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.build)
 	CreateVariantTransitions(transitions, poseVariants.build, poseVariants.stand)
@@ -381,7 +371,6 @@ end
 
 CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.stand, keyframes.prone_to_stand, keyframeDelays.prone_to_stand)
 --CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.prone)
-
 CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.crawl)
 CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.pinned)
 
@@ -396,55 +385,81 @@ for weaponAnim, tags in pairs(weaponsTags) do
 	if tags.canStandFire then
 		CreateVariantTransitions(transitions, poseVariants.stand, poseVariants["stand_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
 		CreateVariantTransitions(transitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.stand, weaponsKeyFrames[weaponAnim].aim_to, weaponsKeyFrames[weaponAnim].aim_to)
-		CreateVariantTransitions(transitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.sit)
-		CreateVariantTransitions(transitions, poseVariants.sit, poseVariants["stand_aim_" .. weaponAnim])
 	end
 	if tags.canProneFire then
 		CreateVariantTransitions(transitions, poseVariants.prone, poseVariants["prone_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
 		CreateVariantTransitions(transitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.prone, weaponsKeyFrames[weaponAnim].aim_to, weaponsKeyFrames[weaponAnim].aim_to)
-		CreateVariantTransitions(transitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.sit)
-		CreateVariantTransitions(transitions, poseVariants.sit, poseVariants["prone_aim_" .. weaponAnim])
 	end
 	if tags.canRunFire then
 		CreateVariantTransitions(transitions, poseVariants.run, poseVariants["run_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].ready_to_aim, weaponsKeyFrames[weaponAnim].ready_to_aim)
 		CreateVariantTransitions(transitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.run, weaponsKeyFrames[weaponAnim].aim_to, weaponsKeyFrames[weaponAnim].aim_to)
-		CreateVariantTransitions(transitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.sit)
-		CreateVariantTransitions(transitions, poseVariants.sit, poseVariants["run_aim_" .. weaponAnim])
 	end
 	if weaponsTags[weaponAnim].aimOnLoaded then
 		if tags.canStandFire then
 			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.stand, weaponsKeyFrames[weaponAnim].stand_fire, weaponsKeyFrameDelays[weaponAnim].stand_fire)
-			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.sit)
 		end
 		if tags.canProneFire then
 			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.prone, weaponsKeyFrames[weaponAnim].prone_fire, weaponsKeyFrameDelays[weaponAnim].prone_fire)
-			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.sit)
 		end
 		if tags.canRunFire then
 			CreateVariantTransitions(fireTransitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.run, weaponsKeyFrames[weaponAnim].run_fire, weaponsKeyFrameDelays[weaponAnim].run_fire)
-			CreateVariantTransitions(fireTransitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.sit)
 		end
 	else
 		if tags.canStandFire then
 			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants["stand_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].stand_fire, weaponsKeyFrameDelays[weaponAnim].stand_fire)
-			CreateVariantTransitions(fireTransitions, poseVariants["stand_aim_" .. weaponAnim], poseVariants.sit)
 		end
 		if tags.canProneFire then
 			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants["prone_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].prone_fire, weaponsKeyFrameDelays[weaponAnim].prone_fire)
-			CreateVariantTransitions(fireTransitions, poseVariants["prone_aim_" .. weaponAnim], poseVariants.sit)
 		end
 		if tags.canRunFire then
 			CreateVariantTransitions(fireTransitions, poseVariants["run_aim_" .. weaponAnim], poseVariants["run_aim_" .. weaponAnim], weaponsKeyFrames[weaponAnim].run_fire, weaponsKeyFrameDelays[weaponAnim].run_fire)
-			CreateVariantTransitions(fireTransitions, poseVariants["run_aim_" .. weaponAnim], poseVariants.sit)
 		end
 	end
 end
 
-for stance, _ in pairs(poseVariants) do
-	CreateVariantTransitions(transitions, poseVariants.sit, poseVariants[stance])
-	CreateVariantTransitions(transitions, poseVariants[stance], poseVariants.sit)
+-- Add poses when the soldier is sheltered in a gun
+-- ================================================
+local noningunposes = {}
+for _, pose in pairs(poseVariants) do
+    noningunposes[#noningunposes + 1] = pose
+end
+local gvariants = include "anims/infantry/ingun.lua"
+for varName, varVal in pairs(gvariants) do
+    CreatePose(variants.null, varVal, varName .. "_ingun")
+    -- Create all the possible transitions with non-ingun poses
+    for _, pose in pairs(noningunposes) do
+        CreateVariantTransitions(transitions, poseVariants[varName .. "_ingun"], pose)
+        CreateVariantTransitions(transitions, pose, poseVariants[varName .. "_ingun"])
+    end
 end
 
+CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.run_ingun)
+CreateVariantTransitions(transitions, poseVariants.run, poseVariants.stand_ingun)
+
+CreateVariantTransitions(transitions, poseVariants.stand_ingun, poseVariants.run_ingun)
+CreateVariantTransitions(transitions, poseVariants.run_ingun, poseVariants.stand_ingun)
+
+CreateVariantTransitions(transitions, poseVariants.stand_ingun, poseVariants.prone_ingun)
+CreateVariantTransitions(transitions, poseVariants.prone_ingun, poseVariants.stand_ingun)
+
+CreateVariantTransitions(transitions, poseVariants.prone_ingun, poseVariants.crawl_ingun)
+CreateVariantTransitions(transitions, poseVariants.crawl_ingun, poseVariants.prone_ingun)
+
+CreateVariantTransitions(transitions, poseVariants.prone_ingun, poseVariants.pinned_ingun)
+CreateVariantTransitions(transitions, poseVariants.pinned_ingun, poseVariants.prone_ingun)
+
+CreateVariantTransitions(transitions, poseVariants.stand, poseVariants.stand_ingun)
+CreateVariantTransitions(transitions, poseVariants.stand_ingun, poseVariants.stand)
+
+CreateVariantTransitions(transitions, poseVariants.prone, poseVariants.prone_ingun)
+CreateVariantTransitions(transitions, poseVariants.prone_ingun, poseVariants.prone)
+
+CreateVariantTransitions(transitions, poseVariants.pinned, poseVariants.pinned_ingun)
+CreateVariantTransitions(transitions, poseVariants.pinned_ingun, poseVariants.pinned)
+
+
+-- Compile everything
+-- ==================
 local info = GG.lusHelper[unitDefID]
 
 info.animation = {poses, poseVariants, anims, transitions, fireTransitions, weaponsTags, weaponsMap, weaponsPriorities}

@@ -28,7 +28,7 @@ local Infantry = Unit:New{
 	stealth				= true,
 	turnRate			= 1010,
 	upright				= true,
-	
+
 	customParams = {
 		damageGroup			= "infantry",
 		feartarget			= true,
@@ -40,13 +40,38 @@ local Infantry = Unit:New{
 	},
 }
 
+-- Infantry able to capture units
+local CapInfantry = Infantry:New{ -- don't want a conflict with weapon Rifle
+	builder				= true,
+	isBuilder			= true,
+	buildDistance		= 128,
+	canRestore			= false,
+	canRepair			= false,
+	canReclaim			= false,
+	canResurrect		= false,
+	canCapture			= true,
+	workerTime			= 15,
+	repairSpeed			= 0,
+	reclaimSpeed		= 0,
+	resurrectSpeed		= 0,
+	captureSpeed		= 15,
+	terraformSpeed		= 0,
+	canAssist			= false,
+	canSelfRepair		= false,
+
+	customParams = {
+		canclearmines		= false,
+		flagcaprate			= 1,
+	},
+}
+
+
 -- Basic Types
-local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
+local RifleInf = CapInfantry:New{ -- don't want a conflict with weapon Rifle
 	description			= "Long-range Rifle Infantry",
 	iconType			= "rifle",
 	
 	customParams = {
-		flagcaprate			= 1,
 		wiki_subclass_comments = [[Close-Quarters Assault Infantry and
 Long-range Rifle Infantry are the most basic infantry units, ideal to setup your
 front line, providing a line of sight to other longer-range guns. Rifle weapon
@@ -67,12 +92,11 @@ be only carried out in a dramatically short range.]],
 	},
 }
 
-local SMGInf = Infantry:New{
+local SMGInf = CapInfantry:New{
 	description			= "Close-Quarters Assault Infantry",
 	iconType			= "assault",
 	
 	customParams = {
-		flagcaprate			= 1,
 		wiki_subclass_comments = [[Close-Quarters Assault Infantry and
 Long-range Rifle Infantry are the most basic infantry units, ideal to setup your
 front line, providing a line of sight to other longer-range guns. Conversely
@@ -92,6 +116,57 @@ combination of a short range sub-machinegun and grenades.]],
 }
 
 -- Support & Specialists
+local ObservInf = Infantry:New{
+	name				= "Scout",
+	description			= "Reconnaisance Infantry",
+	iconType			= "officer",
+	buildCostMetal		= 50, -- TODO: needed?
+	fireState			= 1,
+	cloakCost			= 0,
+	cloakCostMoving		= 0,
+	minCloakDistance	= 160,
+
+	customParams = {
+		wiki_subclass_comments = [[This unit is not intended to can directly
+cause casualties, but to provide line of sight to another longer range weapons
+which may inflict significant damage from a safe position. This unit may sneak
+into enemy lines, since it cannot be detected until enemy comes close to him.
+When a good observation point is reached, this unit may use the binoculars to
+spot an specific area (use attack command to do that). Take care, while using
+the binoculars this unit is not invisible anymore. Don't try to use the unit as
+cloacked scout, because it has a very short sight range.]],
+	},
+
+	weapons = {
+		[1] = { -- Binocs
+			name				= "Binocs",
+		},
+	},
+}
+
+local CrewInf = Infantry:New{
+	name				= "Crew",
+	description			= "Crew member",
+	iconType			= "pistol",
+	buildCostMetal		= 50, -- TODO: needed?
+
+	customParams = {
+		wiki_subclass_comments = [[A crew member that has scaped from a
+compromised situation. Crew members are equiped just with a hand gun, which
+make them of very little use in combat, although they still can use grenades,
+so they can be of some help during infantry assaults.]],
+	},
+
+	weapons = {
+		[1] = { -- Pistol
+			maxAngleDif			= 170,
+		},
+		[2] = { -- Grenade
+			maxAngleDif			= 170,
+		},
+	},
+}
+
 local LMGInf = Infantry:New{
 	description			= "Light Infantry Fire Support",
 	iconType			= "lightmg",
@@ -157,35 +232,6 @@ On the other hand, this unit is not able to damage structures or vehicles]],
 		},
 	},
 }
-
-local ObservInf = Infantry:New{
-	name				= "Scout",
-	description			= "Reconnaisance Infantry",
-	iconType			= "officer",
-	buildCostMetal		= 50, -- TODO: needed?
-	fireState			= 1,
-	cloakCost			= 0,
-	cloakCostMoving		= 0,
-	minCloakDistance	= 160,
-
-	customParams = {
-		wiki_subclass_comments = [[This unit is not intended to can directly
-cause casualties, but to provide line of sight to another longer range weapons
-which may inflict significant damage from a safe position. This unit may sneak
-into enemy lines, since it cannot be detected until enemy comes close to him.
-When a good observation point is reached, this unit may use the binoculars to
-spot an specific area (use attack command to do that). Take care, while using
-the binoculars this unit is not invisible anymore. Don't try to use the unit as
-cloacked scout, because it has a very short sight range.]],
-	},
-
-	weapons = {
-		[1] = { -- Binocs
-			name				= "Binocs",
-		},
-	},
-}
-
 
 local MedMortarInf = Infantry:New{
 	description			= "Heavy Infantry Fire Support",
@@ -315,11 +361,16 @@ local EngineerInf = Infantry:New{
 	category			= "INFANTRY", -- no MINETRIGGER
 	iconType			= "engineer",
 	builder				= true,
+	isBuilder				= true,
 	buildDistance		= 128,
+	canRestore			= true,
+	canRepair			= true,
+	canReclaim			= true,
+	canResurrect		= false,
 	terraformSpeed		= 300,
 	workerTime			= 15,
 	reclaimSpeed 		= 30,
-	
+
 	customParams = {
 		canclearmines			= true,
 		scriptAnimation			= "engineer",
@@ -329,64 +380,25 @@ from the first line.]],
 	},
 }
 
--- Infantry Guns --
-local InfantryGun = Infantry:New{
-	description			= "Infantry Support Cannon",
-	acceleration		= 0.2,
-	brakeRate			= 0.6,
-	corpse				= "<NAME>_Destroyed",
-	explodeAs			= "Tiny_Explosion",
-	iconType			= "artillery",
-	idleAutoHeal		= 2,
-	idleTime			= 2000,
-	mass				= 100,
-	maxDamage			= 300,
-	maxVelocity			= 0.75,
-	movementClass		= "KBOT_Gun", -- TODO: --KBOT
-	script				= "InfantryGun.lua",
-	turnRate			= 120,
-	
-	customParams = {
-		hasturnbutton		= true,
-		maxammo				= 4,
-		infgun				= true,
-		pronespheremovemult = 0.2,
-		scriptAnimation = "infantrygun_anim",
-		wiki_subclass_comments = [[This gun, towed by infantry, is an efficient
-way to provide infantry support, becoming relatively cheap, with a long enough
-range and destructive capabilities. The main drawback of this unit is the
-extremelly low speed. However, this gun can be eventually towed by a supply
-truck, in order to quickly deploy it in the battlefield.
-
-Even though this gun may damage some light armoured vehicles, don't expect a
-great performance against them.]],
-	},
-	weapons = {
-		[1] = { -- Cannon
-			maxAngleDif			= 30,
-		},
-	},
-}
-
 return {
 	Infantry = Infantry,
+	CapInfantry = CapInfantry,
 	-- Basic Types
 	RifleInf = RifleInf,
 	SMGInf = SMGInf,
 	-- Support & Specialists
+	ObservInf = ObservInf,
+	CrewInf = CrewInf,
 	LMGInf = LMGInf,
 	HMGInf = HMGInf,
 	SniperInf = SniperInf,
 	LightMortarInf = LightMortarInf,
 	MedMortarInf = MedMortarInf,
 	FlameInf = FlameInf,
-	ObservInf = ObservInf,
 	-- Anti-Tank
 	ATLauncherInf = ATLauncherInf,
 	ATGrenadeInf = ATGrenadeInf,
 	ATRifleInf = ATRifleInf,
 	-- Engineers
 	EngineerInf = EngineerInf,
-	-- Infantry Guns
-	InfantryGun = InfantryGun,
 }

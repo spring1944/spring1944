@@ -118,6 +118,17 @@ local JPN_Observ = ObservInf:New(JPNInf):New{
 	},
 }
 
+local JPN_Crew = CrewInf:New(JPNInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "NambuType14",
+		},
+		[2] = { -- Grenade
+			name				= "Type99Grenade",
+		},
+	},
+}
+
 local JPN_Type4Mortar_Mobile = MedMortarInf:New(JPNInf):New{
 	name				= "Type 4 200mm Mortar",
 	buildCostMetal		= 2625,
@@ -173,6 +184,7 @@ return lowerkeys({
 	["JPNKneeMortar"] = JPN_KneeMortar,
 	["JPNMortar"] = JPN_Mortar,
 	["JPNObserv"] = JPN_Observ,
+	["JPNCrew"] = JPN_Crew,
 	["JPNType4Mortar_Mobile"] = JPN_Type4Mortar_Mobile,
 	["JPNType4Mortar_Stationary"] = JPN_Type4Mortar_Stationary,
 })

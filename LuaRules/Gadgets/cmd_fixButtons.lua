@@ -26,6 +26,7 @@ local CMD_RECLAIM	= CMD.RECLAIM
 local CMD_CLOAK		= CMD.CLOAK
 local CMD_ONOFF		= CMD.ONOFF
 local CMD_DGUN		= CMD.DGUN
+local CMD_CAPTURE	= CMD.CAPTURE
 
 
 function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
@@ -52,7 +53,13 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 		if (dGunCmdDesc) then
 			EditUnitCmdDesc(unitID, dGunCmdDesc, {name = "Smoke\nGrenade", tooltip = "Smoke Grenade: Throw a smoke grenade"}) 
 		end
-	end		
+	end
+	if (ud.canCapture) then -- switch to canManualFire after 0.83
+		local dCaptureCmdDesc = FindUnitCmdDesc(unitID, CMD_CAPTURE)
+		if (dCaptureCmdDesc) then
+			EditUnitCmdDesc(unitID, dCaptureCmdDesc, {name = "Capture", tooltip = "Capture: Take control of abandoned units"}) 
+		end
+	end
 end
 
 end

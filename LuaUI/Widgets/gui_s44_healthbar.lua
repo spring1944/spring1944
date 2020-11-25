@@ -197,6 +197,7 @@ end
 
 local function GenerateUnitGraphics(uid, udid, getAuras)
 
+
 	--General
 	local ud = UnitDefs[udid]
 	if not unitData[uid] then
@@ -204,10 +205,16 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
     end
     unitData[uid].display = false
     unitData[uid].frame = currentFrame
+	if not Spring.ValidUnitID(uid) then
+		return
+	end
 
-	-- Don't show transported
-	if not Spring.ValidUnitID(uid) or (Spring.GetUnitTransporter(uid) and not ud.customParams.child) then
-        return
+	-- Don't show transported inside vehicles
+	local tid = Spring.GetUnitTransporter(uid)
+	if tid then
+		if not ud.customParams.child and not UnitDefs[Spring.GetUnitDefID(tid)].customParams.infgun then
+			return
+		end
 	end
 
 	local bars = unitBars[uid]
@@ -219,6 +226,12 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		if maxHP then
 			bars.health = {}
 			bars.health.color = {0,0,0,0.8}
+		end
+		if ud.capturable then
+			-- Planes are never capturable, so let's recycle the color
+			bars.cap = {}
+			bars.cap.max = 1.0
+			bars.cap.color = {0.9, 0.5766, 0.207, 0.8}
 		end
 		if Spring.IsUnitAllied(uid) then
             if ud.customParams.maxammo then
@@ -295,6 +308,17 @@ local function GenerateUnitGraphics(uid, udid, getAuras)
 		display = true
 	end
 
+	-- CAPTURE
+	if bars.cap then
+		local _, _, _, curCap, _ = Spring.GetUnitHealth(uid)
+		if curCap > 0 then
+			bars.cap.cur = curCap
+			bars.cap.pct = curCap
+			display = true
+		else
+			bars.cap.pct = nil
+		end
+	end
 
 	-- BUILD
 	local unitbuildid

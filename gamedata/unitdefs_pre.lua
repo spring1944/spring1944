@@ -136,6 +136,7 @@ end
 Unit = Def:New{
 	showNanoFrame			= false,
 	showNanoSpray			= false,
+	capturable				= false,
 	objectName				= "<SIDE>/<NAME>.s3o",
 	buildPic				= "<NAME>.png",
 	script					= "<NAME>.cob",

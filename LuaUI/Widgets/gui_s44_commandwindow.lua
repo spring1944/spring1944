@@ -29,7 +29,7 @@ WG.COMMWINOPTS = {
 local IMAGE_DIRNAME = LUAUI_DIRNAME .. "Images/ComWin/"
 local COMMANDSTOEXCLUDE = {"timewait", "deathwait", "squadwait", "gatherwait",
                            "loadonto", "nextmenu", "prevmenu", "canceltarget",
-                           "settarget", "selfd", "look"}
+                           "settarget", "selfd", "look", "capture"}
 local GLYPHS = {
     attack = '\204\164',
     fight = '\204\165',

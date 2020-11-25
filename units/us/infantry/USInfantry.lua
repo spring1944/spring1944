@@ -117,6 +117,17 @@ local US_Observ = ObservInf:New(USInf):New{
 	},
 }
 
+local US_Crew = CrewInf:New(USInf):New{
+	weapons = {
+		[1] = { -- Pistol
+			name				= "m1911a1colt",
+		},
+		[2] = { -- Grenade
+			name				= "Mk2",
+		},
+	},
+}
+
 local US_Paratrooper = Infantry:New{
 	script = "<NAME>.cob"
 }
@@ -135,6 +146,7 @@ return lowerkeys({
 	["USMortar"] = US_Mortar,
 	["USFlamethrower"] = US_Flamethrower,
 	["USObserv"] = US_Observ,
+	["USCrew"] = US_Crew,
 	-- Paratroopers
 	["USParaRifle"] = US_Rifle:New(USPara),
 	["USParaThompson"] = US_Thompson:New(USPara),

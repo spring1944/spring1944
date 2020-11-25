@@ -25,7 +25,7 @@ local troopAPCs = {}
 function widget:Initialize()
 	for unitDefID, unitDef in pairs(UnitDefs) do
 		local customParams = unitDef.customParams
-		if unitDef.transportCapacity > 0 and not unitDef.modCategories.ship and #unitDef.weapons > 0 then
+		if unitDef.transportCapacity > 0 and not unitDef.modCategories.ship and not customParams.infgun and #unitDef.weapons > 0 then
 			APCDefCache[unitDefID] = unitDef.transportCapacity
 			Spring.Echo("Found APC", unitDef.name)
 		end
