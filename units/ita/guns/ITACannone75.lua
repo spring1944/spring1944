@@ -5,7 +5,7 @@ local ITA_Cannone75= InfantryGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {10.0, 10.0, 5.0},
-	collisionVolumeOffsets	= {0.0, 6.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 2.0, 3.0},
 
 	weapons = {
 		[1] = { -- HE

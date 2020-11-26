@@ -315,7 +315,7 @@ local sweDefs = {
 		},
 	},
 	
-	swekanonm02_33_truck =
+	swekanonm02_33 =
 	{
 		into = 'swekanonm02_33_stationary',
 		tech = 0,
@@ -326,7 +326,7 @@ local sweDefs = {
 	},
 	swekanonm02_33_stationary =
 	{
-		into = 'swekanonm02_33_truck',
+		into = 'swekanonm02_33',
 		tech = 0,
 		time = 12,
 		metal = 0,
