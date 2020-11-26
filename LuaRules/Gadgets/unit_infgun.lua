@@ -14,6 +14,7 @@ end
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 
 local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
+local DEFAULT_SIDE = "gbr"
 local morphDefs = include("LuaRules/Configs/morph_defs.lua")
 local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
 local GetUnitDefID = Spring.GetUnitDefID
@@ -24,7 +25,11 @@ local function SpawnCrewMembers(unitID, unitDefID, teamID)
     local ud = UnitDefs[unitDefID]
     local x,y,z = Spring.GetUnitPosition(unitID)
     for i = 1, ud.transportCapacity do
-        local passengerDefName = getSideName(ud.name) .. "crew"
+        local side = getSideName(ud.name)
+        if side == 'UNKNOWN' then
+            side = DEFAULT_SIDE
+        end
+        local passengerDefName = side .. "crew"
         local passID = Spring.CreateUnit(passengerDefName, x, y, z, 0, teamID)
         if (passID ~= nil) then
             local env = Spring.UnitScript.GetScriptEnv(unitID)
