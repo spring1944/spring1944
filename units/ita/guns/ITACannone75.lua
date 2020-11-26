@@ -1,9 +1,20 @@
-local ITA_Cannone75_Truck = FGGunTractor:New{
-	name					= "Towed Cannone da 75/32",
+local ITA_Cannone75= InfantryGun:New{
+	name					= "Cannone da 75/32",
+	corpse					= "ITACannone75_Destroyed",
 	buildCostMetal			= 1250,
-	corpse					= "ITATL37_Abandoned", -- TODO: grumble
-	trackOffset				= 10,
-	trackWidth				= 13,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {10.0, 10.0, 5.0},
+	collisionVolumeOffsets	= {0.0, 6.0, 3.0},
+
+	weapons = {
+		[1] = { -- HE
+			name	= "Ansaldo75mmL34HE",
+		},
+		[2] = { -- AP
+			name	= "Ansaldo75mmL34AP",
+		},
+	},	
 	customParams = {
 
 	},
@@ -26,6 +37,6 @@ local ITA_Cannone75_Stationary = FGGun:New{
 }
 
 return lowerkeys({
-	["ITACannone75_Truck"] = ITA_Cannone75_Truck,
+	["ITACannone75"] = ITA_Cannone75,
 	["ITACannone75_Stationary"] = ITA_Cannone75_Stationary,
 })
