@@ -59,6 +59,11 @@ local GLYPHS = {
     ["Prefer AP"] = '\204\190',
 }
 local MINBUTTONSIZE = 0.04
+local ACCEPTABLE_DEFAULT_COMMANDS = {
+    [CMD.MOVE] = true,
+    [CMD.FIGHT] = true,
+    [CMD.GUARD] = true,
+}
 
 -- MEMBERS
 local Chili
@@ -96,10 +101,15 @@ end
 function ClickFunc(chiliButton, x, y, button, mods) 
     local index = Spring.GetCmdDescIndex(chiliButton.cmdid)
     if (index) then
-        local left, right = (button == 1), (button == 3)
+        local left, middle, right = (button == 1), (button == 2), (button == 3)
         local alt, ctrl, meta, shift = mods.alt, mods.ctrl, mods.meta, mods.shift
 
-        Spring.SetActiveCommand(index, button, left, right, alt, ctrl, meta, shift)
+        if not middle then
+            Spring.SetActiveCommand(index, button, left, right, alt, ctrl, meta, shift)
+        elseif ACCEPTABLE_DEFAULT_COMMANDS[chiliButton.cmdid] then
+            WG.SetDefaultCommand(chiliButton.cmdid)
+            updateRequired = true
+        end
     end
 end
 
@@ -168,6 +178,11 @@ function findButtonData(cmd)
         container = buildWindow
         texture = '#'..-cmd.id
     end
+
+    if ACCEPTABLE_DEFAULT_COMMANDS[cmd.id] then
+        tooltip = tooltip .. "\nMiddle button: Set as the default action"
+    end
+
     return buttontext, container, isMorph, isState, isSortie, isBuild, texture, tooltip    
 end
 
@@ -206,7 +221,7 @@ function createMyButton(cmd)
                 shadow  = false,
             },
         }
-        
+
         if texture then
             local image = Chili.Image:New {
                 parent = button,
@@ -218,7 +233,7 @@ function createMyButton(cmd)
             }
             if buttontext ~= "" then
                 button.caption = ""
-                local image = Chili.Label:New {
+                local label = Chili.Label:New {
                     parent = image;
                     width="100%",
                     height="100%",
@@ -238,6 +253,18 @@ function createMyButton(cmd)
                     },
                 }
             end
+        end
+
+        if cmd.id == WG.GetDefaultCommand() then
+            local star = Chili.Image:New {
+                parent = button,
+                width="10%",
+                height="10%",
+                x="75%",
+                y="75%",
+                keepAspect = true,
+                file = IMAGE_DIRNAME .. "default_command.png",
+            }                
         end
         
         if(increaseRow)then
