@@ -10,11 +10,21 @@ function widget:GetInfo()
     }
 end
 
+local CMD_MOVE = CMD.MOVE
 local CMD_FIGHT = CMD.FIGHT
 local CMD_ATTACK = CMD.ATTACK
 local CMD_CAPTURE = CMD.CAPTURE
 local CMD_AREA_ATTACK = 39954 -- as set in areaattack.lua gadget
 local defCom = {}
+local fallbackCommand = CMD_FIGHT
+
+local function SetDefaultCommand(cmdID)
+    fallbackCommand = cmdID
+end
+
+local function GetDefaultCommand()
+    return fallbackCommand
+end
 
 function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
     if (not defCom[unitDefID]) then
@@ -33,7 +43,8 @@ function widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 end
 
 function widget:Initialize()
-    WG.activeCommand=0 -- needed??
+    WG.SetDefaultCommand = SetDefaultCommand
+    WG.GetDefaultCommand = GetDefaultCommand
 end
 
 function widget:DefaultCommand(targetType, targetID)
@@ -43,7 +54,8 @@ function widget:DefaultCommand(targetType, targetID)
     --      then we return CMD_CAPTURE
     --   2. In case all the selected units share a common "defCom" (see
     --      UnitCreated() above), then we are returing such a "defCom"
-    --   3. nil/false otherwise, so another widget may eventually change that
+    --   3. Global default command, set with WG.SetDefaultCommand(cmdID). It can
+    --      be nil, so no default action is set
     local capturableTarget = false
     if targetType == "unit" and (Spring.GetUnitAllyTeam(targetID) ~= Spring.GetMyAllyTeamID()) then
         local targetDefID = Spring.GetUnitDefID(targetID)
@@ -59,11 +71,26 @@ function widget:DefaultCommand(targetType, targetID)
         end
 
         local unitDefCom = defCom[Spring.GetUnitDefID(u)]
-        if unitDefCom and cmd == false then
+        if unitDefCGetDefaultCommandom and cmd == false then
             cmd = unitDefCom
         elseif cmd ~= unitDefCom then
             cmd = nil
         end
     end
+
+    if not cmd then
+        cmd = GetDefaultCommand()
+    end
+    
     return cmd
+end
+
+function widget:GetConfigData()
+    return {
+        fallbackCommand = fallbackCommand,
+    }
+end
+
+function widget:SetConfigData(data)
+    fallbackCommand = data.fallbackCommand or fallbackCommand
 end
