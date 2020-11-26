@@ -56,7 +56,7 @@ local fraDefs = {
 		energy = 0,
 	},
 
-	fra75mmmle1897_truck =
+	fra75mmmle1897 =
 	{
 		into = 'fra75mmmle1897_stationary',
 		tech = 0,
@@ -68,7 +68,7 @@ local fraDefs = {
 
 	fra75mmmle1897_stationary =
 	{
-		into = 'fra75mmmle1897_truck',
+		into = 'fra75mmmle1897',
 		tech = 0,
 		time = 10,
 		metal = 0,

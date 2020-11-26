@@ -1,9 +1,20 @@
-local FRA_75mmMle1897_Truck = FGGunTractor:New{
-	name					= "Towed Canon de 75 modèle 1897",
-	corpse					= "fracitroenp17_destroyed",
-	trackOffset				= 5,
-	trackWidth				= 12,
-	objectName				= "FRA/FRA75mmMle1897_truck.s3o",
+local FRA_75mmMle1897 = InfantryGun:New{
+	name					= "Canon de 75 modèle 1897",
+	corpse					= "FRA75mmMle1897_destroyed",
+	buildCostMetal			= 1300,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {11.0, 11.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 1.0, 2.0},
+
+	weapons = {
+		[1] = { -- HE
+			name	= "FRA75mmMle1897HE",
+		},
+		[2] = { -- AP
+			name	= "FRA75mmMle1897AP",
+		},
+	},
 	customParams = {
 
 	},
@@ -12,7 +23,6 @@ local FRA_75mmMle1897_Truck = FGGunTractor:New{
 local FRA_75mmMle1897_Stationary = FGGun:New{
 	name					= "Deployed Canon de 75 modèle 1897",
 	corpse					= "FRA75mmMle1897_destroyed",
-	objectName				= "FRA/FRA75mmMle1897_stationary.s3o",
 	
 	weapons = {
 		[1] = { -- HE
@@ -21,13 +31,13 @@ local FRA_75mmMle1897_Stationary = FGGun:New{
 		[2] = { -- AP
 			name	= "FRA75mmMle1897AP",
 		},
-	},	
+	},
 	customParams = {
 
 	},
 }
 
 return lowerkeys({
-	["FRA75mmMle1897_truck"] = FRA_75mmMle1897_Truck,
+	["FRA75mmMle1897"] = FRA_75mmMle1897,
 	["FRA75mmMle1897_stationary"] = FRA_75mmMle1897_Stationary,
 })
