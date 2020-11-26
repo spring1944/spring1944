@@ -103,13 +103,21 @@ local stopMorphOnDevolution = true --// should morphing stop during devolution
 --------------------------------------------------------------------------------
 
 local isAMorphCmdID = {} --used to determine if a morph command was received
+local isAMorphStopCmdID = {}
 
+local function IsAMorphCommand(cmdID)
+  return isAMorphCmdID[cmdID], isAMorphStopCmdID[cmdID]
+end
 
 local morphDefs  = {} --// make it global in Initialize()
 local extraUnitMorphDefs = {} -- stores mainly planetwars morphs
 local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
+
+local function GetMorphingUnits()
+  return morphUnits
+end
 
 local upgradeDefs = {} -- mapping between the auto generated units and the morph defs.
 local upgradeUnits = {} -- similar to morphUnits, all factories being upgraded at the moment. made global in Initialize()
@@ -212,9 +220,11 @@ local function BuildMorphDef(udSrc, morphData)
         upgradeDefs[newData.upgradeUnit] = newData
     end
 	isAMorphCmdID[newData.cmd] = true
+    isAMorphStopCmdID[newData.cmd] = false
     --newData.stopCmd = CMD_MORPH_STOP + MAX_MORPH
 	newData.stopCmd = GG.CustomCommands.GetCmdID("CMD_MORPH_STOP_" .. newData.into)
 	isAMorphCmdID[newData.stopCmd] = true
+    isAMorphStopCmdID[newData.stopCmd] = true
 
     MAX_MORPH = MAX_MORPH + 1
     if (type(GG.MorphInfo)~="table") then GG.MorphInfo = {} end
@@ -740,9 +750,14 @@ local function FinishMorph(unitID, morphData)
       if absZ >= 0 and absZ < (2 * spawnDistance) then
         xOffset = xOffset + (offsetSwitch * 2 * spawnDistance)
       end
-	  
-	  Spring.UnitDetach(transportedUnitID)
-	  Spring.SetUnitPosition(px + xOffset, py, pz + zOffset)
+  
+      Spring.UnitDetach(transportedUnitID)
+      Spring.SetUnitPosition(px + xOffset, py, pz + zOffset)
+      -- Special case of guns deploying, which shall discard the crew members
+      -- (They will be spawned again when unmorphing)
+      if unitDefBeforeMorph.customParams.infgun then
+        Spring.DestroyUnit(transportedUnitID, false, true, 0, false)
+      end
     end
   end
 
@@ -780,8 +795,8 @@ local function FinishMorph(unitID, morphData)
         states = states,
         cmds = cmds,
         oldShieldState = oldShieldState,
-		valueToPass = valueToPass,
-		})
+        valueToPass = valueToPass,
+  })
 end
 
 local function UpdateMorph(unitID, morphData)
@@ -812,6 +827,9 @@ function gadget:Initialize()
   -- self linking for planetwars
   GG['morphHandler'] = {}
   GG['morphHandler'].AddExtraUnitMorph = AddExtraUnitMorph
+  GG['morphHandler'].IsAMorphCommand = IsAMorphCommand
+  GG['morphHandler'].GetMorphingUnits = GetMorphingUnits
+  GG['morphHandler'].StopMorph = StopMorph
   
   if (type(GG.UnitRanked)~="table") then GG.UnitRanked = {} end
   table.insert(GG.UnitRanked, UnitRanked)

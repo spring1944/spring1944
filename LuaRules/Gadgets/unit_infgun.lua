@@ -13,13 +13,23 @@ end
 
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 
+local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
+local DEFAULT_SIDE = "gbr"
+local morphDefs = include("LuaRules/Configs/morph_defs.lua")
 local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
+local GetUnitDefID = Spring.GetUnitDefID
+local GetUnitIsTransporting = Spring.GetUnitIsTransporting
+local GiveOrderToUnit = Spring.GiveOrderToUnit
 
 local function SpawnCrewMembers(unitID, unitDefID, teamID)
     local ud = UnitDefs[unitDefID]
     local x,y,z = Spring.GetUnitPosition(unitID)
     for i = 1, ud.transportCapacity do
-        local passengerDefName = getSideName(ud.name) .. "crew"
+        local side = getSideName(ud.name)
+        if side == 'UNKNOWN' then
+            side = DEFAULT_SIDE
+        end
+        local passengerDefName = side .. "crew"
         local passID = Spring.CreateUnit(passengerDefName, x, y, z, 0, teamID)
         if (passID ~= nil) then
             local env = Spring.UnitScript.GetScriptEnv(unitID)
@@ -37,6 +47,41 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
         return
     end
     GG.Delay.DelayCall(SpawnCrewMembers, {unitID, unitDefID, teamID})
+end
+
+-- Just allow to morph when the gun is still operative
+function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOptions)
+    local ud = UnitDefs[unitDefID]
+    local cp = ud.customParams
+    if not cp.infgun then
+        return true
+    end
+
+    if cmdID == CMD.SELFD then
+        -- Never tolerate guns self-destroying
+        return false
+    end
+
+    if not morphDefs[ud.name] then
+        return true
+    end
+    local isMorph, isStop = GG['morphHandler'].IsAMorphCommand(cmdID)
+    if not isMorph or isStop then
+        return true
+    end
+
+    return #(Spring.GetUnitIsTransporting(unitID)) == ud.transportCapacity
+end
+
+function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    for u, morphData in pairs(GG['morphHandler'].GetMorphingUnits()) do
+        local ud = UnitDefs[GetUnitDefID(u)]
+        local cp = ud.customParams
+
+        if cp.infgun and #(GetUnitIsTransporting(u)) ~= ud.transportCapacity then
+            GG['morphHandler'].StopMorph(u, morphData)
+        end
+    end
 end
 
 else -- UNSYNCED

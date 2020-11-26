@@ -1,8 +1,20 @@
-local RUS_ZiS3_Truck = FGGunTractor:New{
-	name					= "Towed 76mm ZiS-3",
-	corpse					= "RUSZiS5_Destroyed",
-	trackOffset				= 5,
-	trackWidth				= 12,
+local RUS_ZiS3 = InfantryGun:New{
+	name					= "76mm ZiS-3",
+	corpse					= "RUSZiS-3_Destroyed",
+	buildCostMetal			= 1300,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {12.0, 11.0, 6.0},
+	collisionVolumeOffsets	= {0.0, 4.0, 3.0},
+
+	weapons = {
+		[1] = { -- HE
+			name	= "ZiS376mmHE",
+		},
+		[2] = { -- AP
+			name	= "ZiS376mmAP",
+		},
+	},	
 	customParams = {
 
 	},
@@ -26,6 +38,6 @@ local RUS_ZiS3_Stationary = FGGun:New{
 }
 
 return lowerkeys({
-	["RUSZiS3_Truck"] = RUS_ZiS3_Truck,
+	["RUSZiS3"] = RUS_ZiS3,
 	["RUSZiS3_Stationary"] = RUS_ZiS3_Stationary,
 })

@@ -128,19 +128,18 @@ local rusDefs = {
     energy = 0,
   },
   
-  ruszis3_truck = 
+  ruszis3 = 
   {
     into = 'ruszis3_stationary',
     tech = 0,
     time = 12,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   ruszis3_stationary = 
   {
-    into = 'ruszis3_truck',
+    into = 'ruszis3',
     tech = 0,
     time = 12,
     metal = 0,
