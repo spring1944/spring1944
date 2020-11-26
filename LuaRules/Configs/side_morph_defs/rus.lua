@@ -132,7 +132,7 @@ local rusDefs = {
   {
     into = 'ruszis3_stationary',
     tech = 0,
-    time = 1200,
+    time = 12,
     metal = 0,
     energy = 0,
   },
