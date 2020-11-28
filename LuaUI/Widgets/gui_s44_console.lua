@@ -60,6 +60,10 @@ local sent_history = {}
 local sent_history_index = 1
 local buttons_players = {}
 local fadeLag, fadePeriod = 10.0, 1.0
+local autocomplete_unit_names = {}
+for unit_name, _ in pairs(UnitDefNames) do
+    autocomplete_unit_names[#autocomplete_unit_names + 1] = unit_name
+end
 
 
 local min, max, floor = math.min, math.max, math.floor
@@ -600,10 +604,14 @@ local function OnChatInputKey(self, key, mods, isRepeat, label, unicode, ...)
                 candidates[#candidates + 1] = stack.children[j].playername
             end
         end
-        msg = Chili.Autocomplete(msg, candidates)
-        if msg ~= nil then
-            cursor = #msg + 1
-            msg = msg .. suffix
+        local new_msg = Chili.Autocomplete(msg, candidates)
+        if new_msg == nil then
+            -- Let's try to autocomplete with unit names
+            new_msg = Chili.Autocomplete(msg, autocomplete_unit_names)
+        end
+        if new_msg ~= nil then
+            cursor = #new_msg + 1
+            msg = new_msg .. suffix
         end
     end
     if msg ~= nil then
