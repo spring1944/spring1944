@@ -53,9 +53,11 @@ function widget:DefaultCommand(targetType, targetID)
     --   1. If we are targeting an unit, which is abandoned and can be captured,
     --      then we return CMD_CAPTURE
     --   2. In case all the selected units share a common "defCom" (see
-    --      UnitCreated() above), then we are returing such a "defCom"
-    --   3. Global default command, set with WG.SetDefaultCommand(cmdID). It can
-    --      be nil, so no default action is set
+    --      UnitCreated() above), then we are returning such a "defCom"
+    --   3. If no unit is targeted we are returning the global default command,
+    --      set with WG.SetDefaultCommand(cmdID).
+    --   4. nil/false otherwise, so the engine selects the appropriate command
+    --      itself
     local capturableTarget = false
     if targetType == "unit" and (Spring.GetUnitAllyTeam(targetID) ~= Spring.GetMyAllyTeamID()) then
         local targetDefID = Spring.GetUnitDefID(targetID)
@@ -78,7 +80,7 @@ function widget:DefaultCommand(targetType, targetID)
         end
     end
 
-    if not cmd then
+    if not cmd and not targetID then
         cmd = GetDefaultCommand()
     end
     
