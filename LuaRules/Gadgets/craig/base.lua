@@ -28,16 +28,22 @@ function CreateBaseMgr(myTeamID, myAllyTeamID, Log)
 
 local BaseMgr = {}
 
-local MIN_INT = -2147483648
-local MAX_UNITDEFID = 10000.0
+local MIN_INT, MAX_INT = -2147483648, 2147483648
+local MAX_SIMTIME = 30.0 * 60  -- 30 minutes
 local METAL_PULL_PUSH_FACTOR = 10.0
+local MAX_SQUAD_SIZE = 10.0
 local MAX_E_STORAGE = 15000.0
 local MAX_FLAG_CAPTURE_CAPACITY = 10.0 * 500
 local MAX_LOS_CAPACITY = math.max(Game.mapSizeX, Game.mapSizeZ) / 10.0
 local MAX_CONSTRUCTORS = 5.0
 local MAX_UNIT_IN_FACTORIES = 5.0
 
+-- If in 1 minute the building chain has not any progress, we are giving up and
+-- starting a new one
+local CHAIN_GIVING_UP_TIME = 1.0 * 60.0
+
 -- speedups
+local CMD_WAIT = CMD.WAIT
 local random, min, max = math.random, math.min, math.max
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetGameSeconds     = Spring.GetGameSeconds
@@ -60,8 +66,9 @@ local unit_scores = VFS.Include("LuaRules/Gadgets/craig/base/unit_score.lua")
 local buildsiteFinder = buildsiteFinderModule.CreateBuildsiteFinder(myTeamID)
 
 -- Base building capabilities
-local myConstructors = {}  -- Units which may build the base
-local myFactories = {}     -- Factories already available, with their queue
+local myConstructors = {}    -- Units which may build the base
+local myFactories = {}       -- Factories already available, with their queue
+local myFactoriesScore = {}  -- Score associated to the factory
 
 local function GetBuildingChains()
     local producers = {}
@@ -133,46 +140,52 @@ local function ChainScore(target, chain)
         return MIN_INT
     end
 
-    if unitDef.id > MAX_UNITDEFID then
-        Warning("Unit '" .. unitDef.name .. "' has an UnitDefID = " .. unitDefID .. " > " .. MAX_UNITDEFID)
-    end
-
     local mCurr, mStor, mPull, mInco = Spring.GetTeamResources(myTeamID, "metal")
     local eCurr, eStor = Spring.GetTeamResources(myTeamID, "energy")
 
     local score = MIN_INT
+    local base_gann_inputs = {
+        sim_time = __clamp(Spring.GetGameSeconds() / MAX_SIMTIME),
+        metal_curr = __clamp(mCurr / mStor),
+        metal_push = __clamp(METAL_PULL_PUSH_FACTOR * mInco / mStor),
+        metal_pull = __clamp(METAL_PULL_PUSH_FACTOR * mPull / mStor),
+        energy_curr = __clamp(eCurr / eStor),
+        energy_storage = __clamp(eStor / MAX_E_STORAGE),
+        capturing_capacity = __clamp(n_cap / MAX_FLAG_CAPTURE_CAPACITY),
+        los_capacity = __clamp(n_view / MAX_LOS_CAPACITY),
+        construction_capacity = __clamp(n_constructor / MAX_CONSTRUCTORS),
+        chain_cost = __clamp((chain.metal - unitDef.metalCost) / mStor),
+        unit_cost = __clamp(unitDef.metalCost / mStor),
+        unit_in_factories = __clamp(#GetAllBuilders(unitDef.id) / MAX_UNIT_IN_FACTORIES),
+    }
     if squadDefs[unitDef.name] == nil then
         local firepower, accuracy, penetration, range = unit_scores.GetUnitWeaponsFeatures(unitDef)
         local armour = unit_scores.GetUnitArmour(unitDef)
-        local base_gann_inputs = {
-            -- Team state
-            metal_curr = __clamp(mCurr / mStor),
-            metal_push = __clamp(METAL_PULL_PUSH_FACTOR * mInco / mStor),
-            metal_pull = __clamp(METAL_PULL_PUSH_FACTOR * mPull / mStor),
-            energy_curr = __clamp(eCurr / eStor),
-            energy_storage = __clamp(eStor / MAX_E_STORAGE),
-            capturing_capacity = __clamp(n_cap / MAX_FLAG_CAPTURE_CAPACITY),
-            los_capacity = __clamp(n_view / MAX_LOS_CAPACITY),
-            construction_capacity = __clamp(n_constructor / MAX_CONSTRUCTORS),
-            -- Unit features
-            unit_defid = __clamp(unitDef.id / MAX_UNITDEFID),
-            chain_cost = __clamp((chain.metal - unitDef.metalCost) / mStor),
-            unit_cost = __clamp(unitDef.metalCost / mStor),
-            unit_storage = __clamp(unitDef.energyStorage / 3000.0),
-            unit_is_constructor = unit_chains.IsConstructor(unitDef.id) and 1.0 or 0.0,
-            unit_in_factories = __clamp(#GetAllBuilders(unitDef.id) / MAX_UNIT_IN_FACTORIES),
-            unit_cap = __clamp((unitDef.customParams.flagcaprate or 0) / 10.0),
-            unit_view = __clamp(unitDef.losRadius / 1000.0),
-            unit_speed = __clamp(unitDef.speed / 20.0),
-            unit_armour = __clamp(armour / 200.0),
-            unit_firepower = __clamp(firepower / 1000.0),
-            unit_penetration = __clamp(penetration / 200.0),
-            unit_range = __clamp(range / 15000.0),
-        }
 
-        score = base_gann.Evaluate(myTeamID, base_gann_inputs).score
+        base_gann_inputs.squad_size = 1.0 / MAX_SQUAD_SIZE
+        base_gann_inputs.unit_storage = __clamp(unitDef.energyStorage / 3000.0)
+        base_gann_inputs.unit_is_constructor = unit_chains.IsConstructor(unitDef.id) and 1.0 or 0.0
+        base_gann_inputs.unit_cap = __clamp((unitDef.customParams.flagcaprate or 0) / 10.0)
+        base_gann_inputs.unit_view = __clamp(unitDef.losRadius / 1000.0 / MAX_SQUAD_SIZE)
+        base_gann_inputs.unit_speed = __clamp(unitDef.speed / 20.0)
+        base_gann_inputs.unit_armour = __clamp(armour / 200.0)
+        base_gann_inputs.unit_firepower = __clamp(firepower / 1000.0)
+        base_gann_inputs.unit_accuracy = __clamp(accuracy / 2000.0)
+        base_gann_inputs.unit_penetration = __clamp(penetration / 200.0)
+        base_gann_inputs.unit_range = __clamp(range / 15000.0)
     else
-        score = 0
+        base_gann_inputs.squad_size = 0.0
+        base_gann_inputs.unit_storage = 0.0
+        base_gann_inputs.unit_is_constructor = 0.0
+        base_gann_inputs.unit_cap = 0.0
+        base_gann_inputs.unit_view = 0.0
+        base_gann_inputs.unit_speed = 0.0
+        base_gann_inputs.unit_armour = 0.0
+        base_gann_inputs.unit_firepower = 0.0
+        base_gann_inputs.unit_accuracy = 0.0
+        base_gann_inputs.unit_penetration = 0.0
+        base_gann_inputs.unit_range = 0.0
+
         for _, member in ipairs(squadDefs[unitDef.name].members) do
             local udef = UnitDefNames[member]
 
@@ -183,33 +196,61 @@ local function ChainScore(target, chain)
 
             local firepower, accuracy, penetration, range = unit_scores.GetUnitWeaponsFeatures(udef)
             local armour = unit_scores.GetUnitArmour(udef)
-            local base_gann_inputs = {
-                -- Team state
-                metal_curr = __clamp(mCurr / mStor),
-                metal_push = __clamp(METAL_PULL_PUSH_FACTOR * mInco / mStor),
-                metal_pull = __clamp(METAL_PULL_PUSH_FACTOR * mPull / mStor),
-                energy_curr = __clamp(eCurr / eStor),
-                energy_storage = __clamp(eStor / MAX_E_STORAGE),
-                capturing_capacity = __clamp(n_cap / MAX_FLAG_CAPTURE_CAPACITY),
-                los_capacity = __clamp(n_view / MAX_LOS_CAPACITY),
-                construction_capacity = __clamp(n_constructor / MAX_CONSTRUCTORS),
-                -- Unit features
-                unit_defid = __clamp(udef.id / MAX_UNITDEFID),
-                chain_cost = __clamp((chain.metal - udef.metalCost) / mStor),
-                unit_cost = __clamp(udef.metalCost / mStor),
-                unit_storage = __clamp(udef.energyStorage / 3000.0),
-                unit_is_constructor = unit_chains.IsConstructor(udef.id) and 1.0 or 0.0,
-                unit_in_factories = __clamp(#GetAllBuilders(udef.id) / MAX_UNIT_IN_FACTORIES),
-                unit_cap = __clamp((udef.customParams.flagcaprate or 0) / 10.0),
-                unit_view = __clamp(udef.losRadius / 1000.0),
-                unit_speed = __clamp(udef.speed / 20.0),
-                unit_armour = __clamp(armour / 200.0),
-                unit_firepower = __clamp(firepower / 1000.0),
-                unit_penetration = __clamp(penetration / 200.0),
-                unit_range = __clamp(range / 15000.0),
-            }
-            score = score + base_gann.Evaluate(myTeamID, base_gann_inputs).score
+
+            base_gann_inputs.squad_size = base_gann_inputs.squad_size + 1
+            if unit_chains.IsConstructor(udef.id) then
+                base_gann_inputs.unit_is_constructor = 1.0
+            end
+
+            base_gann_inputs.unit_storage = base_gann_inputs.unit_storage +
+                    udef.energyStorage
+            base_gann_inputs.unit_cap = base_gann_inputs.unit_cap +
+                    (unitDef.customParams.flagcaprate or 0)
+            base_gann_inputs.unit_view = base_gann_inputs.unit_view +
+                    udef.losRadius
+            base_gann_inputs.unit_speed = base_gann_inputs.unit_speed +
+                    udef.speed
+            base_gann_inputs.unit_firepower = base_gann_inputs.unit_firepower +
+                    firepower
+            base_gann_inputs.unit_accuracy = base_gann_inputs.unit_accuracy +
+                    accuracy
+
+            if armour > base_gann_inputs.unit_armour then
+                base_gann_inputs.unit_armour = armour
+            end
+            if penetration > base_gann_inputs.unit_penetration then
+                base_gann_inputs.unit_penetration = penetration
+            end
+            if range > base_gann_inputs.unit_range then
+                base_gann_inputs.unit_range = range
+            end
+
         end
+
+        base_gann_inputs.unit_storage = base_gann_inputs.unit_storage / 3000.0
+        base_gann_inputs.unit_cap = base_gann_inputs.unit_cap / 10.0
+
+        base_gann_inputs.unit_speed = base_gann_inputs.unit_speed /
+                (20.0 * base_gann_inputs.squad_size)
+        base_gann_inputs.unit_firepower = base_gann_inputs.unit_firepower /
+                (1000.0 * base_gann_inputs.squad_size)
+        base_gann_inputs.unit_accuracy = base_gann_inputs.unit_accuracy /
+                (2000.0 * base_gann_inputs.squad_size)
+        base_gann_inputs.unit_storage = base_gann_inputs.unit_storage / 3000.0
+
+        base_gann_inputs.unit_view = base_gann_inputs.unit_view /
+                (1000.0 * MAX_SQUAD_SIZE)
+        base_gann_inputs.unit_armour = base_gann_inputs.unit_armour / 200.0
+        base_gann_inputs.unit_penetration = base_gann_inputs.unit_penetration / 200.0
+        base_gann_inputs.unit_range = base_gann_inputs.unit_range / 15000.0
+
+        base_gann_inputs.squad_size = base_gann_inputs.squad_size / MAX_SQUAD_SIZE
+    end
+
+    score = base_gann.Evaluate(myTeamID, base_gann_inputs).score
+    Spring.Echo("ChainScore", unitDef.name, score)
+    for k, v in pairs(base_gann_inputs) do
+        Spring.Echo("    ", k, v)
     end
     return score
 end
@@ -325,7 +366,11 @@ local function StartChain()
             myFactories[builder] = {}
         end
         myFactories[builder][#myFactories[builder] + 1] = -target_udef.id
+        myFactoriesScore[builder] = MIN_INT  -- The first factory to wait if we are stalling
     end
+
+    -- Set the starting time, to eventually give up at some point
+    selected_chain.start_time = Spring.GetGameSeconds()
 
     currentBuildDefID = target_udef.id
     currentBuilder = builder
@@ -401,6 +446,7 @@ local function IdleFactory(unitID)
     -- actual unit is created to be built, we are replacing this by the actual
     -- unitID
     myFactories[unitID][#myFactories[unitID] + 1] = -selected
+    myFactoriesScore[unitID] = score
 end
 
 local function isBuilderIdle(unitID)
@@ -423,7 +469,17 @@ end
 --  The call-in routines
 --
 
+local waiting_builders = {}
+
 function BaseMgr.GameFrame(f)
+    -- Check if the building chain is not progressing, so we must move to a new
+    -- one
+    if not currentBuildID and selected_chain and selected_chain.start_time then
+        if Spring.GetGameSeconds() - selected_chain.start_time > CHAIN_GIVING_UP_TIME then
+            selected_chain = nil
+        end
+    end
+
     if selected_chain == nil then
         selected_chain = SelectNewBuildingChain()
         if selected_chain then
@@ -446,6 +502,41 @@ function BaseMgr.GameFrame(f)
             Log("Factory " .. UnitDefs[GetUnitDefID(u)].name .. " hanged...")
             IdleFactory(u)
         end
+    end
+
+    local mCurr, mStor = Spring.GetTeamResources(myTeamID, "metal")
+    if mCurr / mStor < 0.05 then
+        -- We are stalling, put some units to wait
+        Spring.Echo(#waiting_builders)
+        if #waiting_builders == 0 then
+            -- Let's start putting the constructors in waiting mode
+            waiting_builders[1] = {}
+            for u, _ in pairs(myConstructors) do
+                Spring.Echo("Put to wait constructor", u)
+                GiveOrderToUnit(u, CMD_WAIT, {}, {})
+                waiting_builders[1][#(waiting_builders[1]) + 1] = u
+            end
+        else
+            -- Look for the worst scored factory to ask it to wait
+            local score, factory = MAX_INT, nil
+            for u, s in pairs(myFactoriesScore) do
+                if s < score then
+                    score, factory = s, u
+                end
+            end
+            if factory ~= nil then
+                Spring.Echo("Put to wait factory", factory)
+                GiveOrderToUnit(factory, CMD_WAIT, {}, {})
+                waiting_builders[#waiting_builders + 1] = {factory}
+            end
+        end
+    elseif #waiting_builders > 0 then
+        -- We are not stalling anymore, let a factory to start the work again
+        for _, u in ipairs(waiting_builders[#(waiting_builders)]) do
+            Spring.Echo("Release wait", u)
+            GiveOrderToUnit(u, CMD_WAIT, {}, {})
+        end
+        waiting_builders[#waiting_builders] = nil
     end
 end
 

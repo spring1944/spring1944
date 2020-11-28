@@ -1,5 +1,7 @@
 -- Just simply a record of inputs to be handled for the GANN
 local base_gann_inputs = {
+    -- Game state
+    "sim_time",
     -- Team state
     "metal_curr",
     "metal_push",
@@ -10,14 +12,15 @@ local base_gann_inputs = {
     "los_capacity",
     "construction_capacity",
     -- Unit features
-    "unit_defid",
     "chain_cost",
+    "squad_size",
     "unit_cost",
     "unit_cap",
     "unit_view",
     "unit_speed",
     "unit_armour",
     "unit_firepower",
+    "unit_accuracy",
     "unit_penetration",
     "unit_range",
     "unit_storage",

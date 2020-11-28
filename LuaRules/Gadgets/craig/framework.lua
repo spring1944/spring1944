@@ -267,11 +267,15 @@ local function SerializeOrder(unitID, cmd, params, options)
 	return string.char(unpack(b))
 end
 
-
 function GiveOrderToUnit(unitID, cmd, params, options)
 	--Log("UNSYNCED: GiveOrderToUnit ", unitID)
+	local status, msg = pcall(SerializeOrder, unitID, cmd, params, options)
+	if not status or msg == nil then
+		Log("Failed to serialize command", unitID, cmd)
+		return nil
+	end
 	bufferSize = bufferSize + 1
-	messageBuffer[bufferSize] = SerializeOrder(unitID, cmd, params, options)
+	messageBuffer[bufferSize] = msg
 end
 
 --------------------------------------------------------------------------------

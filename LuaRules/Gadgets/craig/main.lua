@@ -79,6 +79,10 @@ local MY_PLAYER_ID = Spring.GetMyPlayerID()
 local FIX_CONFIG_FOLDER = "LuaRules/Configs/craig"
 local CONFIG_FOLDER = "LuaRules/Config/craig"
 local SAVE_PERIOD = 30 * 60  -- Save once per minute
+local TRAINING_ITERS = 100
+
+-- local TRAINING_MODE = nil      -- For release versions
+local TRAINING_MODE = 40 * 60  -- Training time
 
 -- globals
 waypointMgr = {}
@@ -131,6 +135,10 @@ function gadget.IsDebug(teamID)
     return CRAIG_Debug_Team == teamID
 end
 
+function gadget.IsTraining()
+    return TRAINING_MODE ~= nil
+end
+
 function gadget.Log(...)
     if CRAIG_Debug_Team ~= nil then
         Spring.Echo("C.R.A.I.G.: " .. table.concat{...})
@@ -163,6 +171,36 @@ function GetConfigData()
     Script.LuaUI.CraigGetConfigData(CONFIG_FOLDER,
                                     "craig.lua",
                                     table.serialize(data))
+end
+
+function CreateTeamGann(teamID)
+    base_gann.Procreate(teamID)
+
+    -- Give some minimum training
+    for i = 1, TRAINING_ITERS do
+        -- We really need constructors
+        --[[
+        base_gann.Train(teamID, {
+            construction_capacity = 0.0,
+            unit_is_constructor = 1.0,
+        }, {score = 1.0})
+        -- But we really don't want to spam them
+        base_gann.Train(teamID, {
+            construction_capacity = 1.0,
+            unit_is_constructor = 1.0,
+        }, {score = -1.0})
+        -- We need capturing units
+        base_gann.Train(teamID, {
+            capturing_capacity = 0.0,
+            unit_cap = 1.0,
+        }, {score = 1.0})
+        -- We need always some scouts (this training is probably a bit useless)
+        base_gann.Train(teamID, {
+            los_capacity = 0.0,
+            unit_view = 1.0,
+        }, {score = 1.0})
+        --]]        
+    end
 end
 
 --------------------------------------------------------------------------------
@@ -225,7 +263,7 @@ local function CreateTeams()
                 if (side) then
                     -- Intialise intelligence and the gann individual
                     intelligences[t] = CreateIntelligence(t, at)
-                    base_gann.Procreate(t)
+                    CreateTeamGann(t)
                     -- Create the team
                     team[t] = CreateTeam(t, at, side)
                     team[t].GameStart()
@@ -247,6 +285,10 @@ local function CreateTeams()
 end
 
 function gadget:GameFrame(f)
+    if TRAINING_MODE ~= nil and Spring.GetGameSeconds() > TRAINING_MODE then
+        Spring.Quit()
+    end
+
     if (f < 1) or (f == lastFrame) then
         return
     end

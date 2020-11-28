@@ -98,18 +98,18 @@ end
 
 function NeuralNetwork:train(data, outputs)
     if #data ~= #(self[1]) then
-        Spring.Log("GANN", LOG.Error,
-                   "Training received " .. #data .. " inputs, while ".. #(self[1]) .. " are required")
+        Spring.Log("GANN", "error",
+                   "Training received " .. tostring(#data) .. " inputs, while ".. tostring(#(self[1])) .. " are required")
         return nil
     end
     if #outputs ~= #(self[#self]) then
-        Spring.Log("GANN", LOG.Error,
-                   "Training received " .. #data .. " target outputs, while ".. #(self[#self]) .. " are required")
+        Spring.Log("GANN", "error",
+                   "Training received " .. tostring(#data) .. " target outputs, while ".. tostring(#(self[#self])) .. " are required")
         return nil
     end
 
     --update the internal inputs and outputs
-    self:predict(inputs)
+    self:predict(data)
 
     -- Propagate the errors backward
     for i = #self,2,-1 do

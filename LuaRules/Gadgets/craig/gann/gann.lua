@@ -32,7 +32,9 @@ You must call the following callins from the main script:
 
 function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 
-At the time of using the GANN, you can call GANN.Evaluate(teamID, inputs) 
+At the time of using the GANN, you can call GANN.Evaluate(teamID, inputs). You
+are entitled to train the neural network at any time using
+GANN.Train(teamID, inputs, outputs)
 
 To end the GANN...
 ==================
@@ -44,8 +46,8 @@ for later usage.
 function CreateGANN(population, mutation_prob, mutation_size)
 
 population = population or 10
-mutation_prob = mutation_prob ~= nil and mutation_prob or 0.1
-mutation_size = mutation_size or 0.25
+mutation_prob = mutation_prob ~= nil and mutation_prob or 0.05
+mutation_size = mutation_size or 1.0
 
 local INITIAL_LOST_METAL = 10000 -- Make it harder to get a possitive score
 
@@ -103,6 +105,11 @@ function GANN.SetConfigData(data)
             valid = false
         end
         if valid then
+            if gadget.IsTraining() and individual.score then
+                -- Progressively enworse progenitors, so they do not get stucked
+                -- with a population that got lucky once
+                individual.score = individual.score - 0.01
+            end
             individuals[#individuals + 1] = {
                 score = individual.score,
                 nn = nn
@@ -212,7 +219,8 @@ end
 
 function GANN.Evaluate(teamID, inputs)
     if individualTeams[teamID] == nil then
-        Warning("There is not GANN for the team " .. teamID)
+        Warning("There is not GANN for the team " .. tostring(teamID))
+        return nil
     end
     local nn = individualTeams[teamID].nn
     local nn_in = {}
@@ -231,6 +239,31 @@ function GANN.Evaluate(teamID, inputs)
     end
 
     return output
+end
+
+function GANN.Train(teamID, inputs, outputs)
+    if individualTeams[teamID] == nil then
+        Warning("There is not GANN for the team " .. tostring(teamID))
+        return nil
+    end
+    local nn = individualTeams[teamID].nn
+    local nn_in = {}
+    for i, k in ipairs(inputNames) do
+        if inputs[k] == nil then
+            nn_in[i] = 2.0 * math.random() - 1.0
+        else
+            nn_in[i] = inputs[k]
+        end
+    end
+    local nn_out = {}
+    for i, k in ipairs(outputNames) do
+        if outputs[k] == nil then
+            nn_out[i] = 2.0 * math.random() - 1.0
+        end
+        nn_out[i] = outputs[k]
+    end
+
+    nn:train(nn_in, nn_out)
 end
 
 --------------------------------------------------------------------------------
