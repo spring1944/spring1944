@@ -109,13 +109,15 @@ local function IsConstructor(unitDefID)
     if UnitDefs[unitDefID].isFactory or unitDef.speed == 0 then
         return false
     end
+    local resemble_builder = unitDef.isMobileBuilder and unitDef.canAssist
     local children = unitDef.buildOptions
     for _, c in ipairs(children) do
-        if not _is_morph_link(c) then
+        if resemble_builder and not _is_morph_link(c) then
             return true
         end
-        if IsFactory(UnitDefs[_unit_name(c)].id) then
-            -- Swedish volvo
+        if IsFactory(UnitDefNames[_unit_name(c)].id) then
+            -- Packed factories
+            Log("Found a packed factory: " .. unitDef.name)
             return true
         end
     end
