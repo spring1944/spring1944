@@ -30,7 +30,10 @@ local FLAG_RADIUS     = FLAG_RADIUS
 local WAYPOINT_RADIUS = FLAG_RADIUS
 local WAYPOINT_HEIGHT = 100
 local REF_UNIT_DEF = UnitDefNames["gerrifle"] -- Reference unit to check paths
-local FRONTLINE_UPDATE_PERIOD = 100  -- In frames
+-- We enforce the map waypoints are all traversed once each 200 frames (> 6.5s)
+local MAP_TRAVERSING_PERIOD = 200
+-- The frontlines are upddated at least once each 100 frames (> 3s)
+local FRONTLINE_UPDATE_PERIOD = 100
 
 -- speedups
 local Log = Log
@@ -43,6 +46,7 @@ local GetUnitPosition = Spring.GetUnitPosition
 local GetGroundHeight = Spring.GetGroundHeight
 local TestMoveOrder = Spring.TestMoveOrder
 local sqrt = math.sqrt
+local min, max = math.min, math.max
 local floor, ceil = math.floor, math.ceil
 local isFlag = gadget.flags
 
@@ -383,6 +387,54 @@ local function AddConnection(a, b)
     b.adj[a] = edge
 end
 
+local function UpdateWaypoint(p)
+    p.flags = {}
+
+    -- Update p.allyTeamUnitCount
+    -- Box check (as opposed to Rectangle, Sphere, Cylinder),
+    -- because this allows us to easily exclude aircraft.
+    local x1, y1, z1 = p.x - WAYPOINT_RADIUS, p.y - WAYPOINT_HEIGHT, p.z - WAYPOINT_RADIUS
+    local x2, y2, z2 = p.x + WAYPOINT_RADIUS, p.y + WAYPOINT_HEIGHT, p.z + WAYPOINT_RADIUS
+    local occupationTeams = {}
+    local allyTeamUnitCount = {}
+    for _,u in ipairs(GetUnitsInBox(x1, y1, z1, x2, y2, z2)) do
+        local ud = GetUnitDefID(u)
+        local at = GetUnitAllyTeam(u)
+        if isFlag[ud] then
+            local x, y, z = GetUnitPosition(u)
+            local dist = GetDist2D(x, z, p.x, p.z)
+            if (dist < FLAG_RADIUS) then
+                p.flags[#p.flags+1] = u
+                flags[p] = u
+                --Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
+            end
+            -- Flags not conquered yet are a special case, and we specifically
+            -- want to set it as enemy territory
+            if at == GAIA_ALLYTEAM_ID then
+                occupationTeams[#occupationTeams + 1] = GAIA_ALLYTEAM_ID
+            end
+        end
+        if at ~= GAIA_ALLYTEAM_ID then
+            if allyTeamUnitCount[at] == nil then
+                occupationTeams[#occupationTeams + 1] = at
+            end
+            allyTeamUnitCount[at] = (allyTeamUnitCount[at] or 0) + 1
+        end
+    end
+    p.allyTeamUnitCount = allyTeamUnitCount
+
+    -- Update p.owner. The owner of a way point is whatever team is occupying
+    -- it. If no-one is currently occupying the waypoint, we just simply
+    -- preserve it. If several teams are disputing a waypoint, is it demoted
+    -- to neutral
+    if #occupationTeams == 1 then
+        p.owner = occupationTeams[1]
+    elseif #occupationTeams > 1 then
+        p.owner = nil
+    end
+end
+    
+    
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -517,52 +569,10 @@ function WaypointMgr.GameFrame(f)
         return
     end
 
-    index = (index % #waypoints) + 1
-    --Log("WaypointMgr: updating waypoint ", index)
-    local p = waypoints[index]
-    p.flags = {}
-
-    -- Update p.allyTeamUnitCount
-    -- Box check (as opposed to Rectangle, Sphere, Cylinder),
-    -- because this allows us to easily exclude aircraft.
-    local x1, y1, z1 = p.x - WAYPOINT_RADIUS, p.y - WAYPOINT_HEIGHT, p.z - WAYPOINT_RADIUS
-    local x2, y2, z2 = p.x + WAYPOINT_RADIUS, p.y + WAYPOINT_HEIGHT, p.z + WAYPOINT_RADIUS
-    local occupationTeams = {}
-    local allyTeamUnitCount = {}
-    for _,u in ipairs(GetUnitsInBox(x1, y1, z1, x2, y2, z2)) do
-        local ud = GetUnitDefID(u)
-        local at = GetUnitAllyTeam(u)
-        if isFlag[ud] then
-            local x, y, z = GetUnitPosition(u)
-            local dist = GetDist2D(x, z, p.x, p.z)
-            if (dist < FLAG_RADIUS) then
-                p.flags[#p.flags+1] = u
-                flags[p] = u
-                --Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
-            end
-            -- Flags not conquered yet are a special case, and we specifically
-            -- want to set it as enemy territory
-            if at == GAIA_ALLYTEAM_ID then
-                occupationTeams[#occupationTeams + 1] = GAIA_ALLYTEAM_ID
-            end
-        end
-        if at ~= GAIA_ALLYTEAM_ID then
-            if allyTeamUnitCount[at] == nil then
-                occupationTeams[#occupationTeams + 1] = at
-            end
-            allyTeamUnitCount[at] = (allyTeamUnitCount[at] or 0) + 1
-        end
-    end
-    p.allyTeamUnitCount = allyTeamUnitCount
-
-    -- Update p.owner. The owner of a way point is whatever team is occupying
-    -- it. If no-one is currently occupying the waypoint, we just simply
-    -- preserve it. If several teams are disputing a waypoint, is it demoted
-    -- to neutral
-    if #occupationTeams == 1 then
-        p.owner = occupationTeams[1]
-    elseif #occupationTeams > 1 then
-        p.owner = nil
+    local waypoints_per_frame = ceil(#waypoints / MAP_TRAVERSING_PERIOD)
+    for i=1,waypoints_per_frame do
+        index = (index % #waypoints) + 1
+        UpdateWaypoint(waypoints[index])
     end
 end
 
