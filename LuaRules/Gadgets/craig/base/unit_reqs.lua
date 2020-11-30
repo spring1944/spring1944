@@ -181,7 +181,7 @@ local function GetBuildChains(unitDefID, chain)
         if not IsConstructor(child.udef.id) and not IsFactory(child.udef.id) then
             chains[#chains + 1] = new_chain
         else
-            local flagcaprate = child.udef.customParams.flagcaprate or 0
+            local flagcaprate = tonumber(child.udef.customParams.flagcaprate or 0)
             if IsConstructor(child.udef.id) and flagcaprate > 0 then
                 -- Rus commisars
                 chains[#chains + 1] = new_chain

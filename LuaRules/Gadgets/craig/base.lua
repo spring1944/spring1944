@@ -132,6 +132,30 @@ local function GetAllBuilders(unitDefID)
     return builders
 end
 
+local function BasicTraining(unitDef, inputs, score)
+    if inputs.construction_capacity < 0.01 and inputs.unit_is_constructor > 0.5 and score < 0.9 then
+        Log("  However, it was expected to score > 0.9, because...")
+        Log("  construction_capacity = " .. tostring(inputs.construction_capacity))
+        Log("  unit_is_constructor = " .. tostring(inputs.unit_is_constructor))
+        base_gann.Train(myTeamID, inputs, {score = 1.0})
+    elseif inputs.construction_capacity > 0.99 and inputs.unit_is_constructor > 0.5 and score > 0.1 then
+        Log("  However, it was expected to score < 0.1, because...")
+        Log("  construction_capacity = " .. tostring(inputs.construction_capacity))
+        Log("  unit_is_constructor = " .. tostring(inputs.unit_is_constructor))
+        base_gann.Train(myTeamID, inputs, {score = 0.0})
+    elseif inputs.capturing_capacity > score and inputs.unit_cap > 0.49 then
+        Log("  However, it was expected to score > " .. tostring(inputs.capturing_capacity) .. " because...")
+        Log("  capturing_capacity = " .. tostring(inputs.capturing_capacity))
+        Log("  unit_cap = " .. tostring(inputs.unit_cap))
+        base_gann.Train(myTeamID, inputs, {score = inputs.capturing_capacity})
+    elseif (1.0 - inputs.los_capacity) * inputs.unit_view > score then
+        Log("  However, it was expected to score > " .. tostring((1.0 - inputs.los_capacity) * inputs.unit_view) .. " because...")
+        Log("  los_capacity = " .. tostring(inputs.los_capacity))
+        Log("  unit_view = " .. tostring(inputs.unit_view))
+        base_gann.Train(myTeamID, inputs, {score = (1.0 - inputs.los_capacity) * inputs.unit_view})
+    end
+end
+
 local function ChainScore(target, chain)
     local unitDef = UnitDefNames[target]
 
@@ -248,9 +272,9 @@ local function ChainScore(target, chain)
     end
 
     score = base_gann.Evaluate(myTeamID, base_gann_inputs).score
-    Spring.Echo("ChainScore", unitDef.name, score)
-    for k, v in pairs(base_gann_inputs) do
-        Spring.Echo("    ", k, v)
+    Log(unitDef.name .. " scored " .. tostring(score))
+    if gadget.IsTraining() then
+        BasicTraining(unitDef, base_gann_inputs, score)
     end
     return score
 end
