@@ -139,18 +139,17 @@ local function crossover(progenitor1, progenitor2)
     end
 
     for i = 2, #nn do
+        -- We mix the progenitors by entire layers
+        local selected
+        if math.random() < 0.5 then
+            selected = progenitor1
+        else
+            selected = progenitor2
+        end
         for j = 1, #(nn[i]) do
-            if math.random() < 0.5 then
-                nn[i][j].bias = progenitor1.nn[i][j].bias
-            else
-                nn[i][j].bias = progenitor2.nn[i][j].bias
-            end
+            nn[i][j].bias = selected.nn[i][j].bias
             for k = 1, #(nn[i - 1]) do
-                if math.random() < 0.5 then
-                    nn[i][j][k] = progenitor1.nn[i][j][k]
-                else
-                    nn[i][j][k] = progenitor2.nn[i][j][k]
-                end
+                nn[i][j][k] = selected.nn[i][j][k]
             end
         end
     end
