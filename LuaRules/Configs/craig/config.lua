@@ -79,7 +79,7 @@ gadget.reservedFlagCappers = {
 	us  = SQUAD_SIZE,
 	ita = SQUAD_SIZE,
 	jpn = SQUAD_SIZE,
-	rus = 2,
+	rus = 2 * SQUAD_SIZE,
 	swe = SQUAD_SIZE,
 	hun = SQUAD_SIZE,
 }
@@ -92,7 +92,7 @@ gadget.flagCappers = UnitSet{
 	"itarifle", "itam38",
 	"usrifle", "usthompson",
 	"jpnrifle", "jpntype100smg",
-	"ruscommissar", --no commander because it is needed for base building
-	"swerifle",
-	"hunrifle",
+	"rusrifle", "rusppsh", "rusdp", "rusptrd", "rusrpg43",
+	"swerifle", "swekpistm3739",
+	"hunrifle", "hunsmg",
 }

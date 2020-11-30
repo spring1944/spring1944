@@ -46,7 +46,7 @@ local function SendToNearestWaypointWithUncappedFlags(source, unitArray)
 		local cmd = CMD.FIGHT
 		-- HACK: special exception for Russia, cause with fight the commissars will
 		-- only eat all map features and help base building, instead of capping flags.
-		if (mySide == "rus") then cmd = CMD.MOVE end
+		-- if (mySide == "rus") then cmd = CMD.MOVE end
 		-- give orders
 		for _,u in ipairs(unitArray) do
 			units[u] = target --assume next call this unit will be at target

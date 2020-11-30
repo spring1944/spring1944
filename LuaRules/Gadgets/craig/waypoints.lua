@@ -408,11 +408,7 @@ local function UpdateWaypoint(p)
                 flags[p] = u
                 --Log("Flag ", u, " (", at, ") is near ", p.x, ", ", p.z)
             end
-            -- Flags not conquered yet are a special case, and we specifically
-            -- want to set it as enemy territory
-            if at == GAIA_ALLYTEAM_ID then
-                occupationTeams[#occupationTeams + 1] = GAIA_ALLYTEAM_ID
-            end
+            occupationTeams[#occupationTeams + 1] = at
         end
         if at ~= GAIA_ALLYTEAM_ID then
             if allyTeamUnitCount[at] == nil then
