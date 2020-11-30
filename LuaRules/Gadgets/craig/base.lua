@@ -531,12 +531,10 @@ function BaseMgr.GameFrame(f)
     local mCurr, mStor = Spring.GetTeamResources(myTeamID, "metal")
     if mCurr / mStor < 0.05 then
         -- We are stalling, put some units to wait
-        Spring.Echo(#waiting_builders)
         if #waiting_builders == 0 then
             -- Let's start putting the constructors in waiting mode
             waiting_builders[1] = {}
             for u, _ in pairs(myConstructors) do
-                Spring.Echo("Put to wait constructor", u)
                 GiveOrderToUnit(u, CMD_WAIT, {}, {})
                 waiting_builders[1][#(waiting_builders[1]) + 1] = u
             end
@@ -549,7 +547,6 @@ function BaseMgr.GameFrame(f)
                 end
             end
             if factory ~= nil then
-                Spring.Echo("Put to wait factory", factory)
                 GiveOrderToUnit(factory, CMD_WAIT, {}, {})
                 waiting_builders[#waiting_builders + 1] = {factory}
             end
