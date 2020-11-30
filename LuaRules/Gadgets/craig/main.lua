@@ -326,6 +326,7 @@ function gadget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
 end
 
 function gadget:UnitFinished(unitID, unitDefID, unitTeam)
+    base_gann.UnitFinished(unitID, unitDefID, unitTeam)
     if team[unitTeam] then
         team[unitTeam].UnitFinished(unitID, unitDefID, unitTeam)
     end

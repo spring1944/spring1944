@@ -30,6 +30,7 @@ To use the GANN...
 
 You must call the following callins from the main script:
 
+function GANN.UnitFinished(unitID, unitDefID, unitTeam)
 function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 
 At the time of using the GANN, you can call GANN.Evaluate(teamID, inputs). You
@@ -191,8 +192,10 @@ function GANN.Procreate(teamID)
 
     local individual = crossover(individuals[i0], individuals[i1])
     individual = mutate(individual)
+    individual.teamID = teamID
     individual.destroyed_metal = 0
     individual.lost_metal = INITIAL_LOST_METAL
+    individual.used_metal = 0
 
     individualTeams[teamID] = individual
     individuals[#individuals + 1] = individual
@@ -203,6 +206,17 @@ end
 --
 --  Usage
 --
+
+local total_invested_metal = 0
+
+function GANN.UnitFinished(unitID, unitDefID, unitTeam)
+    local unitDef = UnitDefs[unitDefID]
+    local metal = unitDef.metalCost
+    total_invested_metal = total_invested_metal + metal
+    if individualTeams[unitTeam] ~= nil then
+        individualTeams[unitTeam].used_metal = individualTeams[unitTeam].used_metal + metal
+    end
+end
 
 function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     local unitDef = UnitDefs[unitDefID]
@@ -299,12 +313,19 @@ function GANN.GetConfigData()
 
     -- Evaluate the score of the children
     for i = population + 1, #individuals do
-        individuals[i].score = individuals[i].destroyed_metal / individuals[i].lost_metal
+        local damage_factor = individuals[i].destroyed_metal / individuals[i].lost_metal
+        local metal_factor = individuals[i].used_metal / total_invested_metal
+        individuals[i].score = metal_factor * damage_factor
     end
 
     -- Select the fittest individuals
     local selected = {}
     for _,data in spairs(individuals, function(t,a,b) return t[b].score < t[a].score end) do
+        if data.teamID ~= nil then
+            Log("Keeping GANN for team " .. tostring(data.teamID) .. " with a score " .. tostring(data.score))
+        else
+            Log("Keeping progenitor GANN with a score " .. tostring(data.score))
+        end
         selected[#selected + 1] = {
             score = data.score,
             nn = data.nn:serialize(),
