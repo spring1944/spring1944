@@ -49,6 +49,8 @@ local GetUnitDefID       = Spring.GetUnitDefID
 local GetGameSeconds     = Spring.GetGameSeconds
 local GetUnitCommands    = Spring.GetUnitCommands
 local GetFactoryCommands = Spring.GetFactoryCommands
+local GetTeamResources   = Spring.GetTeamResources
+local GetGameSeconds     = Spring.GetGameSeconds
 
 -- Squads
 local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
@@ -521,12 +523,33 @@ end
 --
 
 local waiting_builders = {}
+local is_waiting = {}
+
+local function __checkWaitingState(u, shall_wait, GetCommands)
+    local cmd = GetCommands(u, 1)[1]
+    local is_cmd_wait = cmd ~= nil and cmd.id == CMD_WAIT
+    if not shall_wait and is_cmd_wait then
+        Log("Unit ", u, "(", UnitDefs[GetUnitDefID(u)].name, ") shall be active, but it is waiting")
+        GiveOrderToUnit(u, CMD_WAIT, {}, {})
+    elseif shall_wait and not is_cmd_wait then
+        Log("Unit ", u, "(", UnitDefs[GetUnitDefID(u)].name, ") shall be waiting, but it is active")
+        GiveOrderToUnit(u, CMD_WAIT, {}, {})
+    end
+end
+
+local function checkUnitWaitingState(u, shall_wait)
+    return __checkWaitingState(u, shall_wait, GetUnitCommands)
+end
+
+local function checkFactoryWaitingState(u, shall_wait)
+    return __checkWaitingState(u, shall_wait, GetFactoryCommands)
+end
 
 function BaseMgr.GameFrame(f)
     -- Check if the building chain is not progressing, so we must move to a new
     -- one
     if not currentBuildID and selected_chain and selected_chain.start_time then
-        if Spring.GetGameSeconds() - selected_chain.start_time > CHAIN_GIVING_UP_TIME then
+        if GetGameSeconds() - selected_chain.start_time > CHAIN_GIVING_UP_TIME then
             selected_chain = nil
         end
     end
@@ -548,22 +571,28 @@ function BaseMgr.GameFrame(f)
         BuildBaseInterrupted()
     end
 
+    for u, _ in pairs(myConstructors) do
+        checkUnitWaitingState(u, is_waiting[u] == true)
+    end
     for u,q in pairs(myFactories) do
+        checkFactoryWaitingState(u, is_waiting[u] == true)
         if #q == 0 then
             Log("Factory " .. UnitDefs[GetUnitDefID(u)].name .. " hanged...")
             IdleFactory(u)
         end
     end
 
-    local mCurr, mStor = Spring.GetTeamResources(myTeamID, "metal")
-    if mCurr / mStor < 0.05 then
+    local mCurr, mStor, mPull, mInco = GetTeamResources(myTeamID, "metal")
+    if mCurr / mStor < 0.05 and mInco < mPull then
         -- We are stalling, put some units to wait
         if #waiting_builders == 0 then
             -- Let's start putting the constructors in waiting mode
             waiting_builders[1] = {}
             for u, _ in pairs(myConstructors) do
                 GiveOrderToUnit(u, CMD_WAIT, {}, {})
+                Log("Make to wait ", u, "(", UnitDefs[GetUnitDefID(u)].name, ")")
                 waiting_builders[1][#(waiting_builders[1]) + 1] = u
+                is_waiting[u] = true
             end
         else
             -- Look for the worst scored factory to ask it to wait
@@ -575,16 +604,22 @@ function BaseMgr.GameFrame(f)
             end
             if factory ~= nil then
                 GiveOrderToUnit(factory, CMD_WAIT, {}, {})
+                Log("Make to wait ", factory, "(", UnitDefs[GetUnitDefID(factory)].name, ")")
                 waiting_builders[#waiting_builders + 1] = {factory}
+                is_waiting[factory] = true
             end
         end
     elseif #waiting_builders > 0 then
         -- We are not stalling anymore, let a factory to start the work again
         for _, u in ipairs(waiting_builders[#(waiting_builders)]) do
-            Spring.Echo("Release wait", u)
+            Log("Back to job ", u, "(", UnitDefs[GetUnitDefID(u)].name, ")")
+            is_waiting[u] = nil
             GiveOrderToUnit(u, CMD_WAIT, {}, {})
         end
         waiting_builders[#waiting_builders] = nil
+    else
+        -- Just in case
+        is_waiting = {}
     end
 end
 
