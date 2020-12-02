@@ -161,8 +161,8 @@ end
 local function ChainScore(target, chain)
     local unitDef = UnitDefNames[target]
 
-    -- For the time being, ignore air units
-    if unitDef.canFly then
+    -- For the time being, ignore air and water units
+    if unitDef.canFly or unitDef.floatOnWater or unitDef.isHoveringAirUnit then
         return MIN_INT
     end
 
@@ -216,7 +216,7 @@ local function ChainScore(target, chain)
             local udef = UnitDefNames[member]
 
             -- For the time being, ignore air units
-            if UnitDefNames[member].canFly then
+            if udef.canFly or udef.floatOnWater or udef.isHoveringAirUnit then
                 return MIN_INT
             end
 
@@ -612,9 +612,11 @@ function BaseMgr.GameFrame(f)
     elseif #waiting_builders > 0 then
         -- We are not stalling anymore, let a factory to start the work again
         for _, u in ipairs(waiting_builders[#(waiting_builders)]) do
-            Log("Back to job ", u, "(", UnitDefs[GetUnitDefID(u)].name, ")")
-            is_waiting[u] = nil
-            GiveOrderToUnit(u, CMD_WAIT, {}, {})
+            if is_waiting[u] ~= nil then  -- Maybe the unit was killed
+                Log("Back to job ", u, "(", UnitDefs[GetUnitDefID(u)].name, ")")
+                is_waiting[u] = nil
+                GiveOrderToUnit(u, CMD_WAIT, {}, {})
+            end
         end
         waiting_builders[#waiting_builders] = nil
     else
@@ -685,6 +687,7 @@ end
 
 function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     buildsiteFinder.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    is_waiting[unitID] = nil
 
     if (currentBuildID ~= nil) and (unitID == currentBuildID) then
         Log("CurrentBuild destroyed")
