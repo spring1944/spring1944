@@ -50,7 +50,7 @@ local function SendToNearestWaypointWithUncappedFlags(source, unitArray)
 		-- give orders
 		for _,u in ipairs(unitArray) do
 			units[u] = target --assume next call this unit will be at target
-			PathFinder.GiveOrdersToUnit(previous, target, u, cmd)
+			PathFinder.GiveOrdersToUnit(previous, target, u, cmd, 0.5 * FLAG_RADIUS)
 		end
 	end
 end
