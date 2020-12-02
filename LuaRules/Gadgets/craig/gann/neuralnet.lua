@@ -22,8 +22,8 @@ local NeuralNetwork = {
 function NeuralNetwork.create(nIn, nOut, nLayers, nNeuronsPerLayer, learningRate)
     nIn = nIn or 1
     nOut = nOut or 1
-    nLayers = nLayers or math.ceil(nIn / 2)
-    nNeuronsPerLayer = nNeuronsPerLayer or math.ceil(nIn * 2.0 / 3.0 + nOut)
+    nLayers = nLayers or 2
+    nNeuronsPerLayer = nNeuronsPerLayer or nIn
     learningRate = learningRate or 0.5
 
     -- Create the network, which is a structure like following:

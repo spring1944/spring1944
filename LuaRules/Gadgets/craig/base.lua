@@ -175,6 +175,9 @@ local function ChainScore(target, chain)
 
     local mCurr, mStor, mPull, mInco = Spring.GetTeamResources(myTeamID, "metal")
     local eCurr, eStor = Spring.GetTeamResources(myTeamID, "energy")
+    if eStor < 1 then
+        eStor = 1
+    end
 
     local score = MIN_INT
     local base_gann_inputs = {
@@ -552,7 +555,14 @@ local function checkFactoryWaitingState(u, shall_wait)
     return __checkWaitingState(u, shall_wait, GetFactoryCommands)
 end
 
+local is_gann_trained = false
+
 function BaseMgr.GameFrame(f)
+    if gadget.IsTraining() and not is_gann_trained then
+        local f = VFS.Include("LuaRules/Gadgets/craig/base/gann_train.lua")
+        is_gann_trained = f(base_gann, myTeamID)
+    end
+
     -- Check if the building chain is not progressing, so we must move to a new
     -- one
     if not currentBuildID and selected_chain and selected_chain.start_time then

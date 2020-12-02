@@ -39,7 +39,7 @@ local GetUnitPosition   = Spring.GetUnitPosition
 local GetUnitDefID      = Spring.GetUnitDefID
 local GetUnitRulesParam = Spring.GetUnitRulesParam
 local GetGroundHeight   = Spring.GetGroundHeight
-
+local GetTeamResources  = Spring.GetTeamResources
 -- members
 local lastWaypoint = 0
 local units = {}
@@ -138,8 +138,21 @@ local function GiveOrdersToUnitMap(orig, target, unitMap, cmd, normal, spread)
 end
 
 local function LookForSupplies()
+    local eCurr, eStor = GetTeamResources(myTeamID, "energy")
+    if eStor < 1 then
+        eStor = 1
+    end
+
     for u,max_ammo in pairs(maxAmmo) do
-        if refilling[u] and GetUnitRulesParam(u, "ammo") == max_ammo then
+        if refilling[u] then
+            if (GetUnitRulesParam(u, "ammo") == max_ammo) or
+               (GetUnitRulesParam(u, "ammo") > 0 and eCurr / eStor < 0.05) then
+                -- Back to work!
+                refilling[u] = nil
+                newUnitCount = newUnitCount + 1
+                newUnits[u] = true
+            end
+        elseif refilling[u] and GetUnitRulesParam(u, "ammo") > 0 and eCurr / eStor < 0.05 then
             -- Back to work!
             refilling[u] = nil
             newUnitCount = newUnitCount + 1
