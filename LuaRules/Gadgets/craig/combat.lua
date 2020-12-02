@@ -28,13 +28,17 @@ local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
 
 
 -- speedups
-local sqrt, random, min = math.sqrt, math.random, math.min
+local CMD_FIGHT = CMD.FIGHT
+local CMD_MOVE = CMD.MOVE
+local sqrt, random, min, hugefloat = math.sqrt, math.random, math.min, math.huge
 local waypointMgr = gadget.waypointMgr
 local waypoints = waypointMgr.GetWaypoints()
 local intelligence = gadget.intelligences[myTeamID]
-local GetUnitNoSelect = Spring.GetUnitNoSelect
-local GetUnitPosition = Spring.GetUnitPosition
-local GetUnitDefID    = Spring.GetUnitDefID
+local GetUnitNoSelect   = Spring.GetUnitNoSelect
+local GetUnitPosition   = Spring.GetUnitPosition
+local GetUnitDefID      = Spring.GetUnitDefID
+local GetUnitRulesParam = Spring.GetUnitRulesParam
+local GetGroundHeight   = Spring.GetGroundHeight
 
 -- members
 local lastWaypoint = 0
@@ -42,6 +46,10 @@ local units = {}
 
 local newUnits = {}
 local newUnitCount = 0
+
+local maxAmmo = {}
+local supplyRanges = {}
+local refilling = {}
 
 local function avgPosUnitMap(units)
     local x, z, n = 0, 0, 0
@@ -123,9 +131,44 @@ end
 local function GiveOrdersToUnitMap(orig, target, unitMap, cmd, normal, spread)
     local unitArray = {}
     for u, _ in pairs(unitMap) do
+        local udef = UnitDefs[GetUnitDefID(u)]
         unitArray[#unitArray + 1] = u
     end
     return GiveOrdersToUnitArray(orig, target, unitArray, cmd, normal, spread)
+end
+
+local function LookForSupplies()
+    for u,max_ammo in pairs(maxAmmo) do
+        if refilling[u] and GetUnitRulesParam(u, "ammo") == max_ammo then
+            -- Back to work!
+            refilling[u] = nil
+            newUnitCount = newUnitCount + 1
+            newUnits[u] = true
+        elseif GetUnitRulesParam(u, "ammo") == 0 and GetUnitRulesParam(u, "insupply") == 0 then
+            Spring.Echo("LookForSupplies()", GetUnitRulesParam(u, "ammo"), max_ammo, GetUnitRulesParam(u, "insupply"))
+            local ux, _, uz = GetUnitPosition(u)
+            local x, z, d = nil, nil, hugefloat
+            -- Look for the closest supplies provider
+            for s, radius in pairs(supplyRanges) do
+                local sx, _, sz = GetUnitPosition(s)
+                local dx, dz = sx - ux, sz - uz
+                local dist = sqrt(dx * dx + dz * dz)
+                Spring.Echo("    ", dist - 0.5 * radius, d)
+                if dist - 0.5 * radius < d then
+                    d = dist - 0.5 * radius
+                    x, z = ux + dx * d / dist, uz + dz * d / dist
+                end
+            end
+            Spring.Echo("    ", x, z, d)
+            if x ~= nil and z ~= nil then
+                refilling[u] = true
+                units[u] = nil
+                local y = GetGroundHeight(x, z)
+                Log("Unit ", tostring(u), " go for supplies at [", x, ", ", y, ", ", z, "]")
+                GiveOrderToUnit(u, CMD_MOVE, {x, y, z},  {})
+            end
+        end
+    end    
 end
 
 --------------------------------------------------------------------------------
@@ -169,6 +212,9 @@ function CombatMgr.GameFrame(f)
         end
     end
 
+    -- Ask the units running out of ammo to retreat for supplies
+    LookForSupplies()
+
     -- make temporary data structure of squads (units at or moving towards same waypoint)
     local squads = {} -- waypoint -> array of unitIDs
     for u,p in pairs(units) do
@@ -210,17 +256,34 @@ end
 --
 
 function CombatMgr.UnitFinished(unitID, unitDefID, unitTeam)
-    -- if it's a mobile unit, give it orders towards frontline
-    if waypointMgr and UnitDefs[unitDefID].speed ~= 0 then
+    if not waypointMgr then
+        return false
+    end
+    local unitDef = UnitDefs[unitDefID]
+    if unitDef.speed ~= 0 then
+        -- if it's a mobile unit, give it orders towards frontline
         newUnits[unitID] = true
         newUnitCount = newUnitCount + 1
 
+        if unitDef.customParams.maxammo ~= nil then
+            local ammo = tonumber(unitDef.customParams.maxammo)
+            if ammo > 0 then
+                maxAmmo[unitID] = ammo
+            end
+        end
+
         return true --signal Team.UnitFinished that we will control this unit
+    elseif unitDef.customParams.supplyrange then
+        -- Static ammo supply, save it for later
+        supplyRanges[unitID] = unitDef.customParams.supplyrange
     end
+
+    return false
 end
 
 function CombatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     units[unitID] = nil
+    supplyRanges[unitID] = nil
     if newUnits[unitID] then
         newUnits[unitID] = nil
         newUnitCount = newUnitCount - 1
