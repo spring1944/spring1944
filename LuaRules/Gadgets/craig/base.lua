@@ -343,6 +343,20 @@ local function GetABuilder(unitDefID)
     return builder
 end
 
+local function ResolveMorphingCmd(origDefID, destDefID)
+    local morphDefs = GG['morphHandler'].GetMorphDefs()[origDefID]
+    if morphDefs == nil then
+        return -destDefID
+    end
+    for _, morphDef in pairs(morphDefs) do
+        if morphDef.into == destDefID then
+            return morphDef.cmd
+        end
+    end
+
+    return -destDefID
+end
+
 local function StartChain()
     local target_udef = UnitDefNames[selected_chain.units[1]]
 
@@ -369,20 +383,32 @@ local function StartChain()
     end
 
     -- How to build the unit depends mainly on the kind of builder
-    if unit_chains.IsConstructor(GetUnitDefID(builder)) then
-        local x,y,z,facing = buildsiteFinder.FindBuildsite(builder, target_udef.id, useClosestBuildSite)
-        if not x then
-            Log("Could not find buildsite for " .. target_udef.humanName)
-            -- Lets select a different chain
-            selected_chain = nil
-            return
-        end
+    local builderDefID = GetUnitDefID(builder)
+    if unit_chains.IsConstructor(builderDefID) then
+        local cmd = ResolveMorphingCmd(builderDefID, target_udef.id)
+        if cmd == -target_udef.id then
+            local x,y,z,facing = buildsiteFinder.FindBuildsite(builder, target_udef.id, useClosestBuildSite)
+            if not x then
+                Log("Could not find buildsite for " .. target_udef.humanName)
+                -- Lets select a different chain
+                selected_chain = nil
+                return
+            end
 
-        Log("Queueing in place: ", target_udef.humanName, " [", x, ", ", y, ", ", z, "] ", facing)
-        GiveOrderToUnit(builder, -target_udef.id, {x,y,z,facing}, {})
+            Log("Queueing in place: ", target_udef.name, " [", x, ", ", y, ", ", z, "] ", facing)
+            GiveOrderToUnit(builder, cmd, {x,y,z,facing}, {})
+        else
+            Log("Queueing unit morph: ", target_udef.name)
+            GiveOrderToUnit(builder, cmd, {}, {})
+        end
     else
-        Log("Queueing in factory: ", target_udef.name, ", ", target_udef.humanName)
-        GiveOrderToUnit(builder, -target_udef.id, {}, {})
+        local cmd = ResolveMorphingCmd(builderDefID, target_udef.id)
+        if cmd == -target_udef.id then
+            Log("Queueing in factory: ", target_udef.name)
+        else
+            Log("Queueing factory morph: ", target_udef.name)
+        end
+        GiveOrderToUnit(builder, cmd, {}, {})
         -- Regardless it is a morph or a proper unit, we are storing the
         -- unitDefID in the queue. If later on it is created as a unit to be
         -- built, we are then replacing the value by the unitID
@@ -465,7 +491,8 @@ local function IdleFactory(unitID)
     end
 
     Log("Queueing in factory: ", UnitDefs[selected].name, ", ", UnitDefs[selected].humanName, selected)
-    GiveOrderToUnit(unitID, -selected, {}, {})
+    GiveOrderToUnit(unitID, ResolveMorphingCmd(unitDefID, selected), {}, {})
+
     -- For the time being, add the unitDefID to the queue. Later on, when the
     -- actual unit is created to be built, we are replacing this by the actual
     -- unitID
