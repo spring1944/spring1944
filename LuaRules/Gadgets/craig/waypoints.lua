@@ -30,10 +30,10 @@ local FLAG_RADIUS     = FLAG_RADIUS
 local WAYPOINT_RADIUS = FLAG_RADIUS
 local WAYPOINT_HEIGHT = 100
 local REF_UNIT_DEF = UnitDefNames["gerrifle"] -- Reference unit to check paths
--- We enforce the map waypoints are all traversed once each 200 frames (> 6.5s)
-local MAP_TRAVERSING_PERIOD = 200
--- The frontlines are upddated at least once each 100 frames (> 3s)
-local FRONTLINE_UPDATE_PERIOD = 100
+-- We enforce the map waypoints are all traversed once each 10s
+local MAP_TRAVERSING_PERIOD = 310
+-- The frontlines are updated at least once each 10s
+local FRONTLINE_UPDATE_PERIOD = 313
 
 -- speedups
 local Log = Log
@@ -44,6 +44,7 @@ local GetUnitTeam = Spring.GetUnitTeam
 local GetUnitAllyTeam = Spring.GetUnitAllyTeam
 local GetUnitPosition = Spring.GetUnitPosition
 local GetGroundHeight = Spring.GetGroundHeight
+local GetUnitNeutral = Spring.GetUnitNeutral
 local TestMoveOrder = Spring.TestMoveOrder
 local sqrt = math.sqrt
 local min, max = math.min, math.max
@@ -410,7 +411,7 @@ local function UpdateWaypoint(p)
             end
             occupationTeams[#occupationTeams + 1] = at
         end
-        if at ~= GAIA_ALLYTEAM_ID then
+        if at ~= GAIA_ALLYTEAM_ID and not GetUnitNeutral(u) then
             if allyTeamUnitCount[at] == nil then
                 occupationTeams[#occupationTeams + 1] = at
             end
