@@ -156,6 +156,13 @@ local function BasicTraining(unitDef, inputs, score)
         Log("  unit_view = " .. tostring(inputs.unit_view))
         base_gann.Train(myTeamID, inputs, {score = (1.0 - inputs.los_capacity) * inputs.unit_view})
     end
+
+    if inputs.energy_curr < 0.05 and inputs.unit_storage > score then
+        Log("  However, it was expected to score > " .. tostring(inputs.unit_storage) .. " because...")
+        Log("  energy_curr = " .. tostring(inputs.energy_curr))
+        Log("  unit_storage = " .. tostring(inputs.unit_storage))
+        base_gann.Train(myTeamID, inputs, {score = inputs.unit_storage})
+    end
 end
 
 local function ChainScore(target, chain)
