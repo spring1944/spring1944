@@ -106,13 +106,16 @@ function GANN.SetConfigData(data)
             valid = false
         end
         if valid then
-            if gadget.IsTraining() and individual.score then
+            local score = individual.score
+            if score == nil then
+                score = 0
+            elseif gadget.IsTraining() then
                 -- Progressively enworse progenitors, so they do not get stucked
                 -- with a population that got lucky once
-                individual.score = individual.score - 0.01
+                score = score - 0.01
             end
             individuals[#individuals + 1] = {
-                score = individual.score,
+                score = score,
                 nn = nn
             }
         end
@@ -207,6 +210,8 @@ end
 --  Usage
 --
 
+local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
+local sortieDefs = VFS.Include("LuaRules/Configs/sortie_defs.lua")
 local total_invested_metal = 0
 
 function GANN.UnitFinished(unitID, unitDefID, unitTeam)
@@ -219,13 +224,16 @@ function GANN.UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    if squadDefs[unitDefID] or sortieDefs[unitDefID] then
+        return
+    end
     local unitDef = UnitDefs[unitDefID]
     local metal = unitDef.metalCost
 
-    if individualTeams[unitTeam] ~= nil then
+    if individualTeams[unitTeam] ~= nil and attackerID then
         individualTeams[unitTeam].lost_metal = individualTeams[unitTeam].lost_metal + metal
     end
-    if individualTeams[attackerTeam] ~= nil then
+    if attackerTeam ~= unitTeam and individualTeams[attackerTeam] ~= nil then
         individualTeams[attackerTeam].destroyed_metal = individualTeams[unitTeam].destroyed_metal + metal
     end    
 end
