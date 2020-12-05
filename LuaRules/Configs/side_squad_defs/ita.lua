@@ -127,6 +127,19 @@ local itaDefs = {
 		-- buildPic = "ITASolothurn.png",
 	-- },
 
+	["ita_platoon_crew"] =
+	{
+		members = {
+			"itacrew",
+			"itacrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "itacrew.png",
+	},
+
+
 	["ita_platoon_infgun"] =
 	{
 		members = {

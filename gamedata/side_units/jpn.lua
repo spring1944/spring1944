@@ -63,6 +63,7 @@ local jpnunits =
 		"jpn_platoon_at",
 		"jpn_platoon_sniper",
 		"jpn_platoon_mortar",
+		"jpn_platoon_crew",
 		"jpnisuzutx40",
 		"jpnpontoontruck",
 		"jpntype4mortar_mobile",

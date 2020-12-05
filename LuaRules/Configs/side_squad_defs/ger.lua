@@ -130,6 +130,18 @@ local gerDefs = {
 		buildPic = "GERObserv.png",
 	},
 
+	["ger_platoon_crew"] =
+	{
+		members = {
+			"gercrew",
+			"gercrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "gercrew.png",
+	},
+
 	["ger_platoon_infgun"] =
 	{
 		members = {

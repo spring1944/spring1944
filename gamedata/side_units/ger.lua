@@ -58,6 +58,7 @@ local gerunits =
     "ger_platoon_at",
     "ger_platoon_sniper",
     "ger_platoon_mortar",
+    "ger_platoon_crew",
     --"gerleig18",
 	"ger_platoon_infgun",
     "geropelblitz",

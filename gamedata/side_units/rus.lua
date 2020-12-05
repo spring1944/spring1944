@@ -27,6 +27,7 @@ local rusunits =
     "rus_platoon_sniper",
     "rus_platoon_mortar",
     "rus_platoon_partisan",
+    "rus_platoon_crew",
     "ruszis5",
 	"ruspontoontruck",
   },

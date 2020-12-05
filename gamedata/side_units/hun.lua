@@ -59,6 +59,7 @@ local hununits = {
 		"hun_platoon_at",
 		"hun_platoon_sniper",
 		"hun_platoon_mortar",
+		"hun_platoon_crew",
 		"hun38mbotond",
 		"hunpontoontruck",
 	},
