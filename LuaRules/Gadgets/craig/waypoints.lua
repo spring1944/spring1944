@@ -355,6 +355,15 @@ function Waypoint:GetEnemyUnitCount(myAllyTeamID)
     return sum
 end
 
+function Waypoint:GetNextUncappedFlagByAllyTeam(myAllyTeamID)
+    for _,f in pairs(self.flags) do
+        if (GetUnitAllyTeam(f) ~= myAllyTeamID) then
+            return f
+        end
+    end
+    return nil
+end
+
 function Waypoint:AreAllFlagsCappedByAllyTeam(myAllyTeamID)
     for _,f in pairs(self.flags) do
         if (GetUnitAllyTeam(f) ~= myAllyTeamID) then
