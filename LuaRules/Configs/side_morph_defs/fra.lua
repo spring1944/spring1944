@@ -37,7 +37,7 @@ local fraDefs = {
 		energy = 0,
 	},
 
-	fra47mmat_truck =
+	fra47mmat =
 	{
 		into = 'fra47mmat_stationary',
 		tech = 0,
@@ -49,7 +49,7 @@ local fraDefs = {
 
 	fra47mmat_stationary =
 	{
-		into = 'fra47mmat_truck',
+		into = 'fra47mmat',
 		tech = 0,
 		time = 5,
 		metal = 0,
