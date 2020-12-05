@@ -82,7 +82,7 @@ local SAVE_PERIOD = 30 * 60  -- Save once per minute
 
 -- local TRAINING_MODE = nil      -- For release versions
 local TRAINING_MODE = true
-local MIN_TRAINING_TIME, MAX_TRAINING_TIME = 5 * 60, 40 * 60
+local MIN_TRAINING_TIME, MAX_TRAINING_TIME = 10 * 60, 40 * 60
 local DELTA_TRAINING_TIME = 10
 
 -- globals
