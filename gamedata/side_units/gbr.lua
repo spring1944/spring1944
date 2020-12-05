@@ -60,6 +60,7 @@ local gbrunits = {
     "gbr_platoon_sniper",
     "gbr_platoon_mortar",
     "gbr_platoon_commando",
+    "gbr_platoon_crew",
     "gbrbedfordtruck",
 	"gbrpontoontruck",
   },

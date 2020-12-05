@@ -51,6 +51,7 @@ local sweunits =
 		"swe_platoon_at",
 		"swe_platoon_sniper",
 		"swe_platoon_mortar",
+		"swe_platoon_crew",
 		"swepvlvm40",
 		"swescaniavabisf11",
 		"swepontoontruck",

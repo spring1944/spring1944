@@ -128,6 +128,18 @@ local gbrDefs = {
 		buildPic = "GBRObserv.png",
 	},
 
+	["gbr_platoon_crew"] =
+	{
+		members = {
+			"gbrcrew",
+			"gbrcrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "gbrcrew.png",
+	},
+
 	["gbr_platoon_commando"] =
 	{
 		members = {

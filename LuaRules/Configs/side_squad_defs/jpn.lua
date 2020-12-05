@@ -103,6 +103,19 @@ local jpnDefs = {
 		buildPic = "JPNType3AT.png",
 	},
 
+	["jpn_platoon_crew"] =
+	{
+		members = {
+			"jpncrew",
+			"jpncrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "jpncrew.png",
+	},
+
+
 	["jpn_platoon_landing"] =
 	{
 		members = {

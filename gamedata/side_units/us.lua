@@ -67,6 +67,7 @@ local usunits = {
     "us_platoon_sniper",
     "us_platoon_flame",
     "us_platoon_mortar",
+    "us_platoon_crew",
     --"usm8gun",
 	"us_platoon_infgun",
     "usgmctruck",

@@ -164,6 +164,18 @@ local rusDefs = {
 		buildPic = "RUSObserv.png",
 	},
 
+	["rus_platoon_crew"] =
+	{
+		members = {
+			"ruscrew",
+			"ruscrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "ruscrew.png",
+	},
+
 	["rus_platoon_landing"] =
 	{
 		members = {

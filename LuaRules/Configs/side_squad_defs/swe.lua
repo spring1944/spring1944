@@ -129,6 +129,18 @@ local sweDefs = {
 		buildPic = "sweobserv.png",
 	},
 
+	["swe_platoon_crew"] =
+	{
+		members = {
+			"swecrew",
+			"swecrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "swecrew.png",
+	},
+
 	["swe_platoon_landing"] =
 	{
 		members = {

@@ -147,6 +147,18 @@ local usDefs = {
 		buildPic = "usobserv.png",
 	},
 
+	["us_platoon_crew"] =
+	{
+		members = {
+			"uscrew",
+			"uscrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "uscrew.png",
+	},
+
 	["us_platoon_flame"] =
 	{
 		members = {

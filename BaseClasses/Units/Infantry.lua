@@ -61,13 +61,12 @@ local CapInfantry = Infantry:New{ -- don't want a conflict with weapon Rifle
 
 	customParams = {
 		canclearmines		= false,
-		flagcaprate			= 1,
 	},
 }
 
 
 -- Basic Types
-local RifleInf = CapInfantry:New{ -- don't want a conflict with weapon Rifle
+local RifleInf = Infantry:New{ -- don't want a conflict with weapon Rifle
 	description			= "Long-range Rifle Infantry",
 	iconType			= "rifle",
 	
@@ -90,9 +89,13 @@ be only carried out in a dramatically short range.]],
 			maxAngleDif			= 170,
 		},
 	},
+
+	customParams = {
+		flagcaprate			= 1,
+	},
 }
 
-local SMGInf = CapInfantry:New{
+local SMGInf = Infantry:New{
 	description			= "Close-Quarters Assault Infantry",
 	iconType			= "assault",
 	
@@ -112,6 +115,10 @@ combination of a short range sub-machinegun and grenades.]],
 		[2] = { -- Grenade
 			maxAngleDif			= 170,
 		},
+	},
+
+	customParams = {
+		flagcaprate			= 1,
 	},
 }
 
@@ -144,7 +151,7 @@ cloacked scout, because it has a very short sight range.]],
 	},
 }
 
-local CrewInf = Infantry:New{
+local CrewInf = CapInfantry:New{
 	name				= "Crew",
 	description			= "Crew member",
 	iconType			= "pistol",

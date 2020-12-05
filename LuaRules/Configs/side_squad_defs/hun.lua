@@ -130,6 +130,18 @@ local hunDefs = {
 		buildPic = "HUNObserv.png",
 	},
 
+	["hun_platoon_crew"] =
+	{
+		members = {
+			"huncrew",
+			"huncrew",
+		},
+		name = "Crew members",
+		description = "2 x Crew: Guns and vehicles crew",
+		buildCostMetal = 450,
+		buildPic = "huncrew.png",
+	},
+
 	["hun_platoon_landing"] =
 	{
 		members = {
