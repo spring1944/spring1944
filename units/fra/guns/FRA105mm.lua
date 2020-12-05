@@ -20,7 +20,7 @@ local FRA_105mm = InfantryGun:New{
 		},
 	},
 	customParams = {
-
+		weapontoggle		= "smoke",
 	},
 }
 

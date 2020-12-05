@@ -17,7 +17,7 @@ local FRA_75mmMle1897 = InfantryGun:New{
 		},
 	},
 	customParams = {
-
+		weapontoggle		= "priorityAPHE",
 	},
 }
 
