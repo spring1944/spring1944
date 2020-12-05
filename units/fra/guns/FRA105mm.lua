@@ -1,8 +1,11 @@
-local FRA_47mmAT = InfantryGun:New{
+local FRA_105mm = InfantryGun:New{
 	name					= "Canon de 105 court modèle 1935 B",
 	corpse					= "FRA105mm_destroyed",
 	objectName				= "FRA/FRA105mmMle1935B.dae",
 	buildCostMetal			= 2000,
+
+	transportCapacity		= 3,
+	transportMass			= 150,
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {9.0, 13.0, 3.0},
