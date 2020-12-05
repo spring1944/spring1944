@@ -152,11 +152,6 @@ local function LookForSupplies()
                 newUnitCount = newUnitCount + 1
                 newUnits[u] = true
             end
-        elseif refilling[u] and GetUnitRulesParam(u, "ammo") > 0 and eCurr / eStor < 0.05 then
-            -- Back to work!
-            refilling[u] = nil
-            newUnitCount = newUnitCount + 1
-            newUnits[u] = true
         elseif GetUnitRulesParam(u, "ammo") == 0 and GetUnitRulesParam(u, "insupply") == 0 then
             Spring.Echo("LookForSupplies()", GetUnitRulesParam(u, "ammo"), max_ammo, GetUnitRulesParam(u, "insupply"))
             local ux, _, uz = GetUnitPosition(u)
@@ -296,7 +291,9 @@ end
 
 function CombatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     units[unitID] = nil
+    maxAmmo[unitID] = nil
     supplyRanges[unitID] = nil
+    refilling[unitID] = nil
     if newUnits[unitID] then
         newUnits[unitID] = nil
         newUnitCount = newUnitCount - 1
