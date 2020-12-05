@@ -298,7 +298,7 @@ end
 
 -- overwrites engine's CallAsUnit
 function Spring.UnitScript.CallAsUnit(unitID, fun, ...)
-	if Spring.ValidUnitID(unitID) and not Spring.GetUnitIsDead(unitID) then
+	if Spring.ValidUnitID(unitID) and not Spring.GetUnitIsDead(unitID) and fun then
 		PushActiveUnitID(unitID)
 		local ret = {sp_CallAsUnit(unitID, fun, ...)}
 		PopActiveUnitID()
