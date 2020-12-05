@@ -19,7 +19,8 @@ local function __clamp(v, min_val, max_val)
     return min(max(v, min_val), max_val)
 end
 
-local function ChainScore(gann, myTeamID, target, mCurr, eCurr, cons, cap, los)
+local function ChainScore(gann, myTeamID, target,
+                          mCurr, mInco, mPull, eCurr, cons, cap, los)
     local unitDef = UnitDefNames[target]
     local chain = {metal=unitDef.metalCost}
 
@@ -27,8 +28,8 @@ local function ChainScore(gann, myTeamID, target, mCurr, eCurr, cons, cap, los)
     local gann_inputs = {
         sim_time = random(),
         metal_curr = mCurr ~= nil and mCurr or random(),
-        metal_push = random(),
-        metal_pull = random(),
+        metal_push = mInco ~= nil and mInco or random(),
+        metal_pull = mPull ~= nil and mPull or random(),
         energy_curr = eCurr ~= nil and eCurr or random(),
         energy_storage = random(),
         construction_capacity = cons ~= nil and cons or random(),
@@ -133,37 +134,16 @@ local function ChainScore(gann, myTeamID, target, mCurr, eCurr, cons, cap, los)
 end
 
 local tests = {
-    {target = "gbrhqengineer", score = 1.0, inputs = {mCurr = nil,
-                                                      eCurr = nil,
-                                                      cons = 0.0,
-                                                      cap = nil,
-                                                      los = nil}},
-    {target = "gbrhqengineer", score = 0.0, inputs = {mCurr = nil,
-                                                      eCurr = nil,
-                                                      cons = 1.0,
-                                                      cap = nil,
-                                                      los = nil}},
-    {target = "rus_platoon_rifle", score = 1.0, inputs = {mCurr = nil,
-                                                          eCurr = nil,
-                                                          cons = nil,
-                                                          cap = 0.0,
-                                                          los = nil}},
-    {target = "gbr_platoon_rifle", score = 1.0, inputs = {mCurr = nil,
-                                                          eCurr = nil,
-                                                          cons = nil,
-                                                          cap = nil,
-                                                          los = 0.0}},
-    {target = "usstorage", score = 0.8, inputs = {mCurr = nil,
-                                                  eCurr = 0.05,
-                                                  cons = nil,
-                                                  cap = nil,
-                                                  los = nil}},
-    {target = "usstoragelarge", score = 1.0, inputs = {mCurr = nil,
-                                                       eCurr = 0.05,
-                                                       cons = nil,
-                                                       cap = nil,
-                                                       los = nil}},
-    
+    {target = "gbrhqengineer", score = 1.0, inputs = {cons = 0.0}},
+    {target = "gbrhqengineer", score = 0.0, inputs = {cons = 1.0}},
+    {target = "rus_platoon_rifle", score = 1.0, inputs = {cap = 0.0}},
+    {target = "gbr_platoon_rifle", score = 1.0, inputs = {los = 0.0}},
+
+    {target = "usstorage", score = 0.8, inputs = {eCurr = 0.05}},
+    {target = "usstoragelarge", score = 1.0, inputs = {eCurr = 0.05}},
+
+    {target = "usm4a4sherman", score = 0.0, inputs = {mInco = 0.0}},
+    {target = "usm4a4sherman", score = 1.0, inputs = {mInco = 0.5}},
 }
 
 local function TrainGann(gann, myTeamID, e_max, max_iters)
@@ -171,7 +151,7 @@ local function TrainGann(gann, myTeamID, e_max, max_iters)
     e_max = e_max or 0.1
     max_iters = max_iters or 100
 
-    Spring.Echo("Training neural network for team " .. tostring(myTeamID) .. ". This would take a lot of time...")
+    Spring.Echo("Training neural network for team " .. tostring(myTeamID) .. ". This would lag the game for a little time...")
     local iters = 0
     while e > e_max and iters < max_iters do
         iters = iters + 1
@@ -180,6 +160,8 @@ local function TrainGann(gann, myTeamID, e_max, max_iters)
         for i, test in ipairs(tests) do
             local inputs, score = ChainScore(gann, myTeamID, test.target,
                                              test.inputs.mCurr,
+                                             test.inputs.mInco,
+                                             test.inputs.mPull,
                                              test.inputs.eCurr,
                                              test.inputs.cons,
                                              test.inputs.cap,

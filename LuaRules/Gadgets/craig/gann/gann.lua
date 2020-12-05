@@ -48,9 +48,7 @@ function CreateGANN(population, mutation_prob, mutation_size)
 
 population = population or 10
 mutation_prob = mutation_prob ~= nil and mutation_prob or 0.05
-mutation_size = mutation_size or 1.0
-
-local INITIAL_LOST_METAL = 10000 -- Make it harder to get a possitive score
+mutation_size = mutation_size or 0.25
 
 local NeuralNetwork = VFS.Include("LuaRules/Gadgets/craig/gann/neuralnet.lua")
 local GANN = {}
@@ -88,7 +86,7 @@ local individuals = {}
 local individualTeams = {}
 
 function GANN.SetConfigData(data)
-    Log("Loading GANN data...")
+    Log("Load GANN data")
 
     -- The data is a list of individuals, with information about the score and
     -- the neural network
@@ -127,7 +125,7 @@ function GANN.SetConfigData(data)
         individuals[i] = {
             score = 0.0,
             nn = NeuralNetwork.create(#inputNames, #outputNames)
-        }        
+        }
     end
 end
 
@@ -136,17 +134,22 @@ local function crossover(progenitor1, progenitor2)
 
     if #nn ~= #(progenitor1.nn) or #nn ~= #(progenitor2.nn) then
         Warning("Progenitors number of layers doesn't match the children ones... No crossover will be carried out")
+        Log("  Children layers = ", #nn)
+        Log("  Progenitor #1 layers = ", #(progenitor1.nn))
+        Log("  Progenitor #2 layers = ", #(progenitor2.nn))
         return {score = 0.0, nn = nn}
     elseif #nn[2] ~= #(progenitor1.nn[2]) or #nn[2] ~= #(progenitor2.nn[2]) then
         Warning("Progenitors number of nodes per layer doesn't match the children ones... No crossover will be carried out")
         return {score = 0.0, nn = nn}
     end
 
+    local prog1_genes = 0
     for i = 2, #nn do
         -- We mix the progenitors by entire layers
         local selected
         if math.random() < 0.5 then
             selected = progenitor1
+            prog1_genes = prog1_genes + 1
         else
             selected = progenitor2
         end
@@ -158,7 +161,18 @@ local function crossover(progenitor1, progenitor2)
         end
     end
 
-    return {score = 0.0, nn = nn}
+    local prog1_genes = prog1_genes / (#nn - 1.0)
+    local score = math.min(progenitor1.score, progenitor2.score)
+    if prog1_genes > 0.99 then
+        score = progenitor1.score
+    elseif prog1_genes < 0.01 then
+        score = progenitor2.score
+    end
+    Log("  It is mixed ", math.floor(100 * prog1_genes + 0.5), "% / ",
+        math.floor(100 * (1.0 - prog1_genes) + 0.5), "%",
+        ", with a score ", score)
+
+    return {score = score, nn = nn}
 end
 
 local function clamp(v, min_val, max_val)
@@ -168,20 +182,29 @@ local function clamp(v, min_val, max_val)
 end
 
 local function mutate(individual)
+    local mutated, total = 0.0, 0.0
     for i = 2, #(individual.nn) do
         for j = 1, #(individual.nn[i]) do
+            total = total + 1.0
             if math.random() < mutation_prob then
+                mutated = mutated + 1.0
                 individual.nn[i][j].bias = clamp(individual.nn[i][j].bias +
                     (2.0 * math.random() - 1.0) * mutation_size)
             end
             for k = 1, #(individual.nn[i - 1]) do
+                total = total + 1.0
                 if math.random() < mutation_prob then
+                    mutated = mutated + 1.0
                     individual.nn[i][j][k] = clamp(individual.nn[i][j][k] +
                         (2.0 * math.random() - 1.0) * mutation_size)
                 end
             end
         end
     end
+
+    mutated = mutated / total
+    individual.score = individual.score * (1.0 - mutated)
+    Log("  And ", math.floor(100 * mutated + 0.5), "% mutated")
 
     return individual
 end
@@ -193,12 +216,12 @@ function GANN.Procreate(teamID)
         i1 = math.random(population)
     end
 
+    Log("GANN Progenitors ", i0, " and ", i1, " are creating a new individual")
+
     local individual = crossover(individuals[i0], individuals[i1])
     individual = mutate(individual)
     individual.teamID = teamID
-    individual.destroyed_metal = 0
-    individual.lost_metal = INITIAL_LOST_METAL
-    individual.used_metal = 0
+    individual.deployed_metal = 0
 
     individualTeams[teamID] = individual
     individuals[#individuals + 1] = individual
@@ -210,32 +233,26 @@ end
 --  Usage
 --
 
-local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
-local sortieDefs = VFS.Include("LuaRules/Configs/sortie_defs.lua")
-local total_invested_metal = 0
+-- The AIs performance will be evaluated as the ammount of metal deployed,
+-- compared with the total metal deployed (suming up all other players).
+local total_metal = 0
 
 function GANN.UnitFinished(unitID, unitDefID, unitTeam)
     local unitDef = UnitDefs[unitDefID]
     local metal = unitDef.metalCost
-    total_invested_metal = total_invested_metal + metal
+    total_metal = total_metal + metal
     if individualTeams[unitTeam] ~= nil then
-        individualTeams[unitTeam].used_metal = individualTeams[unitTeam].used_metal + metal
+        individualTeams[unitTeam].deployed_metal = individualTeams[unitTeam].deployed_metal + metal
     end
 end
 
 function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    if squadDefs[unitDefID] or sortieDefs[unitDefID] then
-        return
-    end
     local unitDef = UnitDefs[unitDefID]
     local metal = unitDef.metalCost
-
-    if individualTeams[unitTeam] ~= nil and attackerID then
-        individualTeams[unitTeam].lost_metal = individualTeams[unitTeam].lost_metal + metal
+    total_metal = total_metal - metal
+    if individualTeams[unitTeam] ~= nil then
+        individualTeams[unitTeam].deployed_metal = individualTeams[unitTeam].deployed_metal - metal
     end
-    if attackerTeam ~= unitTeam and individualTeams[attackerTeam] ~= nil then
-        individualTeams[attackerTeam].destroyed_metal = individualTeams[unitTeam].destroyed_metal + metal
-    end    
 end
 
 function GANN.Evaluate(teamID, inputs)
@@ -287,6 +304,12 @@ function GANN.Train(teamID, inputs, outputs)
     nn:train(nn_in, nn_out)
 end
 
+function GANN.GetScore(teamID)
+    -- Return the last computed individual score. At the beggining it is just
+    -- an expected value according to the parents and level of mutation
+    return individualTeams[teamID].score
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --
@@ -321,9 +344,7 @@ function GANN.GetConfigData()
 
     -- Evaluate the score of the children
     for i = population + 1, #individuals do
-        local damage_factor = individuals[i].destroyed_metal / individuals[i].lost_metal
-        local metal_factor = individuals[i].used_metal / total_invested_metal
-        individuals[i].score = metal_factor * damage_factor
+        individuals[i].score = individuals[i].deployed_metal / total_metal
     end
 
     -- Select the fittest individuals

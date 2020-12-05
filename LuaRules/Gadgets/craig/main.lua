@@ -81,7 +81,9 @@ local CONFIG_FOLDER = "LuaRules/Config/craig"
 local SAVE_PERIOD = 30 * 60  -- Save once per minute
 
 -- local TRAINING_MODE = nil      -- For release versions
-local TRAINING_MODE = 40 * 60  -- Training time
+local TRAINING_MODE = true
+local MIN_TRAINING_TIME, MAX_TRAINING_TIME = 5 * 60, 40 * 60
+local DELTA_TRAINING_TIME = 10
 
 -- globals
 waypointMgr = {}
@@ -104,6 +106,7 @@ include("LuaRules/Gadgets/craig/gann/gann.lua")
 local CRAIG_Debug_Team = -1 -- Must be nil or a teamID
 local team = {}
 local lastFrame = 0 -- To avoid repeated calls to GameFrame()
+local training_time
 
 --------------------------------------------------------------------------------
 
@@ -135,7 +138,7 @@ function gadget.IsDebug(teamID)
 end
 
 function gadget.IsTraining()
-    return TRAINING_MODE ~= nil
+    return TRAINING_MODE == true
 end
 
 function gadget.Log(...)
@@ -154,17 +157,31 @@ end
 function SetConfigData()
     local data = {}
     if VFS.FileExists(CONFIG_FOLDER .. "/craig.lua") then
+        Log("Found config file: ",
+            VFS.GetFileAbsolutePath(CONFIG_FOLDER .. "/craig.lua"))
         data = VFS.Include(CONFIG_FOLDER .. "/craig.lua")
     elseif VFS.FileExists(FIX_CONFIG_FOLDER .. "/craig.lua") then
         data = VFS.Include(FIX_CONFIG_FOLDER .. "/craig.lua")
     end
-    if data.base_gann ~= nil then
-        base_gann.SetConfigData(data.base_gann)
+
+    if gadget.IsTraining() then
+        if data.training_time then
+            training_time = math.min(MAX_TRAINING_TIME, math.max(MIN_TRAINING_TIME,
+                                     data.training_time + DELTA_TRAINING_TIME))
+        end
+        local minutes = math.floor(training_time / 60)
+        local seconds = training_time - minutes * 60
+        Log("The game will last ", minutes, " minutes and ", seconds, " seconds")
     end
+
+    base_gann.SetConfigData(data.base_gann or {})
 end
 
 function GetConfigData()
     local data = {}
+    if gadget.IsTraining() then
+        data.training_time = training_time
+    end
     data.base_gann = base_gann.GetConfigData()
 
     Script.LuaUI.CraigGetConfigData(CONFIG_FOLDER,
@@ -195,6 +212,9 @@ function gadget:Initialize()
         __newindex = function() error("Attempt to write undeclared global variable", 2) end,
     })
     SetupCmdChangeAIDebugVerbosity()
+    if gadget.IsTraining() then
+        training_time = MIN_TRAINING_TIME
+    end
 
     base_gann = CreateGANN()
     local base_gann_inputs = VFS.Include("/home/pepe/spring1944/spring1944/LuaRules/Gadgets/craig/base/gann_inputs.lua")
@@ -258,7 +278,7 @@ local function CreateTeams()
 end
 
 function gadget:GameFrame(f)
-    if TRAINING_MODE ~= nil and Spring.GetGameSeconds() > TRAINING_MODE then
+    if gadget.IsTraining() and Spring.GetGameSeconds() > training_time then
         Spring.Quit()
     end
 

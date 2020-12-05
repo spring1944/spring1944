@@ -37,6 +37,7 @@ local MAX_FLAG_CAPTURE_CAPACITY = 10.0 * 500
 local MAX_LOS_CAPACITY = math.max(Game.mapSizeX, Game.mapSizeZ) / 10.0
 local MAX_CONSTRUCTORS = 5.0
 local MAX_UNIT_IN_FACTORIES = 5.0
+local SCORE_RANDOMIZER = 0.05
 
 -- If in 1 minute the building chain has not any progress, we are giving up and
 -- starting a new one
@@ -134,38 +135,22 @@ local function GetAllBuilders(unitDefID)
     return builders
 end
 
-local function BasicTraining(unitDef, inputs, score)
-    if inputs.construction_capacity < 0.01 and inputs.unit_is_constructor > 0.5 and score < 0.9 then
-        Log("  However, it was expected to score > 0.9, because...")
-        Log("  construction_capacity = " .. tostring(inputs.construction_capacity))
-        Log("  unit_is_constructor = " .. tostring(inputs.unit_is_constructor))
-        base_gann.Train(myTeamID, inputs, {score = 1.0})
-    elseif inputs.construction_capacity > 0.99 and inputs.unit_is_constructor > 0.5 and score > 0.1 then
-        Log("  However, it was expected to score < 0.1, because...")
-        Log("  construction_capacity = " .. tostring(inputs.construction_capacity))
-        Log("  unit_is_constructor = " .. tostring(inputs.unit_is_constructor))
-        base_gann.Train(myTeamID, inputs, {score = 0.0})
-    elseif inputs.capturing_capacity > score and inputs.unit_cap > 0.49 then
-        Log("  However, it was expected to score > " .. tostring(inputs.capturing_capacity) .. " because...")
-        Log("  capturing_capacity = " .. tostring(inputs.capturing_capacity))
-        Log("  unit_cap = " .. tostring(inputs.unit_cap))
-        base_gann.Train(myTeamID, inputs, {score = inputs.capturing_capacity})
-    elseif (1.0 - inputs.los_capacity) * inputs.unit_view > score then
-        Log("  However, it was expected to score > " .. tostring((1.0 - inputs.los_capacity) * inputs.unit_view) .. " because...")
-        Log("  los_capacity = " .. tostring(inputs.los_capacity))
-        Log("  unit_view = " .. tostring(inputs.unit_view))
-        base_gann.Train(myTeamID, inputs, {score = (1.0 - inputs.los_capacity) * inputs.unit_view})
-    end
-
-    if inputs.energy_curr < 0.05 and inputs.unit_storage > score then
-        Log("  However, it was expected to score > " .. tostring(inputs.unit_storage) .. " because...")
-        Log("  energy_curr = " .. tostring(inputs.energy_curr))
-        Log("  unit_storage = " .. tostring(inputs.unit_storage))
-        base_gann.Train(myTeamID, inputs, {score = inputs.unit_storage})
-    end
-end
+local excluded_units_regex = {
+    ".pontoontruck",
+    ".pontoonraft",
+    ".assaultboat",
+    ".apminesign",
+    ".atminesign",
+    ".tankobstacle"
+}
 
 local function ChainScore(target, chain)
+    for _, regex in ipairs(excluded_units_regex) do
+        if target:find(regex) ~= nil then
+            return MIN_INT
+        end
+    end
+
     local unitDef = UnitDefNames[target]
 
     -- For the time being, ignore air and water units
@@ -183,8 +168,8 @@ local function ChainScore(target, chain)
     local base_gann_inputs = {
         sim_time = __clamp(Spring.GetGameSeconds() / MAX_SIMTIME),
         metal_curr = __clamp(mCurr / mStor),
-        metal_push = __clamp(METAL_PULL_PUSH_FACTOR * mInco / mStor),
-        metal_pull = __clamp(METAL_PULL_PUSH_FACTOR * mPull / mStor),
+        metal_push = __clamp(METAL_PULL_PUSH_FACTOR * mInco / 250.0),
+        metal_pull = __clamp(METAL_PULL_PUSH_FACTOR * mPull / 250.0),
         energy_curr = __clamp(eCurr / eStor),
         energy_storage = __clamp(eStor / MAX_E_STORAGE),
         capturing_capacity = __clamp(n_cap / MAX_FLAG_CAPTURE_CAPACITY),
@@ -283,11 +268,9 @@ local function ChainScore(target, chain)
         base_gann_inputs.squad_size = base_gann_inputs.squad_size / MAX_SQUAD_SIZE
     end
 
-    score = base_gann.Evaluate(myTeamID, base_gann_inputs).score
+    score = base_gann.Evaluate(myTeamID, base_gann_inputs).score +
+            SCORE_RANDOMIZER * (2.0 * random() - 1.0)
     Log(unitDef.name .. " scored " .. tostring(score))
-    if gadget.IsTraining() then
-        BasicTraining(unitDef, base_gann_inputs, score)
-    end
     return score
 end
 
@@ -532,6 +515,7 @@ end
 --  The call-in routines
 --
 
+local is_gann_trained = false
 local waiting_builders = {}
 local is_waiting = {}
 
@@ -555,10 +539,11 @@ local function checkFactoryWaitingState(u, shall_wait)
     return __checkWaitingState(u, shall_wait, GetFactoryCommands)
 end
 
-local is_gann_trained = false
-
 function BaseMgr.GameFrame(f)
-    if gadget.IsTraining() and not is_gann_trained then
+    if not is_gann_trained and (not gadget.IsTraining() or base_gann.GetScore(myTeamID) > 0.0) then
+        is_gann_trained = true
+    end
+    if not is_gann_trained then
         local f = VFS.Include("LuaRules/Gadgets/craig/base/gann_train.lua")
         is_gann_trained = f(base_gann, myTeamID)
     end
