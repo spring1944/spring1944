@@ -92,6 +92,7 @@ local wantedHeading
 local wantedPitch
 local firing
 local lastShot
+local fast_aim = UnitDef.customParams.fastaim
 
 -- OTHER
 local fear
@@ -276,7 +277,25 @@ function PickPose(name)
 	return true
 end
 
+local function FastAim(newHeading, newPitch)
+	local pose = poses[currentPoseID]
+	local headingTurn, pitchTurn = pose.headingTurn, pose.pitchTurn
+	if headingTurn then
+		local p, axis, target, mul = unpack(headingTurn)
+		Turn(p, axis, target + mul * newHeading)
+	end
+	if pitchTurn then
+		local p, axis, target, mul = unpack(pitchTurn)
+		Turn(p, axis, target + mul * newPitch)
+	end
+	currentHeading = newHeading
+	currentPitch = newPitch
+	return true
+end
+
 local function ReAim(newHeading, newPitch)
+	if fast_aim then return FastAim(newHeading, newPitch) end
+
 	--Spring.Echo("reaiming")
 	if currentHeading and currentPitch then
 		local hDiff = currentHeading - newHeading
@@ -748,7 +767,9 @@ function script.AimWeapon(num, heading, pitch)
 	StartThread(Delay, Stand, STAND_DELAY, SIG_RESTORE)
 	wantedHeading = heading
 	wantedPitch = pitch
-	if CanAim(weaponClass) then return ReAim(heading, pitch) end
+	if CanAim(weaponClass) then
+		return ReAim(heading, pitch)
+	end
 	StartAiming(weaponClass)
 	return false
 end
