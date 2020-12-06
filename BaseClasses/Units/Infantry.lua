@@ -303,6 +303,7 @@ local ATLauncherInf = Infantry:New{
 	maxVelocity			= 1.5,
 
 	customParams = {
+		fastAim = true,
 		wiki_subclass_comments = [[Is the enemy rushing your base with tanks?
 well, a couple of this guys may appropriately welcome them. Due to the low fire
 range and rate, Anti-Tank Infantry has a very low performance fighting enemy
