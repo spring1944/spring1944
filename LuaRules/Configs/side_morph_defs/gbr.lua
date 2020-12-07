@@ -105,7 +105,7 @@ local gbrDefs = {
     energy = 0,
   },
     -- Towed Guns
-  gbr17pdr_truck = 
+  gbr17pdr = 
   {
     into = 'gbr17pdr_stationary',
     tech = 0,
@@ -117,7 +117,7 @@ local gbrDefs = {
 
   gbr17pdr_stationary = 
   {
-    into = 'gbr17pdr_truck',
+    into = 'gbr17pdr',
     tech = 0,
     time = 10,
     metal = 0,

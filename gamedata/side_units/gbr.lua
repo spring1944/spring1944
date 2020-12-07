@@ -69,7 +69,7 @@ local gbrunits = {
   {
     "gbrmatadorengvehicle",
     "gbrbedfordtruck",
-    "gbr17pdr_truck",
+    "gbr17pdr",
     "gbr25pdr",
     "gbrbofors_truck",
   },
@@ -78,7 +78,7 @@ local gbrunits = {
   {
     "gbrmatadorengvehicle",
     "gbrbedfordtruck",
-    "gbr17pdr_truck",
+    "gbr17pdr",
     "gbr25pdr",
 	"gbr45ingun",
     "gbrbofors_truck",
@@ -87,7 +87,7 @@ local gbrunits = {
   {
     "gbrmatadorengvehicle",
     "gbrbedfordtruck",
-    "gbr17pdr_truck",
+    "gbr17pdr",
     "gbr25pdr",
     "gbrbofors_truck",
     "gbrstaghound",
