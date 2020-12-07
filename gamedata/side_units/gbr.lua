@@ -80,7 +80,7 @@ local gbrunits = {
     "gbrbedfordtruck",
     "gbr17pdr_truck",
     "gbr25pdr_truck",
-	"gbr45ingun_truck",
+	"gbr45ingun",
     "gbrbofors_truck",
   },  
   gbrspyard =
