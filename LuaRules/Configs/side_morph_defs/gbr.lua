@@ -124,7 +124,7 @@ local gbrDefs = {
     energy = 0,
   },
   
-  gbr25pdr_truck = 
+  gbr25pdr = 
   {
     into = 'gbr25pdr_stationary',
     tech = 0,
@@ -136,7 +136,7 @@ local gbrDefs = {
 
   gbr25pdr_stationary = 
   {
-    into = 'gbr25pdr_truck',
+    into = 'gbr25pdr',
     tech = 0,
     time = 20,
     metal = 0,
