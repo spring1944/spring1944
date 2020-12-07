@@ -53,6 +53,10 @@ local weaponEnabled = {}
 local moving = false
 local pinned = false
 
+-- For rocket launchers (e.g. nebelwerfer)
+local tubes = piece "tubes"
+local lastRocket
+
 
 local function Delay(func, duration, mask, ...)
     --Spring.Echo("wait", duration)
@@ -163,6 +167,10 @@ function script.Create()
     for i=1,info.numWeapons do
         weaponEnabled[i] = true
     end
+    if info.numRockets > 0 then
+        lastRocket = info.numRockets
+    end
+
     StartThread(UpdateCrew)
 end
 
@@ -214,6 +222,10 @@ function script.StopMoving()
 end
 
 function script.QueryWeapon(weaponNum)
+    if lastRocket then
+        return piece("rocket" .. lastRocket) or tubes
+    end
+
     local cegPiece = info.cegPieces[weaponNum]
     if cegPiece then
         return cegPiece
@@ -293,6 +305,10 @@ end
 function script.Shot(weaponNum)
     if barrel then
         StartThread(Recoil)
+    end
+    if lastRocket then
+        lastRocket = lastRocket % info.numRockets + 1
+        Hide(piece("rocket" .. lastRocket))
     end
     local ceg = info.weaponCEGs[weaponNum]
     if ceg then

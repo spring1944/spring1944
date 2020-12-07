@@ -149,7 +149,7 @@ local gerunits =
     "gerleig18",
     "gerpak40",
     "gerlefh18_truck",
-    "gernebelwerfer_truck",
+    "gernebelwerfer",
     "gerflak38_truck",
 	"gersdkfz10",
     "gerwespe",

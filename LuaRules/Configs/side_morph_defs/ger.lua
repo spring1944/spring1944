@@ -177,7 +177,7 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },  
-	gernebelwerfer_truck = 
+	gernebelwerfer = 
   {
     into = 'gernebelwerfer_stationary',
     tech = 0,
@@ -189,7 +189,7 @@ local gerDefs = {
   
   gernebelwerfer_stationary = 
   {
-    into = 'gernebelwerfer_truck',
+    into = 'gernebelwerfer',
     tech = 0,
     time = 20,
     metal = 0,
