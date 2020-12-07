@@ -17,16 +17,6 @@ local GER_PaK40 = InfantryGun:New{
 	},
 }
 
-local GER_PaK40_Truck = ATGunTractor:New{
-	name					= "Towed 7.5cm PaK 40",
-	corpse					= "GERSdKfz11_Destroyed",
-	trackOffset				= 10,
-	trackWidth				= 13,
-	customParams = {
-
-	},
-}
-
 local GER_PaK40_Stationary = ATGun:New{
 	name					= "Deployed 7.5cm PaK 40",
 	corpse					= "gerpak40_destroyed",
