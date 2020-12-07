@@ -121,7 +121,7 @@ local gerDefs = {
     energy = 0,
   },
   
-  gerpak40_truck = 
+  gerpak40 = 
   {
     into = 'gerpak40_stationary',
     tech = 0,
@@ -133,7 +133,7 @@ local gerDefs = {
   
   gerpak40_stationary = 
   {
-    into = 'gerpak40_truck',
+    into = 'gerpak40',
     tech = 0,
     time = 10,
     metal = 0,
