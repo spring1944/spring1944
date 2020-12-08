@@ -1,4 +1,4 @@
-local FRA_25mmAT = InfantryGun:New{
+local FRA_25mmAT = ATInfGun:New{
 	name					= "Canon léger de 25 antichar SA-L modèle 1934",
 	corpse					= "FRA25mmMle1934_destroyed",
 	objectName				= "FRA/FRA25mmMle1934.dae",

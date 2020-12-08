@@ -59,15 +59,88 @@ local InfantryGun = Unit:New{
         pronespheremovemult      = 0.2,
         scriptAnimation          = "gun_anim",
     },
+}
+
+local ATInfGun = InfantryGun:New{
+    iconType            = "atartillery",
+    buildCostMetal      = 840,
 
     weapons = {
-        [1] = { -- Cannon
-            maxAngleDif = 30,
+        [1] = { -- AP
+            maxAngleDif = 5,
         },
+    },
+    customParams = {
+        wiki_subclass_comments = [[This unit is an Anti-Tank gun, which can
+only engaged enemy vehicles. AT guns are quite inexpensive, so they can be
+always considered to defend against vehicles.]],
+    },
+}
+
+local FGInfGun = InfantryGun:New{
+    buildCostMetal      = 1300,
+
+    weapons = {
+        [1] = { -- HE
+            maxAngleDif = 5,
+        },
+        [2] = { -- AP
+            maxAngleDif = 5,
+        },
+    },
+    customParams = {
+        weapontoggle           = "priorityAPHE",
+        wiki_subclass_comments = [[This unit is a field gun, useful to both
+hostigate infantry and defend against light vehicles.]],
+    },
+}
+
+local HInfGun = InfantryGun:New{
+    buildCostMetal      = 1800,
+
+    weapons = {
+        [1] = { -- HE
+            maxAngleDif = 5,
+        },
+        [2] = { -- Smoke
+            maxAngleDif = 5,
+        },
+    },
+    customParams = {
+        canAreaAttack          = true,
+        weapontoggle           = "smoke",
+        wiki_subclass_comments = [[This unit is a heavy gun, designed to inflict
+significant damage at the enemy positions. When a heavy gun is directed against
+an enemy building, it is a matter of time that such building becomes silenced.
+Heavy guns can be also targeted against enemy static positions.]],
+    },
+}
+
+local RInfGun = InfantryGun:New{
+    buildCostMetal      = 3600,
+
+    weapons = {
+        [1] = { -- Rocket
+            maxAngleDif = 5,
+        },
+    },
+    customParams = {
+        scriptAnimation        = "rocket",
+        wiki_subclass_comments = [[This unit is a rockets launcher. Rockets are
+an excellent way to deal heavy damage in little time. Unfortunatelly, rocket
+launchers have not a long firing range, so they should be deployed dangerously
+close to the enemy. On top of that, rocket launchers are usually expensive and
+very ammo demanding.
+But if you have a good chance to discharge rockets in the enemy position, you
+definitively must do that.]],
     },
 }
 
 return {
     InfantryGun = InfantryGun,
+    ATInfGun = ATInfGun,
+    FGInfGun = FGInfGun,
+    HInfGun = HInfGun,
+    RInfGun = RInfGun,
 }
  

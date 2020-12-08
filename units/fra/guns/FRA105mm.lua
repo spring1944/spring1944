@@ -1,8 +1,8 @@
-local FRA_105mm = InfantryGun:New{
+local FRA_105mm = HInfGun:New{
 	name					= "Canon de 105 court modèle 1935 B",
 	corpse					= "FRA105mm_destroyed",
 	objectName				= "FRA/FRA105mmMle1935B.dae",
-	buildCostMetal			= 2000,
+	buildCostMetal			= 3200,
 
 	transportCapacity		= 3,
 	transportMass			= 150,
@@ -20,7 +20,6 @@ local FRA_105mm = InfantryGun:New{
 		},
 	},
 	customParams = {
-		weapontoggle		= "smoke",
 	},
 }
 
@@ -38,7 +37,6 @@ local FRA_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
 	},
 }
 

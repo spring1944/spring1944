@@ -1,4 +1,4 @@
-local GER_PaK40 = InfantryGun:New{
+local GER_PaK40 = ATInfGun:New{
 	name					= "7.5cm PaK 40",
 	corpse					= "gerpak40_destroyed",
 	buildCostMetal			= 840,
@@ -13,7 +13,6 @@ local GER_PaK40 = InfantryGun:New{
 		},
 	},
 	customParams = {
-
 	},
 }
 
@@ -27,7 +26,6 @@ local GER_PaK40_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-
 	},
 }
 	

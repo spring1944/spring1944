@@ -1,4 +1,4 @@
-local GER_10sK18 = InfantryGun:New{
+local GER_10sK18 = HInfGun:New{
 	name					= "10cm sK 18",
 	corpse					= "gerlefh18_destroyed",
 	buildCostMetal			= 3200,
@@ -12,14 +12,13 @@ local GER_10sK18 = InfantryGun:New{
 
 	weapons = {
 		[1] = { -- HE
-			name				= "GER10sK18HE",
+			name			= "GER10sK18HE",
 		},
 		[2] = { -- Smoke
-			name				= "GER10sK18Smoke",
+			name			= "GER10sK18Smoke",
 		},
 	},
 	customParams = {
-		weapontoggle		= "smoke",
 	},
 }
 
@@ -29,14 +28,13 @@ local GER_10sK18_Stationary = HGun:New{
 
 	weapons = {
 		[1] = { -- HE
-			name				= "GER10sK18HE",
+			name			= "GER10sK18HE",
 		},
 		[2] = { -- Smoke
-			name				= "GER10sK18Smoke",
+			name			= "GER10sK18Smoke",
 		},
 	},
 	customParams = {
-
 	},
 }
 

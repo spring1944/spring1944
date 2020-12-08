@@ -1,4 +1,4 @@
-local GER_Nebelwerfer = InfantryGun:New{
+local GER_Nebelwerfer = RInfGun:New{
 	name					= "15cm Nebelwerfer 41",
 	corpse					= "gernebelwerfer_destroyed",
 	buildCostMetal			= 3600,
@@ -8,12 +8,11 @@ local GER_Nebelwerfer = InfantryGun:New{
 	collisionVolumeOffsets	= {0.0, 6.0, 3.0},
 
 	customParams = {
-		scriptAnimation		= "rocket",
 		maxammo				= 1,
 	},
 	weapons = {
 		[1] = {
-			name				= "Nebelwerfer41",
+			name			= "Nebelwerfer41",
 		},
 	},
 }
@@ -22,11 +21,11 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 	name					= "Deployed 15cm Nebelwerfer 41",
 	corpse					= "gernebelwerfer_destroyed",
 	customParams = {
-		maxammo		= 1,
+		maxammo				= 1,
 	},
 	weapons = {
 		[1] = {
-			name				= "Nebelwerfer41",
+			name			= "Nebelwerfer41",
 		},
 	},
 }

@@ -1,4 +1,4 @@
-local FRA_75mmMle1897 = InfantryGun:New{
+local FRA_75mmMle1897 = FGInfGun:New{
 	name					= "Canon de 75 modèle 1897",
 	corpse					= "FRA75mmMle1897_destroyed",
 	objectName				= "FRA/FRA75mmMle1897.dae",
@@ -17,7 +17,6 @@ local FRA_75mmMle1897 = InfantryGun:New{
 		},
 	},
 	customParams = {
-		weapontoggle		= "priorityAPHE",
 	},
 }
 

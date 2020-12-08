@@ -1,4 +1,4 @@
-local GER_LeFH18 = InfantryGun:New{
+local GER_LeFH18 = HInfGun:New{
 	name					= "10.5cm LeFH 18M",
 	corpse					= "gerlefh18_destroyed",
 	buildCostMetal			= 1800,
@@ -16,7 +16,6 @@ local GER_LeFH18 = InfantryGun:New{
 		},
 	},
 	customParams = {
-		weapontoggle		= "smoke",
 	},
 }
 
@@ -33,7 +32,6 @@ local GER_LeFH18_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
 	},
 }
 
