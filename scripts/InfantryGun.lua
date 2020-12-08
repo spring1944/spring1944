@@ -217,7 +217,7 @@ end
 
 function script.QueryWeapon(weaponNum)
     if lastRocket then
-        return piece("rocket" .. lastRocket) or tubes
+        return tubes or piece("rocket" .. lastRocket)
     end
 
     local cegPiece = info.cegPieces[weaponNum]

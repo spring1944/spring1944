@@ -126,6 +126,7 @@ local RInfGun = InfantryGun:New{
     },
     customParams = {
         scriptAnimation        = "rocket",
+        turretturnspeed        = 16,
         wiki_subclass_comments = [[This unit is a rockets launcher. Rockets are
 an excellent way to deal heavy damage in little time. Unfortunatelly, rocket
 launchers have not a long firing range, so they should be deployed dangerously
