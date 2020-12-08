@@ -159,7 +159,7 @@ local gerDefs = {
     energy = 0,
   },
 
-  ger10sk18_truck = 
+  ger10sk18 = 
   {
     into = 'ger10sk18_stationary',
     tech = 0,
@@ -171,7 +171,7 @@ local gerDefs = {
   
   ger10sk18_stationary = 
   {
-    into = 'ger10sk18_truck',
+    into = 'ger10sk18',
     tech = 0,
     time = 40,
     metal = 0,
