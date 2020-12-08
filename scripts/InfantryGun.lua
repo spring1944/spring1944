@@ -87,9 +87,6 @@ local function UpdateCrew()
         end
         if UnitDef.transportCapacity > passengers then
             SetUnitRulesParam(unitID, "immobilized", 1)
-            for i=1,info.numWeapons do
-                weaponEnabled[i] = false
-            end
         else
             SetUnitRulesParam(unitID, "immobilized", 0)
             -- The gun is functional, but depending on whether the crew members
@@ -102,9 +99,6 @@ local function UpdateCrew()
                 end
             end
             UpdateSpeed()
-            for i=1,info.numWeapons do
-                weaponEnabled[i] = not pinned
-            end
         end
 
         GG.ApplySpeedChanges(unitID)
