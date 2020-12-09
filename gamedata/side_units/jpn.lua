@@ -127,7 +127,7 @@ local jpnunits =
 		"jpntype1_47mm",
 		"jpntype90_75mm",
 		"jpntype91_105mm_truck",
-		"jpntype92_10cm_truck",
+		"jpntype92_10cm",
 	},	
 	jpnspyard =
 	{
