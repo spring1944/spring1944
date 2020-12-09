@@ -57,6 +57,7 @@ local GLYPHS = {
     ["Fire Smoke"] = '\204\189',
     ["Prefer HE"] = '\204\188',
     ["Prefer AP"] = '\204\190',
+    ["Prefer HEAT"] = '\204\191',
 }
 local MINBUTTONSIZE = 0.04
 local ACCEPTABLE_DEFAULT_COMMANDS = {
