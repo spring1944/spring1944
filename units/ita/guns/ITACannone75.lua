@@ -1,4 +1,4 @@
-local ITA_Cannone75= InfantryGun:New{
+local ITA_Cannone75 = FGInfGun:New{
 	name					= "Cannone da 75/32",
 	corpse					= "ITACannone75_Destroyed",
 	buildCostMetal			= 1250,
