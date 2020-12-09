@@ -80,7 +80,7 @@ local hununits = {
 		"hun38mbotond",
 		"hunpak40",
 		"hunlefh18",
-		"hun31m_105mm_truck",
+		"hun31m_105mm",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
 	},
