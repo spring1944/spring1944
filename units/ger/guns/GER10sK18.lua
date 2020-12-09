@@ -8,7 +8,7 @@ local GER_10sK18 = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {7.0, 11.0, 9.0},
-	collisionVolumeOffsets	= {0.0, 4.0, 5.0},
+	collisionVolumeOffsets	= {0.0, 8.0, 5.0},
 
 	weapons = {
 		[1] = { -- HE

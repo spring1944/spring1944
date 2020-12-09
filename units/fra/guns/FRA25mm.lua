@@ -9,7 +9,7 @@ local FRA_25mmAT = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {8.0, 8.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 0.0, 1.0},
+	collisionVolumeOffsets	= {0.0, 4.0, 1.0},
 
 	weapons = {
 		[1] = { -- AP

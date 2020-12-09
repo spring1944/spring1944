@@ -8,7 +8,7 @@ local GBR_4_5in = InfantryGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {8.0, 10.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 2.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 7.0, 3.0},
 
 	weapons = {
 		[1] = { -- HE

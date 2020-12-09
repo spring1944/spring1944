@@ -5,7 +5,7 @@ local GER_Nebelwerfer = RInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {6.0, 6.0, 6.0},
-	collisionVolumeOffsets	= {0.0, 6.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 9.0, 3.0},
 
 	customParams = {
 		maxammo				= 1,
