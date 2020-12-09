@@ -68,8 +68,8 @@ local hununits = {
 	{
 		"hunbergehetzer",
 		"hun38mbotond",
-		"hunpak40_truck",
-		"hunlefh18_truck",
+		"hunpak40",
+		"hunlefh18",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
 	},
@@ -78,8 +78,8 @@ local hununits = {
 	{
 		"hunbergehetzer",
 		"hun38mbotond",
-		"hunpak40_truck",
-		"hunlefh18_truck",
+		"hunpak40",
+		"hunlefh18",
 		"hun31m_105mm_truck",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
@@ -89,8 +89,8 @@ local hununits = {
 	{
 		"hunbergehetzer",
 		"hun38mbotond",
-		"hunpak40_truck",
-		"hunlefh18_truck",
+		"hunpak40",
+		"hunlefh18",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
 		"hun40mnimrod",
@@ -101,8 +101,8 @@ local hununits = {
 	{
 		"hunbergehetzer",
 		"hun38mbotond",
-		"hunpak40_truck",
-		"hunlefh18_truck",
+		"hunpak40",
+		"hunlefh18",
 		"hun36mbofors_truck",
 		"hun44mbuzoganyveto_truck",
 		"hun40mnimrod",
