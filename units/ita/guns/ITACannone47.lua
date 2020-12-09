@@ -3,6 +3,9 @@ local ITA_Cannone47 = ATInfGun:New{
 	corpse					= "gerpak40_destroyed",
 	buildCostMetal			= 360,
 
+	transportCapacity		= 1,
+	transportMass			= 50,
+
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {3.0, 5.0, 7.0},
 	collisionVolumeOffsets	= {0.0, 3.0, 5.0},

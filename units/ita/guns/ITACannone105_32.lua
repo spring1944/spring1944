@@ -3,8 +3,8 @@ local ITA_Cannone_105_32 = HInfGun:New{
 	corpse					= "ITACannone105_32_Destroyed",
 	buildCostMetal			= 3000,
 
-	transportCapacity		= 4,
-	transportMass			= 200,
+	transportCapacity		= 3,
+	transportMass			= 150,
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {15.0, 10.0, 10.0},
