@@ -47,7 +47,7 @@ local itaDefs = {
     energy = 0,
   },
 
-  itacannone47_truck =
+  itacannone47 =
   {
     into = 'itacannone47_stationary',
     tech = 0,
@@ -59,7 +59,7 @@ local itaDefs = {
   
   itacannone47_stationary =
   {
-    into = 'itacannone47_truck',
+    into = 'itacannone47',
     tech = 0,
     time = 5,
     metal = 0,
