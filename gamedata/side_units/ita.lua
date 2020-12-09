@@ -126,7 +126,7 @@ local itaunits =
 	"itacannone47",
 	"itacannone75",
 	"itaobice100",
-	"itacannone105_32_truck",
+	"itacannone105_32",
 	"itacannone65",
   },  
   itaspyard =
