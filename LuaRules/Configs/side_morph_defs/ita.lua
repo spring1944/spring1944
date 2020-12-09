@@ -85,7 +85,7 @@ local itaDefs = {
     energy = 0,
   },
 
-  itaobice100_truck =
+  itaobice100 =
   {
     into = 'itaobice100_stationary',
     tech = 0,
@@ -97,7 +97,7 @@ local itaDefs = {
   
   itaobice100_stationary =
   {
-    into = 'itaobice100_truck',
+    into = 'itaobice100',
     tech = 0,
     time = 20,
     metal = 0,
