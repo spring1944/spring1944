@@ -149,7 +149,7 @@ local rusunits =
     "ruszis3",
     "rus61k_truck",
 	"rusm30",
-	"rusa19_truck",
+	"rusa19",
   },  
   russpyard =
   {

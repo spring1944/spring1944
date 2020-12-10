@@ -164,7 +164,7 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  rusa19_truck = 
+  rusa19 = 
   {
     into = 'rusa19_stationary',
     tech = 0,
@@ -176,7 +176,7 @@ local rusDefs = {
   
   rusa19_stationary = 
   {
-    into = 'rusa19_truck',
+    into = 'rusa19',
     tech = 0,
     time = 45,
     metal = 0,
