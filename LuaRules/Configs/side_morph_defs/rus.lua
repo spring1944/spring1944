@@ -109,7 +109,7 @@ local rusDefs = {
     energy = 0,
   },
   
-  ruszis2_truck = 
+  ruszis2 = 
   {
     into = 'ruszis2_stationary',
     tech = 0,
@@ -121,7 +121,7 @@ local rusDefs = {
   
   ruszis2_stationary = 
   {
-    into = 'ruszis2_truck',
+    into = 'ruszis2',
     tech = 0,
     time = 7,
     metal = 0,
@@ -146,7 +146,7 @@ local rusDefs = {
     energy = 0,
   },
   
-  rusm30_truck = 
+  rusm30 = 
   {
     into = 'rusm30_stationary',
     tech = 0,
@@ -158,13 +158,13 @@ local rusDefs = {
   
   rusm30_stationary = 
   {
-    into = 'rusm30_truck',
+    into = 'rusm30',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  rusa19_truck = 
+  rusa19 = 
   {
     into = 'rusa19_stationary',
     tech = 0,
@@ -176,7 +176,7 @@ local rusDefs = {
   
   rusa19_stationary = 
   {
-    into = 'rusa19_truck',
+    into = 'rusa19',
     tech = 0,
     time = 45,
     metal = 0,

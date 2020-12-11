@@ -1,9 +1,17 @@
-local SWE_PvKanM43_Truck = ATGunTractor:New{
-	name					= "Towed 5.7cm PvKan m/43",
+local SWE_PvKanM43 = ATInfGun:New{
+	name					= "5.7cm PvKan m/43",
+	corpse					= "ruszis2_destroyed",
 	buildCostMetal			= 450,
-	corpse					= "SWEScaniaVabisF11_Destroyed",
-	trackOffset				= 5,
-	trackWidth				= 12,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {12.0, 10.0, 6.0},
+	collisionVolumeOffsets	= {0.0, 5.0, 1.5},
+
+	weapons = {
+		[1] = { -- AP
+			name				= "PvKanM43AP",
+		},
+	},
 	customParams = {
 
 	},
@@ -24,6 +32,6 @@ local SWE_PvKanM43_Stationary = LightATGun:New{
 }
 
 return lowerkeys({
-	["SWEPvKanM43_Truck"] = SWE_PvKanM43_Truck,
+	["SWEPvKanM43"] = SWE_PvKanM43,
 	["SWEPvKanM43_Stationary"] = SWE_PvKanM43_Stationary,
 })

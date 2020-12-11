@@ -47,7 +47,7 @@ local itaDefs = {
     energy = 0,
   },
 
-  itacannone47_truck =
+  itacannone47 =
   {
     into = 'itacannone47_stationary',
     tech = 0,
@@ -59,7 +59,7 @@ local itaDefs = {
   
   itacannone47_stationary =
   {
-    into = 'itacannone47_truck',
+    into = 'itacannone47',
     tech = 0,
     time = 5,
     metal = 0,
@@ -85,7 +85,7 @@ local itaDefs = {
     energy = 0,
   },
 
-  itaobice100_truck =
+  itaobice100 =
   {
     into = 'itaobice100_stationary',
     tech = 0,
@@ -97,14 +97,14 @@ local itaDefs = {
   
   itaobice100_stationary =
   {
-    into = 'itaobice100_truck',
+    into = 'itaobice100',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
   
-  itacannone105_32_truck =
+  itacannone105_32 =
   {
     into = 'itacannone105_32_stationary',
     tech = 0,
@@ -116,7 +116,7 @@ local itaDefs = {
   
   itacannone105_32_stationary =
   {
-    into = 'itacannone105_32_truck',
+    into = 'itacannone105_32',
     tech = 0,
     time = 40,
     metal = 0,

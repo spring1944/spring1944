@@ -123,7 +123,7 @@ local usDefs = {
     energy = 0,
   },
     -- Towed Guns
-  usm5gun_truck = 
+  usm5gun = 
   {
     into = 'usm5gun_stationary',
     tech = 0,
@@ -135,14 +135,14 @@ local usDefs = {
   
   usm5gun_stationary = 
   {
-    into = 'usm5gun_truck',
+    into = 'usm5gun',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  usm2gun_truck = 
+  usm2gun = 
   {
     into = 'usm2gun_stationary',
     tech = 0,
@@ -154,14 +154,14 @@ local usDefs = {
   
   usm2gun_stationary = 
   {
-    into = 'usm2gun_truck',
+    into = 'usm2gun',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
  
-  usm1_45ingun_truck = 
+  usm1_45ingun = 
   {
     into = 'usm1_45ingun_stationary',
     tech = 0,
@@ -173,7 +173,7 @@ local usDefs = {
   
   usm1_45ingun_stationary = 
   {
-    into = 'usm1_45ingun_truck',
+    into = 'usm1_45ingun',
     tech = 0,
     time = 40,
     metal = 0,

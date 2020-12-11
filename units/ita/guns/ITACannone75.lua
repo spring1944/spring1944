@@ -1,11 +1,11 @@
-local ITA_Cannone75= InfantryGun:New{
+local ITA_Cannone75 = FGInfGun:New{
 	name					= "Cannone da 75/32",
 	corpse					= "ITACannone75_Destroyed",
 	buildCostMetal			= 1250,
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {10.0, 10.0, 5.0},
-	collisionVolumeOffsets	= {0.0, 2.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 7.0, 3.0},
 
 	weapons = {
 		[1] = { -- HE

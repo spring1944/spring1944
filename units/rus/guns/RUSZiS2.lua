@@ -1,9 +1,17 @@
-local RUS_ZiS2_Truck = ATGunTractor:New{
-	name					= "Towed 57mm ZiS-2",
+local RUS_ZiS2 = ATInfGun:New{
+	name					= "57mm ZiS-2",
+	corpse					= "ruszis2_destroyed",
 	buildCostMetal			= 450,
-	corpse					= "RUSZiS5_Destroyed",
-	trackOffset				= 5,
-	trackWidth				= 12,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {12.0, 6.0, 4.0},
+	collisionVolumeOffsets	= {-6.0, 7.0, 1.0},
+
+	weapons = {
+		[1] = { -- AP
+			name				= "zis257mmap",
+		},
+	},
 	customParams = {
 
 	},
@@ -24,6 +32,6 @@ local RUS_ZiS2_Stationary = LightATGun:New{
 }
 
 return lowerkeys({
-	["RUSZiS2_Truck"] = RUS_ZiS2_Truck,
+	["RUSZiS2"] = RUS_ZiS2,
 	["RUSZiS2_Stationary"] = RUS_ZiS2_Stationary,
 })

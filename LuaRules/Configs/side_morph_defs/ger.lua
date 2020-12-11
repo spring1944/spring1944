@@ -121,7 +121,7 @@ local gerDefs = {
     energy = 0,
   },
   
-  gerpak40_truck = 
+  gerpak40 = 
   {
     into = 'gerpak40_stationary',
     tech = 0,
@@ -133,14 +133,14 @@ local gerDefs = {
   
   gerpak40_stationary = 
   {
-    into = 'gerpak40_truck',
+    into = 'gerpak40',
     tech = 0,
     time = 10,
     metal = 0,
     energy = 0,
   },
   
-  gerlefh18_truck = 
+  gerlefh18 = 
   {
     into = 'gerlefh18_stationary',
     tech = 0,
@@ -152,14 +152,14 @@ local gerDefs = {
   
   gerlefh18_stationary = 
   {
-    into = 'gerlefh18_truck',
+    into = 'gerlefh18',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
 
-  ger10sk18_truck = 
+  ger10sk18 = 
   {
     into = 'ger10sk18_stationary',
     tech = 0,
@@ -171,13 +171,13 @@ local gerDefs = {
   
   ger10sk18_stationary = 
   {
-    into = 'ger10sk18_truck',
+    into = 'ger10sk18',
     tech = 0,
     time = 40,
     metal = 0,
     energy = 0,
   },  
-	gernebelwerfer_truck = 
+	gernebelwerfer = 
   {
     into = 'gernebelwerfer_stationary',
     tech = 0,
@@ -189,7 +189,7 @@ local gerDefs = {
   
   gernebelwerfer_stationary = 
   {
-    into = 'gernebelwerfer_truck',
+    into = 'gernebelwerfer',
     tech = 0,
     time = 20,
     metal = 0,

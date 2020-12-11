@@ -53,6 +53,10 @@ local weaponEnabled = {}
 local moving = false
 local pinned = false
 
+-- For rocket launchers (e.g. nebelwerfer)
+local tubes = piece "tubes"
+local lastRocket
+
 
 local function Delay(func, duration, mask, ...)
     --Spring.Echo("wait", duration)
@@ -83,9 +87,6 @@ local function UpdateCrew()
         end
         if UnitDef.transportCapacity > passengers then
             SetUnitRulesParam(unitID, "immobilized", 1)
-            for i=1,info.numWeapons do
-                weaponEnabled[i] = false
-            end
         else
             SetUnitRulesParam(unitID, "immobilized", 0)
             -- The gun is functional, but depending on whether the crew members
@@ -98,9 +99,6 @@ local function UpdateCrew()
                 end
             end
             UpdateSpeed()
-            for i=1,info.numWeapons do
-                weaponEnabled[i] = not pinned
-            end
         end
 
         GG.ApplySpeedChanges(unitID)
@@ -163,6 +161,10 @@ function script.Create()
     for i=1,info.numWeapons do
         weaponEnabled[i] = true
     end
+    if info.numRockets > 0 then
+        lastRocket = info.numRockets
+    end
+
     StartThread(UpdateCrew)
 end
 
@@ -214,6 +216,10 @@ function script.StopMoving()
 end
 
 function script.QueryWeapon(weaponNum)
+    if lastRocket then
+        return tubes or piece("rocket" .. lastRocket)
+    end
+
     local cegPiece = info.cegPieces[weaponNum]
     if cegPiece then
         return cegPiece
@@ -293,6 +299,10 @@ end
 function script.Shot(weaponNum)
     if barrel then
         StartThread(Recoil)
+    end
+    if lastRocket then
+        lastRocket = lastRocket % info.numRockets + 1
+        Hide(piece("rocket" .. lastRocket))
     end
     local ceg = info.weaponCEGs[weaponNum]
     if ceg then

@@ -137,7 +137,7 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-  jpntype1_47mm_truck =
+  jpntype1_47mm =
   {
     into = 'jpntype1_47mm_stationary',
     tech = 0,
@@ -149,7 +149,7 @@ local jpnDefs = {
   
   jpntype1_47mm_stationary =
   {
-    into = 'jpntype1_47mm_truck',
+    into = 'jpntype1_47mm',
     tech = 0,
     time = 5,
     metal = 0,
@@ -173,7 +173,7 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-  jpntype91_105mm_truck =
+  jpntype91_105mm =
   {
     into = 'jpntype91_105mm_stationary',
     tech = 0,
@@ -185,13 +185,13 @@ local jpnDefs = {
   
   jpntype91_105mm_stationary =
   {
-    into = 'jpntype91_105mm_truck',
+    into = 'jpntype91_105mm',
     tech = 0,
     time = 20,
     metal = 0,
     energy = 0,
   },
-  jpntype92_10cm_truck =
+  jpntype92_10cm =
   {
     into = 'jpntype92_10cm_stationary',
     tech = 0,
@@ -203,7 +203,7 @@ local jpnDefs = {
   
   jpntype92_10cm_stationary =
   {
-    into = 'jpntype92_10cm_truck',
+    into = 'jpntype92_10cm',
     tech = 0,
     time = 40,
     metal = 0,

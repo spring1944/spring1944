@@ -1,4 +1,4 @@
-local FRA_75mmMle1897 = InfantryGun:New{
+local FRA_75mmMle1897 = FGInfGun:New{
 	name					= "Canon de 75 modèle 1897",
 	corpse					= "FRA75mmMle1897_destroyed",
 	objectName				= "FRA/FRA75mmMle1897.dae",
@@ -6,7 +6,7 @@ local FRA_75mmMle1897 = InfantryGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {11.0, 11.0, 2.0},
-	collisionVolumeOffsets	= {0.0, 1.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 6.0, 2.0},
 
 	weapons = {
 		[1] = { -- HE
@@ -17,7 +17,6 @@ local FRA_75mmMle1897 = InfantryGun:New{
 		},
 	},
 	customParams = {
-
 	},
 }
 

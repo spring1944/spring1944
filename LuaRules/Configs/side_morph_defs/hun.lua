@@ -48,7 +48,7 @@ local hunDefs = {
 		energy = 0,
 	},
 	
-	hunpak40_truck = 
+	hunpak40 = 
 	{
 		into = 'hunpak40_stationary',
 		tech = 0,
@@ -60,7 +60,7 @@ local hunDefs = {
 
 	hunpak40_stationary = 
 	{
-		into = 'hunpak40_truck',
+		into = 'hunpak40',
 		tech = 0,
 		time = 10,
 		metal = 0,
@@ -84,7 +84,7 @@ local hunDefs = {
 			energy = 0,
 		},
 	},
-	hunlefh18_truck = 
+	hunlefh18 = 
 	{
 		into = 'hunlefh18_stationary',
 		tech = 0,
@@ -96,14 +96,14 @@ local hunDefs = {
 
 	hunlefh18_stationary = 
 	{
-		into = 'hunlefh18_truck',
+		into = 'hunlefh18',
 		tech = 0,
 		time = 20,
 		metal = 0,
 		energy = 0,
 	},
 
-	hun31m_105mm_truck = {
+	hun31m_105mm = {
 		into = 'hun31m_105mm_stationary',
 		tech = 0,
 		time = 60,
@@ -113,7 +113,7 @@ local hunDefs = {
 	},
 
 	hun31m_105mm_stationary = {
-		into = 'hun31m_105mm_truck',
+		into = 'hun31m_105mm',
 		tech = 0,
 		time = 40,
 		metal = 0,

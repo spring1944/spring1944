@@ -1,4 +1,4 @@
-local JPN_Type90_75mm = InfantryGun:New{
+local JPN_Type90_75mm = FGInfGun:New{
 	name					= "Type 90 75mm Gun",
 	corpse					= "JPNType90_75mm_Destroyed",
 	buildCostMetal			= 1250,

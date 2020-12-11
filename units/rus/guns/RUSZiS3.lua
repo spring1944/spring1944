@@ -1,11 +1,11 @@
-local RUS_ZiS3 = InfantryGun:New{
+local RUS_ZiS3 = FGInfGun:New{
 	name					= "76mm ZiS-3",
 	corpse					= "RUSZiS-3_Destroyed",
 	buildCostMetal			= 1300,
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {12.0, 11.0, 6.0},
-	collisionVolumeOffsets	= {0.0, 4.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 8.0, 3.0},
 
 	weapons = {
 		[1] = { -- HE

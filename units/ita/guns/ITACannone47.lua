@@ -1,11 +1,21 @@
-local ITA_Cannone47_Truck = ATGunTractor:New{
-	name					= "Towed Cannone da 47/32",
+local ITA_Cannone47 = ATInfGun:New{
+	name					= "Cannone da 47/32",
+	corpse					= "gerpak40_destroyed",
 	buildCostMetal			= 360,
-	corpse					= "ITAFiat626_Abandoned", -- TODO: grumble
-	trackOffset				= 5,
-	trackWidth				= 12,
-	customParams = {
 
+	transportCapacity		= 1,
+	transportMass			= 50,
+
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {3.0, 5.0, 7.0},
+	collisionVolumeOffsets	= {0.0, 5.0, 5.0},
+
+	weapons = {
+		[1] = { -- AP
+			name				= "CannoneDa47mml32AP_towed",
+		},
+	},
+	customParams = {
 	},
 }
 
@@ -26,6 +36,6 @@ local ITA_Cannone47_Stationary = LightATGun:New{
 }
 
 return lowerkeys({
-	["ITACannone47_Truck"] = ITA_Cannone47_Truck,
+	["ITACannone47"] = ITA_Cannone47,
 	["ITACannone47_Stationary"] = ITA_Cannone47_Stationary,
 })
