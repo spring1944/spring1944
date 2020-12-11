@@ -135,7 +135,7 @@ local usunits = {
     "usm8gun",
     "usm5gun",
     "usm2gun",
-	"usm1_45ingun_truck",
+	"usm1_45ingun",
     "usm1bofors_truck",
   }, 
   usspyard1 =

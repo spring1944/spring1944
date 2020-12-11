@@ -161,7 +161,7 @@ local usDefs = {
     energy = 0,
   },
  
-  usm1_45ingun_truck = 
+  usm1_45ingun = 
   {
     into = 'usm1_45ingun_stationary',
     tech = 0,
@@ -173,7 +173,7 @@ local usDefs = {
   
   usm1_45ingun_stationary = 
   {
-    into = 'usm1_45ingun_truck',
+    into = 'usm1_45ingun',
     tech = 0,
     time = 40,
     metal = 0,
