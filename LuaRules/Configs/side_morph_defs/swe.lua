@@ -333,7 +333,7 @@ local sweDefs = {
 		energy = 0,
 	},
   
-	swehaubitsm39_truck = 
+	swehaubitsm39 = 
 	{
 		into = 'swehaubitsm39_stationary',
 		tech = 0,
@@ -344,7 +344,7 @@ local sweDefs = {
 	},
 	swehaubitsm39_stationary = 
 	{
-		into = 'swehaubitsm39_truck',
+		into = 'swehaubitsm39',
 		tech = 0,
 		time = 20,
 		metal = 0,
@@ -388,7 +388,7 @@ local sweDefs = {
 		},
 	},
 	
-	swekanon105_42_truck = {
+	swekanon105_42 = {
 		{
 			into	= "swekanon105_42_stationary",
 			tech	= 0,
@@ -401,7 +401,7 @@ local sweDefs = {
 	
 	swekanon105_42_stationary = {
 		{
-			into	= "swekanon105_42_truck",
+			into	= "swekanon105_42",
 			tech	= 0,
 			time	= 40,
 			metal	= 0,

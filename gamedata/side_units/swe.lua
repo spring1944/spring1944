@@ -90,7 +90,7 @@ local sweunits =
 		"sweboforsm36_truck",
 		"swepvkanm43",
 		"swekanonm02_33",
-		"swehaubitsm39_truck",
+		"swehaubitsm39",
 	},
 
 	swegunyard2 =
@@ -101,8 +101,8 @@ local sweunits =
 		"sweboforsm36_truck",
 		"swepvkanm43",
 		"swekanonm02_33",
-		"swehaubitsm39_truck",
-		"swekanon105_42_truck",
+		"swehaubitsm39",
+		"swekanon105_42",
 	},	
 	swespyard =
 	{
@@ -112,7 +112,7 @@ local sweunits =
 		"sweboforsm36_truck",
 		"swepvkanm43",
 		"swekanonm02_33",
-		"swehaubitsm39_truck",
+		"swehaubitsm39",
 		"swehaubitsm06_truck",
 		"swepbilm31",
 	},
@@ -125,7 +125,7 @@ local sweunits =
 		"sweboforsm36_truck",
 		"swepvkanm43",
 		"swekanonm02_33",
-		"swehaubitsm39_truck",
+		"swehaubitsm39",
 		"swepbilm31",
 		"swesavm43",
 	},
