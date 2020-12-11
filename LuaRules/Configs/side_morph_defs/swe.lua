@@ -295,7 +295,7 @@ local sweDefs = {
 	},
 	
 		-- Towed Guns
-	swepvkanm43_truck = {
+	swepvkanm43 = {
 		{
 			into = 'swepvkanm43_stationary',
 			tech = 0,
@@ -307,7 +307,7 @@ local sweDefs = {
 	},
 	swepvkanm43_stationary = {
 		{
-			into = 'swepvkanm43_truck',
+			into = 'swepvkanm43',
 			tech = 0,
 			time = 7,
 			metal = 0,
