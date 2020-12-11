@@ -1,4 +1,4 @@
-local GBR_17Pdr = InfantryGun:New{
+local GBR_17Pdr = ATInfGun:New{
 	name					= "CQ.F. 17 Pounder",
 	corpse					= "gbr17pdr_destroyed",
 	buildCostMetal			= 840,

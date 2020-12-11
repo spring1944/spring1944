@@ -9,6 +9,7 @@ local GERLeIG18 = InfantryGun:New{
 
 	weapons = {
 		[1] = { -- HE
+			maxAngleDif		= 5,
 			name			= "leig18HE",
 		},
 	},

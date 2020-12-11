@@ -1,4 +1,4 @@
-local GBR_4_5in = InfantryGun:New{
+local GBR_4_5in = HInfGun:New{
 	name					= "BL 4.5 inch Medium Gun",
 	corpse					= "gbr45ingun_destroyed",
 	buildCostMetal			= 3200,
@@ -19,7 +19,6 @@ local GBR_4_5in = InfantryGun:New{
 		},
 	},
 	customParams = {
-		weapontoggle		= "smoke",
 	},
 }
 

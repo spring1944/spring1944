@@ -1,4 +1,4 @@
-local GBR_25Pdr = InfantryGun:New{
+local GBR_25Pdr = HInfGun:New{
 	name					= "Q.F. 25 Pounder",
 	corpse					= "gbr25pdr_destroyed",
 	buildCostMetal			= 1800,
@@ -10,15 +10,12 @@ local GBR_25Pdr = InfantryGun:New{
 	weapons = {
 		[1] = { -- HE
 			name				= "qf25pdrhe",
-			maxAngleDif			= 50,
 		},
 		[2] = { -- Smoke
 			name				= "qf25pdrsmoke",
-			maxAngleDif			= 50,
 		},
 	},
 	customParams = {
-		weapontoggle		= "smoke",
 	},
 }
 
