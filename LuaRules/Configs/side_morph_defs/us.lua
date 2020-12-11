@@ -142,7 +142,7 @@ local usDefs = {
     energy = 0,
   },
   
-  usm2gun_truck = 
+  usm2gun = 
   {
     into = 'usm2gun_stationary',
     tech = 0,
@@ -154,7 +154,7 @@ local usDefs = {
   
   usm2gun_stationary = 
   {
-    into = 'usm2gun_truck',
+    into = 'usm2gun',
     tech = 0,
     time = 20,
     metal = 0,
