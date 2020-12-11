@@ -14,12 +14,23 @@ end
 if (gadgetHandler:IsSyncedCode()) then -- SYNCED
 
 local CMD_MORPH = GG.CustomCommands.GetCmdID("CMD_MORPH")
+local GAIA_TEAM_ID = Spring.GetGaiaTeamID()
 local DEFAULT_SIDE = "gbr"
+local CAPTURE_RADIUS = 250
 local morphDefs = include("LuaRules/Configs/morph_defs.lua")
 local getSideName = VFS.Include("LuaRules/Includes/sides.lua")
-local GetUnitDefID = Spring.GetUnitDefID
+local GetUnitDefID          = Spring.GetUnitDefID
 local GetUnitIsTransporting = Spring.GetUnitIsTransporting
-local GiveOrderToUnit = Spring.GiveOrderToUnit
+local GiveOrderToUnit       = Spring.GiveOrderToUnit
+local GetUnitPosition       = Spring.GetUnitPosition
+local GetUnitsInSphere      = Spring.GetUnitsInSphere
+local GetUnitTeam           = Spring.GetUnitTeam
+local TransferUnit          = Spring.TransferUnit
+local GetUnitMass           = Spring.GetUnitMass
+
+local infguns = {}
+local infguns_indexes = {}
+local last_parsed_gun = 0
 
 local function SpawnCrewMembers(unitID, unitDefID, teamID)
     local ud = UnitDefs[unitDefID]
@@ -38,6 +49,9 @@ local function SpawnCrewMembers(unitID, unitDefID, teamID)
             end
         end
     end
+
+    infguns[#infguns + 1] = unitID
+    infguns_indexes[unitID] = #infguns
 end
 
 function gadget:UnitFinished(unitID, unitDefID, teamID)
@@ -46,7 +60,56 @@ function gadget:UnitFinished(unitID, unitDefID, teamID)
     if not cp.infgun then
         return
     end
+
     GG.Delay.DelayCall(SpawnCrewMembers, {unitID, unitDefID, teamID})
+end
+
+function gadget:GameFrame(frame)
+    if #infguns == 0 then
+        last_parsed_gun = 0
+        return
+    end
+    -- Traverse the next infantry gun, one per frame
+    last_parsed_gun = (last_parsed_gun % #infguns) + 1
+    local unitID = infguns[last_parsed_gun]
+    local transported = GetUnitIsTransporting(unitID)
+    if transported and #transported > 0 then
+        -- The unit still has crew, let it alone
+        return
+    end
+
+    -- The gun is abandoned
+    local x, y, z = GetUnitPosition(unitID)
+    local team = GetUnitTeam(unitID)
+    local visitors = GetUnitsInSphere(x, y, z, CAPTURE_RADIUS)
+    if not visitors then
+        if team ~= GAIA_TEAM_ID then
+            TransferUnit(unitID, GAIA_TEAM_ID)
+        end
+        return
+    end
+    -- There are visitors around. We are looking for units capable to claim the
+    -- gun, i.e. infantry. However, if several teams are disputing the gun, we
+    -- are just simply don't doing nothing.
+    local new_team = GAIA_TEAM_ID
+    for _, u in ipairs(visitors) do
+        if u ~= unitID then
+            local t = GetUnitTeam(u)
+            if t ~= GAIA_TEAM_ID and GetUnitMass(u) then
+                if new_team ~= GAIA_TEAM_ID and new_team ~= t then
+                    -- Several teams disputing the gun, don't do nothing
+                    new_team = nil
+                    break
+                end
+
+                new_team = t
+            end
+        end
+    end
+
+    if new_team ~= nil and new_team ~= team then
+        TransferUnit(unitID, new_team)
+    end
 end
 
 -- Just allow to morph when the gun is still operative
@@ -70,10 +133,19 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
         return true
     end
 
-    return #(Spring.GetUnitIsTransporting(unitID)) == ud.transportCapacity
+    return #(GetUnitIsTransporting(unitID)) == ud.transportCapacity
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    local ud = UnitDefs[unitDefID]
+    local cp = ud.customParams
+    if cp.infgun then
+        local i = infguns_indexes[unitID]
+        table.remove(infguns_indexes, i)
+        infguns_indexes[unitID] = nil
+        return
+    end
+
     for u, morphData in pairs(GG['morphHandler'].GetMorphingUnits()) do
         local ud = UnitDefs[GetUnitDefID(u)]
         local cp = ud.customParams
