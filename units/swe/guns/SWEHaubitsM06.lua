@@ -1,11 +1,21 @@
-local SWEHaubitsM06_Truck = HGunTractor:New{
-	name					= "Towed Haubits m/06",
-	corpse					= "SWEVolvoHBT_Destroyed",
+local SWEHaubitsM06 = HInfGun:New{
+	name					= "Haubits m/06",
+	corpse					= "swehaubitsm06_destroyed",
 	buildCostMetal			= 2650,
-	trackOffset				= 10,
-	trackWidth				= 13,
-	customParams = {
 
+	collisionVolumeType		= "box",
+	collisionVolumeScales	= {5.0, 5.0, 8.0},
+	collisionVolumeOffsets	= {0.0, 8.5, 2.0},
+
+	weapons = {
+		[1] = { -- HE
+			name				= "haubm06150mmL11HE",
+		},
+		[2] = { -- Smoke
+			name				= "haubm06150mmL11Smoke",
+		},
+	},
+	customParams = {
 	},
 }
 
@@ -22,11 +32,10 @@ local SWEHaubitsM06_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-		weapontoggle		= "smoke",
 	},
 }
 
 return lowerkeys({
-	["SWEHaubitsM06_Truck"] = SWEHaubitsM06_Truck,
+	["SWEHaubitsM06"] = SWEHaubitsM06,
 	["SWEHaubitsM06_Stationary"] = SWEHaubitsM06_Stationary,
 })

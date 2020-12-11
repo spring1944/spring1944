@@ -113,7 +113,7 @@ local sweunits =
 		"swepvkanm43",
 		"swekanonm02_33",
 		"swehaubitsm39",
-		"swehaubitsm06_truck",
+		"swehaubitsm06",
 		"swepbilm31",
 	},
 
