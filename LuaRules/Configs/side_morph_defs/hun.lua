@@ -55,7 +55,6 @@ local hunDefs = {
 		time = 10,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 
 	hunpak40_stationary = 
@@ -91,7 +90,6 @@ local hunDefs = {
 		time = 35,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 
 	hunlefh18_stationary = 
@@ -109,7 +107,6 @@ local hunDefs = {
 		time = 60,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 
 	hun31m_105mm_stationary = {

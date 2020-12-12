@@ -130,7 +130,6 @@ local usDefs = {
     time = 10,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   usm5gun_stationary = 
@@ -149,7 +148,6 @@ local usDefs = {
     time = 35,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   usm2gun_stationary = 
@@ -168,7 +166,6 @@ local usDefs = {
     time = 60,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   usm1_45ingun_stationary = 

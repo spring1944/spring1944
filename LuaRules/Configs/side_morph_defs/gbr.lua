@@ -112,7 +112,6 @@ local gbrDefs = {
     time = 10,
     metal = 0,
     energy = 0,
-    directional = true,
   },
 
   gbr17pdr_stationary = 
@@ -131,7 +130,6 @@ local gbrDefs = {
     time = 35,
     metal = 0,
     energy = 0,
-    directional = true,
   },
 
   gbr25pdr_stationary = 
@@ -149,7 +147,6 @@ local gbrDefs = {
     time = 60,
     metal = 0,
     energy = 0,
-    directional = true,
   },
 
   gbr45ingun_stationary = 

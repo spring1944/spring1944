@@ -116,7 +116,6 @@ local rusDefs = {
     time = 7,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   ruszis2_stationary = 
@@ -153,7 +152,6 @@ local rusDefs = {
     time = 35,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   rusm30_stationary = 
@@ -171,7 +169,6 @@ local rusDefs = {
     time = 70,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   rusa19_stationary = 

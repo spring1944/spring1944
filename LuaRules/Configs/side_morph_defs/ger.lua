@@ -91,7 +91,6 @@ local gerDefs = {
     time = 12,
     metal = 0,
     energy = 0,
-    directional = true,
   },
 
   germg42_sandbag =
@@ -128,7 +127,6 @@ local gerDefs = {
     time = 10,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   gerpak40_stationary = 
@@ -147,7 +145,6 @@ local gerDefs = {
     time = 35,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   gerlefh18_stationary = 
@@ -166,7 +163,6 @@ local gerDefs = {
     time = 60,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   ger10sk18_stationary = 
@@ -177,14 +173,13 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },  
-	gernebelwerfer = 
+  gernebelwerfer = 
   {
     into = 'gernebelwerfer_stationary',
     tech = 0,
     time = 35,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   gernebelwerfer_stationary = 
