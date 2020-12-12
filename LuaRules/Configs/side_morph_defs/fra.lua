@@ -25,7 +25,6 @@ local fraDefs = {
 		time = 5,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 
 	fra25mmmle1934_stationary =
@@ -44,7 +43,6 @@ local fraDefs = {
 		time = 5,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 
 	fra47mmat_stationary =
@@ -63,7 +61,6 @@ local fraDefs = {
 		time = 10,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 
 	fra75mmmle1897_stationary =
@@ -100,7 +97,6 @@ local fraDefs = {
         time = 35,
         metal = 0,
         energy = 0,
-        directional = true,
     },
 
     fra105mmmle1935b_stationary = 

@@ -144,7 +144,6 @@ local jpnDefs = {
     time = 5,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   jpntype1_47mm_stationary =
@@ -162,7 +161,6 @@ local jpnDefs = {
     time = 15,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   jpntype90_75mm_stationary =
@@ -180,7 +178,6 @@ local jpnDefs = {
     time = 25,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   jpntype91_105mm_stationary =
@@ -198,7 +195,6 @@ local jpnDefs = {
     time = 60,
     metal = 0,
     energy = 0,
-    directional = true,
   },
   
   jpntype92_10cm_stationary =

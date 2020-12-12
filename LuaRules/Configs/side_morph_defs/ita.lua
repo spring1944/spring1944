@@ -54,7 +54,6 @@ local itaDefs = {
     time = 5,
     metal = 0,
     energy = 0,
-	directional = true,
   },
   
   itacannone47_stationary =
@@ -73,7 +72,6 @@ local itaDefs = {
     time = 15,
     metal = 0,
     energy = 0,
-	directional = true,
   },
   
   itacannone75_stationary =
@@ -92,7 +90,6 @@ local itaDefs = {
     time = 35,
     metal = 0,
     energy = 0,
-	directional = true,
   },
   
   itaobice100_stationary =
@@ -111,7 +108,6 @@ local itaDefs = {
     time = 60,
     metal = 0,
     energy = 0,
-	directional = true,
   },
   
   itacannone105_32_stationary =

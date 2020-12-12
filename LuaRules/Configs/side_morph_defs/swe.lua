@@ -302,7 +302,6 @@ local sweDefs = {
 			time = 7,
 			metal = 0,
 			energy = 0,
-			directional = true,
 		},
 	},
 	swepvkanm43_stationary = {
@@ -322,7 +321,6 @@ local sweDefs = {
 		time = 15,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 	swekanonm02_33_stationary =
 	{
@@ -340,7 +338,6 @@ local sweDefs = {
 		time = 35,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 	swehaubitsm39_stationary = 
 	{
@@ -358,7 +355,6 @@ local sweDefs = {
 		time = 28,
 		metal = 0,
 		energy = 0,
-		directional = true,
 	},
 	swehaubitsm06_stationary = 
 	{
@@ -395,7 +391,6 @@ local sweDefs = {
 			time	= 60,
 			metal	= 0,
 			energy	= 0,
-			directional = true,
 		},
 	},
 	
