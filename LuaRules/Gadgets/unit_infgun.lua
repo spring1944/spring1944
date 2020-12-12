@@ -138,9 +138,12 @@ end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     if infguns_indexes[unitID] then
-        local i = infguns_indexes[unitID]
-        table.remove(infguns, i)
-        infguns_indexes[unitID] = nil
+        local i0 = infguns_indexes[unitID]
+        for i = i0, #infguns - 1 do
+            infguns[i] = infguns[i + 1]
+            infguns_indexes[infguns[i]] = i
+        end
+        infguns[#infguns] = nil
         return
     end
 
