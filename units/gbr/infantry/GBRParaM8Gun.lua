@@ -8,7 +8,8 @@ local GBR_ParaM8Gun = InfantryGun:New{
 
 	weapons = {
 		[1] = { -- HE
-			name				= "M875mmHE",
+			maxAngleDif		= 5,
+			name			= "M875mmHE",
 		},
 	},
 	customParams = {
