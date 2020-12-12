@@ -137,11 +137,9 @@ function gadget:AllowCommand(unitID, unitDefID, teamID, cmdID, cmdParams, cmdOpt
 end
 
 function gadget:UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    local ud = UnitDefs[unitDefID]
-    local cp = ud.customParams
-    if cp.infgun then
+    if infguns_indexes[unitID] then
         local i = infguns_indexes[unitID]
-        table.remove(infguns_indexes, i)
+        table.remove(infguns, i)
         infguns_indexes[unitID] = nil
         return
     end
