@@ -8,8 +8,8 @@ local FRA_105mm = HInfGun:New{
 	transportMass			= 150,
 
 	collisionVolumeType		= "box",
-	collisionVolumeScales	= {9.0, 13.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 9.0, 1.0},
+	collisionVolumeScales	= {13.0, 9.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 7.0, 4.0},
 
 	weapons = {
 		[1] = { -- HE

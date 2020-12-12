@@ -7,8 +7,8 @@ local GBR_4_5in = HInfGun:New{
 	transportMass			= 200,
 
 	collisionVolumeType		= "box",
-	collisionVolumeScales	= {8.0, 10.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 7.0, 3.0},
+	collisionVolumeScales	= {8.0, 12.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 5.0, 3.0},
 
 	weapons = {
 		[1] = { -- HE

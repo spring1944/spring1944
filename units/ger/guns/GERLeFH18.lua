@@ -4,8 +4,8 @@ local GER_LeFH18 = HInfGun:New{
 	buildCostMetal			= 1800,
 
 	collisionVolumeType		= "box",
-	collisionVolumeScales	= {9.0, 7.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 7.0, 5.0},
+	collisionVolumeScales	= {10.0, 7.0, 4.0},
+	collisionVolumeOffsets	= {0.0, 7.0, 3.0},
 
 	weapons = {
 		[1] = { -- HE

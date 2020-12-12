@@ -5,7 +5,7 @@ local RUS_ZiS2 = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {12.0, 6.0, 4.0},
-	collisionVolumeOffsets	= {-6.0, 7.0, 1.0},
+	collisionVolumeOffsets	= {0.0, 6.0, 1.0},
 
 	weapons = {
 		[1] = { -- AP

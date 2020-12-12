@@ -7,8 +7,8 @@ local HUN_31M_105mm = HInfGun:New{
 	transportMass			= 200,
 
 	collisionVolumeType		= "box",
-	collisionVolumeScales	= {10.0, 7.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 7.0, 3.0},
+	collisionVolumeScales	= {16.0, 10.0, 4.0},
+	collisionVolumeOffsets	= {0.0, 7.0, 2.0},
 
 	weapons = {
 		[1] = { -- HE

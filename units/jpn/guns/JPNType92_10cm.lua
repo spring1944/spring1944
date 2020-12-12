@@ -8,7 +8,7 @@ local JPN_Type92_10cm = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {13.0, 10.0, 7.0},
-	collisionVolumeOffsets	= {0.0, 10.0, 1.0},
+	collisionVolumeOffsets	= {0.0, 5.0, 1.0},
 
 	weapons = {
 		[1] = { -- HE
