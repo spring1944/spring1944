@@ -468,15 +468,20 @@ local function IdleFactory(unitID)
 
     -- Evaluate the build options
     local unitDefID = GetUnitDefID(unitID)
-    local selected, score = nil, MIN_INT / 2
+    local selected, cmd, score = nil, nil, MIN_INT / 2
     for _, optDefID in ipairs(UnitDefs[unitDefID].buildOptions) do
         local optDef = UnitDefs[optDefID]
-        local chain_phony = {metal=optDef.metalCost}
-        local optName = optDef.name
-        local chain_score = ChainScore(optName, chain_phony)
-        if chain_score > score then
-            selected = optDefID
-            score = chain_score
+        local optCmd = ResolveMorphingCmd(unitDefID, optDefID)
+        -- Avoid factories morphing here
+        if optCmd == -optDefID and not unit_chains.is_morph_link(optDef.name) then
+            local chain_phony = {metal=optDef.metalCost}
+            local optName = optDef.name
+            local chain_score = ChainScore(optName, chain_phony)
+            if chain_score > score then
+                selected = optDefID
+                cmd = optCmd
+                score = chain_score
+            end
         end
     end
 
@@ -485,8 +490,8 @@ local function IdleFactory(unitID)
         return        
     end
 
-    Log("Queueing in factory: ", UnitDefs[selected].name, ", ", UnitDefs[selected].humanName, selected)
-    GiveOrderToUnit(unitID, ResolveMorphingCmd(unitDefID, selected), {}, {})
+    Log("Queueing in idle factory: ", UnitDefs[selected].name)
+    GiveOrderToUnit(unitID, cmd, {}, {})
 
     -- For the time being, add the unitDefID to the queue. Later on, when the
     -- actual unit is created to be built, we are replacing this by the actual

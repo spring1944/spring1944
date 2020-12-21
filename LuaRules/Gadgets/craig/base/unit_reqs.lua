@@ -44,7 +44,7 @@ end
 -- Morphs
 local morphDefs = VFS.Include("LuaRules/Configs/morph_defs.lua")
 
-local function _is_morph_link(id)
+local function is_morph_link(id)
     -- Analyze the unit name to determine whether it is a morphing link or not
     local name = id
     if type(name) == "number" then
@@ -96,7 +96,7 @@ local function IsFactory(unitDefID)
     -- Avoid "factories" which only have morphing options, like storages
     local children = unitDef.buildOptions
     for _, c in ipairs(children) do
-        if not _is_morph_link(c) then
+        if not is_morph_link(c) then
             return true
         end
     end
@@ -112,7 +112,7 @@ local function IsConstructor(unitDefID)
     local resemble_builder = unitDef.isMobileBuilder and unitDef.canAssist
     local children = unitDef.buildOptions
     for _, c in ipairs(children) do
-        if resemble_builder and not _is_morph_link(c) then
+        if resemble_builder and not is_morph_link(c) then
             return true
         end
         if IsFactory(UnitDefNames[_unit_name(c)].id) then
@@ -230,6 +230,7 @@ local function GetBuildCriticalLines(unitDefID, min_depth)
 end
 
 return {
+    is_morph_link = is_morph_link,
     IsFactory = IsFactory,
     IsConstructor = IsConstructor,
     GetBuildChains = GetBuildChains,
