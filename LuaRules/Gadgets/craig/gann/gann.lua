@@ -41,9 +41,9 @@ for later usage.
 
 function CreateGANN(population, mutation_prob, mutation_size)
 
-population = population or 10
-mutation_prob = mutation_prob ~= nil and mutation_prob or 0.05
-mutation_size = mutation_size or 0.25
+population = population or 20
+mutation_prob = mutation_prob ~= nil and mutation_prob or 0.02
+mutation_size = mutation_size or 0.5
 
 local NeuralNetwork = VFS.Include("LuaRules/Gadgets/craig/gann/neuralnet.lua")
 local GANN = {}
@@ -326,7 +326,7 @@ function GANN.GetConfigData()
     Log("Storing GANN data...")
 
     -- Get the score basis
-    local total = {metal=0, ammo=0, damage_dealt=0}
+    local total = {metal=1, ammo=1, damage_dealt=1}
     local stats = {}
     for _, teamID in ipairs(Spring.GetTeamList()) do
         stats[teamID] = GetTeamStats(teamID)
@@ -343,6 +343,7 @@ function GANN.GetConfigData()
             score = score + stats[teamID][k] / v
             n_score = n_score + 1
         end
+        Spring.Echo(score, n_score)
         individuals[i].score = score / n_score
     end
 

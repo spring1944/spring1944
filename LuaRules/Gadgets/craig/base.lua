@@ -185,7 +185,7 @@ local function ChainScore(target, chain)
 
         base_gann_inputs.squad_size = 1.0 / MAX_SQUAD_SIZE
         base_gann_inputs.unit_storage = __clamp(unitDef.energyStorage / 3000.0)
-        base_gann_inputs.unit_is_constructor = unit_chains.IsConstructor(unitDef.id) and 1.0 or 0.0
+        base_gann_inputs.unit_is_constructor = (unit_chains.IsConstructor(unitDef.id) or unit_chains.IsPackedFactory(unitDef.id)) and 1.0 or 0.0
         base_gann_inputs.unit_cap = __clamp((unitDef.customParams.flagcaprate or 0) / 10.0)
         base_gann_inputs.unit_view = __clamp(unitDef.losRadius / 1000.0 / MAX_SQUAD_SIZE)
         base_gann_inputs.unit_speed = __clamp(unitDef.speed / 20.0)
@@ -396,7 +396,7 @@ local function StartChain()
             Log("Queueing unit morph: ", target_udef.name)
             GiveOrderToUnit(builder, cmd, {}, {})
         end
-    else
+    elseif unit_chains.IsFactory(builderDefID) then
         local cmd = ResolveMorphingCmd(builderDefID, target_udef.id)
         if cmd == -target_udef.id then
             Log("Queueing in factory: ", target_udef.name)
@@ -412,6 +412,21 @@ local function StartChain()
         end
         myFactories[builder][#myFactories[builder] + 1] = -target_udef.id
         myFactoriesScore[builder] = MIN_INT  -- The first factory to wait if we are stalling
+    else
+        -- It is a packed factory, so we must find a place to unpack, move there
+        -- the unit and ask to unpack
+        local cmd = ResolveMorphingCmd(builderDefID, target_udef.id)
+        local x,y,z,facing = buildsiteFinder.FindBuildsite(builder, target_udef.id, useClosestBuildSite)
+        if not x then
+            Log("Could not find buildsite for " .. target_udef.humanName)
+            -- Lets select a different chain
+            selected_chain = nil
+            return
+        end
+
+        Log("Unpacking in place: ", target_udef.name, " [", x, ", ", y, ", ", z, "] ")
+        GiveOrderToUnit(builder, CMD.MOVE, {x, y, z}, {})
+        GiveOrderToUnit(builder, cmd, {}, {"shift"})
     end
 
     -- Set the starting time, to eventually give up at some point
@@ -472,8 +487,10 @@ local function IdleFactory(unitID)
     for _, optDefID in ipairs(UnitDefs[unitDefID].buildOptions) do
         local optDef = UnitDefs[optDefID]
         local optCmd = ResolveMorphingCmd(unitDefID, optDefID)
-        -- Avoid factories morphing here
-        if optCmd == -optDefID and not unit_chains.is_morph_link(optDef.name) then
+        -- Avoid here:
+        --  * morphs
+        --  * packed factories
+        if optCmd == -optDefID and not unit_chains.is_morph_link(optDef.name) and not unit_chains.IsPackedFactory(unitDefID) then
             local chain_phony = {metal=optDef.metalCost}
             local optName = optDef.name
             local chain_score = ChainScore(optName, chain_phony)
@@ -490,7 +507,7 @@ local function IdleFactory(unitID)
         return        
     end
 
-    Log("Queueing in idle factory: ", UnitDefs[selected].name)
+    Log("Queueing in idle factory: ", UnitDefs[unitDefID].name, UnitDefs[selected].name)
     GiveOrderToUnit(unitID, cmd, {}, {})
 
     -- For the time being, add the unitDefID to the queue. Later on, when the
@@ -671,7 +688,7 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
     n_cap = n_cap + (UnitDefs[unitDefID].customParams.flagcaprate or 0)
 
     -- Add the new constructors
-    if unit_chains.IsConstructor(unitDefID) then
+    if unit_chains.IsConstructor(unitDefID) or unit_chains.IsPackedFactory(unitDefID) then
         n_constructor = n_constructor + 1
         myConstructors[unitID] = true
         updateBuildOptions(unitDefID)

@@ -52,8 +52,12 @@ local function is_morph_link(id)
     end
 
     local fields = __split_str(name, "_")
-    if #fields >= 4 and fields[2] == "morph" then
-        return true
+    if #fields >= 4 then
+        for _,field in ipairs(fields) do
+            if field == "morph" then
+                return true
+            end
+        end
     end
 
     return false
@@ -71,14 +75,23 @@ local function _unit_name(id)
 
     -- Morphing link resolution
     local fields = __split_str(name, "_")
-    if #fields >= 4 and _is_a_side(fields[1]) and fields[2] == "morph" then
-        -- It is a morphing unit, see BuildMorphDef function in
-        -- LuaRules/Gadgets/unit_morph. We are interested in the morphed
-        -- unit instead of the morphing one
-        name = fields[4]
-        for i = 5,#fields do
-            -- Some swe nightmare names has underscores...
-            name = name .. "_" .. fields[i]
+    if #fields >= 4 and _is_a_side(fields[1]) then
+        local morph_i = nil
+        for i,field in ipairs(fields) do
+            if field == "morph" then
+                morph_i = i
+                break
+            end
+        end
+        if morph_i then
+            -- It is a morphing unit, see BuildMorphDef function in
+            -- LuaRules/Gadgets/unit_morph. We are interested in the morphed
+            -- unit instead of the morphing one
+            name = fields[morph_i + 2]
+            for i = morph_i + 3,#fields do
+                -- Some swe nightmare names has underscores...
+                name = name .. "_" .. fields[i]
+            end
         end
     end
 
@@ -104,9 +117,28 @@ local function IsFactory(unitDefID)
     return false
 end
 
+local function IsPackedFactory(unitDefID)
+    local unitDef = UnitDefs[unitDefID]
+    if unitDef.isFactory or unitDef.speed == 0 then
+        return false
+    end
+
+    local morphs = GG['morphHandler'].GetMorphDefs()[unitDefID]
+    if morphs == nil then
+        return false
+    end
+    for _, morph in pairs(morphs) do
+        if IsFactory(morph.into) then
+            return true
+        end
+    end
+
+    return false
+end
+
 local function IsConstructor(unitDefID)
     local unitDef = UnitDefs[unitDefID]
-    if UnitDefs[unitDefID].isFactory or unitDef.speed == 0 then
+    if unitDef.isFactory or unitDef.speed == 0 then
         return false
     end
     local resemble_builder = unitDef.isMobileBuilder and unitDef.canAssist
@@ -115,14 +147,15 @@ local function IsConstructor(unitDefID)
         if resemble_builder and not is_morph_link(c) then
             return true
         end
-        if IsFactory(UnitDefNames[_unit_name(c)].id) then
-            -- Packed factories
-            Log("Found a packed factory: " .. unitDef.name)
-            return true
-        end
     end
 
     return false
+end
+
+local function IsChainLink(unitDefID)
+    -- Units that can be considered as intermediate units in a construction
+    -- chain
+    return IsFactory(unitDefID) or IsPackedFactory(unitDefID) or IsConstructor(unitDefID)
 end
 
 -- Chain setups
@@ -139,7 +172,7 @@ local function GetBuildChains(unitDefID, chain)
         return nil
     end
 
-    if not IsConstructor(unitDefID) and not IsFactory(unitDefID) then
+    if not IsChainLink(unitDefID) then
         current_depth = current_depth - 1
         return nil
     end
@@ -156,13 +189,14 @@ local function GetBuildChains(unitDefID, chain)
                                            metal=udef.metalCost}
     end
     -- Add also the morphs
-    if morphDefs[unitDef.name] ~= nil then
-        if morphDefs[unitDef.name].into ~= nil then
+    local morphs = GG['morphHandler'].GetMorphDefs()[unitDefID]
+    if morphs ~= nil then
+        if morphs.into ~= nil then
             -- Conveniently transform it in a single element table
-            morphDefs[unitDef.name] = {morphDefs[unitDef.name]}
+            morphs = {morphs}
         end
-        for _, morphDef in pairs(morphDefs[unitDef.name]) do
-            local udef = UnitDefNames[morphDef.into]
+        for _, morphDef in pairs(morphs) do
+            local udef = UnitDefs[morphDef.into]
             local name = udef.name
             buildOptions[#buildOptions + 1] = {name=name,
                                                udef=udef,
@@ -180,14 +214,9 @@ local function GetBuildChains(unitDefID, chain)
             new_chain.units[#new_chain.units + 1] = unit
         end
         new_chain.units[#new_chain.units + 1] = child.name
-        if not IsConstructor(child.udef.id) and not IsFactory(child.udef.id) then
+        if not IsChainLink(child.udef.id) then
             chains[#chains + 1] = new_chain
         else
-            local flagcaprate = tonumber(child.udef.customParams.flagcaprate or 0)
-            if IsConstructor(child.udef.id) and flagcaprate > 0 then
-                -- Rus commisars
-                chains[#chains + 1] = new_chain
-            end
             local subchains = GetBuildChains(child.udef.id, new_chain)
             if subchains ~= nil then
                 for _, subchain in ipairs(subchains) do
@@ -232,6 +261,7 @@ end
 return {
     is_morph_link = is_morph_link,
     IsFactory = IsFactory,
+    IsPackedFactory = IsPackedFactory,
     IsConstructor = IsConstructor,
     GetBuildChains = GetBuildChains,
     GetBuildCriticalLines = GetBuildCriticalLines,
