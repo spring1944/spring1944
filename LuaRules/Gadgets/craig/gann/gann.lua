@@ -314,11 +314,10 @@ end
 local function GetTeamStats(teamID)
     local cur_max_index = Spring.GetTeamStatsHistory(teamID)
     if not cur_max_index then
-        return {metal=0, ammo=0, damage_dealt=0}
+        return {metal=0, damage_dealt=0}
     end
     local stats = Spring.GetTeamStatsHistory(teamID, cur_max_index)[1]
     return {metal = stats.metalUsed,
-            ammo = stats.energyUsed,
             damage_dealt = stats.damageDealt}
 end
 
@@ -326,7 +325,7 @@ function GANN.GetConfigData()
     Log("Storing GANN data...")
 
     -- Get the score basis
-    local total = {metal=1, ammo=1, damage_dealt=1}
+    local total = {metal=1, damage_dealt=1}
     local stats = {}
     for _, teamID in ipairs(Spring.GetTeamList()) do
         stats[teamID] = GetTeamStats(teamID)
@@ -343,7 +342,6 @@ function GANN.GetConfigData()
             score = score + stats[teamID][k] / v
             n_score = n_score + 1
         end
-        Spring.Echo(score, n_score)
         individuals[i].score = score / n_score
     end
 
