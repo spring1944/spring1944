@@ -28,11 +28,6 @@ managing each AI controlled team.
 To use the GANN...
 ==================
 
-You must call the following callins from the main script:
-
-function GANN.UnitFinished(unitID, unitDefID, unitTeam)
-function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-
 At the time of using the GANN, you can call GANN.Evaluate(teamID, inputs). You
 are entitled to train the neural network at any time using
 GANN.Train(teamID, inputs, outputs)
@@ -113,7 +108,7 @@ function GANN.SetConfigData(data)
                 score = score - 0.01
             end
             individuals[#individuals + 1] = {
-                score = score,
+                score = math.min(1.0, score),
                 nn = nn
             }
         end
@@ -221,7 +216,6 @@ function GANN.Procreate(teamID)
     local individual = crossover(individuals[i0], individuals[i1])
     individual = mutate(individual)
     individual.teamID = teamID
-    individual.deployed_metal = 0
 
     individualTeams[teamID] = individual
     individuals[#individuals + 1] = individual
@@ -232,28 +226,6 @@ end
 --
 --  Usage
 --
-
--- The AIs performance will be evaluated as the ammount of metal deployed,
--- compared with the total metal deployed (suming up all other players).
-local total_metal = 0
-
-function GANN.UnitFinished(unitID, unitDefID, unitTeam)
-    local unitDef = UnitDefs[unitDefID]
-    local metal = unitDef.metalCost
-    total_metal = total_metal + metal
-    if individualTeams[unitTeam] ~= nil then
-        individualTeams[unitTeam].deployed_metal = individualTeams[unitTeam].deployed_metal + metal
-    end
-end
-
-function GANN.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    local unitDef = UnitDefs[unitDefID]
-    local metal = unitDef.metalCost
-    total_metal = total_metal - metal
-    if individualTeams[unitTeam] ~= nil then
-        individualTeams[unitTeam].deployed_metal = individualTeams[unitTeam].deployed_metal - metal
-    end
-end
 
 function GANN.Evaluate(teamID, inputs)
     if individualTeams[teamID] == nil then
@@ -339,12 +311,39 @@ local function spairs(t, order)
     end
 end
 
+local function GetTeamStats(teamID)
+    local cur_max_index = Spring.GetTeamStatsHistory(teamID)
+    if not cur_max_index then
+        return {metal=0, ammo=0, damage_dealt=0}
+    end
+    local stats = Spring.GetTeamStatsHistory(teamID, cur_max_index)[1]
+    return {metal = stats.metalUsed,
+            ammo = stats.energyUsed,
+            damage_dealt = stats.damageDealt}
+end
+
 function GANN.GetConfigData()
     Log("Storing GANN data...")
 
+    -- Get the score basis
+    local total = {metal=0, ammo=0, damage_dealt=0}
+    local stats = {}
+    for _, teamID in ipairs(Spring.GetTeamList()) do
+        stats[teamID] = GetTeamStats(teamID)
+        for k,v in pairs(total) do
+            total[k] = v + stats[teamID][k]
+        end
+    end
+
     -- Evaluate the score of the children
     for i = population + 1, #individuals do
-        individuals[i].score = individuals[i].deployed_metal / total_metal
+        local teamID = individuals[i].teamID
+        local score, n_score = 0.0, 0
+        for k,v in pairs(total) do
+            score = score + stats[teamID][k] / v
+            n_score = n_score + 1
+        end
+        individuals[i].score = score / n_score
     end
 
     -- Select the fittest individuals
