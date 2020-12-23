@@ -42,7 +42,7 @@ local function _is_a_side(side)
 end
 
 -- Morphs
-local morphDefs = VFS.Include("LuaRules/Configs/morph_defs.lua")
+local morphDefs = nil
 
 local function is_morph_link(id)
     -- Analyze the unit name to determine whether it is a morphing link or not
@@ -123,7 +123,8 @@ local function IsPackedFactory(unitDefID)
         return false
     end
 
-    local morphs = GG['morphHandler'].GetMorphDefs()[unitDefID]
+    morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
+    local morphs = morphDefs[unitDefID]
     if morphs == nil then
         return false
     end
@@ -181,26 +182,34 @@ local function GetBuildChains(unitDefID, chain)
     local unitDef = UnitDefs[unitDefID]
     local children = unitDef.buildOptions
     local buildOptions = {}
+    local buildOptionsIDs = {}
     for _, c in ipairs(children) do
         local name = _unit_name(c)
         local udef = UnitDefNames[name]
         buildOptions[#buildOptions + 1] = {name=name,
                                            udef=udef,
                                            metal=udef.metalCost}
+        buildOptionsIDs[udef.id] = name
     end
-    -- Add also the morphs
-    local morphs = GG['morphHandler'].GetMorphDefs()[unitDefID]
+    -- Add also the morphs, which are not implying packing factories
+    morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
+    local morphs = morphDefs[unitDefID]
     if morphs ~= nil then
         if morphs.into ~= nil then
             -- Conveniently transform it in a single element table
             morphs = {morphs}
         end
         for _, morphDef in pairs(morphs) do
-            local udef = UnitDefs[morphDef.into]
-            local name = udef.name
-            buildOptions[#buildOptions + 1] = {name=name,
-                                               udef=udef,
-                                               metal=morphDef.metal}
+            if IsFactory(morphDef.into) or not IsFactory(unitDefID) then
+                local udef = UnitDefs[morphDef.into]
+                local name = udef.name
+                if not buildOptionsIDs[udef.id] then
+                    buildOptions[#buildOptions + 1] = {name=name,
+                                                       udef=udef,
+                                                       metal=morphDef.metal}
+                    buildOptionsIDs[udef.id] = name
+                end
+            end
         end
     end
 

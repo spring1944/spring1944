@@ -69,9 +69,10 @@ local unit_scores = VFS.Include("LuaRules/Gadgets/craig/base/unit_score.lua")
 local buildsiteFinder = buildsiteFinderModule.CreateBuildsiteFinder(myTeamID)
 
 -- Base building capabilities
-local myConstructors = {}    -- Units which may build the base
-local myFactories = {}       -- Factories already available, with their queue
-local myFactoriesScore = {}  -- Score associated to the factory
+local myConstructors = {}     -- Units which may build the base
+local myFactories = {}        -- Factories already available, with their queue
+local myFactoriesScore = {}   -- Score associated to the factory
+local myPackedFactories = {}  -- Packed factories, which shall unpack
 
 local function GetBuildingChains()
     local producers = {}
@@ -141,7 +142,7 @@ local excluded_units_regex = {
     ".assaultboat",
     ".apminesign",
     ".atminesign",
-    ".tankobstacle"
+    ".tankobstacle",
 }
 
 local function ChainScore(target, chain)
@@ -154,7 +155,9 @@ local function ChainScore(target, chain)
     local unitDef = UnitDefNames[target]
 
     -- For the time being, ignore air and water units
-    if unitDef.canFly or unitDef.floatOnWater or unitDef.isHoveringAirUnit then
+    -- I do not know why, but some units like SWEVedettbat has
+    -- unitDef.floatOnWater = false, so I am also asking for wiki_parser
+    if unitDef.canFly or unitDef.floatOnWater or unitDef.customParams.wiki_parser == "boat" or unitDef.isHoveringAirUnit then
         return MIN_INT
     end
 
@@ -185,7 +188,7 @@ local function ChainScore(target, chain)
 
         base_gann_inputs.squad_size = 1.0 / MAX_SQUAD_SIZE
         base_gann_inputs.unit_storage = __clamp(unitDef.energyStorage / 3000.0)
-        base_gann_inputs.unit_is_constructor = (unit_chains.IsConstructor(unitDef.id) or unit_chains.IsPackedFactory(unitDef.id)) and 1.0 or 0.0
+        base_gann_inputs.unit_is_constructor = unit_chains.IsConstructor(unitDef.id) and 1.0 or 0.0
         base_gann_inputs.unit_cap = __clamp((unitDef.customParams.flagcaprate or 0) / 10.0)
         base_gann_inputs.unit_view = __clamp(unitDef.losRadius / 1000.0 / MAX_SQUAD_SIZE)
         base_gann_inputs.unit_speed = __clamp(unitDef.speed / 20.0)
@@ -338,14 +341,22 @@ local function GetABuilder(unitDefID)
     return builder
 end
 
+local morphDefs = nil
+local legitBuildOpts = VFS.Include("gamedata/builddefs.lua")
+
 local function ResolveMorphingCmd(origDefID, destDefID)
-    local morphDefs = GG['morphHandler'].GetMorphDefs()[origDefID]
-    if morphDefs == nil then
+    morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
+    local morphs = morphDefs[origDefID]
+    if not morphs then
         return -destDefID
     end
-    for _, morphDef in pairs(morphDefs) do
+    for _, morphDef in pairs(morphs) do
         if morphDef.into == destDefID then
-            return morphDef.cmd
+            local origName, destName = UnitDefs[origDefID].name, UnitDefs[destDefID].name
+            if not legitBuildOpts[origName] or not legitBuildOpts[origName][destName] then
+                -- The unit can be regularly built, don't bother packing the factory
+                return morphDef.cmd
+            end
         end
     end
 
@@ -412,9 +423,10 @@ local function StartChain()
         end
         myFactories[builder][#myFactories[builder] + 1] = -target_udef.id
         myFactoriesScore[builder] = MIN_INT  -- The first factory to wait if we are stalling
-    else
+    elseif unit_chains.IsPackedFactory(builderDefID) then
         -- It is a packed factory, so we must find a place to unpack, move there
         -- the unit and ask to unpack
+        myPackedFactories[builder] = target_udef.id
         local cmd = ResolveMorphingCmd(builderDefID, target_udef.id)
         local x,y,z,facing = buildsiteFinder.FindBuildsite(builder, target_udef.id, useClosestBuildSite)
         if not x then
@@ -427,6 +439,10 @@ local function StartChain()
         Log("Unpacking in place: ", target_udef.name, " [", x, ", ", y, ", ", z, "] ")
         GiveOrderToUnit(builder, CMD.MOVE, {x, y, z}, {})
         GiveOrderToUnit(builder, cmd, {}, {"shift"})
+    else
+        Log("Unhandled building chain link. Unit '", UnitDefs[builderDefID].name, "' is not neither a constructor, a factory or a packed factory")
+        selected_chain = nil
+        return
     end
 
     -- Set the starting time, to eventually give up at some point
@@ -437,6 +453,11 @@ local function StartChain()
 end
 
 local function BuildBaseFinished()
+    if not selected_chain then
+        -- It may happens that AI is changing the target when the previous one
+        -- is finishing, so selected_chain will be nil. Just ignore it.
+        return
+    end
     -- Upgrade the chain
     selected_chain.builder = currentBuildID
     table.remove(selected_chain.units, 1)
@@ -463,7 +484,7 @@ local function BuildBaseInterrupted()
     currentBuildID = nil
     currentBuilder = nil
     selected_chain.retry = selected_chain.retry - 1
-    if selected_chain.retry > 1 then
+    if selected_chain.retry > 0 then
         StartChain()
     else
         -- No-way... Probably the factory is blocked...
@@ -490,7 +511,7 @@ local function IdleFactory(unitID)
         -- Avoid here:
         --  * morphs
         --  * packed factories
-        if optCmd == -optDefID and not unit_chains.is_morph_link(optDef.name) and not unit_chains.IsPackedFactory(unitDefID) then
+        if optCmd == -optDefID and not unit_chains.is_morph_link(optDef.name) and not unit_chains.IsPackedFactory(optDefID) then
             local chain_phony = {metal=optDef.metalCost}
             local optName = optDef.name
             local chain_score = ChainScore(optName, chain_phony)
@@ -524,7 +545,7 @@ local function isBuilderIdle(unitID)
             myFactories[unitID] = {}
         end
         return isIdle
-    elseif myConstructors[unitID] ~= nil then
+    elseif myConstructors[unitID] ~= nil or myPackedFactories[unitID] ~= nil then
         return (GetUnitCommands(unitID, 0) or 0) == 0
     end
 
@@ -688,14 +709,14 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
     n_cap = n_cap + (UnitDefs[unitDefID].customParams.flagcaprate or 0)
 
     -- Add the new constructors
-    if unit_chains.IsConstructor(unitDefID) or unit_chains.IsPackedFactory(unitDefID) then
+    if unit_chains.IsConstructor(unitDefID) then
         n_constructor = n_constructor + 1
         myConstructors[unitID] = true
         updateBuildOptions(unitDefID)
         if currentBuilder then
             GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
         end
-        return true --signal Team.UnitFinished that we will control this unit
+        return true  --signal Team.UnitFinished that we will control this unit
     end
 
     if unit_chains.IsFactory(unitDefID) then
@@ -706,6 +727,11 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
         end
         IdleFactory(unitID)
         return false
+    end
+
+    if unit_chains.IsPackedFactory(unitDefID) then
+        myPackedFactories[unitID] = true
+        return true  --signal Team.UnitFinished that we will control this unit
     end
 end
 
@@ -739,6 +765,9 @@ function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attacker
     if unit_chains.IsFactory(unitDefID) then
         myFactories[unitID] = nil
         updateBuildOptions()
+    end
+    if unit_chains.IsPackedFactory(unitDefID) then
+        myPackedFactories[unitID] = nil
     end
 end
 

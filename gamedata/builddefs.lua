@@ -7,7 +7,7 @@ local function TableConcat(t1,t2)
     return t1, tmpCount
 end
 
-buildoptions = {}
+local buildoptions = {}
 
 -- let's append all the side's units to the list
 -- first find all the subtables
@@ -19,8 +19,9 @@ for _, SideFile in pairs(SideFiles) do
 	Spring.Log('builddefs', 'info', " - Processing "..SideFile)
 	local tmpTable = VFS.Include(SideFile)
 	if tmpTable then
+		local tmpCount
 		buildoptions, tmpCount = TableConcat(buildoptions, tmpTable)
-		Spring.Log('builddefs', 'info', " -- Added "..tmpCount.." entries")
+		Spring.Log('builddefs', 'info', " -- Added " .. tmpCount .. " entries")
 		tmpTable = nil
 	end
 end
