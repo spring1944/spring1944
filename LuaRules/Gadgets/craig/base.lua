@@ -628,7 +628,7 @@ function BaseMgr.GameFrame(f)
     end
 
     local mCurr, mStor, mPull, mInco = GetTeamResources(myTeamID, "metal")
-    if mCurr / mStor < 0.05 and mInco < mPull then
+    if mCurr / mStor < 0.1 and mInco < mPull then
         -- We are stalling, put some units to wait
         if #waiting_builders == 0 then
             -- Let's start putting the constructors in waiting mode
