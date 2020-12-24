@@ -279,6 +279,7 @@ end
 
 function gadget:GameFrame(f)
     if gadget.IsTraining() and Spring.GetGameSeconds() > training_time then
+        GetConfigData()
         Spring.Quit()
     end
 
@@ -331,6 +332,13 @@ function gadget:TeamDied(teamID)
     --for _,t in pairs(team) do
     --    t.TeamDied(teamID)
     --end
+end
+
+function gadget:GameOver(winningAllyTeams)
+    if gadget.IsTraining() then
+        GetConfigData()
+        Spring.Quit()
+    end
 end
 
 --------------------------------------------------------------------------------
