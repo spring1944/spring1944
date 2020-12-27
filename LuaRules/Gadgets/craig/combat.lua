@@ -12,7 +12,7 @@ function CombatMgr.UnitFinished(unitID, unitDefID, unitTeam)
 function CombatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 ]]--
 
-function CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, Log)
+function CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, taxiMgr, Log)
 
 -- Can not manage combat if we don't have waypoints..
 if (not gadget.waypointMgr) then
@@ -25,7 +25,7 @@ local CombatMgr = {}
 local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 500
 local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
-
+local TAXI_DIST = 10.0 * FLAG_RADIUS
 
 -- speedups
 local CMD_FIGHT = CMD.FIGHT
@@ -131,7 +131,6 @@ end
 local function GiveOrdersToUnitMap(orig, target, unitMap, cmd, normal, spread)
     local unitArray = {}
     for u, _ in pairs(unitMap) do
-        local udef = UnitDefs[GetUnitDefID(u)]
         unitArray[#unitArray + 1] = u
     end
     return GiveOrdersToUnitArray(orig, target, unitArray, cmd, normal, spread)
@@ -153,7 +152,6 @@ local function LookForSupplies()
                 newUnits[u] = true
             end
         elseif GetUnitRulesParam(u, "ammo") == 0 and GetUnitRulesParam(u, "insupply") == 0 then
-            Spring.Echo("LookForSupplies()", GetUnitRulesParam(u, "ammo"), max_ammo, GetUnitRulesParam(u, "insupply"))
             local ux, _, uz = GetUnitPosition(u)
             local x, z, d = nil, nil, hugefloat
             -- Look for the closest supplies provider
@@ -161,13 +159,11 @@ local function LookForSupplies()
                 local sx, _, sz = GetUnitPosition(s)
                 local dx, dz = sx - ux, sz - uz
                 local dist = sqrt(dx * dx + dz * dz)
-                Spring.Echo("    ", dist - 0.5 * radius, d)
                 if dist - 0.5 * radius < d then
                     d = dist - 0.5 * radius
                     x, z = ux + dx * d / dist, uz + dz * d / dist
                 end
             end
-            Spring.Echo("    ", x, z, d)
             if x ~= nil and z ~= nil then
                 refilling[u] = true
                 units[u] = nil
@@ -175,6 +171,8 @@ local function LookForSupplies()
                 Log("Unit ", tostring(u), " go for supplies at [", x, ", ", y, ", ", z, "]")
                 GiveOrderToUnit(u, CMD_MOVE, {x, y, z},  {})
             end
+        elseif GetUnitRulesParam(u, "ammo") < 0.5 * max_ammo and GetUnitRulesParam(u, "insupply") == 0 then
+            taxiMgr.AddSupplyMission(u)
         end
     end    
 end
@@ -211,10 +209,22 @@ function CombatMgr.GameFrame(f)
         local target, normal, previous = intelligence.GetTarget(x, z)
         if target ~= nil then
             local orig = waypointMgr.GetNearestWaypoint2D(x, z)
-            GiveOrdersToUnitMap(orig,  target, newUnits, CMD.FIGHT, normal, SQUAD_SPREAD)
-            for u,_ in pairs(newUnits) do
+            local unitArray, taxiUnitArray = {}, {}
+            for u, _ in pairs(newUnits) do
                 units[u] = target -- remember where we are going for UnitIdle
+                unitArray[#unitArray + 1] = u
+                if UnitDefs[GetUnitDefID(u)].mass <= 100 then
+                    taxiUnitArray[#taxiUnitArray + 1] = u
+                end
             end
+            GiveOrdersToUnitArray(orig, target, unitArray, CMD.FIGHT, normal, SQUAD_SPREAD)
+
+            local dx, dz = target.z - orig.z, target.x - orig.x
+            if (dx * dx + dz * dz) > TAXI_DIST * TAXI_DIST then
+                taxiMgr.AddTransportMission(taxiUnitArray,
+                                            {target.x, target.y, target.z})
+            end
+
             newUnits = {}
             newUnitCount = 0
         end

@@ -95,11 +95,12 @@ intelligences = {}  -- One per team
 include("LuaRules/Gadgets/craig/base.lua")
 include("LuaRules/Gadgets/craig/combat.lua")
 include("LuaRules/Gadgets/craig/flags.lua")
-include("LuaRules/Gadgets/craig/pathfinder.lua")
 include("LuaRules/Gadgets/craig/heatmap.lua")
-include("LuaRules/Gadgets/craig/team.lua")
-include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/intelligence.lua")
+include("LuaRules/Gadgets/craig/taxi.lua")
+include("LuaRules/Gadgets/craig/team.lua")
+include("LuaRules/Gadgets/craig/pathfinder.lua")
+include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/gann/gann.lua")
 
 -- locals

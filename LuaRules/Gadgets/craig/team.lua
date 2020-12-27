@@ -41,8 +41,9 @@ local enemies_number = 0
 local baseMgr = CreateBaseMgr(myTeamID, myAllyTeamID, Log)
 
 -- Combat units control
+local taxiMgr = CreateTaxiService(myTeamID, myAllyTeamID, Log)
 local heatmapMgr = CreateHeatmapMgr(myTeamID, myAllyTeamID, Log)
-local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, Log)
+local combatMgr = CreateCombatMgr(myTeamID, myAllyTeamID, heatmapMgr, taxiMgr, Log)
 local flagsMgr = CreateFlagsMgr(myTeamID, myAllyTeamID, mySide, Log)
 
 --------------------------------------------------------------------------------
@@ -87,6 +88,7 @@ function Team.GameFrame(f)
 
     baseMgr.GameFrame(f)
     flagsMgr.GameFrame(f)
+    taxiMgr.GameFrame(f)
     combatMgr.GameFrame(f)
 end
 
@@ -115,6 +117,9 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
     if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then
         return
     end
+    if taxiMgr.UnitFinished(unitID, unitDefID, unitTeam) then
+        return
+    end
     if combatMgr.UnitFinished(unitID, unitDefID, unitTeam) then
         return
     end
@@ -130,6 +135,7 @@ function Team.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDef
 
     baseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     flagsMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    taxiMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
     combatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
 end
 
