@@ -538,6 +538,33 @@ local function IdleFactory(unitID)
     myFactoriesScore[unitID] = score
 end
 
+local function IdlePackedFactory(unitID)
+    local unitDefID = GetUnitDefID(unitID)
+    local targetDefID = myPackedFactories[unitID]
+    if targetDefID == true then
+        -- A target was not assigned yet, select a random one
+        morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
+        local opts = morphDefs[origDefID]
+        if opts.into then
+            targetDefID = opts.into
+        else
+            targetDefID = opts[math.random(#opts)].into
+        end
+        myPackedFactories[unitID] = targetDefID
+    end
+
+    local cmd = ResolveMorphingCmd(unitDefID, targetDefID)
+    local x,y,z,facing = buildsiteFinder.FindBuildsite(unitID, targetDefID, false)
+    if not x then
+        Log("Could not find buildsite for " .. UnitDefs[targetDefID].name)
+        return
+    end
+
+    Log("Unpacking idle packed factory: ", target_udef.name, " [", x, ", ", y, ", ", z, "] ")
+    GiveOrderToUnit(builder, CMD.MOVE, {x, y, z}, {})
+    GiveOrderToUnit(builder, cmd, {}, {"shift"})
+end
+
 local function isBuilderIdle(unitID)
     if myFactories[unitID] ~= nil then
         local isIdle = (GetFactoryCommands(unitID, 0) or 0) == 0
@@ -614,6 +641,12 @@ function BaseMgr.GameFrame(f)
     if currentBuildDefID and isBuilderIdle(currentBuilder) then
         Log(UnitDefs[currentBuildDefID].humanName, " was finished/aborted, but neither UnitFinished nor UnitDestroyed was called")
         BuildBaseInterrupted()
+    end
+
+    for u, _ in pairs(myPackedFactories) do
+        if isBuilderIdle(u) then
+            IdlePackedFactory(u)
+        end
     end
 
     for u, _ in pairs(myConstructors) do
