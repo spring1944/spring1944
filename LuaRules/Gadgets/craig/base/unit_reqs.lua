@@ -186,10 +186,14 @@ local function GetBuildChains(unitDefID, chain)
     for _, c in ipairs(children) do
         local name = _unit_name(c)
         local udef = UnitDefNames[name]
-        buildOptions[#buildOptions + 1] = {name=name,
-                                           udef=udef,
-                                           metal=udef.metalCost}
-        buildOptionsIDs[udef.id] = name
+        -- Avoid packing factories
+        local isFactoryPack = is_morph_link(c) and IsFactory(unitDef.id) and not IsFactory(udef.id)
+        if not isFactoryPack then
+            buildOptions[#buildOptions + 1] = {name=name,
+                                               udef=udef,
+                                               metal=udef.metalCost}
+            buildOptionsIDs[udef.id] = name
+        end
     end
     -- Add also the morphs, which are not implying packing factories
     morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
@@ -218,10 +222,8 @@ local function GetBuildChains(unitDefID, chain)
     for i,child in ipairs(buildOptions) do
         local chain_metal = chain and chain.metal or 0
         local chain_units = chain and chain.units or {}
-        local new_chain = {units = {}, metal = chain_metal + child.metal}
-        for _, unit in ipairs(chain_units) do
-            new_chain.units[#new_chain.units + 1] = unit
-        end
+        local new_chain = {units = __deepcopy(chain_units),
+                           metal = chain_metal + child.metal}
         new_chain.units[#new_chain.units + 1] = child.name
         if not IsChainLink(child.udef.id) then
             chains[#chains + 1] = new_chain
@@ -252,10 +254,6 @@ local function GetBuildCriticalLines(unitDefID, min_depth)
     local chains = GetBuildChains(unitDefID)
     local critical = {}
     for _, chain in ipairs(chains) do
-        local units_str = ""
-        for _, u in ipairs(chain.units) do
-            units_str = units_str .. u .. " -> "
-        end
         if #chain.units >= min_depth then
             local target = chain.units[#chain.units]
             if (critical[target] == nil) or (critical[target].metal > chain.metal) then
