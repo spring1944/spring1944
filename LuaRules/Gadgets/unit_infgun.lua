@@ -89,13 +89,15 @@ function gadget:GameFrame(frame)
         return
     end
     -- There are visitors around. We are looking for units capable to claim the
-    -- gun, i.e. infantry. However, if several teams are disputing the gun, we
-    -- are just simply don't doing nothing.
+    -- gun, i.e. infantry.
+    -- If no unit close to the gun is able to claim it, we are giving it to gaia
+    -- If several teams have units close claiming the gun, we are doing nothing
+    -- If just one team have infantry close, we are giving the gun to it
     local new_team = GAIA_TEAM_ID
     for _, u in ipairs(visitors) do
         if u ~= unitID then
             local t = GetUnitTeam(u)
-            if t ~= GAIA_TEAM_ID and GetUnitMass(u) then
+            if t ~= GAIA_TEAM_ID and GetUnitMass(u) < 100 then
                 if new_team ~= GAIA_TEAM_ID and new_team ~= t then
                     -- Several teams disputing the gun, don't do nothing
                     new_team = nil
