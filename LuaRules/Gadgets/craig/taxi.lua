@@ -21,7 +21,7 @@ function CreateTaxiService(myTeamID, myAllyTeamID, Log)
 local TaxiService = {}
 
 -- speedups
-local CMD_LOAD, CMD_UNLOAD = CMD.LOAD_ONTO, CMD.UNLOAD_UNITS
+local CMD_LOAD, CMD_UNLOAD = CMD.LOAD_UNITS, CMD.UNLOAD_UNITS
 local CMD_GUARD = CMD.GUARD
 local random, min, max = math.random, math.min, math.max
 local GetUnitDefID       = Spring.GetUnitDefID
