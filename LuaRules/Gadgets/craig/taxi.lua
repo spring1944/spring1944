@@ -21,12 +21,13 @@ function CreateTaxiService(myTeamID, myAllyTeamID, Log)
 local TaxiService = {}
 
 -- speedups
-local CMD_LOAD, CMD_UNLOAD = CMD.LOAD, CMD.UNLOAD_UNITS
+local CMD_LOAD, CMD_UNLOAD = CMD.LOAD_ONTO, CMD.UNLOAD_UNITS
 local CMD_GUARD = CMD.GUARD
 local random, min, max = math.random, math.min, math.max
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitCommands    = Spring.GetUnitCommands
 local GetTeamResources   = Spring.GetTeamResources
+local GetUnitIsDead      = Spring.GetUnitIsDead
 
 -- Taxis and ammo suppliers
 local taxis = {}         -- unitID (taxi) -> true
@@ -117,20 +118,28 @@ local function dispatch_taxi_mission(mission)
     local passengers, mass = mission.transportCapacity, mission.transportMass
     local guns = 1  -- NOTE: Number of tow points shall be checked
     for _, target in ipairs(mission.targets) do
-        local m = UnitDefs[GetUnitDefID(target)].mass
-        if passengers == 0 or mass < m or (m >= 100 and guns == 0) then
-            pending[#pending + 1] = target
-        else
-            targets[#targets + 1] = target
-            passengers = passengers - 1
-            mass = mass - m
-            if mass >= 100 then
-                -- Gun
-                guns = guns - 1
+        if not GetUnitIsDead(target) then
+            local m = UnitDefs[GetUnitDefID(target)].mass
+            if passengers == 0 or mass < m or (m >= 100 and guns == 0) then
+                pending[#pending + 1] = target
+            else
+                targets[#targets + 1] = target
+                passengers = passengers - 1
+                mass = mass - m
+                if mass >= 100 then
+                    -- Gun
+                    guns = guns - 1
+                end
             end
         end
     end
-    
+
+    if #targets == 0 then
+        -- The mission cannot be carried out anymore
+        Log("Taxi job ", mission.id, " became unfeasible...")
+        return true
+    end
+
     -- Traverse the unit commands
     Log("Assigning taxi job ", mission.id, " to ", u, "...")
     local options = {}
@@ -169,6 +178,12 @@ local function dispatch_supply_mission(mission)
         end
         mission.retries = mission.retries - 1
         return false
+    end
+
+    if GetUnitIsDead(target) then
+        -- The mission cannot be carried out anymore
+        Log("Supply job ", mission.id, " became unfeasible...")
+        return true
     end
 
     local u = freeSuppliers[#freeSuppliers]
@@ -240,7 +255,7 @@ function TaxiService.UnitFinished(unitID, unitDefID, unitTeam)
         Log("Unit ", unitID, " (", udef.name, ") hired as taxi")
     end
 
-    if udef.customParams.supplyrange and udef.customParams.supplyrange > 0 then
+    if udef.customParams.supplyrange and tonumber(udef.customParams.supplyrange) > 0 then
         get_this_unit = true
         ammoSupliers[unitID] = true
         Log("Unit ", unitID, " (", udef.name, ") hired as supplier")
