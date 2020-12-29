@@ -544,7 +544,7 @@ local function IdlePackedFactory(unitID)
     if targetDefID == true then
         -- A target was not assigned yet, select a random one
         morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
-        local opts = morphDefs[origDefID]
+        local opts = morphDefs[unitDefID]
         if opts.into then
             targetDefID = opts.into
         else
