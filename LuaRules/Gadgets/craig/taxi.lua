@@ -95,6 +95,7 @@ local function dispatch_taxi_mission(mission)
     end
 
     if #freeTaxis == 0 then
+        Log("No free taxis found...")
         if mission.retries == 0 then
             Log("Giving up taxi order ", mission.id)
             return true
@@ -131,6 +132,7 @@ local function dispatch_taxi_mission(mission)
     end
     
     -- Traverse the unit commands
+    Log("Assigning taxi job ", mission.id, " to ", u, "...")
     local options = {}
     for _, target in ipairs(targets) do
         GiveOrderToUnit(u, CMD_LOAD, {target}, options)
@@ -160,6 +162,7 @@ local function dispatch_supply_mission(mission)
     end
     
     if #freeSuppliers == 0 then
+        Log("No free suppliers found...")
         if mission.retries == 0 then
             Log("Giving up supply order ", mission.id)
             return true
@@ -173,6 +176,7 @@ local function dispatch_supply_mission(mission)
     busyUnits[u] = mission
     mission.taxi = u
 
+    Log("Assigning supply job ", mission.id, " to ", u, "...")
     GiveOrderToUnit(u, CMD_GUARD, {target}, {})
 
     return true
@@ -233,11 +237,13 @@ function TaxiService.UnitFinished(unitID, unitDefID, unitTeam)
     if udef.transportCapacity >= SQUAD_SIZE and not udef.customParams.infgun and not udef.customParams.mother then
         get_this_unit = true
         taxis[unitID] = true
+        Log("Unit ", unitID, " (", udef.name, ") hired as taxi")
     end
 
-    if udef.customParams.supplyRange and udef.customParams.supplyRange > 0 then
+    if udef.customParams.supplyrange and udef.customParams.supplyrange > 0 then
         get_this_unit = true
         ammoSupliers[unitID] = true
+        Log("Unit ", unitID, " (", udef.name, ") hired as supplier")
     end
 
     return get_this_unit
