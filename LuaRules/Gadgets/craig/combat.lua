@@ -26,6 +26,7 @@ local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 500
 local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
 local TAXI_DIST = 12.0 * FLAG_RADIUS
+local TAXI_ETA = 120.0
 
 -- speedups
 local CMD_FIGHT = CMD.FIGHT
@@ -104,6 +105,15 @@ end
 local function DoGiveOrdersToUnit(p, unitID, cmd, normal, spread)
     local dx, dz = get_spread_vector(unitID, normal, spread)
     GiveOrderToUnit(unitID, cmd, {p.x + dx, p.y, p.z + dz},  {})
+end
+
+local function GetUnitETA(unitID, dest)
+    local x, z = GetUnitPosition(unitID)
+    local dx, dz = dest.x - x, dest.z - z
+    local d = sqrt(dx * dx + dz * dz)
+    local v = UnitDefs[GetUnitDefID(unitID)].speed
+    Spring.Echo("ETA (newUnits)", UnitDefs[GetUnitDefID(unitID)].name, d, v, 0.25 * d / v)
+    return 0.25 * d / v
 end
 
 local function GiveOrdersToUnitArray(orig, target, unitArray, cmd, normal, spread)
@@ -213,14 +223,14 @@ function CombatMgr.GameFrame(f)
             for u, _ in pairs(newUnits) do
                 units[u] = target -- remember where we are going for UnitIdle
                 unitArray[#unitArray + 1] = u
-                if UnitDefs[GetUnitDefID(u)].mass <= 100 then
+                local eta = GetUnitETA(u, target)
+                if UnitDefs[GetUnitDefID(u)].mass <= 100 and eta > TAXI_ETA then
                     taxiUnitArray[#taxiUnitArray + 1] = u
                 end
             end
             GiveOrdersToUnitArray(orig, target, unitArray, CMD.FIGHT, normal, SQUAD_SPREAD)
 
-            local dx, dz = target.z - orig.z, target.x - orig.x
-            if (dx * dx + dz * dz) > TAXI_DIST * TAXI_DIST then
+            if #taxiUnitArray > 0 then
                 -- Don't unload the units straight at the combat line
                 target = waypointMgr.GetNext(target, -normal[1], -normal[2])
                 target = waypointMgr.GetNext(target, -normal[1], -normal[2])
