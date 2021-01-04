@@ -272,17 +272,16 @@ function TaxiService.UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function TaxiService.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    onMission[unitID] = nil
     if taxis[unitID] or ammoSupliers[unitID] then
         if busyUnits[unitID] then
             -- Set the mission as pending again
             pendingMissions[#pendingMissions + 1] = busyUnits[unitID]
         end
-        busyUnits[unitID] = nil
-        taxis[unitID] = nil
-        ammoSupliers[unitID] = nil
-        return
     end
+    onMission[unitID] = nil
+    busyUnits[unitID] = nil
+    taxis[unitID] = nil
+    ammoSupliers[unitID] = nil
 end
 
 return TaxiService
