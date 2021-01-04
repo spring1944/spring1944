@@ -103,7 +103,8 @@ end
 Team.UnitCreated = baseMgr.UnitCreated
 
 function Team.UnitFinished(unitID, unitDefID, unitTeam)
-    Log("UnitFinished: ", UnitDefs[unitDefID].humanName)
+    local ud = UnitDefs[unitDefID]
+    Log("UnitFinished: ", ud.name)
 
     -- idea from BrainDamage: instead of cheating huge amounts of resources,
     -- just cheat in the cost of the units we build.
@@ -115,6 +116,12 @@ function Team.UnitFinished(unitID, unitDefID, unitTeam)
         return
     end
     if baseMgr.UnitFinished(unitID, unitDefID, unitTeam) then
+        -- Special case of static units with supply range, which shall be
+        -- considered by the combat manager (which is not controlling them by
+        -- any means)
+        if ud.speed == 0 and ud.customParams.supplyrange then
+            combatMgr.UnitFinished(unitID, unitDefID, unitTeam)
+        end
         return
     end
     if taxiMgr.UnitFinished(unitID, unitDefID, unitTeam) then
