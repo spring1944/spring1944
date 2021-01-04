@@ -749,7 +749,7 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
         if currentBuilder then
             GiveOrderToUnit(unitID, CMD.GUARD, {currentBuilder}, {})
         end
-        return true  --signal Team.UnitFinished that we will control this unit
+        return true
     end
 
     if unit_chains.IsFactory(unitDefID) then
@@ -759,12 +759,12 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
             myFactories[unitID] = {}
         end
         IdleFactory(unitID)
-        return false
+        return true
     end
 
     if unit_chains.IsPackedFactory(unitDefID) then
         myPackedFactories[unitID] = true
-        return true  --signal Team.UnitFinished that we will control this unit
+        return true
     end
 end
 
