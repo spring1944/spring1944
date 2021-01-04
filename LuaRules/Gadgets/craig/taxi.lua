@@ -40,7 +40,6 @@ local missionID = 0
 
 
 function TaxiService.AddTransportMission(unitIDs, dest, retries)
-    Log("Adding taxi order (", missionID + 1, ") till destination ", dest[1], ", ", dest[2], ", ", dest[3])
     retries = retries or 5
 
     local targets = {}
@@ -53,6 +52,8 @@ function TaxiService.AddTransportMission(unitIDs, dest, retries)
         return nil
     end
 
+    Log("Adding taxi order (", missionID + 1, ") till destination ", dest[1], ", ", dest[2], ", ", dest[3])
+
     missionID = missionID + 1
     missions[#missions + 1] = {id=missionID,
                                cmd=CMD_LOAD,
@@ -60,16 +61,20 @@ function TaxiService.AddTransportMission(unitIDs, dest, retries)
                                dest=dest,
                                taxi=nil,
                                retries=retries}
+    for _, u in ipairs(targets) do
+        onMission[u] = missionID
+    end
     return missions[#missions]
 end
 
 function TaxiService.AddSupplyMission(unitID, retries)
-    Log("Adding supply order (", missionID + 1, ") for unit ", unitID)
     retries = retries or -1  -- It will never give up
 
     if onMission[unitID] then
         return nil
     end
+
+    Log("Adding supply order (", missionID + 1, ") for unit ", unitID)
 
     local ud = UnitDefs[GetUnitDefID(unitID)]
     missionID = missionID + 1
@@ -81,6 +86,7 @@ function TaxiService.AddSupplyMission(unitID, retries)
                                retries=retries,
                                weaponcost=tonumber(ud.customParams.weaponcost or 0),
                                maxammo=tonumber(ud.customParams.maxammo or 0)}
+    onMission[unitID] = missionID
     return missions[#missions]
 end
 
@@ -266,6 +272,7 @@ function TaxiService.UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function TaxiService.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
+    onMission[unitID] = nil
     if taxis[unitID] or ammoSupliers[unitID] then
         if busyUnits[unitID] then
             -- Set the mission as pending again
