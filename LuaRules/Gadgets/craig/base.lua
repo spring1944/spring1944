@@ -52,6 +52,7 @@ local GetUnitCommands    = Spring.GetUnitCommands
 local GetFactoryCommands = Spring.GetFactoryCommands
 local GetTeamResources   = Spring.GetTeamResources
 local GetGameSeconds     = Spring.GetGameSeconds
+local GetUnitRulesParam  = Spring.GetUnitRulesParam
 
 -- Squads
 local squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
@@ -540,15 +541,25 @@ end
 
 local function IdlePackedFactory(unitID)
     local unitDefID = GetUnitDefID(unitID)
+    local unitDef = UnitDefs[unitDefID]
+    local maxAmmo = unitDef.customParams.maxammo
+    if maxAmmo ~= nil and GetUnitRulesParam(unitID, "ammo") < tonumber(maxAmmo) then
+        Log("Waiting to deploy " .. unitDef.name)
+        return
+    end
     local targetDefID = myPackedFactories[unitID]
     if targetDefID == true then
         -- A target was not assigned yet, select a random one
         morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
-        local opts = morphDefs[unitDefID]
-        if opts.into then
-            targetDefID = opts.into
+        local morphs = morphDefs[unitDefID]
+        local opts = {}
+        for _, morph in pairs(morphs) do
+            opts[#opts + 1] = morph.into
+        end
+        if #opts == 1 then
+            targetDefID = opts[1]
         else
-            targetDefID = opts[math.random(#opts)].into
+            targetDefID = opts[math.random(#opts)]
         end
         myPackedFactories[unitID] = targetDefID
     end
@@ -560,9 +571,9 @@ local function IdlePackedFactory(unitID)
         return
     end
 
-    Log("Unpacking idle packed factory: ", target_udef.name, " [", x, ", ", y, ", ", z, "] ")
-    GiveOrderToUnit(builder, CMD.MOVE, {x, y, z}, {})
-    GiveOrderToUnit(builder, cmd, {}, {"shift"})
+    Log("Unpacking idle packed factory: ", UnitDefs[targetDefID].name, " [", x, ", ", y, ", ", z, "] ")
+    GiveOrderToUnit(unitID, CMD.MOVE, {x, y, z}, {})
+    GiveOrderToUnit(unitID, cmd, {}, {"shift"})
 end
 
 local function isBuilderIdle(unitID)
@@ -753,7 +764,7 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
     end
 
     if unit_chains.IsFactory(unitDefID) then
-        Log("New factory: ", UnitDefs[unitDefID].humanName)
+        Log("New factory: ", UnitDefs[unitDefID].name)
         updateBuildOptions(unitDefID)
         if myFactories[unitID] == nil then
             myFactories[unitID] = {}
@@ -762,7 +773,8 @@ function BaseMgr.UnitFinished(unitID, unitDefID, unitTeam)
         return true
     end
 
-    if unit_chains.IsPackedFactory(unitDefID) then
+    if unit_chains.IsPackedFactory(unitDefID) or unit_chains.IsGunToDeploy(unitDefID) then
+        Log("New packed unit: ", UnitDefs[unitDefID].name)
         myPackedFactories[unitID] = true
         return true
     end
@@ -799,7 +811,7 @@ function BaseMgr.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attacker
         myFactories[unitID] = nil
         updateBuildOptions()
     end
-    if unit_chains.IsPackedFactory(unitDefID) then
+    if unit_chains.IsPackedFactory(unitDefID) or unit_chains.IsGunToDeploy(unitDefID) then
         myPackedFactories[unitID] = nil
     end
 end

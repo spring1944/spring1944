@@ -159,6 +159,27 @@ local function IsChainLink(unitDefID)
     return IsFactory(unitDefID) or IsPackedFactory(unitDefID) or IsConstructor(unitDefID)
 end
 
+local function IsGunToDeploy(unitDefID)
+    local unitDef = UnitDefs[unitDefID]
+    if unitDef.isFactory or unitDef.speed == 0 or #unitDef.weapons > 0 then
+        return false
+    end
+
+    morphDefs = morphDefs or GG['morphHandler'].GetMorphDefs()
+    local morphs = morphDefs[unitDefID]
+    if morphs == nil then
+        return false
+    end
+    for _, morph in pairs(morphs) do
+        local ud = UnitDefs[morph.into]
+        if #ud.weapons == 0 or ud.speed > 0 then
+            return false
+        end
+    end
+
+    return true
+end
+
 -- Chain setups
 local cached_chains = {}
 local current_depth = 0
@@ -272,6 +293,7 @@ return {
     IsFactory = IsFactory,
     IsPackedFactory = IsPackedFactory,
     IsConstructor = IsConstructor,
+    IsGunToDeploy = IsGunToDeploy,
     GetBuildChains = GetBuildChains,
     GetBuildCriticalLines = GetBuildCriticalLines,
 }
