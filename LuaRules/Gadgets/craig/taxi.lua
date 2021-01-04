@@ -28,6 +28,7 @@ local GetUnitDefID       = Spring.GetUnitDefID
 local GetUnitCommands    = Spring.GetUnitCommands
 local GetTeamResources   = Spring.GetTeamResources
 local GetUnitIsDead      = Spring.GetUnitIsDead
+local GetUnitRulesParam  = Spring.GetUnitRulesParam
 
 -- Taxis and ammo suppliers
 local taxis = {}         -- unitID (taxi) -> true
@@ -78,8 +79,8 @@ function TaxiService.AddSupplyMission(unitID, retries)
                                dest=nil,
                                taxi=nil,
                                retries=retries,
-                               weaponcost=ud.customParams.weaponcost,
-                               maxammo=ud.customParams.maxammo}
+                               weaponcost=tonumber(ud.customParams.weaponcost or 0),
+                               maxammo=tonumber(ud.customParams.maxammo or 0)}
     return missions[#missions]
 end
 
@@ -230,8 +231,8 @@ function TaxiService.GameFrame(f)
             finished_mission(u)
         end
         if mission.cmd == CMD_GUARD then
-            local ammo = GetUnitRulesParam(mission.targets[1], "ammo") or 0
-            if eCurr < mission.weaponcost or ammo == max_ammo then
+            local ammo = tonumber(GetUnitRulesParam(mission.targets[1], "ammo") or 0)
+            if eCurr < mission.weaponcost or ammo == mission.maxammo then
                 finished_mission(u)
             end
         end
