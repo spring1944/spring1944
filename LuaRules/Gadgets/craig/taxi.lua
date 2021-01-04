@@ -233,8 +233,10 @@ end
 local function finished_mission(unitID)
     local mission = busyUnits[unitID]
     busyUnits[unitID] = nil
-    for _, u in ipairs(mission.targets) do
-        onMission[u] = nil
+    if mission then
+        for _, u in ipairs(mission.targets) do
+            onMission[u] = nil
+        end
     end
 end
 
@@ -289,12 +291,6 @@ function TaxiService.UnitFinished(unitID, unitDefID, unitTeam)
 end
 
 function TaxiService.UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)
-    if taxis[unitID] or ammoSupliers[unitID] then
-        if busyUnits[unitID] then
-            -- Set the mission as pending again
-            pendingMissions[#pendingMissions + 1] = busyUnits[unitID]
-        end
-    end
     onMission[unitID] = nil
     busyUnits[unitID] = nil
     taxis[unitID] = nil
