@@ -254,7 +254,9 @@ local function GetBuildCriticalLines(unitDefID, min_depth)
     local chains = GetBuildChains(unitDefID)
     local critical = {}
     for _, chain in ipairs(chains) do
-        if #chain.units >= min_depth then
+        local target = chain.units[#chain.units]
+        local storage = UnitDefNames[target].energyStorage
+        if #chain.units >= min_depth or (storage and storage > 0) then
             local target = chain.units[#chain.units]
             if (critical[target] == nil) or (critical[target].metal > chain.metal) then
                 critical[target] = chain
