@@ -25,7 +25,7 @@ local CombatMgr = {}
 local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 500
 local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
-local TAXI_ETA = 120.0
+local TAXI_ETA = 180.0
 
 -- speedups
 local CMD_FIGHT = CMD.FIGHT
