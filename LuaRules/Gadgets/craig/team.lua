@@ -151,6 +151,15 @@ function Team.UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
     end
 end
 
+function Team.UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    combatMgr.UnitDestroyed(unitID, unitDefID, unitTeam, transportID, Spring.GetUnitDefID(transportID), transportTeam)
+end
+
+function Team.UnitUnloaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    combatMgr.UnitFinished(unitID, unitDefID, unitTeam)
+end
+
+
 function Team.UnitIdle(unitID, unitDefID, unitTeam)
     Log("UnitIdle: ", UnitDefs[unitDefID].humanName)
 end

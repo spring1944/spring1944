@@ -385,6 +385,18 @@ function gadget:UnitGiven(unitID, unitDefID, unitTeam, oldTeam)
     end
 end
 
+function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    if team[unitTeam] then
+        team[unitTeam].UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    end
+end
+
+function gadget:UnitUnloaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    if team[unitTeam] then
+        team[unitTeam].UnitUnloaded(unitID, unitDefID, unitTeam, transportID, transportTeam)
+    end
+end
+
 -- This may be called by engine from inside Spring.GiveOrderToUnit (e.g. if unit limit is reached)
 function gadget:UnitIdle(unitID, unitDefID, unitTeam)
     if team[unitTeam] then

@@ -25,7 +25,7 @@ local CombatMgr = {}
 local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 500
 local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
-local TAXI_DIST = 10.0 * FLAG_RADIUS
+local TAXI_DIST = 12.0 * FLAG_RADIUS
 
 -- speedups
 local CMD_FIGHT = CMD.FIGHT
@@ -81,7 +81,7 @@ local function get_spread_vector(unitID, normal, t_radius)
     local unitDef = UnitDefs[unitDefID]
     if  #unitDef.weapons > 0 then
         local weaponDef = WeaponDefs[unitDef.weapons[1].weaponDef]
-        n_radius = 0.25 + 0.5 * weaponDef.range
+        n_radius = 0.35 + 0.5 * weaponDef.range
     end
     local n_spread = -random() * n_radius
 
@@ -221,6 +221,9 @@ function CombatMgr.GameFrame(f)
 
             local dx, dz = target.z - orig.z, target.x - orig.x
             if (dx * dx + dz * dz) > TAXI_DIST * TAXI_DIST then
+                -- Don't unload the units straight at the combat line
+                target = waypointMgr.GetNext(target, -normal[1], -normal[2])
+                target = waypointMgr.GetNext(target, -normal[1], -normal[2])
                 taxiMgr.AddTransportMission(taxiUnitArray,
                                             {target.x, target.y, target.z})
             end
