@@ -112,11 +112,27 @@ local function dispatch_taxi_mission(mission)
         return false
     end
 
-    local u = freeTaxis[#freeTaxis]
-    freeTaxis[#freeTaxis] = nil
+    local u, ud = nil, nil
+    while u == nil and #freeTaxis > 0 do
+        u = freeTaxis[#freeTaxis]
+        freeTaxis[#freeTaxis] = nil
+        ud = UnitDefs[GetUnitDefID(u)]
+        if ud == nil then
+            busyUnits[u] = nil
+            taxis[u] = nil
+        end
+    end
+    if u == nil then
+        Log("All taxis seems invalid... Debug this!")
+        if mission.retries == 0 then
+            Log("Giving up taxi order ", mission.id)
+            return true
+        end
+        mission.retries = mission.retries - 1
+        return false        
+    end
     busyUnits[u] = mission
     mission.taxi = u
-    local ud = UnitDefs[GetUnitDefID(u)]
     mission.transportCapacity = ud.transportCapacity
     mission.transportMass = ud.transportMass
 
@@ -125,8 +141,9 @@ local function dispatch_taxi_mission(mission)
     local passengers, mass = mission.transportCapacity, mission.transportMass
     local guns = 1  -- NOTE: Number of tow points shall be checked
     for _, target in ipairs(mission.targets) do
-        if not GetUnitIsDead(target) then
-            local m = UnitDefs[GetUnitDefID(target)].mass
+        local tud = UnitDefs[GetUnitDefID(target)]
+        if not GetUnitIsDead(target) and tud then
+            local m = tud.mass
             if passengers == 0 or mass < m or (m >= 100 and guns == 0) then
                 pending[#pending + 1] = target
             else
