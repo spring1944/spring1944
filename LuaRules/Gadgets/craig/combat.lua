@@ -25,7 +25,6 @@ local CombatMgr = {}
 local SQUAD_SIZE = SQUAD_SIZE
 local SQUAD_SPREAD = 500
 local FEAR_THRESHOLD = 0.5 + (1.0 - 0.5) * math.random()
-local TAXI_DIST = 12.0 * FLAG_RADIUS
 local TAXI_ETA = 120.0
 
 -- speedups
@@ -108,12 +107,11 @@ local function DoGiveOrdersToUnit(p, unitID, cmd, normal, spread)
 end
 
 local function GetUnitETA(unitID, dest)
-    local x, z = GetUnitPosition(unitID)
+    local x, _, z = GetUnitPosition(unitID)
     local dx, dz = dest.x - x, dest.z - z
     local d = sqrt(dx * dx + dz * dz)
     local v = UnitDefs[GetUnitDefID(unitID)].speed
-    Spring.Echo("ETA (newUnits)", UnitDefs[GetUnitDefID(unitID)].name, d, v, 0.25 * d / v)
-    return 0.25 * d / v
+    return d / v
 end
 
 local function GiveOrdersToUnitArray(orig, target, unitArray, cmd, normal, spread)
