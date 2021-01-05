@@ -205,18 +205,22 @@ local function mutate(individual)
 end
 
 function GANN.Procreate(teamID)
-    -- Take 2 random progenitors
-    local i0, i1 = math.random(population), math.random(population)
-    while i1 == i0 do
-        i1 = math.random(population)
+    local individual
+    if not gadget.IsTraining() then
+        individual = individuals[math.random(population)]
+    else
+        -- Take 2 random progenitors
+        local i0, i1 = math.random(population), math.random(population)
+        while i1 == i0 do
+            i1 = math.random(population)
+        end
+
+        Log("GANN Progenitors ", i0, " and ", i1, " are creating a new individual")
+
+        individual = mutate(crossover(individuals[i0], individuals[i1]))
     end
 
-    Log("GANN Progenitors ", i0, " and ", i1, " are creating a new individual")
-
-    local individual = crossover(individuals[i0], individuals[i1])
-    individual = mutate(individual)
     individual.teamID = teamID
-
     individualTeams[teamID] = individual
     individuals[#individuals + 1] = individual
 end
@@ -321,8 +325,23 @@ local function GetTeamStats(teamID)
             damage_dealt = stats.damageDealt}
 end
 
+local function GetConfigDataNoTraining()
+    local selected = {}
+    for i = 1, population do
+        selected[#selected + 1] = {
+            score = individuals[i].score,
+            nn = individuals[i].nn:serialize(),
+        }
+    end
+    return selected
+end
+
 function GANN.GetConfigData()
     Log("Storing GANN data...")
+
+    if not gadget.IsTraining() then
+        return GetConfigDataNoTraining()
+    end
 
     -- Get the score basis
     local total = {metal=1, damage_dealt=1}
