@@ -44,7 +44,7 @@ local SCORE_RANDOMIZER = 0.05
 local CHAIN_GIVING_UP_TIME = 1.0 * 60.0
 
 -- speedups
-local CMD_WAIT = CMD.WAIT
+local CMD_WAIT   = CMD.WAIT
 local random, min, max = math.random, math.min, math.max
 local GetUnitDefID       = Spring.GetUnitDefID
 local GetGameSeconds     = Spring.GetGameSeconds
@@ -539,6 +539,36 @@ local function IdleFactory(unitID)
     myFactoriesScore[unitID] = score
 end
 
+local teamDeployTarget = nil
+
+local function getDeployTarget()
+    if not teamDeployTarget then
+        local x, _, z = Spring.GetTeamStartPosition(myTeamID)
+        local rx, rz = 0.5 * Game.mapSizeX - x, 0.5 * Game.mapSizeZ - z
+        if math.abs(rx) > math.abs(rz) then
+            if rx > 0 then
+                teamDeployTarget = {x = 0.95 * Game.mapSizeX,
+                                    z = 0.5 * Game.mapSizeZ}
+            else
+                teamDeployTarget = {x = -0.95 * Game.mapSizeX,
+                                    z = 0.5 * Game.mapSizeZ}
+            end
+        else
+            if rz > 0 then
+                teamDeployTarget = {x = 0.5 * Game.mapSizeX,
+                                    z = 0.95 * Game.mapSizeZ}
+            else
+                teamDeployTarget = {x = 0.5 * Game.mapSizeX,
+                                    z = -0.95 * Game.mapSizeZ}
+            end
+        end
+        teamDeployTarget.y = Spring.GetGroundHeight(teamDeployTarget.x,
+                                                    teamDeployTarget.z)
+    end
+
+    return {teamDeployTarget.x, teamDeployTarget.y, teamDeployTarget.z}
+end
+
 local function IdlePackedFactory(unitID)
     local unitDefID = GetUnitDefID(unitID)
     local unitDef = UnitDefs[unitDefID]
@@ -573,7 +603,7 @@ local function IdlePackedFactory(unitID)
 
     Log("Unpacking idle packed factory: ", UnitDefs[targetDefID].name, " [", x, ", ", y, ", ", z, "] ")
     GiveOrderToUnit(unitID, CMD.MOVE, {x, y, z}, {})
-    GiveOrderToUnit(unitID, cmd, {}, {"shift"})
+    GiveOrderToUnit(unitID, cmd, getDeployTarget(), {"shift"})
 end
 
 local function isBuilderIdle(unitID)
