@@ -207,7 +207,26 @@ end
 function GANN.Procreate(teamID)
     local individual
     if not gadget.IsTraining() then
-        individual = individuals[math.random(population)]
+        -- The individuals with better score shall be more probable. To this end
+        -- we are parsing the individuals suming up the scores as the
+        -- probability mass. Then we are selecting a random value between 0 and
+        -- such probabily mass. Finally we are looking the individual associated
+        -- to the random value
+        local mass = 0.0
+        for i = 1, population do
+            mass = mass + math.max(0.01, individuals[i].score)
+        end
+
+        local selected = mass * math.random()
+
+        mass = 0.0
+        for i = 1, population do
+            if selected < mass then
+                break
+            end
+            individual = individuals[i]
+            mass = mass + math.max(0.01, individual.score)
+        end
     else
         -- Take 2 random progenitors
         local i0, i1 = math.random(population), math.random(population)
