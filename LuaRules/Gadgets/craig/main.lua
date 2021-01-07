@@ -222,7 +222,7 @@ function gadget:Initialize()
     end
 
     base_gann = CreateGANN()
-    local base_gann_inputs = VFS.Include("/home/pepe/spring1944/spring1944/LuaRules/Gadgets/craig/base/gann_inputs.lua")
+    local base_gann_inputs = VFS.Include("LuaRules/Gadgets/craig/base/gann_inputs.lua")
     for _, input in ipairs(base_gann_inputs) do
         base_gann.DeclareInput(input)
     end
