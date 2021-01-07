@@ -23,7 +23,7 @@ end
 -- Read mod options, we need this in both synced and unsynced code!
 if (Spring.GetModOptions) then
     local modOptions = Spring.GetModOptions()
-    local lookup = {"easy", "medium", "hard"}
+    local lookup = {"easy", "medium", "hard", "impossible"}
     difficulty = lookup[tonumber(modOptions.craig_difficulty) or 2]
 else
     difficulty = "hard"
@@ -42,16 +42,21 @@ if (gadgetHandler:IsSyncedCode()) then
 --
 
 local function Refill(myTeamID, resource)
-    if (gadget.difficulty ~= "easy") then
+    if gadget.difficulty ~= "easy" then
         local value,storage = Spring.GetTeamResources(myTeamID, resource)
-        if (gadget.difficulty ~= "medium") then
-            -- hard: full refill
-            Spring.AddTeamResource(myTeamID, resource, storage - value)
-        else
+        if gadget.difficulty == "medium" then
             -- medium: partial refill
             -- 1000 storage / 128 * 30 = approx. +234
             -- this means 100% cheat is bonus of +234 metal at 1k storage
             Spring.AddTeamResource(myTeamID, resource, (storage - value) * 0.05)
+        else
+            -- hard: full refill
+            Spring.AddTeamResource(myTeamID, resource, storage - value)
+            if gadget.difficulty == "impossible" and resource == "energy" and storage < 1000.0 then
+                -- Grant the AI always have at least 1000 ammo storage, so
+                -- targeting the storages is not a possibility to win
+                Spring.AddTeamResource(myTeamID, "es", 1000.0)
+            end
         end
     end
 end
