@@ -80,8 +80,7 @@ local FIX_CONFIG_FOLDER = "LuaRules/Configs/craig"
 local CONFIG_FOLDER = "LuaRules/Config/craig"
 local SAVE_PERIOD = 30 * 60  -- Save once per minute
 
--- local TRAINING_MODE = nil      -- For release versions
-local TRAINING_MODE = true
+local TRAINING_MODE = nil  -- Set it true to train, nil to releases
 local MIN_TRAINING_TIME, MAX_TRAINING_TIME = 10 * 60, 40 * 60
 local DELTA_TRAINING_TIME = 10
 
@@ -104,7 +103,7 @@ include("LuaRules/Gadgets/craig/waypoints.lua")
 include("LuaRules/Gadgets/craig/gann/gann.lua")
 
 -- locals
-local CRAIG_Debug_Team = -1 -- Must be nil or a teamID
+local CRAIG_Debug_Team = nil -- Must be nil or a teamID
 local team = {}
 local lastFrame = 0 -- To avoid repeated calls to GameFrame()
 local training_time
