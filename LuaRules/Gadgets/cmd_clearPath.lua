@@ -234,7 +234,7 @@ end
 function gadget:UnitCreated(unitID, unitDefID, teamID)
 	local ud = UnitDefs[unitDefID]
 	local cp = ud.customParams
-	if cp and cp.canclearmines == true then
+	if cp and table.unserialize(cp.canclearmines) == true then
 		Spring.InsertUnitCmdDesc(unitID, clearPathDesc)
 		
 		local env = Spring.UnitScript.GetScriptEnv(unitID)
