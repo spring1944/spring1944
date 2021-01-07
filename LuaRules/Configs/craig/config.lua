@@ -1,6 +1,10 @@
 -- Author: Tobi Vollebregt
 -- License: GNU General Public License v2
 
+-- Misc config
+FLAG_RADIUS = 230 --from S44 game_flagManager.lua
+SQUAD_SIZE = 10
+
 --------------------------------------------------------------------------------
 --
 --  Data structures (constructor syntax)
@@ -14,6 +18,26 @@ local function NameToID(name)
 	else
 		error("Bad unitname: " .. name)
 	end
+end
+
+-- Converts UnitDefName array to UnitDefID array, raises an error if a name is
+-- not valid.
+local function NameArrayToIdArray(array)
+	local newArray = {}
+	for i,name in ipairs(array) do
+		newArray[i] = NameToID(name)
+	end
+	return newArray
+end
+
+-- Converts UnitDefName array to UnitDefID map, raises an error if a name is
+-- not valid.
+local function NameArrayToIdSet(array)
+	local newSet = {}
+	for i,name in ipairs(array) do
+		newSet[NameToID(name)] = true
+	end
+	return newSet
 end
 
 -- Converts an array of UnitDefNames to an array of UnitDefIDs.
@@ -43,19 +67,32 @@ function UnitBag(t)
 	return newBag
 end
 
---------------------------------------------------------------------------------
---
---  Include configuration
---
+-- This lists all the units that should be considered flags.
+gadget.flags = UnitSet{
+	"flag",
+}
 
-local dir = "LuaRules/Configs/craig/s44/"
+-- Number of units per side used to cap flags.
+gadget.reservedFlagCappers = {
+	gbr = SQUAD_SIZE,
+	ger = SQUAD_SIZE,
+	us  = SQUAD_SIZE,
+	ita = SQUAD_SIZE,
+	jpn = SQUAD_SIZE,
+	rus = 2 * SQUAD_SIZE,
+	swe = SQUAD_SIZE,
+	hun = SQUAD_SIZE,
+}
 
-if (gadgetHandler:IsSyncedCode()) then
-	-- SYNCED
-else
-	-- UNSYNCED
-	include(dir .. "buildorder.lua")
-end
-
--- both SYNCED and UNSYNCED
-include(dir .. "unitlimits.lua")
+-- This lists all the units (of all sides) that may be used to cap flags.
+-- NOTE: To be removed and automatically parsed
+gadget.flagCappers = UnitSet{
+	"gbrrifle", "gbrsten",
+	"gerrifle", "germp40",
+	"itarifle", "itam38",
+	"usrifle", "usthompson",
+	"jpnrifle", "jpntype100smg",
+	"rusrifle", "rusppsh", "rusdp", "rusptrd", "rusrpg43",
+	"swerifle", "swekpistm3739",
+	"hunrifle", "hunsmg",
+}

@@ -56,6 +56,14 @@ local function Log(...)
 	--Spring.Echo("LUA AI: " .. table.concat{...})
 end
 
+local function Warning(...)
+	Spring.Log("C.R.A.I.G. framework", "warning", table.concat{...})
+end
+
+local function Error(...)
+	Spring.Log("C.R.A.I.G. framework", "error", table.concat{...})
+end
+
 
 if (gadgetHandler:IsSyncedCode()) then
 
@@ -151,11 +159,15 @@ end
 local function GameFrame(self)
 	if (numMessages ~= 0) then
 		Log("SYNCED: GameFrame: processing ", numMessages, " messages")
+		local unsuccess_cmds = {}
 		for _,msg in ipairs(messageQueue) do
-			DeserializeAndProcessMessage(msg)
+			if not pcall(DeserializeAndProcessMessage, msg) then
+				Warning("Failure processing message: ", msg)
+				unsuccess_cmds[#unsuccess_cmds + 1] = msg
+			end
 		end
-		numMessages = 0
-		messageQueue = {}
+		numMessages = #unsuccess_cmds
+		messageQueue = unsuccess_cmds
 	end
 end
 
@@ -267,11 +279,15 @@ local function SerializeOrder(unitID, cmd, params, options)
 	return string.char(unpack(b))
 end
 
-
 function GiveOrderToUnit(unitID, cmd, params, options)
 	--Log("UNSYNCED: GiveOrderToUnit ", unitID)
+	local status, msg = pcall(SerializeOrder, unitID, cmd, params, options)
+	if not status or msg == nil then
+		Log("Failed to serialize command", unitID, cmd)
+		return nil
+	end
 	bufferSize = bufferSize + 1
-	messageBuffer[bufferSize] = SerializeOrder(unitID, cmd, params, options)
+	messageBuffer[bufferSize] = msg
 end
 
 --------------------------------------------------------------------------------

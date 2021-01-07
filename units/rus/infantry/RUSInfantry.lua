@@ -191,7 +191,6 @@ return lowerkeys({
 	-- Regular Inf
 	["RUSEngineer"] = RUS_Engineer,
 	["RUSCommissar"] = RUS_Commissar,
-	["RUSAICommissar"] = RUS_Commissar:Clone("RUSCommissar"),
 	["RUSRifle"] = RUS_Rifle,
 	["RUSPPSh"] = RUS_PPSh,
 	["RUSDP"] = RUS_DP,

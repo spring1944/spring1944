@@ -115,6 +115,10 @@ local morphUnits = {} --// make it global in Initialize()
 local reqDefIDs  = {} --// all possible unitDefID's, which are used as a requirement for a morph
 local morphToStart = {} -- morphes to start next frame
 
+local function GetMorphDefs()
+  return morphDefs
+end
+
 local function GetMorphingUnits()
   return morphUnits
 end
@@ -827,10 +831,11 @@ function gadget:Initialize()
   -- self linking for planetwars
   GG['morphHandler'] = {}
   GG['morphHandler'].AddExtraUnitMorph = AddExtraUnitMorph
-  GG['morphHandler'].IsAMorphCommand = IsAMorphCommand
+  GG['morphHandler'].GetMorphDefs = GetMorphDefs
   GG['morphHandler'].GetMorphingUnits = GetMorphingUnits
+  GG['morphHandler'].IsAMorphCommand = IsAMorphCommand
   GG['morphHandler'].StopMorph = StopMorph
-  
+
   if (type(GG.UnitRanked)~="table") then GG.UnitRanked = {} end
   table.insert(GG.UnitRanked, UnitRanked)
 
@@ -1127,72 +1132,28 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
-
-function gadget:GameFrame(n)
-
-  -- start pending morphs
-  for unitid, data in pairs(morphToStart) do
-    StartMorph(unitid, unpack(data))
-  end
-  morphToStart = {}
-
-  if ((n+24)%150<1) then
-    local unitCount = #XpMorphUnits
-    local i = 1
-
-    while (i<=unitCount) do
-      local unitdata    = XpMorphUnits[i]
-      local unitID      = unitdata.id
-      local unitDefID   = unitdata.defID
-
-      local morphDefSet = morphDefs[unitDefID]
-      if (morphDefSet) then
-        local teamID   = unitdata.team
-        local teamTech = teamTechLevel[teamID] or 0
-        local unitXP   = Spring.GetUnitExperience(unitID)
-        local unitRank = GetUnitRank(unitID)
-
-        local xpMorphLeft = false
-        for _,morphDef in pairs(morphDefSet) do
-          if (morphDef) then
-            local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
-            if (cmdDescID) then
-              local morphCmdDesc = {}
-              local teamOwnsReqUnit = UnitReqCheck(teamID,morphDef.require)
-              morphCmdDesc.disabled = (morphDef.tech > teamTech)or(morphDef.rank > unitRank)or(morphDef.xp > unitXP)or(not teamOwnsReqUnit)
-              morphCmdDesc.tooltip  = GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
-              Spring.EditUnitCmdDesc(unitID, cmdDescID, morphCmdDesc)
-
-              xpMorphLeft = morphCmdDesc.disabled or xpMorphLeft
-            end
-          end
-        end
-        if (not xpMorphLeft) then
-          --// remove unit in list (it fullfills all xp requirements)
-          XpMorphUnits[i] = XpMorphUnits[unitCount]
-          XpMorphUnits[unitCount] = nil
-          unitCount = unitCount - 1
-          i = i - 1
-        end
-      end
-      i = i + 1
-
-    end
-  end
-
-  for unitID, morphData in pairs(morphUnits) do
-    if (not UpdateMorph(unitID, morphData)) then
-      morphUnits[unitID] = nil
-    end
-  end
-  for _, morphData in pairs(upgradeUnits) do
-    _,_,_,_,morphData.progress = Spring.GetUnitHealth(morphData.fakeUnit)
-  end
-end
+-- FactoryQueueUpgrade() and FactoryStopUpgrade() may fail because they are
+-- called inside AllowCommand. In such case we are storing the commands,
+-- executing them later during GameFrame()
+local failed_FactoryQueueUpgrade = {}
+local failed_FactoryStopUpgrade = {}
 
 
 function FactoryQueueUpgrade(unitID, morphDef)
-    Spring.GiveOrderToUnit(unitID,CMD.INSERT,{-1,-morphDef.upgradeUnit,0},{"ctrl", "alt"})
+    if not pcall(Spring.GiveOrderToUnit, unitID, CMD.INSERT, {-1, -morphDef.upgradeUnit, 0}, {"ctrl", "alt"}) then
+        local error_level
+        if failed_FactoryQueueUpgrade[unitID] == nil then
+            failed_FactoryQueueUpgrade[unitID] = morphDef
+            error_level = "warning"
+        else
+            -- We already tried, let's give up
+            failed_FactoryQueueUpgrade[unitID] = nil
+            error_level = "error"
+        end
+        Spring.Log("morph gadget", error_level, "Failure submitting command to unit " .. tostring(unitID) .. "'")
+        return
+    end
+
     local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
     if (cmdDescID) then
         Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.stopCmd, name=LightRedStr.."Stop", type = CMDTYPE.ICON})
@@ -1213,16 +1174,97 @@ function FactoryStartUpgrade(unitID, unitDefID, teamID, morphDef, fakeUnitID)
 end
 
 function FactoryStopUpgrade(unitID, morphDef)
+    if not pcall(Spring.GiveOrderToUnit, unitID, CMD.REMOVE, {-morphDef.upgradeUnit}, {"ctrl", "alt"}) then
+        local error_level
+        if failed_FactoryStopUpgrade[unitID] == nil then
+            failed_FactoryStopUpgrade[unitID] = morphDef
+            error_level = "warning"
+        else
+            -- We already tried, let's give up
+            failed_FactoryStopUpgrade[unitID] = nil
+            error_level = "error"
+        end
+        Spring.Log("morph gadget", error_level, "Failure submitting command to unit " .. tostring(unitID) .. "'")
+        return
+    end
+
     local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.stopCmd)
     if (cmdDescID) then
       Spring.EditUnitCmdDesc(unitID, cmdDescID, {id=morphDef.cmd, name=morphDef.name, type = CMDTYPE.ICON})
     end
-    
-    Spring.GiveOrderToUnit(unitID, CMD.REMOVE,{-morphDef.upgradeUnit},{"ctrl", "alt"})
-    
+
     upgradeUnits[unitID] = nil
     
     SendToUnsynced("unit_morph_stop", unitID)
+end
+
+
+function gadget:GameFrame(n)
+    -- Submit pending FactoryQueueUpgrade() and FactoryStopUpgrade() commands
+    for unitID, morphDef in pairs(failed_FactoryQueueUpgrade) do
+        FactoryQueueUpgrade(unitID, morphDef)
+    end
+    for unitID, morphDef in pairs(failed_FactoryStopUpgrade) do
+        FactoryStopUpgrade(unitID, morphDef)
+    end
+
+    -- start pending morphs
+    for unitid, data in pairs(morphToStart) do
+        StartMorph(unitid, unpack(data))
+    end
+    morphToStart = {}
+
+    if ((n+24)%150<1) then
+        local unitCount = #XpMorphUnits
+        local i = 1
+
+        while (i<=unitCount) do
+            local unitdata    = XpMorphUnits[i]
+            local unitID      = unitdata.id
+            local unitDefID   = unitdata.defID
+
+            local morphDefSet = morphDefs[unitDefID]
+            if (morphDefSet) then
+                local teamID   = unitdata.team
+                local teamTech = teamTechLevel[teamID] or 0
+                local unitXP   = Spring.GetUnitExperience(unitID)
+                local unitRank = GetUnitRank(unitID)
+
+                local xpMorphLeft = false
+                for _,morphDef in pairs(morphDefSet) do
+                    if (morphDef) then
+                        local cmdDescID = Spring.FindUnitCmdDesc(unitID, morphDef.cmd)
+                        if (cmdDescID) then
+                            local morphCmdDesc = {}
+                            local teamOwnsReqUnit = UnitReqCheck(teamID,morphDef.require)
+                            morphCmdDesc.disabled = (morphDef.tech > teamTech)or(morphDef.rank > unitRank)or(morphDef.xp > unitXP)or(not teamOwnsReqUnit)
+                            morphCmdDesc.tooltip  = GetMorphToolTip(unitID, unitDefID, teamID, morphDef, teamTech, unitXP, unitRank, teamOwnsReqUnit)
+                            Spring.EditUnitCmdDesc(unitID, cmdDescID, morphCmdDesc)
+
+                            xpMorphLeft = morphCmdDesc.disabled or xpMorphLeft
+                        end
+                    end
+                end
+                if (not xpMorphLeft) then
+                    --// remove unit in list (it fullfills all xp requirements)
+                    XpMorphUnits[i] = XpMorphUnits[unitCount]
+                    XpMorphUnits[unitCount] = nil
+                    unitCount = unitCount - 1
+                    i = i - 1
+                end
+            end
+            i = i + 1
+        end
+    end
+
+    for unitID, morphData in pairs(morphUnits) do
+        if (not UpdateMorph(unitID, morphData)) then
+        morphUnits[unitID] = nil
+        end
+    end
+    for _, morphData in pairs(upgradeUnits) do
+        _,_,_,_,morphData.progress = Spring.GetUnitHealth(morphData.fakeUnit)
+    end
 end
 
 
@@ -1428,7 +1470,13 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+local function GetMorphDefs()
+    return SYNCED.morphDefs
+end
+
 function gadget:Initialize()
+  GG['morphHandler'] = {}
+  GG['morphHandler'].GetMorphDefs = GetMorphDefs
   gadgetHandler:AddSyncAction("unit_morph_finished", SelectSwap)
   gadgetHandler:AddSyncAction("unit_morph_start", StartMorph)
   gadgetHandler:AddSyncAction("unit_morph_stop", StopMorph)

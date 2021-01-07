@@ -10,23 +10,6 @@ local itaunits =
     "itahqengineer",
     "ita_platoon_hq",
   },
-  -- AI
-  itahqaiengineer =
-  {
-    "itavehicleyard",
-    "itabarracks",
-    "itagunyard",
-    "itaradar",
-    "itastorage",
-    "itaatminesign",
-    "itaapminesign",
-    "itatankobstacle",
-    "itaassaultboat",
-    "itapontoonraft",
-    "itatankyard1",
-    "itaspyard",
-    "itaelitebarracks",
-  },
 
     itahqengineer =
   {

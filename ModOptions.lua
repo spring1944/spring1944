@@ -290,6 +290,11 @@ local options = {
 				name = "Hard",
 				desc = "Infinite resources."
 			},
+			{
+				key = "4",
+				name = "Impossible",
+				desc = "Infinite resources and ammo storage."
+			},
 		}
 	},
 --------------------------------------------------------------------------------

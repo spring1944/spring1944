@@ -38,7 +38,7 @@ if UnitDefNames then
     local squadDefIDs = { }
 
     for i, squad in pairs(squadDefs) do
-        unitDef = UnitDefNames[i]
+        local unitDef = UnitDefNames[i]
         if unitDef ~= nil then
             squadDefIDs[unitDef.id] = squad
         else

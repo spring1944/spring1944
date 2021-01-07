@@ -75,24 +75,6 @@ local rusunits =
     "ruspontoonraft",
   },
 
-  rusaicommissar =
-  {
-    "rusbarracks",
-    "rusgunyard",
-    "ruspshack",
-    --"ruszis5",
-    "rusapminesign",
-    "rusatminesign",
-    "rustankobstacle",
-    "russtorage",
-    "rusassaultboat",
-    "ruspontoonraft",
-    "russpyard",
-    "russpyard1",
-    "rustankyard1",
-    "rustankyard2",
-  },
-
   rusk31 =
   {
     "rusbarracks",

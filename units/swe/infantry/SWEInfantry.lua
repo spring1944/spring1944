@@ -175,7 +175,6 @@ local SWE_PvlvM40_Mobile = HMGInf:New(SWEInf):New{
 return lowerkeys({
 	-- Regular Inf
 	["SWEEngineer"] = SWE_HQEngineer,
-	["SWEHQAIEngineer"] = SWE_HQEngineer:Clone("SWEEngineer"),
 	["SWERifle"] = SWE_Rifle,
 	["SWEAgM42"] = SWE_AgM42,
 	["SWEKPistM3739"] = SWE_KPistM3739,

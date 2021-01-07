@@ -117,7 +117,6 @@ local HUN_Crew = CrewInf:New(HUNInf):New{
 return lowerkeys({
 	-- Regular Inf
 	["HUNEngineer"] = HUN_HQEngineer,
-	["HUNHQAIEngineer"] = HUN_HQEngineer:Clone("HUNEngineer"),
 	["HUNRifle"] = HUN_Rifle,
 	["HUNSMG"] = HUN_SMG43M,
 	["HUNLMG"] = HUN_LMG31M,

@@ -142,7 +142,6 @@ local GBR_Commando = SMGInf:New(GBRInf):New{
 return lowerkeys({
 	-- Regular Inf
 	["GBRHQEngineer"] = GBR_HQEngineer,
-	["GBRHQAIEngineer"] = GBR_HQEngineer:Clone("GBRHQEngineer"),
 	["GBRRifle"] = GBR_Rifle,
 	["GBRSTEN"] = GBR_STEN,
 	["GBRBREN"] = GBR_BREN,

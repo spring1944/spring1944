@@ -19,26 +19,6 @@ local hununits = {
 		"hunpontoonraft",
 	},
 
-	hunhqaiengineer =
-	{
-		"hunvehicleyard",
-		"hunvehicleyard1",
-		"hunbarracks",
-		"hungunyard",
-		"hunspyard",
-		"hunspyard1",
-		"huntankyard",
-		"huntankyard1",
-		"huntankyard2",
-		"hunradar",
-		"hunstorage",
-		"hunatminesign",
-		"hunapminesign",
-		"huntankobstacle",
-		"hunassaultboat",
-		"hunpontoonraft",
-	},
-
 	hunbergehetzer = {
 		"hunbarracks",
 		"hungunyard",
