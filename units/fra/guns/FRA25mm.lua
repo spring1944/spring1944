@@ -45,7 +45,7 @@ local FRA_25mmAA_Truck = AAGunTractor:New{
 	trackWidth				= 15,
 	objectName				= "FRA/FRA25mmAA_Truck.s3o",
 	customParams = {
-
+        normaltex = "unittextures/FRA25mmAA_normal.png",
 	},
 }
 
@@ -63,7 +63,7 @@ local FRA_25mmAA_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-
+        normaltex = "unittextures/FRA25mmAA_normal.png",
 	},
 }
 
