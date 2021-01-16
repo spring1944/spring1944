@@ -92,6 +92,9 @@ local GER_Flak40_Twin_Base = Building:New{
 -- child version of the same
 local GER_Flak40_Twin_Child = OpenBoatTurret:New(GER_Flak40_Twin_Base, true):New{
     objectName                  = "<SIDE>/GERFlak40_Twin_Turret.s3o",
+    customparams = {
+        normaltex = "unittextures/flak40_turret_normals.png",
+    },
 }
 
 -- Spambot HQ
