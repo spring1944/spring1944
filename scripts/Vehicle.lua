@@ -291,7 +291,6 @@ local function SwapTracks()
 end
 
 local function EmitDust()
-	Signal(SIG_MOVE)
 	SetSignalMask(SIG_MOVE)
 	local dustEmitters = info.dustTrails
 	while true do
