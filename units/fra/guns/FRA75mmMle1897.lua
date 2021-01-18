@@ -17,6 +17,7 @@ local FRA_75mmMle1897 = FGInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex = "unittextures/FRACitroenP17_normals.png",
 	},
 }
 
@@ -34,7 +35,7 @@ local FRA_75mmMle1897_Stationary = FGGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex = "unittextures/FRACitroenP17_normals.png",
 	},
 }
 

@@ -20,6 +20,7 @@ local FRA_105mm = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex = "unittextures/FRACitroenP17_normals.png",
 	},
 }
 
@@ -37,6 +38,7 @@ local FRA_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
+		normaltex = "unittextures/FRACitroenP17_normals.png",
 	},
 }
 

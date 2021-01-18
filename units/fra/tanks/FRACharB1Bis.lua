@@ -94,6 +94,8 @@ local FRACharB1Bis = MediumTank:New{
 				offset = {0, -6, 0},
 			},
 		},
+
+		normaltex = "unittextures/FRACharB1Bis_normals.png",
 	},
 }
 

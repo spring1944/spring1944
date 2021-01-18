@@ -79,6 +79,7 @@ local FRAS35 = MediumTank:New{
 		maxvelocitykmh		= 37,
 		customanims			= "somua_s35",
 
+		normaltex = "unittextures/FRAS35_normals.png",
 	},
 }
 

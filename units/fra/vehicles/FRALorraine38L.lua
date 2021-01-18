@@ -66,6 +66,8 @@ local Lorraine38L = HalfTrack:New{
 				offset = {0, 0, -3.1},
 			},
 		},
+
+		normaltex = "unittextures/FRALorraine38L_normals.png",
 	},
 }
 

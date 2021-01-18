@@ -14,7 +14,7 @@ local FRA_47mmAT = ATInfGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex = "unittextures/FRACitroenP17_normals.png",
 	},
 }
 
@@ -29,7 +29,7 @@ local FRA_47mmAT_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex = "unittextures/FRACitroenP17_normals.png",
 	},
 }
 
