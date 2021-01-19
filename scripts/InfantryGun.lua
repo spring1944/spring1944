@@ -82,6 +82,15 @@ local function UpdateCrew()
             Spring.SetUnitNeutral(unitID, true)
         else
             Spring.SetUnitNeutral(unitID, false)
+            local gun_team = Spring.GetUnitTeam(unitID)
+            local pax_team = gun_team
+            for _,paxID in pairs(passengersIDs) do
+                pax_team = Spring.GetUnitTeam(paxID)
+                break
+            end
+            if pax_team ~= gun_team then
+                Spring.TransferUnit(unitID, pax_team)
+            end
             -- Make the unit non-capturable until the crew has not been killed
             Spring.SetUnitHealth(unitID, {capture = 0})
         end
