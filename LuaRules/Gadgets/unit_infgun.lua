@@ -27,6 +27,7 @@ local GetUnitsInSphere      = Spring.GetUnitsInSphere
 local GetUnitTeam           = Spring.GetUnitTeam
 local TransferUnit          = Spring.TransferUnit
 local GetUnitMass           = Spring.GetUnitMass
+local AreTeamsAllied        = Spring.AreTeamsAllied
 
 local infguns = {}
 local infguns_indexes = {}
@@ -98,8 +99,8 @@ function gadget:GameFrame(frame)
         if u ~= unitID then
             local t = GetUnitTeam(u)
             if t ~= GAIA_TEAM_ID and GetUnitMass(u) < 100 then
-                if new_team ~= GAIA_TEAM_ID and new_team ~= t then
-                    -- Several teams disputing the gun, don't do nothing
+                if new_team ~= GAIA_TEAM_ID and new_team ~= t and not AreTeamsAllied(new_team, t) then
+                    -- Several (non-allied) teams disputing the gun, just don't do anything
                     new_team = nil
                     break
                 end
