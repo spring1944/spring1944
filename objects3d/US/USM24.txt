@@ -1,0 +1,26 @@
+base
+    dusttrail1
+    dusttrail2
+    exhaust1
+    hull_mg
+        flare_4
+    suspension
+        tracks1
+        tracks2
+        wheel_idler
+        wheel_roller1
+        wheel_roller2
+        wheel_roller3
+        wheel_roller4
+        wheel_roller5
+        wheel_sprocket
+        wheel_support1
+        wheel_support2
+        wheel_support3
+    turret
+        sleeve
+            barrel
+                flare_1
+            coax_mg
+                flare_3
+        turret_top
