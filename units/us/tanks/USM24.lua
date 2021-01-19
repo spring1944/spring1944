@@ -19,9 +19,14 @@ local USM24 = LightTank:New{
 			maxAngleDif			= 210,
 		},
 		[3] = {
-			name				= "M1919A4Browning",
+			name				= "M2Browning",
 		},
 		[4] = {
+			name				= "M1919A4Browning",
+			mainDir				= [[0 0 1]],
+			maxAngleDif			= 30,
+		},
+		[5] = {
 			name				= ".50calproof",
 		},
 	},
