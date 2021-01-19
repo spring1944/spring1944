@@ -35,6 +35,7 @@ local GBR_LCA = InfantryLandingCraft:New{
 			["z"] = {angle = -30, speed = 10},
 		},]]
 
+		normaltex			= "unittextures/GBRLCA_normals.png",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

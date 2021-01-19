@@ -13,6 +13,7 @@ local GBR_ParaM8Gun = InfantryGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GBRParaM8Gun_normals.png",
 	},
 }
 

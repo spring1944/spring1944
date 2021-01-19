@@ -3,7 +3,7 @@ local GBR_MatadorEngVehicle = EngineerVehicle:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-
+		normaltex			= "unittextures/GBRMatador_normals.png",
 	},
 }
 

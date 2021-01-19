@@ -28,12 +28,13 @@ local GBR_LCSL = ArmedBoat:New{
 		deathanim = {
 			["z"] = {angle = 30, speed = 15},
 		},
-		smokegenerator		=	1,
-		smokeradius		=	300,
-		smokeduration		=	40,
-		smokecooldown		=	30,
-		smokeceg		=	"SMOKESHELL_Medium",
+		smokegenerator	= 1,
+		smokeradius		= 300,
+		smokeduration	= 40,
+		smokecooldown	= 30,
+		smokeceg		= "SMOKESHELL_Medium",
 
+		normaltex		= "unittextures/GBRLCSL_normals.png",
 	},
 }
 
@@ -47,10 +48,11 @@ local GBR_LCSL_Turret_4inMortar = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 4,
-		turretturnspeed			= 30,
-		elevationspeed			= 20,
+		maxammo			= 4,
+		turretturnspeed	= 30,
+		elevationspeed	= 20,
 
+		normaltex		= "unittextures/GBRLCSL_normals.png",
 	},
 }
 
@@ -77,6 +79,7 @@ local GBR_LCSL_Turret_Vickers50 = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		facing 					= 2,
 
+		normaltex				= "unittextures/GBRLCSL_normals.png",
 	},
 }
 
@@ -102,6 +105,7 @@ local GBR_LCSL_Turret_6pdr = EnclosedBoatTurret:New{
 		elevationspeed			= 20,
 		aaweapon				= 2, -- TODO: rename to something more generic e.g. masterweapon
 
+		normaltex				= "unittextures/GBRLCSL_normals.png",
     },
 }
 
@@ -132,6 +136,7 @@ local GBR_LCSL_Turret_20mm_Left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing 					= 3,
 		defaultheading1			= math.rad(-90),
+		normaltex				= "unittextures/GBRLCSL_normals.png",
 	},
 }
 local GBR_LCSL_Turret_20mm_Right = GBR_LCSL_Turret_20mm_Left:New{

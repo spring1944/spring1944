@@ -14,6 +14,7 @@ local GBR_Typhoon = AttackFighter:New{
 		enginesoundnr		= 18,
 		maxammo				= 8,
 
+		normaltex			= "unittextures/GBRTyphoon1_normals.png",
 	},
 
 	weapons = {

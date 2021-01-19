@@ -18,6 +18,7 @@ local GBR_SpitfireMkXIV = Interceptor:New{
 		enginesoundnr		= 18,
 		proptexture			= "prop5.tga",
 
+		normaltex			= "unittextures/GBRSpitfireMkXIV_normals.png",
 	},
 
 	weapons = {

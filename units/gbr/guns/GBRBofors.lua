@@ -4,7 +4,7 @@ local GBR_Bofors_Truck = AAGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/GBRBoforsTruck_normals.png",
 	},
 }
 
@@ -21,7 +21,7 @@ local GBR_Bofors_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GBRBofors_normals.png",
 	},
 }
 
