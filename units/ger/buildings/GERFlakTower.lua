@@ -40,7 +40,6 @@ local GER_Flak_Tower = HQ:New(Bunker):New{
             "GERMAL_Turret_Quad20mm",
         },
 		supplyrange			= 1000,
-
 	},
 
 	--[[
@@ -102,7 +101,7 @@ local spam_hq = GER_Flak_Tower:New{
 	buildPic	= "gerflakturmg.png",
 	objectName	= "GER/GERFlakTurmG.s3o",
 	customParams = {
-
+		normaltex			= "unittextures/GERFlakTurm_normals.png",
 	},
 }
 

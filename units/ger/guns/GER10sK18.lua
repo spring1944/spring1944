@@ -19,6 +19,7 @@ local GER_10sK18 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GER10sK18_normals.png",
 	},
 }
 
@@ -35,6 +36,7 @@ local GER_10sK18_Stationary = HGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GER10sK18_normals.png",
 	},
 }
 

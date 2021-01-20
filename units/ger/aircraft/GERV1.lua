@@ -4,7 +4,7 @@ local GER_V1 = CruiseMissile:New{
 	explodeAs		= "v1",
 	script			= "<NAME>.lua",
 	customParams = {
-
+		normaltex			= "unittextures/GERV1_normals.png",
 	},
 }
 

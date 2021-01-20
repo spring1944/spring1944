@@ -12,6 +12,7 @@ local GER_SchSturmboot = InfantryLandingCraftComposite:New{
 		deathanim = {
 			["z"] = {angle = 30, speed = 10},
 		},
+		normaltex			= "unittextures/GERSchSturmboot_normals.png",
 	},
 }
 

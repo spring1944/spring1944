@@ -67,6 +67,7 @@ local GERTiger = HeavyTank:New{
 		turretturnspeed		= 12, -- 60s for 360
 		maxvelocitykmh		= 45.4,
 
+		normaltex			= "unittextures/GERTiger_normals.png",
 	},
 }
 

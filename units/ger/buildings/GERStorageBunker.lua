@@ -4,7 +4,7 @@ local GER_StorageBunker = Storage:New(Bunker):New{
 	buildCostMetal		= 7000,
 	maxDamage				= 15000,
 	customParams = {
-
+		normaltex			= "unittextures/GERStorageBunker_normals.png",
 	},
 }
 

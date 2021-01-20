@@ -16,6 +16,7 @@ local GER_LeFH18 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GERleFH18_normals.png",
 	},
 }
 
@@ -32,6 +33,7 @@ local GER_LeFH18_Stationary = HGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GERleFH18_normals.png",
 	},
 }
 

@@ -40,6 +40,7 @@ local GERSdKfz251 = HalfTrack:New{
 		},
 
 		maxvelocitykmh		= 52.5,
+		normaltex			= "unittextures/GERSdkfz251_normals.png",
 	},
 	
 }

@@ -3,7 +3,7 @@ local GERKubel = ScoutCar:New{
 	trackOffset			= 4,
 	trackWidth			= 11,
 	customParams = {
-
+		normaltex			= "unittextures/GERKubel_normals.png",
 	},
 }
 

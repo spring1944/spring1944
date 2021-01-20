@@ -5,7 +5,7 @@ local GER_FlaK38_Truck = AAGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/GERFlaK38_Truck_normals.png",
 	},
 }
 
@@ -22,7 +22,7 @@ local GER_FlaK38_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GERFlaK38_normals.png",
 	},
 }
 

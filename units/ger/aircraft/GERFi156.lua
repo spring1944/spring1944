@@ -7,7 +7,7 @@ local GER_Fi156 = Recon:New{
 	customParams = {
 		enginesound		= "spitfireb-",
 		enginesoundnr	= 18,
-
+		normaltex		= "unittextures/GERFi156a_normals.png",
 	},
 	
 	weapons = {

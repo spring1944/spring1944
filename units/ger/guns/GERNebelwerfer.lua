@@ -9,6 +9,7 @@ local GER_Nebelwerfer = RInfGun:New{
 
 	customParams = {
 		maxammo				= 1,
+		normaltex			= "unittextures/GERNebelwerfer_normals.png",
 	},
 	weapons = {
 		[1] = {
@@ -22,6 +23,7 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 	corpse					= "gernebelwerfer_destroyed",
 	customParams = {
 		maxammo				= 1,
+		normaltex			= "unittextures/GERNebelwerfer_normals.png",
 	},
 	weapons = {
 		[1] = {
