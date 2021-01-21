@@ -42,6 +42,7 @@ local HetzerBase = Tank:New{
 		},
 		soundcategory		= "HUN/Tank",
 		maxvelocitykmh		= 40,
+		normaltex			= "unittextures/HUNHetzer_normals.png",
 	},
 }
 
@@ -78,6 +79,7 @@ local HUNBergeHetzer = HetzerBase:New(EngineerVehicle):New{
 	customParams = {
 		customanims			= "bergehetzer",
 		weapontoggle		= false, -- can't override with nil
+		normaltex			= "unittextures/HUNBergeHetzer_normals.png",
 	},
 }
 

@@ -67,6 +67,7 @@ local HUNToldiII = LightTank:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex				= "unittextures/HUNToldiII_normals.png",
 	},
 }
 
@@ -107,6 +108,7 @@ local HUNToldiIIA = HUNToldiII:New{
 				},
 			},
 		},
+		normaltex				= "unittextures/HUNToldiIIA_normals.png",
 	},
 }
 

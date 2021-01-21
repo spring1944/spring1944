@@ -13,6 +13,7 @@ local HUN_PaK40 = ATInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/HUNPaK40_normals.png",
 	},
 }
 
@@ -26,7 +27,7 @@ local HUN_PaK40_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/HUNPaK40_normals.png",
 	},
 }
 	

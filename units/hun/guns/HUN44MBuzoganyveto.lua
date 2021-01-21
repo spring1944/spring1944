@@ -5,6 +5,7 @@ local HUN_44M_HeavyAT_Truck = ATGunTractor:New{
 	trackWidth				= 13,
 	customParams = {
 		maxammo		= 2,
+		normaltex			= "unittextures/HUN44MBuzoganyveto_normals.png",
 	},
 	weapons = {
 		[1] = { -- AP
@@ -24,6 +25,7 @@ local HUN_44MHeavyAT_Stationary = LightATGun:New{
 	minCloakDistance	= 220,
 	customParams = {
 		maxammo		= 2,
+		normaltex			= "unittextures/HUN44MBuzoganyveto_normals.png",
 	},
 
 	weapons = {

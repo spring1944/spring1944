@@ -67,6 +67,7 @@ local HUN40MNimrod = ArmouredCarAA:New{
 		maxvelocitykmh		= 50,
 		weapontoggle		= "priorityAPHE",
 		nomoveandfire		= true,
+		normaltex			= "unittextures/HUN40MNimrod_normals.png",
 	}
 }
 
@@ -117,7 +118,7 @@ local HUN43MLehel = HalfTrack:New{
 			},
 		},
 		maxvelocitykmh			= 50,
-
+		normaltex			= "unittextures/HUN43MLehel_normals.png",
 	},
 }
 

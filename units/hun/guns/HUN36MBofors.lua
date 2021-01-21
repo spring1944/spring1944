@@ -4,7 +4,7 @@ local HUN_BoforsM36_Truck = AAGunTractor:New{
 	trackOffset				= 5,
 	trackWidth				= 12,
 	customParams = {
-
+		normaltex			= "unittextures/HUN36MBofors_normals.png",
 	},
 }
 
@@ -21,7 +21,7 @@ local HUN_BoforsM36_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/HUN36MBofors_normals.png",
 	},
 }
 

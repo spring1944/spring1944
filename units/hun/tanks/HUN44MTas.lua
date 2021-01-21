@@ -65,7 +65,7 @@ local HUN44MTas = HeavyTank:New{
 		maxammo				= 15,
 		turretturnspeed		= 20, -- 18s for 360
 		maxvelocitykmh		= 45,
-
+		normaltex			= "unittextures/HUN44MTas_normals.png",
 	},
 }
 

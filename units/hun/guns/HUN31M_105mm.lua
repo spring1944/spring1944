@@ -19,6 +19,7 @@ local HUN_31M_105mm = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/HUN31M_105mm_normals.png",
 	},
 }
 
@@ -35,7 +36,7 @@ local HUN_31M_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/HUN31M_105mm_normals.png",
 	},
 }
 

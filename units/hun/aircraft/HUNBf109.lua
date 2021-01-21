@@ -14,7 +14,7 @@ local HUN_Bf109 = Interceptor:New{
 	customParams = {
 		enginesound			= "me109b-",
 		enginesoundnr		= 18,
-
+		normaltex			= "unittextures/HUNBf109_normals.png",
 	},
 
 	weapons = {

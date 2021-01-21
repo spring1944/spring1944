@@ -13,7 +13,7 @@ local HUN_Barracks = Barracks:New{
 									yyyy 
 									yyyy]],
 	customParams = {
-
+		normaltex			= "unittextures/HUNBarracks_normals.png",
 	},
 }
 
