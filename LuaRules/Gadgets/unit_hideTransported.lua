@@ -37,6 +37,7 @@ local LOS_TYPES = {"airLos", "los", "radar", "sonar", "seismic", "radarJammer", 
 local massLeft = {}
 local toBeLoaded = {}
 local savedRadius = {}
+local loadedUnits = {}
 
 local function StoreLOSRadius(unitID, unitDefID)
 	if not savedRadius[unitDefID] then
@@ -101,8 +102,10 @@ function gadget:UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTe
 	local transportDef = UnitDefs[GetUnitDefID(transportID)]
 	local unitDef = UnitDefs[unitDefID]
 	
-	-- should fix engineers still thinking they're building.
-	GiveOrderToUnit(unitID, CMD_STOP, {}, {})
+	-- We would ask the unit to stop here to avoid engineers still thinking
+	-- they're building. However, recursion problems may happens, so we store
+	-- the unit and call it later, during GameFrame
+	loadedUnits[unitID] = true
 	
 	-- Check if transport is full (former crash risk!)
 	if massLeft[transportID] then
@@ -186,6 +189,13 @@ function gadget:UnitUnloaded(unitID, unitDefID, teamID, transportID)
 	Spring.SetUnitNoMinimap(unitID, false)
 	-- GG.Delay.DelayCall(Spring.SetUnitBlocking, {unitID, true, true, true, true, true, true, true}, 16) -- Engine doesn't properly reset blockign on lua-loaded units
 	-- FindUnloadPlace(unitID, unitDefID, transportID)
+end
+
+function gadget:GameFrame(n)
+	for unitID, _ in pairs(loadedUnits) do
+		loadedUnits[unitID] = nil
+		GiveOrderToUnit(unitID, CMD_STOP, {}, {})
+	end
 end
 
 function gadget:Initialize()
