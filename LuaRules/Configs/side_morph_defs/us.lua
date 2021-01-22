@@ -21,6 +21,15 @@ local usDefs = {
 			text = 'Makes Light Armor available in this yard',
 			facing = true,
 		},
+		{
+			into = 'usvehicleyard2',
+			metal = 3500,
+			energy = 0,
+			time = 115,
+			name = 'Upgunned\nLight\nArmor',
+			text = 'Makes Upgunned Light Armor available in this yard',
+			facing = true,
+		},
 	},
 	usgunyard = {
 		{

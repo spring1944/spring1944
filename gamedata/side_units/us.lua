@@ -51,9 +51,9 @@ local usunits = {
     "us_platoon_mortar",
     "us_platoon_crew",
     --"usm8gun",
-	"us_platoon_infgun",
+    "us_platoon_infgun",
     "usgmctruck",
-	"uspontoontruck",
+    "uspontoontruck",
   },
 
   usengineer =
@@ -78,7 +78,7 @@ local usunits = {
     "usgmcengvehicle",
     "usgmctruck",
     "usm3halftrack",
-	"usm16mgmc",
+    "usm16mgmc",
     "usdukw",
     "usm8greyhound",
     "usm8scott",
@@ -91,13 +91,26 @@ local usunits = {
     "uspontoontruck",
     "usgmctruck",
     "usm3halftrack",
-	"usm16mgmc",
+    "usm16mgmc",
     "usdukw",
     "usm8greyhound",
     "usm8scott",
     "usm5stuart",
-	"uslvta4",
+    "uslvta4",
     "usjeep",
+  },
+
+  usvehicleyard2 =
+  {
+    "usgmcengvehicle",
+    "uspontoontruck",
+    "usgmctruck",
+    "usm3halftrack",
+    "usm16mgmc",
+    "usdukw",
+    "usm8greyhound",
+    "usm8scott",
+    "usm24",
   },
 
   usgunyard =
@@ -163,6 +176,7 @@ local usunits = {
   {
     "usgmcengvehicle",
     "usm5stuart",
+    "usm24",
     "usm4a4sherman",
     "usm10wolverine",
   },
@@ -171,6 +185,7 @@ local usunits = {
   {
     "usgmcengvehicle",
     "usm5stuart",
+    "usm24",
     "usm4a4sherman",
     "usm10wolverine",
     "usm4a3105sherman",
@@ -181,6 +196,7 @@ local usunits = {
   {
     "usgmcengvehicle",
     "usm5stuart",
+    "usm24",
     "usm4a4sherman",
     "usm10wolverine",
     "usm4a3105sherman",
