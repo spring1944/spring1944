@@ -34,6 +34,10 @@ units["jpnstorage"].objectname = "jpn/jpnstorage.s3o"
 -- Hungary uses side-specific storage model
 units["hunstorage"].objectname = "hun/hunstorage.s3o"
 
+-- US has a second type of vehicles yard
+units["usvehicleyard2"] = VehicleYardArmour:New{}
+units["usvehicleyard2"].name = "Uppgunned Light Vehicle & Armour Yard"
+units["usvehicleyard2"].description = "Uppgunned Light Vehicle & Armour Prep. Facility"
 
 --units["usspyard1"] = nil
 

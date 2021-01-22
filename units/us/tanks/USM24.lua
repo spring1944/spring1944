@@ -72,6 +72,7 @@ local USM24 = LightTank:New{
 		maxammo				= 20,
 		turretturnspeed		= 30.0, -- 12s for 360
 
+		normaltex			= "unittextures/usm24_normals.png",
 	},
 }
 
