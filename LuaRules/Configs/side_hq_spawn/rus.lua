@@ -6,8 +6,6 @@ local rusData = {
             "russupplytruck",
             "rus61k_truck",
             "rus61k_truck",
-            "ruszis5",
-            "ruszis5",
             "ruscommissar",
             "ruscommissar",
             "rusmortar",
