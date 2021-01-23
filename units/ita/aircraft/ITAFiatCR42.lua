@@ -20,6 +20,7 @@ local ITA_FiatCR42 = Fighter:New{
 		enginesoundnr		= 11,
 		maxFuel				= 95,
 
+		normaltex			= "unittextures/ITAFiatCR42_normals.png",
 	},
 
 	weapons = {

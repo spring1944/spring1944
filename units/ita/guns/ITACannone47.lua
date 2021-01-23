@@ -16,6 +16,7 @@ local ITA_Cannone47 = ATInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/ITACanone47_stationary_normals.png",
 	},
 }
 
@@ -31,7 +32,7 @@ local ITA_Cannone47_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/ITACanone47_stationary_normals.png",
 	},
 }
 

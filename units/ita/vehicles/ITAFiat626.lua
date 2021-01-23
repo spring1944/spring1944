@@ -3,7 +3,7 @@ local ITA_Fiat626Base = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/ITAFiat626_normals.png",
 	},
 }
 

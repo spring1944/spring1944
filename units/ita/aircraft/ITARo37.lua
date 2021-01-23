@@ -8,6 +8,7 @@ local ITA_Ro37 = Recon:New{
 		enginesound		= "po2-",
 		enginesoundnr	= 11,
 
+		normaltex			= "unittextures/ITARo37bis_normals.png",
 	},
 }
 

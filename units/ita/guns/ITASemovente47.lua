@@ -59,7 +59,7 @@ local ITASemovente47 = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 18,
 		weapontoggle		= "priorityHEATAP",
 		maxvelocitykmh		= 42.3,
-
+		normaltex			= "unittextures/ITASemovente47_normals.png",
 	},
 }
 

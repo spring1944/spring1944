@@ -62,6 +62,7 @@ local ITASemovente90 = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 				offset = {0, -4, 0},
 			},
 		},
+		normaltex			= "unittextures/ITASemovente90_normals.png",
 	},
 }
 

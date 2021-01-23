@@ -56,7 +56,7 @@ local ITAL6_40lf = LightTank:New{
 		maxammo				= 8,
 		weapontoggle		= "false",
 		maxvelocitykmh		= 42,
-
+		normaltex			= "unittextures/ITAL6_40_normals.png",
 	},
 }
 

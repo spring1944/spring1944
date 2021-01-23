@@ -16,6 +16,7 @@ local ITA_Reggiane2005 = Fighter:New{
 		enginesoundnr		= 12,
 		maxFuel				= 150,
 
+		normaltex			= "unittextures/ITARe2005_normals.png",
 	},
 
 	weapons = {

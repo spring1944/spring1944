@@ -46,6 +46,7 @@ local ITA_MZ = TankLandingCraftComposite:New{
 			["x"] = {angle = 10, speed = 5},
 		},
 		customanims = "ita_mz",
+		normaltex			= "unittextures/ITAMZ_normals.png",
 	},
 }
 
@@ -69,6 +70,7 @@ local ITA_MZ_Turret_76mm = OpenBoatTurret:New{
 		elevationspeed			= 10,
 		facing 					= 2,
 		defaultheading1			= math.rad(180),
+		normaltex			= "unittextures/ITAMZ_normals.png",
 	},
 }
 
@@ -96,6 +98,7 @@ local ITA_MZ_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
+		normaltex			= "unittextures/ITAGabbiano_normals.png",
     },
 }
 

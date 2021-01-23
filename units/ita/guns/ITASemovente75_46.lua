@@ -54,7 +54,7 @@ local ITASemovente75_46 = MediumTank:New(AssaultGun):New{
 		},
 		maxammo				= 11,
 		maxvelocitykmh		= 38,
-
+		normaltex			= "unittextures/ITASemovente75_46_normals.png",
 	},
 }
 

@@ -11,14 +11,19 @@ local ITA_Barracks = Barracks:New{
 									cccccc 
 									cccccc 
 									cccccc]],
-
+	customParams = {
+		normaltex			= "unittextures/ITABarracks_normals.png",
+	},
 }
 
 local ITA_BarracksElite = ITA_Barracks:New{
 	objectName					= "<SIDE>/ITABarracks.s3o",
 	buildPic					= "itabarracks.png",
 	maxDamage					= 8000,
-	workerTime			= 25,
+	workerTime					= 25,
+	customParams = {
+		normaltex			= "unittextures/ITABarracks_normals.png",
+	},
 }
 
 return lowerkeys({

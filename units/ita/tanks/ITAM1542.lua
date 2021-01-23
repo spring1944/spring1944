@@ -83,6 +83,7 @@ local ITAM1542 = LightTank:New{
 				offset = {0, -12, 0},
 			},
 		},
+		normaltex			= "unittextures/ITAM1542_normals.png",
 	},
 }
 

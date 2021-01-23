@@ -19,6 +19,7 @@ local ITAAutocannone100 = Truck:New(SPArty):New{
 		maxvelocitykmh		= 45,
 		weapontoggle		= "smoke",
 		nomoveandfire		= true,
+		normaltex			= "unittextures/ITAAutocannone100_normals.png",
 	},
 }
 

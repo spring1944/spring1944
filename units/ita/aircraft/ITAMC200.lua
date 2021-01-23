@@ -16,6 +16,7 @@ local ITA_MC200 = Fighter:New{
 		maxammo				= 2,
 		maxFuel				= 60,
 
+		normaltex			= "unittextures/ITAMC200_normals.png",
 	},
 
 	weapons = {

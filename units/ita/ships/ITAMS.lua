@@ -33,6 +33,7 @@ local ITA_MS = ArmedBoat:New{
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
 
+		normaltex			= "unittextures/ITAMS_normals.png",
 	},
 }
 
@@ -59,6 +60,7 @@ local ITA_MS_Turret_20mm_Front = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 
+		normaltex			= "unittextures/ITAMS_normals.png",
     },
 }
 

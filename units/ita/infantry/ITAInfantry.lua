@@ -1,7 +1,7 @@
 local ITAInf = {
 	maxDamageMul		= 0.8,
 	customParams = {
-
+		normaltex			= "unittextures/ITAInfantry_normals.png",
 	},
 }
 local Alpini = {

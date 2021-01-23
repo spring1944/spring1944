@@ -16,7 +16,7 @@ local ITAAutocannone75 = Truck:New(AssaultGun):New{
 		maxammo				= 5,
 		maxvelocitykmh		= 38,
 		nomoveandfire		= true,
-
+		normaltex			= "unittextures/ITAAutocannone75_normals.png",
 	},
 }
 

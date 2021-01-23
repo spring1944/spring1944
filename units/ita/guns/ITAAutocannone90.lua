@@ -17,7 +17,7 @@ local ITAAutocannone90 = Truck:New(TankDestroyer):New{
 		maxvelocitykmh		= 45,
 		customanims		= "autocannone90",
 		nomoveandfire		= true,
-
+		normaltex			= "unittextures/ITAAutocannone90_normals.png",
 	},
 }
 
