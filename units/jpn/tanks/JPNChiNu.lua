@@ -65,7 +65,7 @@ local JPNChiNu = MediumTank:New{
 		maxammo				= 12,
 		maxvelocitykmh		= 39,
 		exhaust_fx_name			= "diesel_exhaust",
-
+		normaltex			= "unittextures/JPNChiNu_normals.png",
 	},
 }
 

@@ -1,5 +1,8 @@
 local JPNInf = {
 	maxDamageMul		= 0.94,
+	customParams = {
+		normaltex			= "unittextures/JPNInfantry_normals.png",
+	},
 }
 
 local JPN_HQEngineer = EngineerInf:New(JPNInf):New{

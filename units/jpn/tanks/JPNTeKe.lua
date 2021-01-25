@@ -44,7 +44,7 @@ local TeKeBase = Tankette:New{
 		},
 		maxvelocitykmh		= 42,
 		exhaust_fx_name			= "diesel_exhaust",
-
+		normaltex			= "unittextures/JPNTeKe_normals.png",
 	},
 }
 

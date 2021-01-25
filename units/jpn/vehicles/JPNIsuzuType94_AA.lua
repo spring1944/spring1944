@@ -13,7 +13,7 @@ local JPNIsuzuType94_AA = TruckAA:New{
 	},
 	customParams = {
 		maxammo				= 19,
-
+		normaltex			= "unittextures/JPNIsuzuType94AA_normals.png",
 	}
 }
 

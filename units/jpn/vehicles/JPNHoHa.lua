@@ -26,7 +26,7 @@ local JPNHoHa = HalfTrack:New{
 		},
 		maxvelocitykmh			= 50,
 		exhaust_fx_name			= "diesel_exhaust",
-
+		normaltex			= "unittextures/JPNHoHa_normals.png",
 	},
 }
 

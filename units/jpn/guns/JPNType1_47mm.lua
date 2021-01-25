@@ -16,6 +16,7 @@ local JPN_Type1_47mm = ATInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/JPNType1_47mm_normals.png",
 	},
 }
 
@@ -30,7 +31,7 @@ local JPN_Type1_47mm_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/JPNType1_47mm_normals.png",
 	},
 }
 

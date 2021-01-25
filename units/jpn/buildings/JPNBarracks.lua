@@ -12,7 +12,7 @@ local JPN_Barracks = Barracks:New{
 									cccccc 
 									cccccc]],
 	customParams = {
-
+		normaltex			= "unittextures/JPNBarracks_normals.png",
 	},
 }
 
@@ -25,7 +25,8 @@ local JPN_Tent = Barracks:New{
 	footprintZ					= 5,
 	minCloakDistance			= 300,
 	customparams = {
-			hiddenbuilding				= true,
+		hiddenbuilding		= true,
+		normaltex			= "unittextures/JPNTent_normals.png",
 	},
 	workerTime					= 15,
 	yardmap						= [[ooooo 

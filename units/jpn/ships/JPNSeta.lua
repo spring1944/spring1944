@@ -34,7 +34,7 @@ local JPN_Seta = ArmedBoat:New{
 		--[[deathanim = {
 			["z"] = {angle = -10, speed = 45},
 		},]]
-
+		normaltex			= "unittextures/JPNSeta_normals.png",
 	},
 }
 
@@ -55,7 +55,7 @@ local JPN_Seta_Turret_76mm_Front = PartiallyEnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
-
+		normaltex			= "unittextures/JPNSeta_normals.png",
     },
 }
 
@@ -106,7 +106,7 @@ local JPN_Seta_Turret_25mm = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
-
+		normaltex			= "unittextures/JPNSeta_normals.png",
     },
 }
 

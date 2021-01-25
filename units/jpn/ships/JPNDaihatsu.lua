@@ -15,7 +15,7 @@ local JPN_Daihatsu = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
-
+		normaltex			= "unittextures/JPNDaihatsu_normals.png",
 	},
 }
 

@@ -19,6 +19,7 @@ local JPN_Type92_10cm = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/JPN_Type92_10cm_gun_and_tractor_normals.png",
 	},
 }
 
@@ -35,7 +36,7 @@ local JPN_Type92_10cm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/JPN_Type92_10cm_gun_and_tractor_normals.png",
 	},
 }
 
