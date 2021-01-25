@@ -38,7 +38,7 @@ local ITA_ML = InfantryLandingCraft:New{
 					thickness		= 0,
 				},
 			},
-		}
+		},
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
