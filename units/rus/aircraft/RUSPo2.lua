@@ -11,7 +11,7 @@ local RUS_Po2 = Recon:New{
 			enter_map		= 'sounds/rus/air/po2/rus_air_po2_select.wav',
 			return_to_base  = 'sounds/rus/air/rus_air_return.wav',
 		},
-
+		normaltex			= "unittextures/RUSPo2a_normals.png",
 	},
 }
 

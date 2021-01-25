@@ -40,7 +40,7 @@ local RUS_Pr161 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/RUSPr161_normals.png",
 	},
 }
 
@@ -59,7 +59,7 @@ local RUS_Pr161_Turret_DshK = OpenBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 80,
 		elevationspeed			= 45,
-
+		normaltex			= "unittextures/RUSPr161_normals.png",
 	},
 }
 
@@ -80,7 +80,7 @@ local RUS_Pr161_Turret_85mm_Front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-
+		normaltex			= "unittextures/rusbka1125_normals.png",
     },
 }
 local RUS_Pr161_Turret_85mm_Rear = RUS_Pr161_Turret_85mm_Front:New{

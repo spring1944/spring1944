@@ -16,6 +16,7 @@ local RUS_M30 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/RUSM30_normals.png",
 	},
 }
 
@@ -31,7 +32,7 @@ local RUS_M30_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/RUSM30_normals.png",
 	},
 }
 

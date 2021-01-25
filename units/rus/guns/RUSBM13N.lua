@@ -18,7 +18,7 @@ local RUSBM13N = Truck:New{
 	customParams = {
 		maxammo				= 1,
 		maxvelocitykmh		= 69,
-
+		normaltex			= "unittextures/RUSKatyusha_normals.png",
 	},
 }
 

@@ -66,6 +66,7 @@ local RUSBT7 = LightTank:New{
 		killvoicephasecount		= 3,
 		customanims			= "bt7",
 		pass_morph_unitrules_param = "customization_code",
+		normaltex			= "unittextures/rusbt7_normals.png",
 	},
 }
 
@@ -74,6 +75,7 @@ local RUSBT7_Wheeled = ArmouredCar:New(RUSBT7):New{
 	customParams = {
 		maxvelocitykmh = 72,
 		wheeled_mode = 1,
+		normaltex			= "unittextures/rusbt7_normals.png",
 	},
 }
 

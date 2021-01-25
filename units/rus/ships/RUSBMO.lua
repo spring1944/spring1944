@@ -35,7 +35,7 @@ local RUS_BMO = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/RUSBMO_normals.png",
 	},
 }
 
@@ -61,7 +61,7 @@ local RUS_Turret_37mm_Front = PartiallyEnclosedBoatTurret:New{ -- Used on multip
 		turretturnspeed			= 90,
 		elevationspeed			= 90,
 		aaweapon				= 1,
-
+		normaltex			= "unittextures/RUSBMO_normals.png",
     },
 }
 local RUS_Turret_37mm_Rear = RUS_Turret_37mm_Front:New{
@@ -102,6 +102,7 @@ local RUS_BMO_Turret_DshKAA = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		facing					= 2,
 		defaultheading1		= math.rad(180),
+		normaltex			= "unittextures/RUSBMO_normals.png",
 	},
 }
 
@@ -127,6 +128,7 @@ local RUS_BMO_Turret_Vickers = OpenBoatTurret:New{
 		elevationspeed			= 35,
 		facing					= 2,
 		defaultheading1		= math.rad(180),
+		normaltex			= "unittextures/RUSBMO_normals.png",
 	},
 }
 
@@ -148,6 +150,7 @@ local RUS_Turret_45mm_Front = OpenBoatTurret:New{ -- Used on multiple vessels
 		turretturnspeed			= 25,
 		elevationspeed			= 30,
 
+		normaltex			= "unittextures/RUSBMO_normals.png",
     },
 }
 local RUS_Turret_45mm_Rear = RUS_Turret_45mm_Front:New{

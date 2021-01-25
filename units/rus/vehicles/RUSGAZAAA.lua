@@ -24,7 +24,7 @@ local RUSGAZAAA = TruckAA:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/RUSGAZAAA1_normals.png",
 	},
 }
 

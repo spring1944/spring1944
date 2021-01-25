@@ -16,7 +16,7 @@ local RUS_ZiS3 = FGInfGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/RUSZiS3_normals.png",
 	},
 }
 
@@ -33,7 +33,7 @@ local RUS_ZiS3_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/RUSZiS3_normals.png",
 	},
 }
 

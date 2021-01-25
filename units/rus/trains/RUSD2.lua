@@ -79,6 +79,7 @@ local RUSD2Base = MediumTank:New{
 		defaultheading2 = math.rad(-90),
 		defaultheading3 = math.rad(-90),
 		defaultheading4 = math.rad(90),
+		normaltex			= "unittextures/RUSD2_normals.png",
 	},
 }
 
@@ -111,6 +112,7 @@ local RUS_D2_Turret = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex			= "unittextures/RUSD2_normals.png",
     },
 }
 

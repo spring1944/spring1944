@@ -28,6 +28,7 @@ local RUS_LCT = TankLandingCraftComposite:New{
 			["z"] = {angle = -30, speed = 10},
 		},
 		customanims = "gbr_lct",
+		normaltex			= "unittextures/RUSLCT_normals.png",
 	},
 }
 
@@ -57,6 +58,7 @@ local RUS_LCT_Turret_20mm_Left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing 					= 3,
 		defaultheading1			= math.rad(-90),
+		normaltex			= "unittextures/RUSLCT_normals.png",
 	},
 }
 local RUS_LCT_Turret_20mm_Right = RUS_LCT_Turret_20mm_Left:New{
@@ -83,15 +85,22 @@ local SWE_LCT = RUS_LCT:New{
 			"swe_lct_turret_20mm_left",
 			"swe_lct_turret_20mm_right",
 		},
+		normaltex			= "unittextures/SWELCT_normals.png",
 	},
 }
 
 local SWE_LCT_Turret_20mm_Left = RUS_LCT_Turret_20mm_Left:New{
 	objectName				= "<SIDE>/swe_lct_turret_20mm.s3o",
+	customparams	= {
+		normaltex			= "unittextures/SWELCT_normals.png",
+	},
 }
 
 local SWE_LCT_Turret_20mm_Right = RUS_LCT_Turret_20mm_Right:New{
 	objectName				= "<SIDE>/swe_lct_turret_20mm.s3o",
+	customparams	= {
+		normaltex			= "unittextures/SWELCT_normals.png",
+	},
 }
 
 return lowerkeys({

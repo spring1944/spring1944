@@ -17,7 +17,7 @@ local RUS_IL2 = FighterBomber:New(ArmouredPlane):New{
 		enginesoundnr		= 16,
 		maxammo				= 4,
 		maxFuel				= 180,
-
+		normaltex			= "unittextures/RUSIl2a_normals.png",
 	},
 
 	weapons = {

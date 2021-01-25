@@ -12,7 +12,7 @@ local RUS_PShack = Barracks:New{
 									yyy 
 									yyy]],
 	customParams = {
-
+		normaltex			= "unittextures/FeaturesA1_normals.png",
 	},
 }
 

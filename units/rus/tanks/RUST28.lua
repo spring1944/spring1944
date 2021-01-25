@@ -77,6 +77,7 @@ local RUST28 = MediumTank:New{
 		killvoicecategory_hardveh	= "RUS/Tank/RUS_TANK_TANKKILL",
 		killvoicephasecount		= 3,
 		customanims			= "t_28",
+		normaltex			= "unittextures/rust28_normals.png",
 	},
 }
 
