@@ -972,6 +972,7 @@ function widget:PlayerRemoved(playerID)
     if name ~= nil then
         specs[name] = nil
         allies[name] = nil
+        buttons_players[name] = nil
     end
 end
 
