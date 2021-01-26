@@ -972,6 +972,7 @@ function widget:PlayerRemoved(playerID)
     if name ~= nil then
         specs[name] = nil
         allies[name] = nil
+        buttons_players[name] = nil
     end
 end
 
@@ -1025,7 +1026,6 @@ end
 
 function widget:Shutdown()
     if (main_win) then
-        HideWin()
         main_win:Dispose()
     end
     if (chat_win) then
