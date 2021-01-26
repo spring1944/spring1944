@@ -1025,7 +1025,6 @@ end
 
 function widget:Shutdown()
     if (main_win) then
-        HideWin()
         main_win:Dispose()
     end
     if (chat_win) then
