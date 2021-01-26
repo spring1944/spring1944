@@ -3,7 +3,7 @@ local ITA_Breda41 = EngineerVehicle:New{
 	trackOffset				= 10,
 	trackWidth				= 15,
 	customParams = {
-
+		normaltex			= "unittextures/ITABreda41_normals.png",
 	},
 }
 

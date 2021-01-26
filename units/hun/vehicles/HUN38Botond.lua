@@ -4,7 +4,7 @@ local HUN_38MBotondBase = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/HUN38MBotond_normals.png",
 	},
 }
 

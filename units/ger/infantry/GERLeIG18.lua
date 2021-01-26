@@ -14,7 +14,7 @@ local GERLeIG18 = InfantryGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GERleIG18_normals.png",
 	},
 }
 

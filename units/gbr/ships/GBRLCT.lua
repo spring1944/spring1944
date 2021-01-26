@@ -28,6 +28,7 @@ local GBR_LCT = TankLandingCraftComposite:New{
 			["x"] = {angle = -30, speed = 10},
 		},
 		customanims = "gbr_lct",
+		normaltex = "unittextures/GBRLCT_normals.png",
 	},
 }
 

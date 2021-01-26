@@ -29,6 +29,7 @@ local GER_MAL = ArmedBoat:New{
 		deathanim = {
 			["x"] = {angle = -10, speed = 5},
 		},
+		normaltex			= "unittextures/GERMAL_normals.png",
 	},
 }
 
@@ -49,6 +50,7 @@ local GER_MAL_Turret_105mm = PartiallyEnclosedBoatTurret:New{ --
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
 
+		normaltex			= "unittextures/GERMAL_normals.png",
     },
 }
 
@@ -104,6 +106,7 @@ local GER_MAL_Turret_Quad20mm = OpenBoatTurret:New{
 		elevationspeed			= 45,
 		aaweapon				= 1,
 
+		normaltex			= "unittextures/GERMAL_normals.png",
     },
 }
 
@@ -129,6 +132,7 @@ local GER_MAL_Turret_37mm = OpenBoatTurret:New{
 		elevationspeed			= 30,
 		aaweapon				= 1,
 
+		normaltex			= "unittextures/GERMAL_normals.png",
     },
 }
 

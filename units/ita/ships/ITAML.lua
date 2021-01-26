@@ -38,12 +38,13 @@ local ITA_ML = InfantryLandingCraft:New{
 					thickness		= 0,
 				},
 			},
-		}
+		},
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
 
+		normaltex			= "unittextures/ITAML_normals.png",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

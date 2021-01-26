@@ -13,7 +13,7 @@ local SWE_VolvoTVC = Truck:New{
 	customParams = {
 		dontCount				= nil, -- override truck as TVC can be a factory!
 		maxvelocitykmh			= 52,
-
+		normaltex			= "unittextures/SWEVolvoTVC_normals.png",
 	}
 }
 

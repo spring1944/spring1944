@@ -3,12 +3,16 @@ local US_GMCTruckBase = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/GMCTruck1_normals.png",
 	},
 }
 
 local US_GMCTruck = US_GMCTruckBase:New(TransportTruck)
-local US_PontoonTruck = US_GMCTruckBase:New(PontoonTruck, true)
+local US_PontoonTruck = US_GMCTruckBase:New(PontoonTruck, true):New{
+	customParams = {
+		normaltex			= "unittextures/USTruckSupplies_normals.png",
+	},
+}
 
 local US_DUKW = US_GMCTruck:New(Amphibian):New{
 	name					= "DUKW",

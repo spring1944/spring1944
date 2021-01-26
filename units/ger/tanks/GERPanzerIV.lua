@@ -69,6 +69,7 @@ local GERPanzerIV = MediumTank:New{
 		turretturnspeed		= 16, -- 22.5s for 360
 		maxvelocitykmh		= 25,
 
+		normaltex			= "unittextures/GERPanzerIV_normals.png",
 	},
 }
 

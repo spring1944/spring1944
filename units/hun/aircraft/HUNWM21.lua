@@ -7,7 +7,7 @@ local HUN_WM21 = Recon:New{
 	customParams = {
 		enginesound		= "po2-",
 		enginesoundnr	= 11,
-
+		normaltex		= "unittextures/HUNWM21_normals.png",
 	},
 }
 

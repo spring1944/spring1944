@@ -58,7 +58,7 @@ local SWESAVM43 = LightTank:New(AssaultGun):New{
 		},
 		maxammo				= 11,
 		maxvelocitykmh		= 43,
-
+		normaltex			= "unittextures/SWESAVM43_normals.png",
 	},
 }
 

@@ -13,7 +13,7 @@ local GBR_17Pdr = ATInfGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GBR17Pounder_normals.png",
 	},
 }
 
@@ -27,7 +27,7 @@ local GBR_17Pdr_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GBR17Pounder_normals.png",
 	},
 }
 

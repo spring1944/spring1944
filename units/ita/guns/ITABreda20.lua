@@ -5,7 +5,7 @@ local ITA_Breda20_Truck = AAGunTractor:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/ITABreda20_truck_normals.png",
 	},
 }
 
@@ -22,7 +22,7 @@ local ITA_Breda20_Stationary = AAGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/ITABreda20_Stationary_normals.png",
 	},
 }
 

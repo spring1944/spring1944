@@ -5,13 +5,13 @@ local FRA_CitroenType45 = Truck:New{
 	objectName				= "FRA/FRACitroenType45.s3o",
 
 	customParams = {
-
+		normaltex = "unittextures/FRACitroenType45_normals.png",
 	},
 }
 
 local FRA_TruckSupplies = Supplies:New{
 	customParams = {
-
+		normaltex = "unittextures/FRACitroenType45_normals.png",
 	},
 }
 

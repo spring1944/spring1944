@@ -19,6 +19,7 @@ local SWEKanon105_42 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/SWEKanon105_42_normals.png",
 	},
 }
 
@@ -35,7 +36,7 @@ local SWEKanon105_42_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/SWEKanon105_42_normals.png",
 	},
 }
 

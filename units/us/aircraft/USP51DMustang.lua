@@ -14,7 +14,7 @@ local US_P51DMustang = Fighter:New{
 	customParams = {
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
-
+		normaltex			= "unittextures/USP51DMustang_normals.png",
 	},
 
 	weapons = {

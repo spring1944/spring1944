@@ -66,7 +66,7 @@ local HUN40MTuran = MediumTank:New{
 		},
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
-
+		normaltex			= "unittextures/HUN40MTuran_normals.png",
 	},
 }
 
@@ -124,6 +124,7 @@ local HUN41MTuranII = HUN40MTuran:New{
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 		weapontoggle		= "priorityAPHEATHE",
+		normaltex			= "unittextures/HUN41MTuranII_normals.png",
 	},
 }
 
@@ -190,6 +191,7 @@ local HUN43MTuranIII = HUN41MTuranII:New{
 		maxammo				= 18,
 		maxvelocitykmh		= 47,
 		weapontoggle		= "priorityAPHE",
+		normaltex			= "unittextures/HUN43MTuranIII_normals.png",
 	},
 }
 

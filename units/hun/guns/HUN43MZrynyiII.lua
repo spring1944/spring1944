@@ -60,6 +60,7 @@ local HUN43MZrynyiII = MediumTank:New(AssaultGun):New{
 		maxammo				= 18,
 		maxvelocitykmh		= 43,
 		weapontoggle		= "priorityHEATHE",
+		normaltex			= "unittextures/HUN43MZrynyiII_normals.png",
 	},
 }
 

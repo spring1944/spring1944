@@ -38,6 +38,7 @@ local GBRWasp = LightTank:New{
 		maxammo				= 7,
 		maxvelocitykmh		= 48,
 
+		normaltex			= "unittextures/GBRWasp1_normals.png",
 	}
 }
 

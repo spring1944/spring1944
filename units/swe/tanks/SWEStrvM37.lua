@@ -59,7 +59,7 @@ local SWEStrvM37 = Tankette:New{
 			},
 		},
 		maxvelocitykmh		= 60,
-
+		normaltex			= "unittextures/SWEStrvM37_normals.png",
 	},
 }
 

@@ -27,7 +27,7 @@ local JPN_BusouDaihatsu = ArmedBoat:New{
 		turretturnspeed			= 5,
 		elevationspeed			= 5,
 		maxammo				= 4,
-
+		normaltex			= "unittextures/JPNBosouDaihatsu_normals.png",
 	},
 }
 

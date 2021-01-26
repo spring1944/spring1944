@@ -75,6 +75,7 @@ local GERPanther = HeavyTank:New{
 				offset = {0, -0.1, 0},
 			},
 		},
+		normaltex			= "unittextures/GERPanther_normals.png",
 	},
 }
 

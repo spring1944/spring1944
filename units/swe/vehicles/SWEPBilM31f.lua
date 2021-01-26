@@ -54,7 +54,7 @@ local SWEPBilM31f = ArmouredCar:New{
 		},
 		reversemult			= 0.75,
 		maxvelocitykmh		= 60,
-
+		normaltex			= "unittextures/SWEPBilM31f_normals.png",
 	}
 }
 

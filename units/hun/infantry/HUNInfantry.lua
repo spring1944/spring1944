@@ -1,7 +1,7 @@
 local HUNInf = {
 	maxDamageMul		= 1.0,
 	customParams = {
-
+		normaltex			= "unittextures/HUNInfantry_normals.png",
 	},
 }
 

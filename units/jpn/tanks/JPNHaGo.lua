@@ -66,7 +66,7 @@ local JPNHaGo = LightTank:New{
 		maxammo				= 20,
 		maxvelocitykmh		= 45,
 		exhaust_fx_name			= "diesel_exhaust",
-
+		normaltex			= "unittextures/JPNHaGo_normals.png",
 	},
 }
 

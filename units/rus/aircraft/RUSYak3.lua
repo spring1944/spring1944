@@ -18,7 +18,7 @@ local RUS_Yak3 = Interceptor:New{
 			enter_map		= 'sounds/rus/air/fighter/rus_air_fighter_select.wav',
 			return_to_base  = 'sounds/rus/air/rus_air_return.wav',
 		},
-
+		normaltex			= "unittextures/RUSYak3_normals.png",
 	},
 
 	weapons = {

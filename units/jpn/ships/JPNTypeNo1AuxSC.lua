@@ -31,7 +31,7 @@ local JPN_TypeNo1AuxSC = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/JPNTypeNo1AuxSC_normals.png",
 	},
 }
 
@@ -57,7 +57,7 @@ local JPN_SC_Turret_25mm_Front = OpenBoatTurret:New{
 		turretturnspeed			= 60,
 		elevationspeed			= 60,
 		aaweapon				= 1,
-
+		normaltex			= "unittextures/JPNTypeNo1AuxSC_normals.png",
     },
 }
 

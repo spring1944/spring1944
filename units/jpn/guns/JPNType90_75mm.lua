@@ -16,7 +16,7 @@ local JPN_Type90_75mm = FGInfGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/JPNType90_75mm_Stationary_normals.png",
 	},
 }
 
@@ -33,7 +33,7 @@ local JPN_Type90_75mm_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/JPNType90_75mm_Stationary_normals.png",
 	},
 }
 

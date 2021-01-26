@@ -13,6 +13,7 @@ local ITA_MC205 = FighterBomber:New{
 		enginesound			= "fw190b-",
 		enginesoundnr		= 12,
 
+		normaltex			= "unittextures/ITAMC205_normals.png",
 	},
 
 	weapons = {

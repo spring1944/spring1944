@@ -80,12 +80,16 @@ local SWEStrvM42 = MediumTank:New(StrvM42Base):New{
 		},
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
+		normaltex			= "unittextures/SWEStrvM42_normals.png",
 	},
 }
 
 local SWEBBVM42 = EngineerVehicle:New(MediumTank):New(StrvM42Base):New{
 	name				= "Bärgningsbandvagn m/42",
 	category			= "HARDVEH", -- don't trigger mines
+	customParams = {
+		normaltex			= "unittextures/SWEBBVM42_normals.png",
+	},
 }
 
 return lowerkeys({

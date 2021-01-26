@@ -13,6 +13,7 @@ local GER_PaK40 = ATInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GERPaK40_normals.png",
 	},
 }
 
@@ -26,6 +27,7 @@ local GER_PaK40_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GERPaK40_normals.png",
 	},
 }
 	

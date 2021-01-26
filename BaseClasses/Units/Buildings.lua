@@ -246,6 +246,7 @@ local BoatYard = Yard:New{
 							yyyyyyyyyyyyyy]],
 	customParams		= {
 		customanims		= "boatyard",
+		normaltex			= "unittextures/boatyard_normals.png",
 		wiki_subclass_comments = [[This yard can build basic naval units.
 If you want to battle at sea, you need one of this shipyards.]],
 	},

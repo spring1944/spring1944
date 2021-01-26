@@ -16,6 +16,7 @@ local SWEHaubitsM06 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/SWEHaubitsM39_normals.png",
 	},
 }
 
@@ -32,6 +33,7 @@ local SWEHaubitsM06_Stationary = HGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/SWEHaubitsM39_normals.png",
 	},
 }
 

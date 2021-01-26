@@ -52,7 +52,7 @@ local GERMarder = LightTank:New(TankDestroyer):New(OpenTopped):New{
 		maxammo				= 6,
 		soundcategory		= "GER/Tank/JgPz",
 		maxvelocitykmh		= 42,
-
+		normaltex			= "unittextures/GERMarder_normals.png",
 	},
 }
 

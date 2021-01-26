@@ -43,12 +43,13 @@ local GBR_FairmileD = ArmedBoat:New{
 			["x"] = {angle = -20, speed = 5},
 			["z"] = {angle = -15, speed = 5}, 
 		},
-		smokegenerator		=	1,
-		smokeradius		=	300,
-		smokeduration		=	40,
-		smokecooldown		=	30,
-		smokeceg		=	"SMOKESHELL_Medium",
+		smokegenerator		= 1,
+		smokeradius			= 300,
+		smokeduration		= 40,
+		smokecooldown		= 30,
+		smokeceg			= "SMOKESHELL_Medium",
 
+		normaltex			= "unittextures/GBRFairmileD_normals.png",
 	},
 }
 
@@ -68,11 +69,12 @@ local GBR_FairmileD_Turret_Vickers50 = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		--barrelrecoildist		= 1,
-		--barrelrecoilspeed		= 10,
-		turretturnspeed			= 45,
-		elevationspeed			= 45,
+		--barrelrecoildist	= 1,
+		--barrelrecoilspeed	= 10,
+		turretturnspeed		= 45,
+		elevationspeed		= 45,
 
+		normaltex			= "unittextures/GBRFairmileD_normals.png",
 	},
 }
 
@@ -87,13 +89,14 @@ local GBR_FairmileD_Turret_6pdr_Front = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 16,
+		maxammo				= 16,
 
-		barrelrecoildist		= 7,
-		barrelrecoilspeed		= 10,
-		turretturnspeed			= 30,
-		elevationspeed			= 20,
+		barrelrecoildist	= 7,
+		barrelrecoilspeed	= 10,
+		turretturnspeed		= 30,
+		elevationspeed		= 20,
 
+		normaltex			= "unittextures/GBRFairmileD_normals.png",
     },
 }
 local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
@@ -104,8 +107,8 @@ local GBR_FairmileD_Turret_6pdr_Rear = GBR_FairmileD_Turret_6pdr_Front:New{
 	},
 	customparams = {
 		facing				= 2,
-		defaultheading1			= math.rad(180),
-    },
+		defaultheading1		= math.rad(180),
+	},
 }
 
 local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
@@ -120,12 +123,13 @@ local GBR_FairmileD_Turret_Vickers30_Left = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		--barrelrecoildist		= 1,
-		--barrelrecoilspeed		= 10,
-		turretturnspeed			= 45,
-		elevationspeed			= 45,
+		--barrelrecoildist	= 1,
+		--barrelrecoilspeed	= 10,
+		turretturnspeed		= 45,
+		elevationspeed		= 45,
 		facing				= 3,
-		defaultheading1			= math.rad(-90),
+		defaultheading1		= math.rad(-90),
+		normaltex			= "unittextures/GBRFairmileD_normals.png",
 	},
 }
 local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left:New{
@@ -135,8 +139,8 @@ local GBR_FairmileD_Turret_Vickers30_Right = GBR_FairmileD_Turret_Vickers30_Left
 		},
 	},
 	customparams = {
-		facing					= 1,
-		defaultheading1				= math.rad(90),
+		facing				= 1,
+		defaultheading1		= math.rad(90),
 	},
 }
 
@@ -166,14 +170,15 @@ local GBR_FairmileD_Turret_20mm = OpenBoatTurret:New{
 		},
 	},
 	customparams = {
-		maxammo					= 14,
+		maxammo				= 14,
 
-		barrelrecoildist		= 2,
-		barrelrecoilspeed		= 10,
-		turretturnspeed			= 45,
-		elevationspeed			= 45,
-		aaweapon				= 1,
+		barrelrecoildist	= 2,
+		barrelrecoilspeed	= 10,
+		turretturnspeed		= 45,
+		elevationspeed		= 45,
+		aaweapon			= 1,
 
+		normaltex			= "unittextures/GBRFairmileD_normals.png",
 	},
 }
 

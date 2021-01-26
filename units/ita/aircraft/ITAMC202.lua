@@ -17,6 +17,7 @@ local ITA_MC202 = Fighter:New{
 		enginesoundnr		= 12,
 		maxFuel				= 90,
 
+		normaltex			= "unittextures/ITAMC202_normals.png",
 	},
 
 	weapons = {

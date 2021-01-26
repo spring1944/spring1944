@@ -19,6 +19,7 @@ local RUS_A19 = FGInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/RUSA19_normals.png",
 	},
 }
 
@@ -34,7 +35,7 @@ local RUS_A19_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/RUSA19_normals.png",
 	},
 }
 

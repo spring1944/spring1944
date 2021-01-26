@@ -16,6 +16,7 @@ local GBR_25Pdr = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GBR25Pounder_normals.png",
 	},
 }
 
@@ -34,7 +35,7 @@ local GBR_25Pdr_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GBR25Pounder_normals.png",
 	},
 }
 

@@ -16,6 +16,7 @@ local JPN_Type91_105mm = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/JPNType91_105mm_Stationary_normals.png",
 	},
 }
 
@@ -31,7 +32,7 @@ local JPN_Type91_105mm_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/JPNType91_105mm_Stationary_normals.png",
 	},
 }
 

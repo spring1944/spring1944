@@ -16,6 +16,7 @@ local ITA_Obice100 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/ITAObice100_Stationary_normals.png",
 	},
 }
 
@@ -31,7 +32,7 @@ local ITA_Obice100_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/ITAObice100_Stationary_normals.png",
 	},
 }
 

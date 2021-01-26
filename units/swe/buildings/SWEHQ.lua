@@ -11,7 +11,9 @@ local SWE_HQ = HQ:New{
 								ooyyyyo 
 								ooyyyyo 
 								ooyyyyo]],
-
+	customParams = {
+		normaltex			= "unittextures/SWEPBilM31f_normals.png",
+	},
 }
 
 return lowerkeys({

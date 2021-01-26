@@ -3,7 +3,7 @@ local GER_OpelBlitzBase = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/GEROpelBlitz_normals.png",
 	},
 }
 

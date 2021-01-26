@@ -33,7 +33,7 @@ local US_SC = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/USSC_normals.png",
 	},
 }
 
@@ -66,6 +66,7 @@ local US_SC_Turret_20mm_Left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing 					= 3,
 		defaultheading1		= math.rad(-90),
+		normaltex			= "unittextures/USSC_normals.png",
 	},
 }
 local US_SC_Turret_20mm_Right = US_SC_Turret_20mm_Left:New{
@@ -116,7 +117,7 @@ local US_SC_Turret_76mm = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
-
+		normaltex			= "unittextures/USSC_normals.png",
     },
 }
 

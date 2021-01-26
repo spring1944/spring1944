@@ -39,7 +39,7 @@ local HoNiBase = LightTank:New(AssaultGun):New{
 		},
 		maxammo				= 14,
 		maxvelocitykmh		= 38,
-		exhaust_fx_name			= "diesel_exhaust",
+		exhaust_fx_name		= "diesel_exhaust",
 	},
 	
 }
@@ -62,6 +62,9 @@ local JPNHoNiI = HoNiBase:New(OpenTopped):New{
 			name				= ".50calproof",
 		},
 	},
+	customParams = {
+		normaltex			= "unittextures/JPNHoNiI_normals.png",
+	},
 }
 
 local JPNHoNiII = HoNiBase:New(SPArty):New(OpenTopped):New{
@@ -81,6 +84,7 @@ local JPNHoNiII = HoNiBase:New(SPArty):New(OpenTopped):New{
 	
 	customParams = {
 		maxammo				= 4,
+		normaltex			= "unittextures/JPNHoNiII_normals.png",
 	},
 }
 
@@ -117,6 +121,7 @@ local JPNHoNiIII = HoNiBase:New(TankDestroyer):New{
 				},
 			},
 		},
+		normaltex			= "unittextures/JPNHoNiIII_normals.png",
 	},
 }
 	

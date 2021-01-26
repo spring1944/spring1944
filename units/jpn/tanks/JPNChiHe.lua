@@ -71,7 +71,7 @@ local JPNChiHe = MediumTank:New{
 		maxammo				= 20,
 		maxvelocitykmh		= 44,
 		exhaust_fx_name			= "diesel_exhaust",
-
+		normaltex			= "unittextures/JPNChiHe_normals.png",
 	},
 }
 

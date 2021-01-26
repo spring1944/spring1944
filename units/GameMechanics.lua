@@ -35,7 +35,7 @@ local Buoy = Flag:New{ -- One day...
 	objectName			= "Gen/buoy.S3O",
 	canMove 			= false, -- for some reason cannot be true or it won't float?
 	customParams = {
-
+		normaltex		= "unittextures/Buoy_normals.png",
 	},
 }
 

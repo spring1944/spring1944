@@ -49,7 +49,7 @@ local JPN_AbTei = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/JPNAbTei_normals.png",
 	},
 }
 
@@ -71,6 +71,7 @@ local JPN_AbTei_Turret_57mm_Front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
+		normaltex			= "unittextures/JPNAbTei_normals.png",
     },
 }
 
@@ -102,6 +103,7 @@ local JPN_AbTei_Turret_MG = EnclosedBoatTurret:New{
 		--barrelrecoilspeed		= 10,
 		turretturnspeed			= 20,
 		elevationspeed			= 30,
+		normaltex			= "unittextures/JPNAbTei_normals.png",
 	},
 }
 

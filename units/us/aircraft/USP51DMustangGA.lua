@@ -13,7 +13,7 @@ local US_P51DMustangGA = AttackFighter:New{
 		enginesound			= "p51b-",
 		enginesoundnr		= 16,
 		maxammo				= 8,
-
+		normaltex			= "unittextures/USP51MustangGA_normals.png",
 	},
 
 	weapons = {

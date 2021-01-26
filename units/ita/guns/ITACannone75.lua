@@ -16,7 +16,7 @@ local ITA_Cannone75 = FGInfGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/ITACannone75_Stationary_normals.png",
 	},
 }
 
@@ -32,7 +32,7 @@ local ITA_Cannone75_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/ITACannone75_Stationary_normals.png",
 	},
 }
 

@@ -56,7 +56,7 @@ local GERStuGIII = MediumTank:New(AssaultGun):New{
 		maxammo				= 11,
 		soundcategory		= "GER/Tank/StuG",
 		maxvelocitykmh		= 40,
-
+		normaltex			= "unittextures/GERStuGIII_normals.png",
 	},
 }
 

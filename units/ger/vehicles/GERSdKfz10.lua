@@ -46,6 +46,7 @@ local GERSdKfz10 = ArmouredCarAA:New{
 		maxammo				= 25,
 		maxvelocitykmh		= 75,
 
+		normaltex			= "unittextures/GERSdkfz10a_normals.png",
 	}
 }
 

@@ -1,7 +1,7 @@
 local SWEInf = {
 	maxDamageMul		= 1.4,
 	customParams = {
-
+		normaltex			= "unittextures/SWEInfantry_normals.png",
 	},
 }
 
@@ -148,6 +148,7 @@ local SWE_Partisan = RifleInf:New(Partisan):New{
 	customParams = {
 		flagCapRate			= 0.005,
 		weapontoggle		= "ambush",
+		normaltex			= "unittextures/RUSPartisan_normals.png",
 	},
 
 	weapons = {

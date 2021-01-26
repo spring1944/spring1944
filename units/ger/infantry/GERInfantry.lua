@@ -1,7 +1,7 @@
 local GERInf = {
 	maxDamageMul		= 1.1,
 	customParams = {
-
+		normaltex			= "unittextures/GERInfantry_normals.png",
 	},
 }
 

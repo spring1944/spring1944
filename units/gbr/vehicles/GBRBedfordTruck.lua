@@ -3,7 +3,7 @@ local GBR_BedfordBase = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex		= "unittextures/GBRBedford_normals.png",
 	},
 }
 

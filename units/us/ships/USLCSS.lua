@@ -41,7 +41,7 @@ local US_LCSS = Boat:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},
-
+		normaltex			= "unittextures/USLCSS_normals.png",
 	},
 	--[[
 	sfxtypes = { -- remove once using LUS

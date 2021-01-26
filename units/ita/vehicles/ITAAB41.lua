@@ -71,7 +71,7 @@ local ITAAB41 = ArmouredCar:New{
 		reversemult			= 0.75,
 		maxammo				= 19,
 		maxvelocitykmh		= 78,
-
+		normaltex			= "unittextures/ITAAB41_normals.png",
 	}
 }
 

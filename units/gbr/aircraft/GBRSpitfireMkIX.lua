@@ -13,6 +13,7 @@ local GBR_SpitfireMkIX = FighterBomber:New{
 		enginesound			= "spitfireb-",
 		enginesoundnr		= 18,
 
+		normaltex			= "unittextures/GBRSpitfireMkXIV_normals.png",
 	},
 
 	weapons = {

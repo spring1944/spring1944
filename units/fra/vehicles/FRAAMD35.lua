@@ -72,7 +72,7 @@ local FRAAMD35 = ArmouredCar:New{
 		maxammo				= 19,
 		maxvelocitykmh		= 73,
 
-
+		normaltex = "unittextures/FRAAMD35_normals.png",
 	}
 }
 

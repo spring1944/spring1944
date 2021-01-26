@@ -5,7 +5,7 @@ local RUSPDrop = Null:New{
 	iconType					= "paratrooper",
 	maxDamage					= 1500,
 	customParams = {
-
+		normaltex			= "unittextures/RUSPDrop_normals.png",
 	},
 }
 

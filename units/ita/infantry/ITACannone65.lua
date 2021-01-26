@@ -16,7 +16,8 @@ local ITACannone65 = FGInfGun:New{
 		},
 	},
 	customParams = {
-        weapontoggle           = "priorityHEATHE",
+		weapontoggle		= "priorityHEATHE",
+		normaltex			= "unittextures/ITACannone65_normals.png",
 	},
 }
 

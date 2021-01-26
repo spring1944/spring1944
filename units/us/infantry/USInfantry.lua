@@ -1,12 +1,15 @@
 local USInf = {
 	maxDamageMul		= 1.0,
 	customParams = {
-
+		normaltex			= "unittextures/USInfantry_normals.png",
 	},
 }
 
 local USPara = {
 	maxDamageMul		= 1.4,
+	customParams = {
+		normaltex			= "unittextures/USParatrooper_normals.png",
+	},
 }
 
 local US_HQEngineer = EngineerInf:New(USInf):New{

@@ -70,7 +70,7 @@ local ITAP40 = MediumTank:New{
 		maxvelocitykmh		= 40,
 		turretturnspeed		= 22,
 		weapontoggle		= "priorityAPHEATHE",
-
+		normaltex			= "unittextures/ITAP40_normals.png",
 	},
 }
 

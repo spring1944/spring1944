@@ -13,7 +13,7 @@ local US_M5Gun = ATInfGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/USM5Gun_normals.png",
 	},
 }
 
@@ -27,7 +27,7 @@ local US_M5Gun_Stationary = ATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/USM5Gun_normals.png",
 	},
 }
 

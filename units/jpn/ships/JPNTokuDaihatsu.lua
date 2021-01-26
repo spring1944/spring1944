@@ -29,7 +29,7 @@ local JPN_TokuDaihatsu = TankLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
-
+		normaltex			= "unittextures/JPNTokuDaihatsu_normals.png",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

@@ -16,7 +16,7 @@ local SWEKanonM02_33 = FGInfGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/SWEKanonM02_33_Stationary_normals.png",
 	},
 }
 
@@ -33,7 +33,7 @@ local SWEKanonM02_33_Stationary = FGGun:New{
 		},
 	},	
 	customParams = {
-
+		normaltex			= "unittextures/SWEKanonM02_33_Stationary_normals.png",
 	},
 }
 

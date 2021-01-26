@@ -29,6 +29,7 @@ local GER_MFP = TankLandingCraftComposite:New{
 			["x"] = {angle = 10, speed = 3},
 		},
 		customanims = "ger_mfp",
+		normaltex			= "unittextures/GERMFP_normals.png",
 	},
 }
 
@@ -56,6 +57,7 @@ local germfp_turret_37mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
+		normaltex			= "unittextures/GERMFP_normals.png",
     },
 }
 
@@ -100,6 +102,7 @@ local germfp_turret_20mm_left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing					= 3,
 		defaultheading1			= math.rad(-90),
+		normaltex				= "unittextures/GERMFP_normals.png",
     },
 }
 

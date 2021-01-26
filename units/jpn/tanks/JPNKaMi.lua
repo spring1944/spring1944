@@ -69,7 +69,7 @@ local JPNKaMi = LightTank:New(Amphibian):New{
 		exhaust_fx_name			= "diesel_exhaust",
 		flagCapRate			= 0.5,
 		flagCapType			= 'buoy',
-
+		normaltex			= "unittextures/JPNKaMi_normals.png",
 	},
 }
 

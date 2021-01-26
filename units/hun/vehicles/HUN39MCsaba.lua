@@ -68,7 +68,7 @@ local HUN39MCsaba = ArmouredCar:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-
+		normaltex			= "unittextures/HUN39MCsaba_normals.png",
 	}
 }
 

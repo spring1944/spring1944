@@ -13,7 +13,7 @@ local RUS_ZiS2 = ATInfGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/RUSZiS2_normals.png",
 	},
 }
 
@@ -27,7 +27,7 @@ local RUS_ZiS2_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/RUSZiS2_normals.png",
 	},
 }
 

@@ -6,7 +6,7 @@ local FRALafflyV15R = ScoutCar:New{
 	objectName			= "FRA/FRALafflyV15R.s3o",
 
 	customParams = {
-
+		normaltex = "unittextures/FRALafflyV15_normals.png",
 	},
 }
 

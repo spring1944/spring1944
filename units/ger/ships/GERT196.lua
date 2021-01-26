@@ -36,6 +36,7 @@ local GER_T196 = ArmedBoat:New{
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
 
+		normaltex			= "unittextures/GERT196_normals.png",
 	},
 }
 
@@ -57,6 +58,7 @@ local GERT196_Turret_105 = PartiallyEnclosedBoatTurret:New{
 		turretturnspeed			= 28,
 		elevationspeed			= 28,
 
+		normaltex			= "unittextures/GERT196_normals.png",
 	},
 }
 

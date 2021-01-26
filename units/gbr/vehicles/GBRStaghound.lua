@@ -58,6 +58,7 @@ local GBRStaghound = ArmouredCarAA:New{
 		turretturnspeed		= 43, -- may find this too slow in game
 		maxvelocitykmh		= 89,
 
+		normaltex			= "unittextures/GBRStaghound1_normals.png",
 	}
 }
 

@@ -19,6 +19,7 @@ local ITA_Cannone_105_32 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/ITACannone105_32_with_tractor_normals.png",
 	},
 }
 
@@ -34,7 +35,7 @@ local ITA_Cannone_105_32_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/ITACannone105_32_with_tractor_normals.png",
 	},
 }
 

@@ -54,7 +54,7 @@ local GERWespe = LightTank:New(SPArty):New(OpenTopped):New{
 		},
 		maxammo				= 6,
 		maxvelocitykmh		= 40,
-
+		normaltex			= "unittextures/GERWespe_normals.png",
 	},
 }
 

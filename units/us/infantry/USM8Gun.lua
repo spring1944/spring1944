@@ -14,6 +14,7 @@ local USM8Gun = InfantryGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/USM8Gun_normals.png",
 	},
 }
 

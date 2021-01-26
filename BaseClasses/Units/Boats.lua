@@ -52,6 +52,7 @@ local AssaultBoat = Boat:New{
 	waterline			= 0.2,
 	customParams = {
 		compositetransporter	= true,
+		normaltex				= "unittextures/USRubberDingy_normals.png",
 		wiki_subclass_comments = [[Light infantry transport, meant to unload
 a small group of infantry units in a beach. You should never understimate the
 power of a small infantry group behind the enemy lines.]],
@@ -80,6 +81,7 @@ local PontoonRaft = Boat:New{
 	waterline			= 2.5,
 	customParams = {
 		compositetransporter	= true,
+		normaltex				= "unittextures/USPontoonRaft_normals.png",
 		wiki_subclass_comments = [[Light vehicles transport, meant to transport
 a single vehicle trhough the water. Due to its poor armour and velocity, this
 unit is usually considered for logistic, but not assault operations.]],

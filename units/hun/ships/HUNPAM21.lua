@@ -35,7 +35,7 @@ local HUN_PAM21 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/GBRParaM8Gun_normals.png",
 	},
 }
 
@@ -77,7 +77,7 @@ local HUN_PM = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/HUNPAM_PM_normals.png",
 	},
 }
 
@@ -98,7 +98,7 @@ local HUNPAM21_turret_20mm = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-
+		normaltex			= "unittextures/HUNPAM_PM_normals.png",
     },
 }
 
@@ -124,7 +124,7 @@ local HUNPM_turret_40mm_front = EnclosedBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 20,
-
+		normaltex			= "unittextures/HUNPAM_PM_normals.png",
     },
 }
 
@@ -160,7 +160,7 @@ local HUNPAM21_turret_mg = EnclosedBoatTurret:New{
 		barrelrecoildist		= 0,
 		turretturnspeed			= 30,
 		elevationspeed			= 45,
- 
+ 		normaltex			= "unittextures/HUNPAM_PM_normals.png",
 	},
 }
 

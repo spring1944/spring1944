@@ -18,6 +18,7 @@ local US_M2Gun = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/USM2Gun_normals.png",
 	},
 }
 
@@ -36,7 +37,7 @@ local US_M2Gun_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/USM2Gun_normals.png",
 	},
 }
 

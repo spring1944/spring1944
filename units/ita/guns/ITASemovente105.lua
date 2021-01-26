@@ -57,6 +57,7 @@ local ITASemovente105 = MediumTank:New(AssaultGun):New{
 		maxammo				= 11,
 		maxvelocitykmh		= 35,
 		weapontoggle		= "priorityHEATHE",
+		normaltex			= "unittextures/ITASemovente105_normals.png",
 	},
 }
 

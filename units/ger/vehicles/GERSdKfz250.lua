@@ -74,6 +74,7 @@ local GERSdKfz250 = ArmouredCar:New{
 		maxvelocitykmh		= 76,
 		customanims			= "sdkfz250",
 
+		normaltex			= "unittextures/GERSdKfz250_9_normals.png",
 	}
 }
 

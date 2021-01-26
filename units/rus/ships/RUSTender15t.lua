@@ -22,7 +22,7 @@ local RUS_Tender15t = InfantryLandingCraft:New{
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
-
+		normaltex			= "unittextures/RUSTender15t_normals.png",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

@@ -19,6 +19,7 @@ local GBR_4_5in = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/GBR45inGun_normals.png",
 	},
 }
 
@@ -35,7 +36,7 @@ local GBR_4_5in_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/GBR45inGun_normals.png",
 	},
 }
 

@@ -32,7 +32,7 @@ local HUN_AFP = ArmedBoat:New{
 		deathanim = {
 			["z"] = {angle = -10, speed = 5},
 		},
-
+		normaltex			= "unittextures/HUNAFP_normals.png",
 	},
 }
 
@@ -53,7 +53,7 @@ local HUNAFP_Turret_88mm_front = PartiallyEnclosedBoatTurret:New{ --
 		barrelrecoilspeed		= 5,
 		turretturnspeed			= 12,
 		elevationspeed			= 15,
-
+		normaltex			= "unittextures/HUNAFP_normals.png",
     },
 }
 
@@ -122,7 +122,7 @@ local HUNAFP_turret_flak_front = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon			= 1,
-
+		normaltex			= "unittextures/HUNAFP_normals.png",
     },
 }
 
@@ -162,7 +162,7 @@ local HUNAFP_Turret_37mm = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 30,
 		aaweapon				= 1,
-
+		normaltex			= "unittextures/HUNAFP_normals.png",
     },
 }
 
@@ -192,6 +192,7 @@ local HUNAFP_turret_20mm_left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing					= 2,
 		defaultheading1			= math.rad(180),
+		normaltex			= "unittextures/HUNAFP_normals.png",
 	},
 }
 

@@ -43,8 +43,8 @@ local ITAAS37 = HalfTrack:New{
 				},
 			},
 		},
-		maxvelocitykmh			= 52,
-
+		maxvelocitykmh		= 52,
+		normaltex			= "unittextures/ITAAS37_normals.png",
 	},
 	
 	weapons = {

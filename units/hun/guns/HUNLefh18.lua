@@ -16,6 +16,7 @@ local HUN_LeFH18 = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/HUNLefh18_normals.png",
 	},
 }
 
@@ -32,7 +33,7 @@ local HUN_LeFH18_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/HUNLefh18_normals.png",
 	},
 }
 

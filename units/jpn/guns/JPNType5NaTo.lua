@@ -64,7 +64,8 @@ local JPNType5NaTo = MediumTank:New(TankDestroyer):New(OpenTopped):New{
 				scale = {1, 0.41, 0.6},
 				offset = {0, 4, 2},
 			},
-		}
+		},
+		normaltex			= "unittextures/JPNType5NaTo_normals.png",
 	},
 }
 

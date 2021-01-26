@@ -55,8 +55,9 @@ local ITASemovente75_18 = MediumTank:New(AssaultGun):New{
 		},
 		maxammo				= 14,
 		maxvelocitykmh		= 40,
-		exhaust_fx_name			= "diesel_exhaust",
+		exhaust_fx_name		= "diesel_exhaust",
 		weapontoggle		= "priorityHEATHE",
+		normaltex			= "unittextures/ITASemovente75_18_normals.png",
 	},
 }
 

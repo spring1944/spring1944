@@ -27,6 +27,7 @@ local HUN_LaBo41 = TankLandingCraftComposite:New{
 		armlength 	= 98,
 		ramplength	= 50,
 		colsize		= 40,
+		normaltex			= "unittextures/HUNLaBo41_normals.png",
 	},
 }
 

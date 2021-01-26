@@ -77,6 +77,7 @@ local JPNChiHa = ChiHaBase:New{
 	
 	customParams = {
 		maxammo				= 20,
+		normaltex			= "unittextures/JPNChiHa_normals.png",
 	},
 }	
 
@@ -101,6 +102,7 @@ local JPNChiHa120mm = ChiHaBase:New{
 	
 	customParams = {
 		maxammo				= 5,
+		normaltex			= "unittextures/JPNChiHa120mm_normals.png",
 	},
 }
 
@@ -131,6 +133,7 @@ local JPNShinhotoChiHa = JPNChiHa:New{ -- just change the gun
 			},
 		},
 		maxammo				= 15,
+		normaltex			= "unittextures/JPNShinhotoChiHa_normals.png",
 	},
 }	
 

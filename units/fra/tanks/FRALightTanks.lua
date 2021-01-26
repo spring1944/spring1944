@@ -73,6 +73,7 @@ local FRAR35 = LightTank:New{
 		maxvelocitykmh		= 20,
 		customanims			= "renault_r",
 
+		normaltex = "unittextures/FRAR3539_normals.png",
 	},
 }
 
@@ -136,6 +137,8 @@ local FRAH35 = FRAR35:New{
 
 		maxvelocitykmh	= 25,
 		customanims	= "hotchkiss_h",
+
+		normaltex = "unittextures/FRAH3539_normals.png",
 	},
 }
 

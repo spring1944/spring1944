@@ -33,6 +33,7 @@ local US_LCVP = InfantryLandingCraft:New{
 		armlength 	= 42,
 		rowsize		= 3,
 		colsize		= 3,
+		normaltex			= "unittextures/USLCVP_normals.png",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {
@@ -47,7 +48,7 @@ SWE_LCVP = US_LCVP:New{
 	script			= "uslcvp.cob",
 	customparams = {
 		soundcategory		= "SWE/Boat",
-
+		normaltex			= "unittextures/SWELCVP_normals.png",
 	}
 }
 

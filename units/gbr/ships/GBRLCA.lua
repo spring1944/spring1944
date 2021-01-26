@@ -29,12 +29,13 @@ local GBR_LCA = InfantryLandingCraft:New{
 					thickness		= 0, -- troop wells are 6mm armour but centreline is open
 				},
 			},
-		}
+		},
 		--[[ enable me later when using LUS
 		deathanim = {
 			["z"] = {angle = -30, speed = 10},
 		},]]
 
+		normaltex			= "unittextures/GBRLCA_normals.png",
 	},
 	sfxtypes = { -- remove once using LUS
 		explosionGenerators = {

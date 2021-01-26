@@ -28,6 +28,7 @@ local ITA_Vedetta = ArmedBoat:New{
 			["z"] = {angle = -30, speed = 10},
 		},]]
 
+		normaltex			= "unittextures/ITAVedetta_normals.png",
 	},
 }
 
@@ -47,6 +48,7 @@ local ITA_Vedetta_Turret_76mm = OpenBoatTurret:New{
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
 
+		normaltex			= "unittextures/ITAVedetta_normals.png",
 	},
 }
 
@@ -74,6 +76,7 @@ local ITA_Vedetta_Turret_MG = OpenBoatTurret:New{
 		defaultheading1		= math.rad(180),
 		aaweapon				= 1,
 
+		normaltex			= "unittextures/ITAVedetta_normals.png",
 	},
 }
 

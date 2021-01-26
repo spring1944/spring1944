@@ -2,7 +2,7 @@ local RUSInf = {
 	maxDamageMul		= 0.65,
 	customParams = {
 		flagCapRate		= 0.085,
-
+		normaltex			= "unittextures/RUSInfantry_normals.png",
 	},
 }
 local Partisan = {
@@ -13,6 +13,9 @@ local Partisan = {
 	minCloakDistance	= 225,
 
 	corpse			= "ruspsoldier_dead",
+	customParams = {
+		normaltex			= "unittextures/RUSPartisan_normals.png",
+	},
 }
 
 local RUS_Engineer = EngineerInf:New(RUSInf):New{
@@ -33,6 +36,7 @@ local RUS_Commissar = EngineerInf:New(RUSInf):New{
 	customParams = {
 		blockfear			= true,
 		flagCapRate			= 3.125,
+		normaltex			= "unittextures/RUSCommissar_normals.png",
 	},
 }
 

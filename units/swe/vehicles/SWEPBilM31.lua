@@ -55,7 +55,7 @@ local SWEPBilM31 = ArmouredCarAA:New{
 		},
 		maxammo				= 19,
 		maxvelocitykmh		= 60,
-
+		normaltex			= "unittextures/SWEPBilM31_normals.png",
 	}
 }
 

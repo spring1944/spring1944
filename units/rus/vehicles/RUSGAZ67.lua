@@ -3,7 +3,7 @@ local RUSGAZ67 = ScoutCar:New{
 	trackOffset			= 4,
 	trackWidth			= 11,
 	customParams = {
-
+		normaltex			= "unittextures/RUSGAZ67_normals.png",
 	},
 }
 

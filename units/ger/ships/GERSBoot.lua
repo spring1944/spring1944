@@ -28,11 +28,12 @@ local GER_SBoot = ArmedBoat:New{
 			["z"] = {angle = 45, speed = 15},
 		},
 		smokegenerator		=	1,
-		smokeradius		=	300,
+		smokeradius			=	300,
 		smokeduration		=	40,
 		smokecooldown		=	30,
-		smokeceg		=	"SMOKESHELL_Medium",
+		smokeceg			=	"SMOKESHELL_Medium",
 
+		normaltex			= "unittextures/GERSBoot_normals.png",
 	},
 }
 
@@ -59,6 +60,7 @@ local GER_SBoot_Turret_20mm_Front = OpenBoatTurret:New{
 		elevationspeed			= 80,
 		aaweapon				= 1,
 
+		normaltex				= "unittextures/GERSBoot_normals.png",
     },
 }
 
