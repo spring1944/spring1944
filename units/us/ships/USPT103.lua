@@ -34,7 +34,7 @@ local US_PT103 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/USPT103_normals.png",
 	},
 }
 
@@ -56,7 +56,7 @@ local US_PT103_Turret_Twin50 = OpenBoatTurret:New{
 	customparams = {
 		turretturnspeed			= 250, -- TODO: :o huge compared to others
 		elevationspeed			= 200, -- TODO: ditto
-
+		normaltex			= "unittextures/USPT103_normals.png",
 	},
 }
 
@@ -84,7 +84,7 @@ local US_PT103_Turret_20mm = OpenBoatTurret:New{
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
 		aaweapon				= 1,
-
+		normaltex			= "unittextures/USPT103_normals.png",
 	},
 }
 
@@ -114,6 +114,7 @@ local US_PT103_Turret_Bofors = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing					= 2,
 		defaultheading1		= math.rad(180),
+		normaltex			= "unittextures/USPT103_normals.png",
     },
 }
 

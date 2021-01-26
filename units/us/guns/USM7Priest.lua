@@ -52,7 +52,7 @@ local USM7Priest = MediumTank:New(SPArty):New(OpenTopped):New{
 		},
 		maxammo				= 13,
 		maxvelocitykmh		= 39,
-
+		normaltex			= "unittextures/USM7Priest_normals.png",
 	},
 }
 

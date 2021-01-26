@@ -36,7 +36,6 @@ local USM3Base = Vehicle:New{
 				},
 			},
 		},
-		normaltex				= "unittextures/gbrm5halftrack_normals.dds",
 		maxvelocitykmh			= 72,
 		frontseats				= 2,
 	},
@@ -54,9 +53,8 @@ local USM3Halftrack = HalfTrack:New(USM3Base):New{
 			name					= "M2BrowningAA",
 		},
 	},
-	
 	customParams = {
-		normaltex	= "",
+		normaltex			= "unittextures/USM3A1Halftrack_normals.png",
 	},
 }
 
@@ -88,13 +86,24 @@ local USM16MGMC = USM3Base:New(ArmouredCarAA):New{
 		},
 	},
 	customParams = {
-		normaltex	= "",
+		normaltex			= "unittextures/USM3A1Halftrack_normals.png",
 	},
 }
 
 -- Lend Lease
-local GBRM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
-local RUSM5Halftrack = USM3Halftrack:New{name = "M5A1 Halftrack"}
+local GBRM5Halftrack = USM3Halftrack:New{
+	name = "M5A1 Halftrack",
+	customParams = {
+		normaltex			= "unittextures/gbrm5halftrack_normals.dds",
+	},
+}
+local RUSM5Halftrack = USM3Halftrack:New{
+	name = "M5A1 Halftrack",
+	customParams = {
+		normaltex			= "unittextures/RUSM5Halftrack_normals.dds",
+	},
+}
+
 
 -- add custom anims here (model-specific, do not apply to M5)
 USM3Halftrack.customparams.customanims		= "m3a1halftrack"

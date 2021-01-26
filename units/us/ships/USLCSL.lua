@@ -36,7 +36,7 @@ local US_LCSL = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/USLCSL_normals.png",
 	},
 }
 
@@ -83,7 +83,7 @@ local US_LCSL_Turret_TwinBofors_Front = OpenBoatTurret:New{
 		turretturnspeed			= 30,
 		elevationspeed			= 30,
 		aaweapon				= 1,
-
+		normaltex			= "unittextures/USLCSL_normals.png",
     },
 }
 
@@ -127,7 +127,7 @@ local US_LCSL_Turret_76mm = OpenBoatTurret:New{
 		barrelrecoilspeed		= 10,
 		turretturnspeed			= 15,
 		elevationspeed			= 15,
-
+		normaltex			= "unittextures/USLCSL_normals.png",
     },
 }
 

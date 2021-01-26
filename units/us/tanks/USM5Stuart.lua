@@ -26,7 +26,6 @@ local StuartBase = LightTank:New{
 		},
 
 		maxvelocitykmh		= 58,
-
 	},
 }	
 

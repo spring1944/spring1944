@@ -24,6 +24,7 @@ local US_LCT = TankLandingCraftComposite:New{
 		deathanim = {
 			["x"] = {angle = -5, speed = 5},
 		},
+		normaltex			= "unittextures/USLCT_normals.png",
 	},
 }
 
@@ -53,6 +54,7 @@ local US_LCT_Turret_20mm_Left = OpenBoatTurret:New{
 		aaweapon				= 1,
 		facing 					= 3,
 		defaultheading1			= math.rad(-90),
+		normaltex			= "unittextures/USLCT_normals.png",
 	},
 }
 local US_LCT_Turret_20mm_Right = US_LCT_Turret_20mm_Left:New{

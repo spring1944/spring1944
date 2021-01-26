@@ -19,6 +19,7 @@ local US_M1_45inGun = HInfGun:New{
 		},
 	},
 	customParams = {
+		normaltex			= "unittextures/USM1_45inGun_normals.png",
 	},
 }
 
@@ -35,7 +36,7 @@ local US_M1_45inGun_Stationary = HGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/USM1_45inGun_normals.png",
 	},
 }
 
