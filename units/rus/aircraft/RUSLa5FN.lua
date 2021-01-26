@@ -18,7 +18,7 @@ local RUS_La5FN = Fighter:New{
 			enter_map		= 'sounds/rus/air/fighter/rus_air_fighter_select.wav',
 			return_to_base  = 'sounds/rus/air/rus_air_return.wav',
 		},
-		normaltex			= "unittextures/RUSLa5FN1_normalspng",
+		normaltex			= "unittextures/RUSLa5FN1_normals.png",
 	},
 
 	weapons = {

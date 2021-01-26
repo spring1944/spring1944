@@ -100,7 +100,7 @@ local GBRM5Halftrack = USM3Halftrack:New{
 local RUSM5Halftrack = USM3Halftrack:New{
 	name = "M5A1 Halftrack",
 	customParams = {
-		normaltex			= "unittextures/RUSM5Halftrack_normals.dds",
+		normaltex			= "unittextures/RUSM5Halftrack_normals.png",
 	},
 }
 
