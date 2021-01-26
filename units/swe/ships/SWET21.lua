@@ -30,7 +30,7 @@ local SWE_T21 = ArmedBoat:New{
 		smokeduration		=	40,
 		smokecooldown		=	30,
 		smokeceg		=	"SMOKESHELL_Medium",
-
+		normaltex			= "unittextures/SWET21_normals.png",
 	},
 }
 
@@ -60,7 +60,7 @@ local SWE_T21_Turret_20mm_Rear = OpenBoatTurret:New{
 		barrelrecoilspeed		= 20,
 		turretturnspeed			= 45,
 		elevationspeed			= 45,
-
+		normaltex			= "unittextures/SWET21_normals.png",
     },
 }
 

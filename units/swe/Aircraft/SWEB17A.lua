@@ -19,7 +19,7 @@ local SWE_B17A = Fighter:New{
 		enginesoundnr		= 11,
 		maxammo				= 5,
 		maxFuel				= 105,
-
+		normaltex			= "unittextures/SWEB17_normals.png",
 	},
 
 	weapons = {

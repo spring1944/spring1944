@@ -27,7 +27,7 @@ local SWETgBilM42 = HalfTrack:New{
 			},
 		},
 		maxvelocitykmh			= 70,
-
+		normaltex			= "unittextures/SWEKPBilM42_normals.png",
 	},
 }
 

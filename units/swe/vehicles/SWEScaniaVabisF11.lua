@@ -3,7 +3,7 @@ local SWE_ScaniaVabisF11Base = Truck:New{
 	trackOffset				= 10,
 	trackWidth				= 13,
 	customParams = {
-
+		normaltex			= "unittextures/SWEScaniaVabisF11_normalss.png",
 	},
 }
 

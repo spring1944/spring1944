@@ -13,7 +13,7 @@ local SWE_PvKanM43 = ATInfGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/SWEPvKanM43_stationary_normals.png",
 	},
 }
 
@@ -27,7 +27,7 @@ local SWE_PvKanM43_Stationary = LightATGun:New{
 		},
 	},
 	customParams = {
-
+		normaltex			= "unittextures/SWEPvKanM43_stationary_normals.png",
 	},
 }
 

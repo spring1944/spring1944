@@ -65,7 +65,7 @@ local SWEStrvM41 = LightTank:New{
 		},
 		maxammo				= 15,
 		maxvelocitykmh		= 42,
-
+		normaltex			= "unittextures/SWEStrvM41_normals.png",
 	},
 }
 

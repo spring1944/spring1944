@@ -11,7 +11,9 @@ local SWE_Barracks = Barracks:New{
 									cccccc 
 									cccccc 
 									cccccc]],
-
+	customParams = {
+		normaltex			= "unittextures/SWEScaniaVabisF11_normals.png",
+	},
 }
 
 return lowerkeys({

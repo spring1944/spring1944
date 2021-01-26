@@ -75,7 +75,7 @@ local SWEPBilM40 = ArmouredCar:New{
 		maxammo				= 19,
 		reversemult			= 0.75,
 		maxvelocitykmh		= 73,
-
+		normaltex			= "unittextures/SWEPBilM40_normals.png",
 	}
 }
 
