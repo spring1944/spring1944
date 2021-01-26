@@ -18,6 +18,9 @@ for _, side in pairs(Sides) do
 	-- Logistics
 	units[side .. "storage"] = Storage:New{	
 		objectName				= "GEN/Storage.S3O",
+		customParams = {
+			normaltex			= "unittextures/LogisticsLarge_normals.dds",
+		},
 	}
 	units[side .. "trucksupplies"] = Supplies:New{}
 end
@@ -29,15 +32,25 @@ units["jpnvehicleyard2"] = VehicleYardArmour:New{
 	name = "Light Vehicle & Amphibian Yard",
 	description = "Light Vehicle & Amphibian Prep. Facility",
 }
-units["jpnstorage"].objectname = "jpn/jpnstorage.s3o"
-
--- Hungary uses side-specific storage model
-units["hunstorage"].objectname = "hun/hunstorage.s3o"
 
 -- US has a second type of vehicles yard
 units["usvehicleyard2"] = VehicleYardArmour:New{}
 units["usvehicleyard2"].name = "Uppgunned Light Vehicle & Armour Yard"
 units["usvehicleyard2"].description = "Uppgunned Light Vehicle & Armour Prep. Facility"
+
+-- Side-specific storages
+units["jpnstorage"] = Storage:New{	
+	objectName				= "jpn/jpnstorage.s3o",
+	customParams = {
+		normaltex			= "unittextures/JPNStorage_normals.png",
+	},
+}
+units["hunstorage"] = Storage:New{	
+	objectName				= "hun/hunstorage.s3o",
+	customParams = {
+		normaltex			= "unittextures/HUNStorage_normals.png",
+	},
+}
 
 --units["usspyard1"] = nil
 
