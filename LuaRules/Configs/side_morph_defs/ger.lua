@@ -91,6 +91,7 @@ local gerDefs = {
     time = 12,
     metal = 0,
     energy = 0,
+    directional = true,
   },
 
   germg42_sandbag =
@@ -120,6 +121,17 @@ local gerDefs = {
     energy = 0,
   },
   
+  gerpak40_truck = 
+  {
+    into = 'gerpak40',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  
   gerpak40 = 
   {
     into = 'gerpak40_stationary',
@@ -138,6 +150,17 @@ local gerDefs = {
     energy = 0,
   },
   
+  gerlefh18_truck = 
+  {
+    into = 'gerlefh18',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+
   gerlefh18 = 
   {
     into = 'gerlefh18_stationary',
@@ -156,6 +179,17 @@ local gerDefs = {
     energy = 0,
   },
 
+  ger10sk18_truck = 
+  {
+    into = 'ger10sk18',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },  
+
   ger10sk18 = 
   {
     into = 'ger10sk18_stationary',
@@ -173,6 +207,18 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },  
+
+  gernebelwerfer_truck = 
+  {
+    into = 'gernebelwerfer',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+
   gernebelwerfer = 
   {
     into = 'gernebelwerfer_stationary',

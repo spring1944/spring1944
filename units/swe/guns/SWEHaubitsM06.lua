@@ -1,3 +1,14 @@
+local SWEHaubitsM06_Truck = HGunTractor:New{
+	name					= "Towed Haubits m/06",
+	corpse					= "SWEVolvoHBT_Destroyed",
+	buildCostMetal			= 2650,
+	trackOffset				= 10,
+	trackWidth				= 13,
+	customParams = {
+		normaltex			= "unittextures/SWEVolvoHBT_normals.png",
+	},
+}
+
 local SWEHaubitsM06 = HInfGun:New{
 	name					= "Haubits m/06",
 	corpse					= "swehaubitsm06_destroyed",
@@ -38,6 +49,7 @@ local SWEHaubitsM06_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["SWEHaubitsM06_Truck"] = SWEHaubitsM06_Truck,
 	["SWEHaubitsM06"] = SWEHaubitsM06,
 	["SWEHaubitsM06_Stationary"] = SWEHaubitsM06_Stationary,
 })

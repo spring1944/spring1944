@@ -1,3 +1,14 @@
+local FRA_105mm_Truck = HGunTractor:New{
+	name					= "Towed Canon de 105 court modèle 1935 B",
+	corpse					= "fracitroenp17_destroyed",
+	trackOffset				= 5,
+	trackWidth				= 12,
+	objectName              = "FRA/FRA105mmMle1935B_truck.s3o",
+	customParams = {
+		normaltex = "unittextures/FRACitroenP17_normals.png",
+	},
+}
+
 local FRA_105mm = HInfGun:New{
 	name					= "Canon de 105 court modèle 1935 B",
 	corpse					= "FRA105mm_destroyed",
@@ -43,6 +54,7 @@ local FRA_105mm_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["FRA105mmMle1935B_Truck"] = FRA_105mm_Truck,
 	["FRA105mmMle1935B"] = FRA_105mm,
 	["FRA105mmMle1935B_Stationary"] = FRA_105mm_Stationary,
 })

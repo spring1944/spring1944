@@ -1,3 +1,13 @@
+local HUN_31M_105mm_Truck = LongRangeGunTractor:New{
+	name					= "Towed 105mm 31M Tábori Ágyú",
+	corpse					= "HUNPavesi_dead",
+	trackOffset				= 10,
+	trackWidth				= 15,
+	customParams = {
+		normaltex			= "unittextures/HUN31M_105mm_normals.png",
+	},
+}
+
 local HUN_31M_105mm = HInfGun:New{
 	name					= "105mm 31M Tábori Ágyú",
 	corpse					= "hun31m_105mm_destroyed",
@@ -41,6 +51,7 @@ local HUN_31M_105mm_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["HUN31M_105mm_Truck"] = HUN_31M_105mm_Truck,
 	["HUN31M_105mm"] = HUN_31M_105mm,
 	["HUN31M_105mm_Stationary"] = HUN_31M_105mm_Stationary,
 })

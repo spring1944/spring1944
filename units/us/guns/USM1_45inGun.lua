@@ -1,3 +1,13 @@
+local US_M1_45inGun_Truck = LongRangeGunTractor:New{
+	name					= "Towed 4.5 inch Gun M1",
+	corpse					= "USM5Tractor_Destroyed",
+	trackOffset				= 10,
+	trackWidth				= 15,
+	customParams = {
+		normaltex			= "unittextures/USM1_45inGun_normals.png",
+	},
+}
+
 local US_M1_45inGun = HInfGun:New{
 	name					= "4.5 inch Gun M1",
 	corpse					= "USM1_45inGun_Destroyed",
@@ -41,6 +51,7 @@ local US_M1_45inGun_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["USM1_45inGun_Truck"] = US_M1_45inGun_Truck,
 	["USM1_45inGun"] = US_M1_45inGun,
 	["USM1_45inGun_Stationary"] = US_M1_45inGun_Stationary,
 })

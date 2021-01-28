@@ -1,3 +1,13 @@
+local ITA_Obice100_Truck = HGunTractor:New{
+	name					= "Towed Obice da 100/22",
+	corpse					= "ITATL37_Abandoned", -- TODO: grumble
+	trackOffset				= 10,
+	trackWidth				= 13,
+	customParams = {
+		normaltex			= "unittextures/ITAObice100_Truck_normals.png",
+	},
+}
+
 local ITA_Obice100 = HInfGun:New{
 	name					= "Obice da 100/22",
 	corpse					= "ITAObice100_Destroyed",
@@ -37,6 +47,7 @@ local ITA_Obice100_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["ITAObice100_Truck"] = ITA_Obice100_Truck,
 	["ITAObice100"] = ITA_Obice100,
 	["ITAObice100_Stationary"] = ITA_Obice100_Stationary,
 })

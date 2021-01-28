@@ -1,3 +1,14 @@
+local FRA_47mmAT_Truck = ATGunTractor:New{
+	name					= "Towed Canon antichar de 47 mm modèle 1937",
+	corpse					= "fracitroenp17_destroyed",
+	trackOffset				= 4,
+	trackWidth				= 15,
+	objectName				= "FRA/FRA47mmAT_truck.s3o",
+	customParams = {
+		normaltex = "unittextures/FRACitroenP17_normals.png",
+	},
+}
+
 local FRA_47mmAT = ATInfGun:New{
 	name					= "Canon antichar de 47 mm modèle 1937",
 	corpse					= "FRA47mmAT_destroyed",
@@ -34,6 +45,7 @@ local FRA_47mmAT_Stationary = ATGun:New{
 }
 
 return lowerkeys({
+	["FRA47mmAT_Truck"] = FRA_47mmAT_Truck,
 	["FRA47mmAT"] = FRA_47mmAT,
 	["FRA47mmAT_Stationary"] = FRA_47mmAT_Stationary,
 })

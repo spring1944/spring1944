@@ -1,3 +1,13 @@
+local GER_Nebelwerfer_Truck = RGunTractor:New{
+	name					= "Towed 15cm Nebelwerfer 41",
+	corpse					= "GEROpelBlitz_Destroyed",
+	trackOffset				= 10,
+	trackWidth				= 13,
+	customParams = {
+		normaltex			= "unittextures/GERNebelwerfer_Truck_normals.png",
+	},
+}
+
 local GER_Nebelwerfer = RInfGun:New{
 	name					= "15cm Nebelwerfer 41",
 	corpse					= "gernebelwerfer_destroyed",
@@ -33,6 +43,7 @@ local GER_Nebelwerfer_Stationary = RGun:New{
 }
 
 return lowerkeys({
+	["GERNebelwerfer_Truck"] = GER_Nebelwerfer_Truck,
 	["GERNebelwerfer"] = GER_Nebelwerfer,
 	["GERNebelwerfer_Stationary"] = GER_Nebelwerfer_Stationary,
 })

@@ -1,3 +1,14 @@
+local ITA_Cannone_105_32_Truck = LongRangeGunTractor:New{
+	name					= "Towed Cannone da 105/32",
+	corpse					= "itapavesi_dead",
+	buildCostMetal			= 3000,	-- this is the weakest long-ranged gun
+	trackOffset				= 10,
+	trackWidth				= 15,
+	customParams = {
+		normaltex			= "unittextures/ITACannone105_32_with_tractor_normals.png",
+	},
+}
+
 local ITA_Cannone_105_32 = HInfGun:New{
 	name					= "Cannone da 105/32",
 	corpse					= "ITACannone105_32_Destroyed",
@@ -40,6 +51,7 @@ local ITA_Cannone_105_32_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["ITACannone105_32_Truck"] = ITA_Cannone_105_32_Truck,
 	["ITACannone105_32"] = ITA_Cannone_105_32,
 	["ITACannone105_32_Stationary"] = ITA_Cannone_105_32_Stationary,
 })

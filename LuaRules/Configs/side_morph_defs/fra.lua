@@ -18,6 +18,17 @@ local fraDefs = {
 		energy = 0,
 	},
 
+	fra25mmmle1934_truck =
+	{
+		into = 'fra25mmmle1934',
+		tech = 0,
+		time = 1,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
+	},
+
 	fra25mmmle1934 =
 	{
 		into = 'fra25mmmle1934_stationary',
@@ -34,6 +45,17 @@ local fraDefs = {
 		time = 5,
 		metal = 0,
 		energy = 0,
+	},
+
+	fra47mmat_truck =
+	{
+		into = 'fra47mmat',
+		tech = 0,
+		time = 1,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
 	},
 
 	fra47mmat =
@@ -88,6 +110,17 @@ local fraDefs = {
 		time = 20,
 		metal = 0,
 		energy = 0,
+	},
+
+	fra105mmmle1935b_truck =
+	{
+		into = 'fra105mmmle1935b',
+		tech = 0,
+		time = 35,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
 	},
 
     fra105mmmle1935b = 

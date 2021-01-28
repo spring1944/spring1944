@@ -1,3 +1,13 @@
+local GBR_4_5in_Truck = LongRangeGunTractor:New{
+	name					= "Towed BL 4.5 inch Medium Gun",
+	corpse					= "gbrmatador_destroyed",
+	trackOffset				= 10,
+	trackWidth				= 18,
+	customParams = {
+		normaltex			= "unittextures/GBR45inGun_normals.png",
+	},
+}
+
 local GBR_4_5in = HInfGun:New{
 	name					= "BL 4.5 inch Medium Gun",
 	corpse					= "gbr45ingun_destroyed",
@@ -41,6 +51,7 @@ local GBR_4_5in_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["GBR45inGun_Truck"] = GBR_4_5in_Truck,
 	["GBR45inGun"] = GBR_4_5in,
 	["GBR45inGun_Stationary"] = GBR_4_5in_Stationary,
 })

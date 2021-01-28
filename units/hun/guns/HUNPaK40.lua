@@ -1,3 +1,13 @@
+local HUN_PaK40_Truck = ATGunTractor:New{
+	name					= "Towed 7.5cm PaK 40",
+	corpse					= "HUNHansaLloyd_Burning",
+	trackOffset				= 10,
+	trackWidth				= 13,
+	customParams = {
+		normaltex			= "unittextures/HUNPaK40_truck_normals.png",
+	},
+}
+
 local HUN_PaK40 = ATInfGun:New{
 	name					= "7.5cm PaK 40",
 	corpse					= "gerpak40_destroyed",
@@ -32,6 +42,7 @@ local HUN_PaK40_Stationary = ATGun:New{
 }
 	
 return lowerkeys({
+	["HUNPaK40_Truck"] = HUN_PaK40_Truck,
 	["HUNPaK40"] = HUN_PaK40,
 	["HUNPaK40_Stationary"] = HUN_PaK40_Stationary,
 })

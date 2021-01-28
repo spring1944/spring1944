@@ -1,3 +1,15 @@
+local FRA_25mmAT_Truck = ATGunTractor:New{
+	name					= "Towed Canon léger de 25 antichar SA-L modèle 1934",
+	corpse					= "FRALafflyV15_Abandoned",
+	trackOffset				= 4,
+	trackWidth				= 15,
+	objectName				= "FRA/FRA25mmMle1934_Truck.s3o",
+
+	customParams = {
+        normaltex = "unittextures/FRALafflyV15_normals.png",
+	},
+}
+
 local FRA_25mmAT = ATInfGun:New{
 	name					= "Canon léger de 25 antichar SA-L modèle 1934",
 	corpse					= "FRA25mmMle1934_destroyed",
@@ -68,6 +80,7 @@ local FRA_25mmAA_Stationary = AAGun:New{
 }
 
 return lowerkeys({
+	["FRA25mmMle1934_Truck"] = FRA_25mmAT_Truck,
 	["FRA25mmMle1934"] = FRA_25mmAT,
 	["FRA25mmMle1934_Stationary"] = FRA_25mmAT_Stationary,
 	["FRA25mmAA_Truck"] = FRA_25mmAA_Truck,

@@ -110,8 +110,7 @@ local jpnDefs = {
     time = 20,
     metal = 0,
     energy = 0,
-  },
-  
+  },  
   jpntrucksupplies=
   {
     into = 'jpnisuzutx40',
@@ -120,6 +119,7 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
+
   jpntype98_20mm_truck =
   {
     into = 'jpntype98_20mm_stationary',
@@ -128,7 +128,6 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-  
   jpntype98_20mm_stationary =
   {
     into = 'jpntype98_20mm_truck',
@@ -137,6 +136,17 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
+
+  jpntype1_47mm_truck =
+  {
+    into = 'jpntype1_47mm',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   jpntype1_47mm =
   {
     into = 'jpntype1_47mm_stationary',
@@ -144,8 +154,7 @@ local jpnDefs = {
     time = 5,
     metal = 0,
     energy = 0,
-  },
-  
+  },  
   jpntype1_47mm_stationary =
   {
     into = 'jpntype1_47mm',
@@ -154,6 +163,7 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
+
   jpntype90_75mm =
   {
     into = 'jpntype90_75mm_stationary',
@@ -162,7 +172,6 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-  
   jpntype90_75mm_stationary =
   {
     into = 'jpntype90_75mm',
@@ -170,6 +179,17 @@ local jpnDefs = {
     time = 12,
     metal = 0,
     energy = 0,
+  },
+
+  jpntype91_105mm_truck =
+  {
+    into = 'jpntype91_105mm',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
   },
   jpntype91_105mm =
   {
@@ -179,7 +199,6 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-  
   jpntype91_105mm_stationary =
   {
     into = 'jpntype91_105mm',
@@ -187,6 +206,17 @@ local jpnDefs = {
     time = 20,
     metal = 0,
     energy = 0,
+  },
+
+  jpntype92_10cm_truck =
+  {
+    into = 'jpntype92_10cm',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
   },
   jpntype92_10cm =
   {
@@ -196,7 +226,6 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-  
   jpntype92_10cm_stationary =
   {
     into = 'jpntype92_10cm',
@@ -204,8 +233,9 @@ local jpnDefs = {
     time = 40,
     metal = 0,
     energy = 0,
-  },  
-    jpntype92hmg =
+  },
+
+  jpntype92hmg =
   {
     into = 'jpntype92hmg_dugin',
     tech = 0,
@@ -214,7 +244,6 @@ local jpnDefs = {
     energy = 0,
     directional = true,
   },
-
   jpntype92hmg_dugin =
   {
     into = 'jpntype92hmg',
@@ -223,7 +252,8 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
-    jpntype4mortar_mobile =
+
+  jpntype4mortar_mobile =
   {
     into = 'jpntype4mortar_stationary',
     tech = 0,
@@ -232,7 +262,6 @@ local jpnDefs = {
     energy = 0,
     directional = true,
   },
-
   jpntype4mortar_stationary =
   {
     into = 'jpntype4mortar_mobile',

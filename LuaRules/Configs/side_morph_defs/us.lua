@@ -92,7 +92,8 @@ local usDefs = {
 			facing = true,
 		},
 	},
-	  -- Machineguns
+
+  -- Machineguns
   usmg =
   {
     into = 'usmg_sandbag',
@@ -131,7 +132,18 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
-    -- Towed Guns
+
+  -- Towed Guns
+  usm5gun_truck = 
+  {
+    into = 'usm5gun',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   usm5gun = 
   {
     into = 'usm5gun_stationary',
@@ -140,7 +152,6 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
-  
   usm5gun_stationary = 
   {
     into = 'usm5gun',
@@ -150,6 +161,16 @@ local usDefs = {
     energy = 0,
   },
   
+  usm2gun_truck = 
+  {
+    into = 'usm2gun',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   usm2gun = 
   {
     into = 'usm2gun_stationary',
@@ -158,7 +179,6 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
-  
   usm2gun_stationary = 
   {
     into = 'usm2gun',
@@ -168,6 +188,16 @@ local usDefs = {
     energy = 0,
   },
  
+  usm1_45ingun_truck = 
+  {
+    into = 'usm1_45ingun',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   usm1_45ingun = 
   {
     into = 'usm1_45ingun_stationary',
@@ -176,7 +206,6 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
-  
   usm1_45ingun_stationary = 
   {
     into = 'usm1_45ingun',
@@ -186,7 +215,7 @@ local usDefs = {
     energy = 0,
   },
 
- usm1bofors_truck = 
+  usm1bofors_truck = 
   {
     into = 'usm1bofors_stationary',
     tech = 0,
@@ -194,8 +223,7 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
-  
-    usm1bofors_stationary = 
+  usm1bofors_stationary = 
   {
     into = 'usm1bofors_truck',
     tech = 0,
@@ -203,6 +231,7 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
+
   -- Trucks / Trucksupplies
   usgmctruck =
   {
