@@ -130,8 +130,8 @@ local rusunits =
     "ruszis2",
     "ruszis3",
     "rus61k_truck",
-	"rusm30",
-	"rusa19",
+	"rusm30_truck",
+	"rusa19_truck",
   },  
   russpyard =
   {
@@ -140,7 +140,7 @@ local rusunits =
     "ruszis2",
     "ruszis3",
     "rus61k_truck",
-    "rusm30",
+    "rusm30_truck",
 	"rusgazaaa",
     "russu76",
     "rusbm13n",
@@ -153,7 +153,7 @@ local rusunits =
     "ruszis2",
     "ruszis3",
     "rus61k_truck",
-    "rusm30",
+    "rusm30_truck",
     "russu85",
     "russu100",
   },

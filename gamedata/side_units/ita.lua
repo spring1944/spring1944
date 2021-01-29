@@ -97,7 +97,7 @@ local itaunits =
 	"itabreda20_truck",
 	"itacannone47",
 	"itacannone75",
-	"itaobice100",
+	"itaobice100_truck",
 	"itacannone65",
   },
 
@@ -108,8 +108,8 @@ local itaunits =
 	"itabreda20_truck",
 	"itacannone47",
 	"itacannone75",
-	"itaobice100",
-	"itacannone105_32",
+	"itaobice100_truck",
+	"itacannone105_32_truck",
 	"itacannone65",
   },  
   itaspyard =
@@ -127,7 +127,7 @@ local itaunits =
 	"itabreda20_truck",
 	"itacannone47",
 	"itacannone75",
-	"itaobice100",
+	"itaobice100_truck",
 	"itacannone65",
   },
 		
