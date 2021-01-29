@@ -1,6 +1,6 @@
 -- The Gun without crew members enough
 local InfantryGun = Unit:New{
-    category            = "MINETRIGGER OPENVEH",
+    category            = "MINETRIGGER DEPLOYED",
     corpse              = "<NAME>_Destroyed",
     iconType            = "artillery",
     buildCostMetal      = 1300,
@@ -45,7 +45,7 @@ local InfantryGun = Unit:New{
     unloadSpread        = 3,
 
     customParams = {
-        damageGroup              = "armouredvehicles",
+        damageGroup              = "guns",
         armor_front              = 1,
         immobilizationresistance = 1.0,
         feartarget               = true,
