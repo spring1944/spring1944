@@ -15,7 +15,7 @@ local HUN_PaK40 = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {13.0, 6.0, 6.0},
-	collisionVolumeOffsets	= {0.0, 6.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- AP

@@ -5,7 +5,7 @@ local ITACannone65 = FGInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {8.0, 10.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 5.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

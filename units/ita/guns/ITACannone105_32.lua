@@ -19,7 +19,7 @@ local ITA_Cannone_105_32 = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {15.0, 10.0, 10.0},
-	collisionVolumeOffsets	= {0.0, 6.0, 5.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

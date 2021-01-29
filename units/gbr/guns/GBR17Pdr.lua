@@ -15,7 +15,7 @@ local GBR_17Pdr = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {17.0, 8.0, 6.0},
-	collisionVolumeOffsets	= {0.0, 7.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- AP

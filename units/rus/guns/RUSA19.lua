@@ -19,7 +19,7 @@ local RUS_A19 = FGInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {12.0, 8.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 8.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

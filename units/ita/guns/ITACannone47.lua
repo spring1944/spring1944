@@ -18,7 +18,7 @@ local ITA_Cannone47 = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {3.0, 5.0, 7.0},
-	collisionVolumeOffsets	= {0.0, 5.0, 5.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- AP

@@ -16,7 +16,7 @@ local SWE_PvKanM43 = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {12.0, 10.0, 6.0},
-	collisionVolumeOffsets	= {0.0, 5.0, 1.5},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- AP

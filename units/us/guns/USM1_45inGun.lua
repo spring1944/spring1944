@@ -18,7 +18,7 @@ local US_M1_45inGun = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {18.0, 12.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 9.0, 1.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

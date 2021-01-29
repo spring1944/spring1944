@@ -16,7 +16,7 @@ local US_M5Gun = ATInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {15.0, 9.0, 2.0},
-	collisionVolumeOffsets	= {0.0, 6.5, -1},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- AP

@@ -15,7 +15,7 @@ local ITA_Obice100 = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {10.0, 8.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 6.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

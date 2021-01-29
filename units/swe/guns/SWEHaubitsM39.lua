@@ -14,7 +14,7 @@ local SWEHaubitsM39 = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {9.0, 9.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 8.5, 1.5},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

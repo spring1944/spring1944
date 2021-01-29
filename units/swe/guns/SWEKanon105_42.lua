@@ -20,7 +20,7 @@ local SWEKanon105_42 = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {19.0, 14.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 8.0, 0.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

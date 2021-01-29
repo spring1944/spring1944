@@ -6,7 +6,7 @@ local FRA_75mmMle1897 = FGInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {11.0, 11.0, 2.0},
-	collisionVolumeOffsets	= {0.0, 2.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

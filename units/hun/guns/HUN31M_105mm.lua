@@ -18,7 +18,7 @@ local HUN_31M_105mm = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {16.0, 10.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 7.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

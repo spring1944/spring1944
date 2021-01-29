@@ -5,7 +5,7 @@ local JPN_Type90_75mm = FGInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {10.0, 10.0, 5.0},
-	collisionVolumeOffsets	= {0.0, 6.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE
