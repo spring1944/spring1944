@@ -9,7 +9,7 @@ local RUS_A19_Truck = LongRangeGunTractor:New{
 	},
 }
 
-local RUS_A19 = FGInfGun:New{
+local RUS_A19 = HInfGun:New{
 	name					= "Canon de 75 modèle 1897",
 	corpse					= "RUSM30_Destroyed",
 	buildCostMetal			= 3500,

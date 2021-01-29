@@ -97,6 +97,8 @@ hostigate infantry and defend against light vehicles.]],
 
 local HInfGun = InfantryGun:New{
     buildCostMetal      = 1800,
+    maxVelocity         = 0.1,
+    turnRate            = 30,
 
     weapons = {
         [1] = { -- HE
@@ -118,6 +120,8 @@ Heavy guns can be also targeted against enemy static positions.]],
 
 local RInfGun = InfantryGun:New{
     buildCostMetal      = 3600,
+    maxVelocity         = 0.1,
+    turnRate            = 20,
 
     weapons = {
         [1] = { -- Rocket
