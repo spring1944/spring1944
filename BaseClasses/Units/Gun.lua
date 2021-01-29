@@ -67,7 +67,7 @@ local ATInfGun = InfantryGun:New{
 
     weapons = {
         [1] = { -- AP
-            maxAngleDif = 5,
+            maxAngleDif = 10,
         },
     },
     customParams = {
