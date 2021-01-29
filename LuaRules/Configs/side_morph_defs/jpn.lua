@@ -191,6 +191,7 @@ local jpnDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   jpntype91_105mm =
   {
     into = 'jpntype91_105mm_stationary',
@@ -207,6 +208,7 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
   jpntype92_10cm_truck =
   {
@@ -218,6 +220,7 @@ local jpnDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   jpntype92_10cm =
   {
     into = 'jpntype92_10cm_stationary',
@@ -234,6 +237,7 @@ local jpnDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
   jpntype92hmg =
   {

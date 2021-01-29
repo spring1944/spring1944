@@ -103,8 +103,6 @@ local usDefs = {
     energy = 0,
     directional = true,
   },
-  
-
   usmg_sandbag =
   {
     into = 'usmg',
@@ -123,8 +121,7 @@ local usDefs = {
     energy = 0,
     directional = true,
   },
-  
-    usparamg_sandbag =
+  usparamg_sandbag =
   {
     into = 'usparamg',
     tech = 0,
@@ -171,6 +168,7 @@ local usDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   usm2gun = 
   {
     into = 'usm2gun_stationary',
@@ -187,6 +185,7 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
  
   usm1_45ingun_truck = 
   {
@@ -198,6 +197,7 @@ local usDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   usm1_45ingun = 
   {
     into = 'usm1_45ingun_stationary',
@@ -214,6 +214,7 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
   usm1bofors_truck = 
   {
@@ -241,8 +242,7 @@ local usDefs = {
     metal = 0,
     energy = 0,
   },
-  
-	ustrucksupplies =
+  ustrucksupplies =
   {
     into = 'usgmctruck',
     tech = 0,

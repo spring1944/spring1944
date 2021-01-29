@@ -163,6 +163,7 @@ local rusDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   rusm30 = 
   {
     into = 'rusm30_stationary',
@@ -179,6 +180,7 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
   rusa19_truck = 
   {
@@ -190,6 +192,7 @@ local rusDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   rusa19 = 
   {
     into = 'rusa19_stationary',
@@ -206,9 +209,10 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
   -- Trucks / Trucksupplies
-   ruszis5 =
+  ruszis5 =
   {
     into = 'rustrucksupplies',
     tech = 0,
@@ -216,8 +220,7 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
-	rustrucksupplies=
+  rustrucksupplies=
   {
     into = 'ruszis5',
     tech = 0,

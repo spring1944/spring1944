@@ -101,6 +101,7 @@ local itaDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   itaobice100 =
   {
     into = 'itaobice100_stationary',
@@ -117,7 +118,8 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },
-  
+  --]]
+
   itacannone105_32_truck =
   {
     into = 'itacannone105_32',
@@ -128,6 +130,7 @@ local itaDefs = {
     directional = true,
     text = 'Unload the gun and dismiss the truck',
   },
+  --[[
   itacannone105_32 =
   {
     into = 'itacannone105_32_stationary',
@@ -144,8 +147,9 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },  
-  
-    itamg =
+  --]]
+
+  itamg =
   {
     into = 'itamg_dugin',
     tech = 0,
@@ -154,7 +158,6 @@ local itaDefs = {
     energy = 0,
     directional = true,
   },
-
   itamg_dugin =
   {
     into = 'itamg',

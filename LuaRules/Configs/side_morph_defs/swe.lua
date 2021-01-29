@@ -348,6 +348,7 @@ local sweDefs = {
 		directional = true,
 		text = 'Unload the gun and dismiss the truck',
 	},
+	--[[
 	swehaubitsm39 = 
 	{
 		into = 'swehaubitsm39_stationary',
@@ -364,6 +365,7 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	--]]
 
 	swehaubitsm06_truck = 
 	{
@@ -375,6 +377,7 @@ local sweDefs = {
 		directional = true,
 		text = 'Unload the gun and dismiss the truck',
 	},
+	--[[
 	swehaubitsm06 = 
 	{
 		into = 'swehaubitsm06_stationary',
@@ -391,6 +394,7 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	--]]
 
 	sweboforsm36_truck = {
 		{
@@ -422,6 +426,7 @@ local sweDefs = {
 			text = 'Unload the gun and dismiss the truck',
 		},
 	},
+	--[[
 	swekanon105_42 = {
 		{
 			into	= "swekanon105_42_stationary",
@@ -440,6 +445,7 @@ local sweDefs = {
 			energy	= 0,
 		},
 	},
+	--]]
 	
 	-- Trucks / Trucksupplies
 	swescaniavabisf11 =
