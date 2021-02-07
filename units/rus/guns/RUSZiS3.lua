@@ -5,7 +5,7 @@ local RUS_ZiS3 = FGInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {12.0, 11.0, 6.0},
-	collisionVolumeOffsets	= {0.0, 4.0, 3.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

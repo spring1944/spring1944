@@ -5,7 +5,7 @@ local SWEKanonM02_33 = FGInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {11.0, 11.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 8.0, 2.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

@@ -91,8 +91,8 @@ local gerDefs = {
     time = 12,
     metal = 0,
     energy = 0,
+    directional = true,
   },
-
   germg42_sandbag =
   {
     into = 'germg42',
@@ -101,7 +101,7 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-    -- Towed Guns
+  -- Towed Guns
   gerflak38_truck =
   {
     into = 'gerflak38_stationary',
@@ -110,7 +110,6 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-  
   gerflak38_stationary =
   {
     into = 'gerflak38_truck',
@@ -120,6 +119,16 @@ local gerDefs = {
     energy = 0,
   },
   
+  gerpak40_truck = 
+  {
+    into = 'gerpak40',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   gerpak40 = 
   {
     into = 'gerpak40_stationary',
@@ -128,7 +137,6 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-  
   gerpak40_stationary = 
   {
     into = 'gerpak40',
@@ -137,7 +145,18 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-  
+
+  gerlefh18_truck = 
+  {
+    into = 'gerlefh18',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   gerlefh18 = 
   {
     into = 'gerlefh18_stationary',
@@ -146,7 +165,6 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-  
   gerlefh18_stationary = 
   {
     into = 'gerlefh18',
@@ -155,7 +173,19 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
+  ger10sk18_truck = 
+  {
+    into = 'ger10sk18',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },  
+  --[[
   ger10sk18 = 
   {
     into = 'ger10sk18_stationary',
@@ -164,7 +194,6 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-  
   ger10sk18_stationary = 
   {
     into = 'ger10sk18',
@@ -172,7 +201,20 @@ local gerDefs = {
     time = 40,
     metal = 0,
     energy = 0,
-  },  
+  },
+  --]]
+
+  gernebelwerfer_truck = 
+  {
+    into = 'gernebelwerfer',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   gernebelwerfer = 
   {
     into = 'gernebelwerfer_stationary',
@@ -181,7 +223,6 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
-  
   gernebelwerfer_stationary = 
   {
     into = 'gernebelwerfer',
@@ -190,6 +231,7 @@ local gerDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
   -- Trucks / Trucksupplies
   geropelblitz =
   {

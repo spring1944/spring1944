@@ -71,7 +71,8 @@ local rusDefs = {
 			facing = true,
 		},
 	},
-	  -- Machineguns
+
+  -- Machineguns
   rusmaxim =
   {
     into = 'rusmaxim_sandbag',
@@ -81,7 +82,6 @@ local rusDefs = {
     energy = 0,
     directional = true,
   },
-
   rusmaxim_sandbag =
   {
     into = 'rusmaxim',
@@ -90,7 +90,8 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-    -- Towed Guns
+
+  -- Towed Guns
   rus61k_truck = 
   {
     into = 'rus61k_stationary',
@@ -99,7 +100,6 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
   rus61k_stationary = 
   {
     into = 'rus61k_truck',
@@ -109,6 +109,16 @@ local rusDefs = {
     energy = 0,
   },
   
+  ruszis2_truck = 
+  {
+    into = 'ruszis2',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   ruszis2 = 
   {
     into = 'ruszis2_stationary',
@@ -117,7 +127,6 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
   ruszis2_stationary = 
   {
     into = 'ruszis2',
@@ -135,7 +144,6 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
   ruszis3_stationary = 
   {
     into = 'ruszis3',
@@ -145,6 +153,17 @@ local rusDefs = {
     energy = 0,
   },
   
+  rusm30_truck = 
+  {
+    into = 'rusm30',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   rusm30 = 
   {
     into = 'rusm30_stationary',
@@ -153,7 +172,6 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
   rusm30_stationary = 
   {
     into = 'rusm30',
@@ -162,6 +180,19 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
+
+  rusa19_truck = 
+  {
+    into = 'rusa19',
+    tech = 0,
+    time = 45,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   rusa19 = 
   {
     into = 'rusa19_stationary',
@@ -170,7 +201,6 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
   rusa19_stationary = 
   {
     into = 'rusa19',
@@ -178,9 +208,11 @@ local rusDefs = {
     time = 45,
     metal = 0,
     energy = 0,
-  },  
+  },
+  --]]
+
   -- Trucks / Trucksupplies
-   ruszis5 =
+  ruszis5 =
   {
     into = 'rustrucksupplies',
     tech = 0,
@@ -188,8 +220,7 @@ local rusDefs = {
     metal = 0,
     energy = 0,
   },
-  
-	rustrucksupplies=
+  rustrucksupplies=
   {
     into = 'ruszis5',
     tech = 0,

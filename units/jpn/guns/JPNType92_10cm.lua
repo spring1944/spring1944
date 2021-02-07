@@ -1,3 +1,13 @@
+local JPN_Type92_10cm_Truck = LongRangeGunTractor:New{
+	name					= "Towed Type 92 10cm Cannon",
+	corpse					= "JPNType98_RoKe_Destroyed", -- TODO: grumble
+	trackOffset				= 10,
+	trackWidth				= 17,
+	customParams = {
+		normaltex			= "unittextures/JPN_Type92_10cm_gun_and_tractor_normals.png",
+	},
+}
+
 local JPN_Type92_10cm = HInfGun:New{
 	name					= "Type 92 10cm Cannon",
 	corpse					= "JPNType92_10cm_Destroyed",
@@ -8,7 +18,7 @@ local JPN_Type92_10cm = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {13.0, 10.0, 7.0},
-	collisionVolumeOffsets	= {0.0, 5.0, 1.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE
@@ -41,6 +51,7 @@ local JPN_Type92_10cm_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["JPNType92_10cm_Truck"] = JPN_Type92_10cm_Truck,
 	["JPNType92_10cm"] = JPN_Type92_10cm,
 	["JPNType92_10cm_Stationary"] = JPN_Type92_10cm_Stationary,
 })

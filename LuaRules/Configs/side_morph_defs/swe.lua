@@ -217,7 +217,6 @@ local sweDefs = {
 		},
 	},
 	-- Machineguns
-	
 	swemg =
 	{
 		into = 'swemg_sandbag',
@@ -227,7 +226,6 @@ local sweDefs = {
 		energy = 0,
 		directional = true,
 	},
-	
 	swemg_sandbag =
 	{
 		into = 'swemg',
@@ -255,7 +253,6 @@ local sweDefs = {
 			directional = true,
 		},
 	},
-
 	swepvlvm40_aa_stationary = {
 		{
 			into = 'swepvlvm40',
@@ -274,7 +271,6 @@ local sweDefs = {
 			directional = true,
 		},
 	},
-	
 	swepvlvm40_at_stationary = {
 		{
 			into = 'swepvlvm40',
@@ -294,7 +290,18 @@ local sweDefs = {
 		},
 	},
 	
-		-- Towed Guns
+	-- Towed Guns
+	swepvkanm43_truck = {
+		{
+			into = 'swepvkanm43',
+			tech = 0,
+			time = 1,
+			metal = 0,
+			energy = 0,
+			directional = true,
+			text = 'Unload the gun and dismiss the truck',
+		},
+	},
 	swepvkanm43 = {
 		{
 			into = 'swepvkanm43_stationary',
@@ -313,7 +320,7 @@ local sweDefs = {
 			energy = 0,
 		},
 	},
-	
+
 	swekanonm02_33 =
 	{
 		into = 'swekanonm02_33_stationary',
@@ -331,6 +338,17 @@ local sweDefs = {
 		energy = 0,
 	},
   
+	swehaubitsm39_truck = 
+	{
+		into = 'swehaubitsm39',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
+	},
+	--[[
 	swehaubitsm39 = 
 	{
 		into = 'swehaubitsm39_stationary',
@@ -347,7 +365,19 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	--]]
 
+	swehaubitsm06_truck = 
+	{
+		into = 'swehaubitsm06',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
+	},
+	--[[
 	swehaubitsm06 = 
 	{
 		into = 'swehaubitsm06_stationary',
@@ -364,6 +394,7 @@ local sweDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	--]]
 
 	sweboforsm36_truck = {
 		{
@@ -384,6 +415,18 @@ local sweDefs = {
 		},
 	},
 	
+	swekanon105_42_truck = {
+		{
+			into	= "swekanon105_42",
+			tech	= 0,
+			time	= 40,
+			metal	= 0,
+			energy	= 0,
+			directional = true,
+			text = 'Unload the gun and dismiss the truck',
+		},
+	},
+	--[[
 	swekanon105_42 = {
 		{
 			into	= "swekanon105_42_stationary",
@@ -393,7 +436,6 @@ local sweDefs = {
 			energy	= 0,
 		},
 	},
-	
 	swekanon105_42_stationary = {
 		{
 			into	= "swekanon105_42",
@@ -403,6 +445,7 @@ local sweDefs = {
 			energy	= 0,
 		},
 	},
+	--]]
 	
 	-- Trucks / Trucksupplies
 	swescaniavabisf11 =

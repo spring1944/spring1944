@@ -96,7 +96,7 @@ local jpnunits =
 		"jpntype98_20mm_truck",
 		"jpntype1_47mm",
 		"jpntype90_75mm",
-		"jpntype91_105mm",
+		"jpntype91_105mm_truck",
 	},
 	jpngunyard2 =
 	{
@@ -105,8 +105,8 @@ local jpnunits =
 		"jpntype98_20mm_truck",
 		"jpntype1_47mm",
 		"jpntype90_75mm",
-		"jpntype91_105mm",
-		"jpntype92_10cm",
+		"jpntype91_105mm_truck",
+		"jpntype92_10cm_truck",
 	},	
 	jpnspyard =
 	{
@@ -115,7 +115,7 @@ local jpnunits =
 		"jpntype98_20mm_truck",
 		"jpntype1_47mm",
 		"jpntype90_75mm",
-		"jpntype91_105mm",
+		"jpntype91_105mm_truck",
 		"jpnhonii",
 		"jpnhoniii",
 	},
@@ -126,7 +126,7 @@ local jpnunits =
 		"jpntype98_20mm_truck",
 		"jpntype1_47mm",
 		"jpntype90_75mm",
-		"jpntype91_105mm",
+		"jpntype91_105mm_truck",
 		"jpntype5nato",
 	},
 	jpntankyard =

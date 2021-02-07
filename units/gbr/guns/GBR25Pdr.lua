@@ -1,3 +1,13 @@
+local GBR_25Pdr_Truck = HGunTractor:New{
+	name					= "Towed Q.F. 25 Pounder",
+	corpse					= "gbrmorrisquad_destroyed",
+	trackOffset				= 10,
+	trackWidth				= 18,
+	customParams = {
+		normaltex			= "unittextures/GBR25Pdr_Truck_normals.png",
+	},
+}
+
 local GBR_25Pdr = HInfGun:New{
 	name					= "Q.F. 25 Pounder",
 	corpse					= "gbr25pdr_destroyed",
@@ -5,7 +15,7 @@ local GBR_25Pdr = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {12.0, 10.0, 4.0},
-	collisionVolumeOffsets	= {0.0, 5.0, 4.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE
@@ -40,6 +50,7 @@ local GBR_25Pdr_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["GBR25Pdr_Truck"] = GBR_25Pdr_Truck,
 	["GBR25Pdr"] = GBR_25Pdr,
 	["GBR25Pdr_Stationary"] = GBR_25Pdr_Stationary,
 })

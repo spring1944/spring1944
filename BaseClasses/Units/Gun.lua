@@ -1,6 +1,6 @@
 -- The Gun without crew members enough
 local InfantryGun = Unit:New{
-    category            = "MINETRIGGER OPENVEH",
+    category            = "MINETRIGGER DEPLOYED",
     corpse              = "<NAME>_Destroyed",
     iconType            = "artillery",
     buildCostMetal      = 1300,
@@ -45,7 +45,7 @@ local InfantryGun = Unit:New{
     unloadSpread        = 3,
 
     customParams = {
-        damageGroup              = "armouredvehicles",
+        damageGroup              = "guns",
         armor_front              = 1,
         immobilizationresistance = 1.0,
         feartarget               = true,
@@ -67,7 +67,7 @@ local ATInfGun = InfantryGun:New{
 
     weapons = {
         [1] = { -- AP
-            maxAngleDif = 5,
+            maxAngleDif = 10,
         },
     },
     customParams = {
@@ -97,6 +97,8 @@ hostigate infantry and defend against light vehicles.]],
 
 local HInfGun = InfantryGun:New{
     buildCostMetal      = 1800,
+    maxVelocity         = 0.1,
+    turnRate            = 30,
 
     weapons = {
         [1] = { -- HE
@@ -118,6 +120,8 @@ Heavy guns can be also targeted against enemy static positions.]],
 
 local RInfGun = InfantryGun:New{
     buildCostMetal      = 3600,
+    maxVelocity         = 0.1,
+    turnRate            = 20,
 
     weapons = {
         [1] = { -- Rocket

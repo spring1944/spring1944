@@ -48,6 +48,16 @@ local hunDefs = {
 		energy = 0,
 	},
 	
+	hunpak40_truck = 
+	{
+		into = 'hunpak40',
+		tech = 0,
+		time = 1,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
+	},
 	hunpak40 = 
 	{
 		into = 'hunpak40_stationary',
@@ -56,7 +66,6 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
-
 	hunpak40_stationary = 
 	{
 		into = 'hunpak40',
@@ -65,6 +74,7 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
+
 	hun36mbofors_truck = {
 		{
 			into = 'hun36mbofors_stationary',
@@ -83,6 +93,18 @@ local hunDefs = {
 			energy = 0,
 		},
 	},
+
+	hunlefh18_truck = 
+	{
+		into = 'hunlefh18',
+		tech = 0,
+		time = 20,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
+	},
+	--[[
 	hunlefh18 = 
 	{
 		into = 'hunlefh18_stationary',
@@ -91,7 +113,6 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
-
 	hunlefh18_stationary = 
 	{
 		into = 'hunlefh18',
@@ -100,7 +121,18 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	--]]
 
+	hun31m_105mm_truck = {
+		into = 'hun31m_105mm',
+		tech = 0,
+		time = 40,
+		metal = 0,
+		energy = 0,
+		directional = true,
+		text = 'Unload the gun and dismiss the truck',
+	},
+	--[[
 	hun31m_105mm = {
 		into = 'hun31m_105mm_stationary',
 		tech = 0,
@@ -108,7 +140,6 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
-
 	hun31m_105mm_stationary = {
 		into = 'hun31m_105mm',
 		tech = 0,
@@ -116,6 +147,7 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
+	--]]
 
 	hun44mbuzoganyveto_truck =
 	{
@@ -125,7 +157,6 @@ local hunDefs = {
 		metal = 0,
 		energy = 0,
 	},
-
 	hun44mbuzoganyveto_stationary =
 	{
 		into = 'hun44mbuzoganyveto_truck',

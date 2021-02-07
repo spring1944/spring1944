@@ -1,3 +1,13 @@
+local US_M2Gun_Truck = HGunTractor:New{
+	name					= "Towed 105mm M2",
+	corpse					= "USM5Tractor_Destroyed",
+	trackOffset				= 10,
+	trackWidth				= 15,
+	customParams = {
+		normaltex			= "unittextures/USM2Gun_Truck_normals.png",
+	},
+}
+
 local US_M2Gun = HInfGun:New{
 	name					= "105mm M2",
 	corpse					= "USM2Gun_Destroyed",
@@ -7,7 +17,7 @@ local US_M2Gun = HInfGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {15.0, 9.0, 2.0},
-	collisionVolumeOffsets	= {0.0, 6.5, -1.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE
@@ -42,6 +52,7 @@ local US_M2Gun_Stationary = HGun:New{
 }
 
 return lowerkeys({
+	["USM2Gun_Truck"] = US_M2Gun_Truck,
 	["USM2Gun"] = US_M2Gun,
 	["USM2Gun_Stationary"] = US_M2Gun_Stationary,
 })

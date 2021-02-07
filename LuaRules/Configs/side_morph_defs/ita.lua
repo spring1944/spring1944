@@ -47,6 +47,16 @@ local itaDefs = {
     energy = 0,
   },
 
+  itacannone47_truck =
+  {
+    into = 'itacannone47',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   itacannone47 =
   {
     into = 'itacannone47_stationary',
@@ -54,8 +64,7 @@ local itaDefs = {
     time = 5,
     metal = 0,
     energy = 0,
-  },
-  
+  },  
   itacannone47_stationary =
   {
     into = 'itacannone47',
@@ -73,7 +82,6 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },
-  
   itacannone75_stationary =
   {
     into = 'itacannone75',
@@ -83,6 +91,17 @@ local itaDefs = {
     energy = 0,
   },
 
+  itaobice100_truck =
+  {
+    into = 'itaobice100',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   itaobice100 =
   {
     into = 'itaobice100_stationary',
@@ -90,8 +109,7 @@ local itaDefs = {
     time = 35,
     metal = 0,
     energy = 0,
-  },
-  
+  },  
   itaobice100_stationary =
   {
     into = 'itaobice100',
@@ -100,7 +118,19 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },
-  
+  --]]
+
+  itacannone105_32_truck =
+  {
+    into = 'itacannone105_32',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   itacannone105_32 =
   {
     into = 'itacannone105_32_stationary',
@@ -109,7 +139,6 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },
-  
   itacannone105_32_stationary =
   {
     into = 'itacannone105_32',
@@ -118,8 +147,9 @@ local itaDefs = {
     metal = 0,
     energy = 0,
   },  
-  
-    itamg =
+  --]]
+
+  itamg =
   {
     into = 'itamg_dugin',
     tech = 0,
@@ -128,7 +158,6 @@ local itaDefs = {
     energy = 0,
     directional = true,
   },
-
   itamg_dugin =
   {
     into = 'itamg',

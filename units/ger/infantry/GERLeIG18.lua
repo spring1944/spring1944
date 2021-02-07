@@ -5,7 +5,7 @@ local GERLeIG18 = InfantryGun:New{
 
 	collisionVolumeType		= "box",
 	collisionVolumeScales	= {10.0, 8.0, 3.0},
-	collisionVolumeOffsets	= {0.0, 2.0, 4.0},
+	collisionVolumeOffsets	= {0.0, 0.0, 0.0},
 
 	weapons = {
 		[1] = { -- HE

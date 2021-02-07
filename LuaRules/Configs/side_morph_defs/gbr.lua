@@ -105,6 +105,16 @@ local gbrDefs = {
     energy = 0,
   },
     -- Towed Guns
+  gbr17pdr_truck = 
+  {
+    into = 'gbr17pdr',
+    tech = 0,
+    time = 1,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
   gbr17pdr = 
   {
     into = 'gbr17pdr_stationary',
@@ -113,7 +123,6 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
-
   gbr17pdr_stationary = 
   {
     into = 'gbr17pdr',
@@ -123,6 +132,17 @@ local gbrDefs = {
     energy = 0,
   },
   
+  gbr25pdr_truck = 
+  {
+    into = 'gbr25pdr',
+    tech = 0,
+    time = 20,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   gbr25pdr = 
   {
     into = 'gbr25pdr_stationary',
@@ -131,7 +151,6 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
-
   gbr25pdr_stationary = 
   {
     into = 'gbr25pdr',
@@ -140,6 +159,19 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
+
+  gbr45ingun_truck = 
+  {
+    into = 'gbr45ingun',
+    tech = 0,
+    time = 40,
+    metal = 0,
+    energy = 0,
+    directional = true,
+    text = 'Unload the gun and dismiss the truck',
+  },
+  --[[
   gbr45ingun = 
   {
     into = 'gbr45ingun_stationary',
@@ -148,7 +180,6 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
-
   gbr45ingun_stationary = 
   {
     into = 'gbr45ingun',
@@ -157,6 +188,7 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
+  --]]
 
   gbrbofors_truck =
   {
@@ -166,7 +198,6 @@ local gbrDefs = {
     metal = 0,
     energy = 0,
   },
-  
   gbrbofors_stationary =
   {
     into = 'gbrbofors_truck',
