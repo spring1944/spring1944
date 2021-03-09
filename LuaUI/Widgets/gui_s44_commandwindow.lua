@@ -58,6 +58,9 @@ local GLYPHS = {
     ["Prefer HE"] = '\204\188',
     ["Prefer AP"] = '\204\190',
     ["Prefer HEAT"] = '\204\191',
+    ["No APC"] = '\204\142',
+    ["All APC"] = '\204\143',
+    ["Guns APC"] = '\204\144',
 }
 local MINBUTTONSIZE = 0.04
 local ACCEPTABLE_DEFAULT_COMMANDS = {
