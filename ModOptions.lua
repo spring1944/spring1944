@@ -160,7 +160,7 @@ local options = {
 		type = "number",
 		def = 25,
 		min = 0,
-		max = 1000000,
+		max = 1000,
 		section = '3resources',
 		step = 5,
 	},
@@ -202,7 +202,7 @@ local options = {
 	{
 		key = "qtpfs",
 		name = "QTPFS",
-		desc = "Switch between Legacy or QTPFS pathfinder.)",
+		desc = "Switch between Legacy or QTPFS pathfinder",
 		type = "bool",
 		section = '4other',
 		def = false,
@@ -211,7 +211,7 @@ local options = {
 	{
 		key = "weapon_range_mult",
 		name = "Range multiplier",
-		desc = 'Multiplies the range of all weapons, adjusting accuracy and weapon velocity as well. 1 is default, 8 is "realistic".',
+		desc = 'Multiplies the range of all weapons, adjusting accuracy and weapon velocity as well. 1 is default, 8 is "realistic"',
 		type = "number",
 		def = 1.0,
 		min = 0.1,
