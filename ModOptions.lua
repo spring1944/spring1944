@@ -23,11 +23,17 @@
 --------------------------------------------------------------------------------
 local options = {
 	{
+		key = '3resources',
+		name = 'Resource Settings',
+		desc = 'Sets various options related to the in-game resources, Command and Logistics',
+		type = 'section',
+	},
+	{
 		key = "spoilsofwar",
 		name = "Spoils of War",
 		desc = "Captureable Neutral units",
 		type = "list",
-		section	= '2victormode',
+		section	= '3resources',
 		def = "disabled",
 		items = {
 			{
@@ -48,15 +54,9 @@ local options = {
 			{
 				key = "mines",
 				name = "Minefields",
-				desc = "Some flags will start out with anti-personnel minefields (more likely father from player starts)",
+				desc = "Some flags will start out with anti-personnel minefields (more likely farther from player starts)",
 			},
 		},
-	},
-	{
-		key = '3resources',
-		name = 'Resource Settings',
-		desc = 'Sets various options related to the in-game resources, Command and Logistics',
-		type = 'section',
 	},
 	{
 		key = "command_mult",
