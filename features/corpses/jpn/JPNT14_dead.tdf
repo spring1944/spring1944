@@ -1,0 +1,17 @@
+[JPNT14_dead] {
+  description=Sunk torpedo boat;
+  blocking=0;
+  damage=10000;
+  energy=5000;
+  footprintX=8;
+  footprintZ=8;
+  height=5;
+  hitdensity=70;
+  object=JPNT14_dead.s3o;
+  reclaimable=1;
+	[customParams]
+		{
+
+		}
+}
+
