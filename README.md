@@ -5,3 +5,5 @@
 The latest version of the game lets you play either as one of the axis powers (Germany, Italy, Japan, Hungary), one of the allies (Great Britain, Soviet Union, United States), or even the Sweden neutral faction. Of course you can team all of them together as there is no limit to which factions can play in the same in-game alliance.
 
 **Spring: 1944** is a full featured game with complex in-game mechanics. You can learn more **[in the awesome wiki page](https://github.com/spring1944/spring1944/wiki)**!.
+
+Please note that while the Spring engine is Open Source, this mod is not. The assets are published under a non-free [license](docs/License.txt). You are not allowed to use the assets in commercial projects. This also applies to some parts of the Lua scripts.
