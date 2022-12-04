@@ -7,7 +7,7 @@ on:
 env:
   # The last version if no other release can be found
   LAST_VERSION_MAJOR: 5715
-  PREFIX: "beta"
+  PREFIX: "test"
 
 jobs:
   create_release:
@@ -45,6 +45,12 @@ jobs:
     - name: Print the version
       run: echo "${{ steps.version.outputs.version }}"
 
+    - name: Make package
+      run: |
+        sed 's/$VERSION/${{ steps.version.outputs.version }}/' modinfo.lua
+        zip -qq -r s44.zip ./
+        mv s44.zip s44-${{ steps.version.outputs.version }}.sdz
+
     - uses: rickstaa/action-create-tag@v1
       id: create_tag
       with:
@@ -62,3 +68,14 @@ jobs:
         release_name: ${{steps.version.outputs.version}}
         draft: false
         prerelease: false
+
+    - name: Upload Package
+      id: upload-linux-installer
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{github.workspace}}/s44-${{ steps.version.outputs.version }}.sdz
+        asset_name: s44-${{ steps.version.outputs.version }}.sdz
+        asset_content_type: application/zip
