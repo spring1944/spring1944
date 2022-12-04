@@ -33,7 +33,6 @@ jobs:
       id: VERSION_MAJOR
       with:
         cond: ${{ steps.last_tag.outputs.last_tag == '' }}
-        $(($version + 1))
         if_true: $((${{env.LAST_VERSION_MAJOR}} + 1))
         if_false: $((${{steps.last_tag.outputs.last_tag}} + 1))
 
