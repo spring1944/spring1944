@@ -2,7 +2,7 @@ name: CMake
 
 on:
   push:
-    branches: [ $default-branch, master, autorelease ]
+    branches: [ $default-branch, master ]
 
 env:
   # The last version if no other release can be found
