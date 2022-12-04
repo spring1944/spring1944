@@ -42,8 +42,8 @@ jobs:
         hash=`git rev-parse --short HEAD`
         echo "::set-output name=version::${{env.PREFIX}}-${{ steps.VERSION_MAJOR.outputs.value }}-$hash"
 
-    - name: Debug
-      run: ls -alh
+    - name: Print the version
+      run: echo "${{ steps.version.outputs.version }}"
 
     - uses: rickstaa/action-create-tag@v1
       id: create_tag
