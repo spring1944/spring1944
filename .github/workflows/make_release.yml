@@ -48,7 +48,7 @@ jobs:
     - name: Make package
       run: |
         sed 's/$VERSION/${{ steps.version.outputs.version }}/' modinfo.lua
-        zip -qq -r s44.zip ./
+        zip -qq -r s44.zip ./ --exclude=.git*
         mv s44.zip s44-${{ steps.version.outputs.version }}.sdz
 
     - uses: rickstaa/action-create-tag@v1
