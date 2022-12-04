@@ -1,0 +1,81 @@
+name: CMake
+
+on:
+  push:
+    branches: [ $default-branch, master ]
+
+env:
+  # The last version if no other release can be found
+  LAST_VERSION_MAJOR: 5715
+  PREFIX: "test"
+
+jobs:
+  create_release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    outputs:
+      release_id: ${{ steps.create_release.outputs.id }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+    - uses: actions/checkout@v3
+      if: github.event_name == 'push'
+
+    - name: Get last tag
+      id: last_tag
+      run: |
+        tag=`curl https://api.github.com/repos/${GITHUB_REPOSITORY%/*}/${GITHUB_REPOSITORY#*/}/tags | grep name | grep ${{env.PREFIX}} | head -n 1`
+        version=`echo $tag | cut -d':' -f 2 | sed -e 's/"${{env.PREFIX}}-//' | cut -d'-' -f 1`
+        echo "Last version detected = $version"
+        echo "::set-output name=last_tag::$version"
+
+    - name: Version value
+      uses: haya14busa/action-cond@v1
+      id: VERSION_MAJOR
+      with:
+        cond: ${{ steps.last_tag.outputs.last_tag == '' }}
+        if_true: $((${{env.LAST_VERSION_MAJOR}} + 1))
+        if_false: $((${{steps.last_tag.outputs.last_tag}} + 1))
+
+    - name: Setup the version
+      id: version
+      run: |
+        hash=`git rev-parse --short HEAD`
+        echo "::set-output name=version::${{env.PREFIX}}-${{ steps.VERSION_MAJOR.outputs.value }}-$hash"
+
+    - name: Print the version
+      run: echo "${{ steps.version.outputs.version }}"
+
+    - name: Make package
+      run: |
+        sed -i 's/$VERSION/${{ steps.version.outputs.version }}/' modinfo.lua
+        zip -qq -r s44.zip ./ --exclude=.git*
+        mv s44.zip s44-${{ steps.version.outputs.version }}.sdz
+
+    - uses: rickstaa/action-create-tag@v1
+      id: create_tag
+      with:
+        tag: ${{steps.version.outputs.version}}
+        message: "Autorelease"
+        force_push_tag: true
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{steps.version.outputs.version}}
+        release_name: ${{steps.version.outputs.version}}
+        draft: false
+        prerelease: false
+
+    - name: Upload Package
+      id: upload-linux-installer
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{github.workspace}}/s44-${{ steps.version.outputs.version }}.sdz
+        asset_name: s44-${{ steps.version.outputs.version }}.sdz
+        asset_content_type: application/zip
