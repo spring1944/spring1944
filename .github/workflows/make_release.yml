@@ -21,7 +21,7 @@ jobs:
     - name: Setup the version
       id: version
       run: |
-        commit=`git rev-list --count master`
+        commit=`git rev-list --count ${GITHUB_REF##*/}`
         hash=`git rev-parse --short HEAD`
         echo "::set-output name=version::${{env.PREFIX}}-$commit-$hash"
 
