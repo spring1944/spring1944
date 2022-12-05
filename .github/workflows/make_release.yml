@@ -24,7 +24,7 @@ jobs:
       id: last_tag
       run: |
         tag=`curl https://api.github.com/repos/${GITHUB_REPOSITORY%/*}/${GITHUB_REPOSITORY#*/}/tags | grep name | grep ${{env.PREFIX}} | head -n 1`
-        version=`echo $tag | cut -d':' -f 2 | sed -e 's/"${{env.PREFIX}}-//' | cut -d'-' -f 1`
+        version=`echo $tag | cut -d'-' -f 2 | cut -d'"' -f 1 | sed 's/release//'`
         echo "Last version detected = $version"
         echo "::set-output name=last_tag::$version"
 
@@ -32,7 +32,7 @@ jobs:
       uses: haya14busa/action-cond@v1
       id: VERSION_MAJOR
       with:
-        cond: ${{ (steps.last_tag.outputs.last_tag == '') || (steps.last_tag.outputs.last_tag == '"github') }}
+        cond: ${{ steps.last_tag.outputs.last_tag == '' }}
         if_true: $((${{env.LAST_VERSION_MAJOR}} + 1))
         if_false: $((${{steps.last_tag.outputs.last_tag}} + 1))
 
