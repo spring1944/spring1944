@@ -16,12 +16,13 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
     - uses: actions/checkout@v3
-      if: github.event_name == 'push'
+      with:
+        fetch-depth: 0
 
     - name: Setup the version
       id: version
       run: |
-        commit=`git rev-list --count ${GITHUB_REF##*/}`
+        commit=`git rev-list --count HEAD`
         hash=`git rev-parse --short HEAD`
         echo "::set-output name=version::${{env.PREFIX}}-$commit-$hash"
 
