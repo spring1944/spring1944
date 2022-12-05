@@ -2,11 +2,9 @@ name: CMake
 
 on:
   push:
-    branches: [ $default-branch, master ]
+    branches: [ $default-branch, master, autorelease ]
 
 env:
-  # The last version if no other release can be found
-  LAST_VERSION_MAJOR: 5715
   PREFIX: "test"
 
 jobs:
@@ -23,7 +21,7 @@ jobs:
     - name: Get last tag
       id: last_tag
       run: |
-        tag=`curl https://api.github.com/repos/${GITHUB_REPOSITORY%/*}/${GITHUB_REPOSITORY#*/}/tags | grep name | grep ${{env.PREFIX}} | head -n 1`
+        tag=`curl https://repos.springrts.com/s44/versions.gz | gunzip -c | grep ${{env.PREFIX}} | tail -n 1`
         version=`echo $tag | cut -d'-' -f 2 | cut -d'"' -f 1 | sed 's/release//'`
         echo "Last version detected = $version"
         echo "::set-output name=last_tag::$version"
