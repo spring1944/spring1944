@@ -16,29 +16,15 @@ jobs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
     - uses: actions/checkout@v3
-      if: github.event_name == 'push'
-
-    - name: Get last tag
-      id: last_tag
-      run: |
-        tag=`curl https://repos.springrts.com/s44/versions.gz | gunzip -c | grep ${{env.PREFIX}} | tail -n 1`
-        version=`echo $tag | cut -d'-' -f 2 | cut -d'"' -f 1 | sed 's/release//'`
-        echo "Last version detected = $version"
-        echo "::set-output name=last_tag::$version"
-
-    - name: Version value
-      uses: haya14busa/action-cond@v1
-      id: VERSION_MAJOR
       with:
-        cond: ${{ steps.last_tag.outputs.last_tag == '' }}
-        if_true: $((${{env.LAST_VERSION_MAJOR}} + 1))
-        if_false: $((${{steps.last_tag.outputs.last_tag}} + 1))
+        fetch-depth: 0
 
     - name: Setup the version
       id: version
       run: |
+        commit=`git rev-list --count HEAD`
         hash=`git rev-parse --short HEAD`
-        echo "::set-output name=version::${{env.PREFIX}}-${{ steps.VERSION_MAJOR.outputs.value }}-$hash"
+        echo "::set-output name=version::${{env.PREFIX}}-$commit-$hash"
 
     - name: Print the version
       run: echo "${{ steps.version.outputs.version }}"
