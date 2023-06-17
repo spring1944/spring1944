@@ -19,6 +19,7 @@ local modRules = {
 		allowUnitCollisionDamage  = false,
 		allowUnitCollisionOverlap  = false,
 		allowSepAxisCollisionTest = true,
+		allowGroundUnitGravity = true,
 	},
 	nanospray = {
 		allow_team_colours	=	false,
