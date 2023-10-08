@@ -1472,7 +1472,7 @@ return {
   ["bulletimpact"] = {
     particle_dust1 = {
       air                = true,
-      class              = [[CSphereParticleSpawner]],
+      class              = [[CSimpleParticleSystem]],
       count              = 1,
       ground             = true,
       water              = false,
@@ -1500,7 +1500,7 @@ return {
     },
     particle_dust2 = {
       air                = false,
-      class              = [[CSphereParticleSpawner]],
+      class              = [[CSimpleParticleSystem]],
       count              = 1,
       ground             = true,
       water              = false,
