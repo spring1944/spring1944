@@ -23,7 +23,7 @@ include("debug.lua")
 include("fonts.lua")
 include("layout.lua")   -- contains a simple LayoutButtons()
 include("widgets.lua")  -- the widget handler
-
+VFS.Include("LuaRules/Includes/utilities.lua", nil, VFS.ZIP)
 
 --------------------------------------------------------------------------------
 --
