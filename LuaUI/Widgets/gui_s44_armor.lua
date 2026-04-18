@@ -86,6 +86,9 @@ local HE_MULT = 1.45
 ------------------------------------------------
 --local functions
 ------------------------------------------------
+function table.unserialize(input)
+	return loadstring("return " .. (input or "{}"))()
+end
 
 local function GetColor(t, maxValue)
 	if t then 

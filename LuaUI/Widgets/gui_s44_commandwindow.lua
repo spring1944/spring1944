@@ -12,8 +12,8 @@ function widget:GetInfo()
 end
 
 -- INCLUDES
-MORPHS = include("LuaRules/Configs/morph_defs.lua")
-SORTIES = include("LuaRules/Configs/sortie_defs.lua")
+MORPHS = VFS.Include("LuaRules/Configs/morph_defs.lua", nil, VFS.RAW_FIRST)
+SORTIES = VFS.Include("LuaRules/Configs/sortie_defs.lua", nil, VFS.RAW_FIRST)
 
 -- CONSTANTS
 local mainScaleLeft   = 0.05  -- Default widget position

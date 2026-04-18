@@ -94,7 +94,7 @@ UNITS_DEPTHS = {}  -- Depth of each unit, to find the critical line
 CURRENT_DEPTH = 0  -- Current parsing depth
 UNITS_LINKS = {}   -- Intra-page link to already parsed units
 UNITS_LINKED = {}  -- Units with the link already prepared
-morphDefs = include("LuaRules/Configs/morph_defs.lua")
+morphDefs = VFS.Include("LuaRules/Configs/morph_defs.lua")
 
 function _is_morph_link(id)
     -- Analyze the unit name to determine whether it is a morphing link or not
@@ -346,8 +346,8 @@ end
 -- UNITS AUTO-DOCUMENTATION
 -- =============================================================================
 
-squadDefs = include("LuaRules/Configs/squad_defs.lua")
-sortieDefs = include("LuaRules/Configs/sortie_defs.lua")
+squadDefs = VFS.Include("LuaRules/Configs/squad_defs.lua")
+sortieDefs = VFS.Include("LuaRules/Configs/sortie_defs.lua")
 
 function _parse_squad(unitDef)
     if squadDefs[unitDef.name] == nil and sortieDefs[unitDef.name] == nil then
@@ -1211,7 +1211,7 @@ function _gen_wiki(folder)
     end
     handle.write(handle, "# Factions\n")
     local factions = Spring.GetSideData()
-    local extra_data = include("gamedata/sidedata.lua")
+    local extra_data = VFS.Include("gamedata/sidedata.lua")
     for i = 1,#factions do
         if factions[i].startUnit ~= 'gmtoolbox' then
             factions[i].title = extra_data[i].wiki_title

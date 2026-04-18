@@ -15,7 +15,7 @@ function widget:GetInfo()
   }
 end
 
-require("keysym.lua")
+VFS.Include("luahandler/utilities/keysym.lua", nil, VFS.RAW_FIRST)
 
 ---- CHANGELOG -----
 --	CarRepairer, v2:
