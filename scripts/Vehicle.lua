@@ -563,7 +563,7 @@ function script.Killed(recentDamage, maxHealth)
 	if recentDamage > maxHealth then -- Overkill
 		Explode(base, SFX.SHATTER)
 		if turret then
-			Explode(turret, SFX.FIRE + SFX.FALL + SFX.EXPLODE_ON_HIT + SFX.SMOKE)
+			Explode(turret, SFX.FIRE + SFX.FALL + SFX.EXPLODE_ON_HIT + SFX.SMOKE + SFX.RECURSIVE)
 		end
 		corpse = 2
 	end
