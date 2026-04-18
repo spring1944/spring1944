@@ -82,7 +82,7 @@ local spectatedTeam
 
 local iconTypes = VFS.Include("gamedata/icontypes.lua")
 for defID, defs in ipairs(UnitDefs) do
-	if defs.iconType ~= "default" then
+	if defs.iconType ~= "default" and iconTypes[defs.iconType] then
 		ICON_TYPE[defID] = iconTypes[defs.iconType].bitmap
 	end
 	if (defs.modCategories["flag"] == nil) then

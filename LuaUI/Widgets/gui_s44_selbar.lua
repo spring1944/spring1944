@@ -29,7 +29,7 @@ local MINBUTTONSIZE = 0.04
 local ICONS = {}
 local iconTypes = VFS.Include("gamedata/icontypes.lua")
 for defID, defs in ipairs(UnitDefs) do
-    if defs.iconType ~= "default" then
+    if defs.iconType ~= "default" and iconTypes[defs.iconType] then
         ICONS[defID] = iconTypes[defs.iconType].bitmap
     else
         ICONS[defID] = "icons/unknown.tga"
