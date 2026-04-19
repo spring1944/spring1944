@@ -9,7 +9,7 @@ function gadget:GetInfo()
 		date 	= "20220310",
 		license = "GNU GPL, v2 or later",
 		layer	= 0,
-		enabled	= true,
+		enabled	= false,--true,
 		depends = {'gl4'},
 	}
 end
